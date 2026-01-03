@@ -4,124 +4,131 @@ import { Check, Info, Server, CreditCard, PlusCircle } from 'lucide-react';
 
 const Pricing: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 px-6">
+    <div className="pt-48 pb-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <header className="text-center mb-20">
-          <h1 className="text-5xl font-bold mb-6">합리적이고 투명한 가격 정책</h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            귀사의 운영 규모와 예산 구조에 최적화된 유연한 플랜을 제공합니다. <br />
-            모든 플랜에는 21 CFR Part 11 준수 핵심 엔진이 포함되어 있습니다.
+        <header className="text-center mb-24">
+          <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-6">
+            Investment Plans
+          </div>
+          <h1 className="text-5xl font-bold mb-8 text-slate-900">투명하고 합리적인 비용</h1>
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            귀사의 운영 규모와 생산 라인의 복잡도에 최적화된 유연한 플랜을 선택하십시오. <br />
+            모든 비용은 시스템의 완벽한 밸리데이션과 안정성을 보장합니다.
           </p>
         </header>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
+        <div className="grid md:grid-cols-2 gap-10 mb-24">
           {/* 구독형 플랜 */}
-          <div className="glass rounded-[40px] p-10 border-white/10 flex flex-col relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-              <CreditCard className="w-24 h-24" />
+          <div className="bg-slate-50 rounded-[48px] p-12 border border-slate-100 flex flex-col relative group transition-all hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50">
+            <div className="absolute top-0 right-0 p-10 text-blue-600/5 group-hover:text-blue-600/10 transition-colors">
+              <CreditCard className="w-32 h-32" />
             </div>
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-2">Standard Subscription</h3>
-              <p className="text-gray-500 text-sm">초기 비용 절감과 유연한 확장을 원하는 기업용</p>
+            <div className="mb-10">
+              <h3 className="text-2xl font-bold mb-3 text-slate-900">Standard Subscription</h3>
+              <p className="text-slate-500 text-sm">운용 효율성과 초기 비용 최소화를 원하는 기업</p>
             </div>
-            <div className="mb-8">
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold text-white">3,000만원</span>
-                <span className="text-gray-500 text-sm">초기 도입비</span>
+            <div className="mb-12">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-black text-slate-900 tracking-tight">3,000만원</span>
+                <span className="text-slate-400 text-sm font-bold uppercase">Setup Fee</span>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold text-blue-400">월 30만원</span>
-                <span className="text-gray-500 text-sm">구독료</span>
+                <span className="text-2xl font-bold text-blue-600">월 30만원</span>
+                <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Monthly</span>
               </div>
             </div>
-            <ul className="space-y-4 mb-10 flex-1">
+            <ul className="space-y-5 mb-12 flex-1">
               {[
                 "기본 장비 레포트 3개 연동 포함",
-                "21 CFR Part 11 / Annex 11 엔진",
-                "무제한 사용자 계정 생성",
-                "실시간 감사 추적(Audit Trail)",
-                "클라우드 기반 기술 지원 서비스"
+                "21 CFR Part 11 / Annex 11 규제 엔진",
+                "무제한 유저 라이선스 제공",
+                "실시간 클라우드 자동 백업",
+                "원격 기술 지원 서비스 패키지"
               ].map(item => (
-                <li key={item} className="flex items-center gap-3 text-sm text-gray-300">
-                  <Check className="w-4 h-4 text-blue-500" /> {item}
+                <li key={item} className="flex items-center gap-4 text-sm font-semibold text-slate-600">
+                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Check className="w-3 h-3 text-blue-600" />
+                  </div>
+                  {item}
                 </li>
               ))}
             </ul>
-            <button className="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-bold transition-all">
+            <button className="w-full py-5 bg-blue-600 text-white rounded-2xl font-black hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20">
               구독형 데모 신청
             </button>
           </div>
 
           {/* 일시불 플랜 */}
-          <div className="glass rounded-[40px] p-10 border-blue-500/30 bg-blue-500/5 flex flex-col relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-              <Server className="w-24 h-24" />
+          <div className="bg-white rounded-[48px] p-12 border-2 border-blue-600 flex flex-col relative shadow-2xl shadow-blue-600/5 group">
+            <div className="absolute -top-5 left-12 px-5 py-2 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-blue-600/30">
+              Most Selected For Long Term
             </div>
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-2">Enterprise Perpetual</h3>
-              <p className="text-gray-500 text-sm">장기적인 총 소유 비용(TCO) 절감을 원하는 기업용</p>
+            <div className="absolute top-0 right-0 p-10 text-blue-600/5">
+              <Server className="w-32 h-32" />
             </div>
-            <div className="mb-8">
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold text-white">1억 5,000만원</span>
-                <span className="text-gray-500 text-sm">1회성 라이선스</span>
+            <div className="mb-10">
+              <h3 className="text-2xl font-bold mb-3 text-slate-900">Enterprise Perpetual</h3>
+              <p className="text-slate-500 text-sm">총 소유 비용(TCO) 절감과 데이터 영구 소유를 원하는 기업</p>
+            </div>
+            <div className="mb-12">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-black text-slate-900 tracking-tight">1억 5,000만원</span>
+                <span className="text-slate-400 text-sm font-bold uppercase">One-time</span>
               </div>
-              <p className="text-emerald-400 text-sm font-bold">월 구독료 없음 (영구 소유)</p>
+              <p className="text-emerald-600 text-sm font-extrabold uppercase tracking-widest">No Monthly Subscription</p>
             </div>
-            <ul className="space-y-4 mb-10 flex-1">
+            <ul className="space-y-5 mb-12 flex-1">
               {[
                 "장비 레포트 3개 기본 연동 포함",
-                "자체 서버 설치(On-premise) 지원",
-                "매년 정기 점검 서비스 제공",
-                "최고 수준의 전담 기술 매니저 배정",
-                "맞춤형 밸리데이션 패키지 포함"
+                "온프레미스(서버형) 설치 지원",
+                "영구 라이선스 소유권 부여",
+                "전문 밸리데이션(CSV) 풀 패키지",
+                "매년 1회 정기 현장 점검 서비스"
               ].map(item => (
-                <li key={item} className="flex items-center gap-3 text-sm text-gray-300">
-                  <Check className="w-4 h-4 text-emerald-500" /> {item}
+                <li key={item} className="flex items-center gap-4 text-sm font-semibold text-slate-600">
+                  <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center">
+                    <Check className="w-3 h-3 text-emerald-600" />
+                  </div>
+                  {item}
                 </li>
               ))}
             </ul>
-            <button className="w-full py-4 bg-white text-black hover:bg-gray-200 rounded-2xl font-bold transition-all">
-              엔터프라이즈 견적 요청
+            <button className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20">
+              엔터프라이즈 맞춤 견적
             </button>
           </div>
         </div>
 
-        {/* 확장 비용 안내 */}
-        <div className="glass rounded-[40px] p-12 border-white/5 relative overflow-hidden">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
+        {/* 확장 옵션 */}
+        <div className="bg-slate-50 rounded-[40px] p-12 border border-slate-100 flex flex-col md:flex-row gap-16 items-center">
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-400 text-xs font-bold rounded-full mb-6">
-                <PlusCircle className="w-4 h-4" /> 확장성 옵션
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-black uppercase tracking-widest rounded-full mb-8">
+                <PlusCircle className="w-4 h-4" /> Expansion Option
               </div>
-              <h2 className="text-3xl font-bold mb-6">성장에 맞춰 유연하게 <br /> 장비를 추가하세요.</h2>
-              <p className="text-gray-400 leading-relaxed mb-8">
-                기본 3개의 레포트 외에 추가 장비 연동이 필요한 경우, 합리적인 추가 비용으로 시스템을 확장할 수 있습니다. 
-                Oryx DataSafe의 인터페이스는 다양한 장비와의 연동에 최적화되어 있습니다.
+              <h2 className="text-3xl font-bold mb-6 text-slate-900">생산 라인 확장에 따른 <br /> 유연한 가격 설계</h2>
+              <p className="text-slate-500 leading-relaxed mb-10 text-lg">
+                기본 연동 장비 외에 추가 연동이 필요한 경우, 합리적인 비용으로 시스템 규모를 확장할 수 있습니다. 
+                모든 프로토콜을 지원하므로 추가 공사 없이 소프트웨어 설정만으로 확장이 가능합니다.
               </p>
               <div className="grid grid-cols-2 gap-8">
-                <div className="p-4 bg-white/5 rounded-2xl border border-white/10">
-                   <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">레포트 1개 추가 시</p>
-                   <p className="text-xl font-bold text-white">300만원 <span className="text-xs text-gray-500 font-normal">설치비</span></p>
+                <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                   <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-2">장비 1대 추가 시</p>
+                   <p className="text-2xl font-black text-slate-900">300만원 <span className="text-xs text-slate-400 font-bold uppercase">Setup</span></p>
                 </div>
-                <div className="p-4 bg-white/5 rounded-2xl border border-white/10">
-                   <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">구독료 인상분</p>
-                   <p className="text-xl font-bold text-blue-400">10만원 <span className="text-xs text-gray-500 font-normal">/월</span></p>
+                <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                   <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-2">구독료 인상분</p>
+                   <p className="text-2xl font-black text-blue-600">10만원 <span className="text-xs text-slate-400 font-bold uppercase">/ Mo</span></p>
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-[400px] aspect-video glass bg-black/40 rounded-3xl border border-white/10 flex items-center justify-center relative">
+            <div className="w-full md:w-[450px] aspect-video bg-white rounded-[32px] border border-slate-100 shadow-inner flex items-center justify-center p-12">
                <div className="text-center">
-                  <Info className="w-12 h-12 text-blue-500/30 mx-auto mb-4" />
-                  <p className="text-sm text-gray-500 px-8">5개 이상의 대규모 장비 연동 시 <br /> 별도의 할인 정책이 적용됩니다.</p>
+                  <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <Info className="w-8 h-8 text-blue-400" />
+                  </div>
+                  <p className="text-slate-500 font-medium">10개 이상의 대규모 연동 시 <br /> 대량 연동 특별 할인이 제공됩니다.</p>
                </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-20 text-center text-gray-500 text-sm">
-           <p>* 모든 가격은 부가세(VAT) 별도 금액입니다.</p>
-           <p>* 밸리데이션(CSV) 수행 범위에 따라 컨설팅 비용이 별도로 추가될 수 있습니다.</p>
         </div>
       </div>
     </div>

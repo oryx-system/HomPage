@@ -1,7 +1,5 @@
 {
   "name": "Oryx DataSafe - Enterprise E-Signature for Pharma",
   "description": "Next-generation electronic signature and data integrity platform fully compliant with 21 CFR Part 11 and EU Annex 11 for the pharmaceutical and life sciences industry.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
+  "requestFramePermissions": []
 }

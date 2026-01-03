@@ -10,8 +10,10 @@ import About from './views/About';
 import Support from './views/Support';
 import Contact from './views/Contact';
 import Pricing from './views/Pricing';
+import Necessity from './views/Necessity';
+import Concept from './views/Concept';
 
-export type ViewType = 'home' | 'validation' | 'solutions' | 'security' | 'about' | 'support' | 'contact' | 'pricing';
+export type ViewType = 'home' | 'validation' | 'solutions' | 'security' | 'about' | 'support' | 'contact' | 'pricing' | 'necessity' | 'concept';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -30,12 +32,14 @@ const App: React.FC = () => {
       case 'support': return <Support />;
       case 'contact': return <Contact />;
       case 'pricing': return <Pricing />;
+      case 'necessity': return <Necessity setView={setCurrentView} />;
+      case 'concept': return <Concept />;
       default: return <Home setView={setCurrentView} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white">
+    <div className="min-h-screen bg-white text-slate-900">
       <Navbar currentView={currentView} setView={setCurrentView} />
       <main className="min-h-[80vh]">
         {renderView()}

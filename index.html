@@ -4,46 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oryx DataSafe | Pharma Compliance E-Signature</title>
+    <title>Oryx DataSafe | The Standard of Data Integrity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bento:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --brand-blue: #2563eb;
+            --brand-dark: #0f172a;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030712;
-            color: #f9fafb;
+            background-color: #ffffff;
+            color: var(--brand-dark);
             overflow-x: hidden;
+            letter-spacing: -0.04em;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .text-huge {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            font-weight: 900;
+            letter-spacing: -0.06em;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, #9ca3af 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .schematic-bg {
+            background-image: 
+                linear-gradient(to right, rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            position: relative;
         }
-        .grid-bg {
-            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
-            background-size: 40px 40px;
+        .schematic-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, white 60%, white 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            border-color: var(--brand-blue);
+            box-shadow: 0 30px 60px -12px rgba(37, 99, 235, 0.15);
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--brand-blue), transparent);
+            opacity: 0.2;
+            animation: scanline 4s linear infinite;
+        }
+        .floating-3d {
+            animation: float 6s ease-in-out infinite;
+            transform-style: preserve-3d;
         }
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0) rotateX(0); }
+            50% { transform: translateY(-20px) rotateX(2deg); }
         }
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        /* 위험 경고 흔들림 효과 */
+        @keyframes danger-shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-3px); }
+            40% { transform: translateX(3px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
         }
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .danger-shake:hover {
+            animation: danger-shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+            border-color: #ef4444 !important;
+            box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.15) !important;
         }
-        .animate-spin-slow {
-            animation: spin-slow 12s linear infinite;
+        .blue-glow {
+            filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.2));
         }
     </style>
 <script type="importmap">
@@ -58,7 +100,7 @@
 }
 </script>
 </head>
-<body class="grid-bg">
+<body class="schematic-bg">
     <div id="root"></div>
 </body>
 </html>
