@@ -37,7 +37,7 @@ const Support: React.FC = () => {
             </h2>
             {faqs.map((f, i) => (
               <div key={i} className="p-6 glass rounded-2xl border-white/5 hover:bg-white/5 transition-colors">
-                <h4 className="font-bold mb-3 text-white">Q. {f.q}</h4>
+                <h4 className="font-bold mb-3 text-slate-900">Q. {f.q}</h4>
                 <p className="text-sm text-gray-400 leading-relaxed">A. {f.a}</p>
               </div>
             ))}
