@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ViewType } from '../App';
 import Logo from './Logo';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   currentView: ViewType;
@@ -9,6 +10,8 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navItems: { label: string; id: ViewType }[] = [
     { label: '홈', id: 'home' },
     { label: '전자서명 가이드', id: 'concept' },
@@ -21,38 +24,84 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
     { label: '고객 지원', id: 'support' },
   ];
 
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 lg:px-12 py-5 bg-white border-b border-slate-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
-      <div 
-        className="cursor-pointer flex items-center h-10 shrink-0"
-        onClick={() => setView('home')}
-      >
-        <Logo className="h-8 md:h-9 w-auto" />
-      </div>
-      
-      <div className="hidden xl:flex items-center gap-5 text-[13px] font-bold">
-        {navItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => setView(item.id)}
-            className={`${
-              currentView === item.id ? 'text-blue-600' : 'text-slate-500 hover:text-blue-600'
-            } transition-colors tracking-tighter whitespace-nowrap`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
+  const handleNavClick = (id: ViewType) => {
+    setView(id);
+    setIsMenuOpen(false);
+  };
 
-      <div className="shrink-0">
-        <button 
-          onClick={() => setView('contact')}
-          className="px-5 py-2.5 text-[13px] font-black text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95"
+  return (
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-2 bg-white border-b border-slate-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+        <div
+          className="cursor-pointer flex items-center h-auto shrink-0"
+          onClick={() => handleNavClick('home')}
         >
-          상담 신청
-        </button>
-      </div>
-    </nav>
+          <Logo className="h-[42px] md:h-[50px] w-auto" />
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center gap-5 text-[13px] font-bold">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => handleNavClick(item.id)}
+              className={`${currentView === item.id ? 'text-blue-600' : 'text-slate-500 hover:text-blue-600'
+                } transition-colors tracking-tighter whitespace-nowrap`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={() => handleNavClick('contact')}
+            className="hidden sm:block px-5 py-2.5 text-[13px] font-black text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95"
+          >
+            상담 신청
+          </button>
+
+          {/* Hamburger Button */}
+          <button
+            className="lg:hidden p-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div
+            className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          <div className="absolute right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl p-8 pt-24 animate-in slide-in-from-right duration-300">
+            <div className="flex flex-col gap-6">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`text-left text-lg font-bold tracking-tight ${currentView === item.id ? 'text-blue-600' : 'text-slate-600'
+                    }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <hr className="border-slate-100 my-2" />
+              <button
+                onClick={() => handleNavClick('contact')}
+                className="w-full py-4 text-center font-black text-white bg-blue-600 rounded-xl shadow-lg active:scale-95 transition-all"
+              >
+                상담 신청
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

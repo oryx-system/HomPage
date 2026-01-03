@@ -14,7 +14,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
   return (
     <div className="bg-white">
       <Hero setView={setView} />
-      
+
       {/* 초강력 신뢰 섹션: 엔지니어링 헤리티지 */}
       <section className="py-40 px-6 lg:px-12 bg-slate-900 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full schematic-bg opacity-10 pointer-events-none" />
@@ -29,21 +29,21 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
                 <span className="text-blue-500">엔지니어링</span>입니다.
               </h2>
               <p className="text-xl text-slate-400 font-medium leading-relaxed mb-12">
-                우리는 화면상의 버튼 하나가 실제 공장의 밸브를 열고 닫는 무게감을 압니다. 
-                20년 현장 엔지니어가 직접 설계한 Oryx DataSafe는 장비의 통신 패킷 수준에서 
+                우리는 화면상의 버튼 하나가 실제 공장의 밸브를 열고 닫는 무게감을 압니다.
+                20년 현장 엔지니어가 직접 설계한 Oryx DataSafe는 장비의 통신 패킷 수준에서
                 데이터 무결성을 검증합니다.
               </p>
               <div className="grid grid-cols-2 gap-8 mb-16">
-                 <div className="p-8 bg-white/5 rounded-[32px] border border-white/10">
-                    <p className="text-4xl font-black text-white mb-2 tracking-tighter">20Y+</p>
-                    <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Field Expertise</p>
-                 </div>
-                 <div className="p-8 bg-white/5 rounded-[32px] border border-white/10">
-                    <p className="text-4xl font-black text-white mb-2 tracking-tighter">ZERO</p>
-                    <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Packet Loss Rate</p>
-                 </div>
+                <div className="p-8 bg-white/5 rounded-[32px] border border-white/10">
+                  <p className="text-4xl font-black text-white mb-2 tracking-tighter">20Y+</p>
+                  <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Field Expertise</p>
+                </div>
+                <div className="p-8 bg-white/5 rounded-[32px] border border-white/10">
+                  <p className="text-4xl font-black text-white mb-2 tracking-tighter">ZERO</p>
+                  <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Packet Loss Rate</p>
+                </div>
               </div>
-              <button 
+              <button
                 onClick={() => setView('about')}
                 className="group flex items-center gap-4 text-white font-black text-lg hover:text-blue-400 transition-colors"
               >
@@ -51,20 +51,20 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform text-blue-500" />
               </button>
             </div>
-            
+
             <div className="relative group">
-               <div className="aspect-square bg-blue-600 rounded-[80px] rotate-3 absolute inset-0 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity" />
-               <div className="aspect-square bg-slate-800 rounded-[64px] border border-white/10 p-12 relative flex items-center justify-center overflow-hidden">
-                  <div className="scanline absolute top-0 left-0" />
-                  <Settings className="w-64 h-64 text-blue-600/20 animate-spin-slow" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
-                     <div className="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center mb-8 shadow-2xl shadow-blue-600/40">
-                        <Zap className="w-10 h-10 text-white" />
-                     </div>
-                     <p className="text-2xl font-black text-white mb-4">"현장의 언어를 아는 유일한 솔루션"</p>
-                     <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Industrial Standard Connectivity</p>
+              <div className="aspect-square bg-blue-600 rounded-[80px] rotate-3 absolute inset-0 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity" />
+              <div className="aspect-square bg-slate-800 rounded-[64px] border border-white/10 p-12 relative flex items-center justify-center overflow-hidden">
+                <div className="scanline absolute top-0 left-0" />
+                <Settings className="w-64 h-64 text-blue-600/20 animate-spin-slow" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
+                  <div className="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center mb-8 shadow-2xl shadow-blue-600/40">
+                    <Zap className="w-10 h-10 text-white" />
                   </div>
-               </div>
+                  <p className="text-2xl font-black text-white mb-4">"현장 엔지니어링 기반의 신뢰할 수 있는 솔루션"</p>
+                  <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Industrial Standard Connectivity</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -73,36 +73,36 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
       {/* 압도적인 신뢰 지표 섹션 */}
       <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-           <div className="flex flex-col md:flex-row gap-12 justify-between items-center py-20 border-y border-slate-100">
-              <div className="text-center md:text-left">
-                 <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">100%</p>
-                 <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">CFR Part 11 Compliant</p>
-              </div>
-              <div className="w-px h-12 bg-slate-200 hidden md:block" />
-              <div className="text-center md:text-left">
-                 <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">ZERO</p>
-                 <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Data Manipulation</p>
-              </div>
-              <div className="w-px h-12 bg-slate-200 hidden md:block" />
-              <div className="text-center md:text-left">
-                 <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">99.9%</p>
-                 <p className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em]">Uptime Reliability</p>
-              </div>
-           </div>
+          <div className="flex flex-col md:flex-row gap-12 justify-between items-center py-20 border-y border-slate-100">
+            <div className="text-center md:text-left">
+              <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">100%</p>
+              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">CFR Part 11 Compliant</p>
+            </div>
+            <div className="w-px h-12 bg-slate-200 hidden md:block" />
+            <div className="text-center md:text-left">
+              <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">ZERO</p>
+              <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Data Manipulation</p>
+            </div>
+            <div className="w-px h-12 bg-slate-200 hidden md:block" />
+            <div className="text-center md:text-left">
+              <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">99.9%</p>
+              <p className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em]">Uptime Reliability</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <ComplianceGrid />
-      
+
       <section className="py-40 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-32">
-             <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
-                System Modules
-             </div>
-             <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
-               규제를 넘어 <br /> <span className="text-blue-600">성능을 정의합니다.</span>
-             </h2>
+            <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
+              System Modules
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
+              규제를 넘어 <br /> <span className="text-blue-600">성능을 정의합니다.</span>
+            </h2>
           </div>
           <Features />
         </div>
@@ -110,32 +110,32 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
 
       {/* 최종 컨버전 섹션 - 블러 및 쉐도우 최적화 */}
       <section className="py-40 px-6 lg:px-12 bg-white relative z-10">
-         <div className="max-w-7xl mx-auto bg-blue-600 rounded-[64px] p-20 lg:p-32 text-center relative overflow-hidden group shadow-xl">
-           <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 -skew-x-12 translate-x-1/2" />
-           <div className="relative z-10">
-              <h2 className="text-5xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85]">
-                TRUST IS <br /> THE NEW GOLD.
-              </h2>
-              <p className="text-white/80 text-xl md:text-2xl font-medium mb-16 max-w-2xl mx-auto leading-tight">
-                당신의 소중한 데이터를 규제 위반의 위험에서 구하세요. <br />
-                지금 바로 전문가와 상의하십시오.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                 <button 
-                  onClick={() => setView('contact')}
-                  className="px-12 py-6 bg-white text-blue-600 font-black rounded-2xl hover:bg-slate-50 transition-all text-xl shadow-lg"
-                 >
-                   시스템 진단 신청하기
-                 </button>
-                 <button 
-                  onClick={() => setView('necessity')}
-                  className="px-12 py-6 bg-blue-700 text-white font-black rounded-2xl hover:bg-blue-800 transition-all text-xl"
-                 >
-                   위험 관리 리포트 받기
-                 </button>
-              </div>
-           </div>
-         </div>
+        <div className="max-w-7xl mx-auto bg-blue-600 rounded-[64px] p-20 lg:p-32 text-center relative overflow-hidden group shadow-xl">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 -skew-x-12 translate-x-1/2" />
+          <div className="relative z-10">
+            <h2 className="text-5xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85]">
+              TRUST IS <br /> THE NEW GOLD.
+            </h2>
+            <p className="text-white/80 text-xl md:text-2xl font-medium mb-16 max-w-2xl mx-auto leading-tight">
+              당신의 소중한 데이터를 규제 위반의 위험에서 구하세요. <br />
+              지금 바로 전문가와 상의하십시오.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <button
+                onClick={() => setView('contact')}
+                className="px-12 py-6 bg-white text-blue-600 font-black rounded-2xl hover:bg-slate-50 transition-all text-xl shadow-lg"
+              >
+                시스템 진단 신청하기
+              </button>
+              <button
+                onClick={() => setView('necessity')}
+                className="px-12 py-6 bg-blue-700 text-white font-black rounded-2xl hover:bg-blue-800 transition-all text-xl"
+              >
+                위험 관리 리포트 받기
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );

@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Check, Info, Server, CreditCard, PlusCircle } from 'lucide-react';
 
 const Pricing: React.FC = () => {
   return (
-    <div className="pt-48 pb-24 px-6 bg-white">
+    <div className="pt-24 pb-32 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-24">
           <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-6">
@@ -13,7 +12,7 @@ const Pricing: React.FC = () => {
           <h1 className="text-5xl font-bold mb-8 text-slate-900">투명하고 합리적인 비용</h1>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
             귀사의 운영 규모와 생산 라인의 복잡도에 최적화된 유연한 플랜을 선택하십시오. <br />
-            모든 비용은 시스템의 완벽한 밸리데이션과 안정성을 보장합니다.
+            모든 비용은 시스템의 안정적인 밸리데이션과 무결성을 지원합니다.
           </p>
         </header>
 
@@ -101,34 +100,34 @@ const Pricing: React.FC = () => {
 
         {/* 확장 옵션 */}
         <div className="bg-slate-50 rounded-[40px] p-12 border border-slate-100 flex flex-col md:flex-row gap-16 items-center">
-            <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-black uppercase tracking-widest rounded-full mb-8">
-                <PlusCircle className="w-4 h-4" /> Expansion Option
+          <div className="flex-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-black uppercase tracking-widest rounded-full mb-8">
+              <PlusCircle className="w-4 h-4" /> Expansion Option
+            </div>
+            <h2 className="text-3xl font-bold mb-6 text-slate-900">생산 라인 확장에 따른 <br /> 유연한 가격 설계</h2>
+            <p className="text-slate-500 leading-relaxed mb-10 text-lg">
+              기본 연동 장비 외에 추가 연동이 필요한 경우, 합리적인 비용으로 시스템 규모를 확장할 수 있습니다.
+              모든 프로토콜을 지원하므로 추가 공사 없이 소프트웨어 설정만으로 확장이 가능합니다.
+            </p>
+            <div className="grid grid-cols-2 gap-8">
+              <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-2">장비 1대 추가 시</p>
+                <p className="text-2xl font-black text-slate-900">300만원 <span className="text-xs text-slate-400 font-bold uppercase">Setup</span></p>
               </div>
-              <h2 className="text-3xl font-bold mb-6 text-slate-900">생산 라인 확장에 따른 <br /> 유연한 가격 설계</h2>
-              <p className="text-slate-500 leading-relaxed mb-10 text-lg">
-                기본 연동 장비 외에 추가 연동이 필요한 경우, 합리적인 비용으로 시스템 규모를 확장할 수 있습니다. 
-                모든 프로토콜을 지원하므로 추가 공사 없이 소프트웨어 설정만으로 확장이 가능합니다.
-              </p>
-              <div className="grid grid-cols-2 gap-8">
-                <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                   <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-2">장비 1대 추가 시</p>
-                   <p className="text-2xl font-black text-slate-900">300만원 <span className="text-xs text-slate-400 font-bold uppercase">Setup</span></p>
-                </div>
-                <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                   <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-2">구독료 인상분</p>
-                   <p className="text-2xl font-black text-blue-600">10만원 <span className="text-xs text-slate-400 font-bold uppercase">/ Mo</span></p>
-                </div>
+              <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-2">구독료 인상분</p>
+                <p className="text-2xl font-black text-blue-600">10만원 <span className="text-xs text-slate-400 font-bold uppercase">/ Mo</span></p>
               </div>
             </div>
-            <div className="w-full md:w-[450px] aspect-video bg-white rounded-[32px] border border-slate-100 shadow-inner flex items-center justify-center p-12">
-               <div className="text-center">
-                  <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <Info className="w-8 h-8 text-blue-400" />
-                  </div>
-                  <p className="text-slate-500 font-medium">10개 이상의 대규모 연동 시 <br /> 대량 연동 특별 할인이 제공됩니다.</p>
-               </div>
+          </div>
+          <div className="w-full md:w-[450px] aspect-video bg-white rounded-[32px] border border-slate-100 shadow-inner flex items-center justify-center p-12">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Info className="w-8 h-8 text-blue-400" />
+              </div>
+              <p className="text-slate-500 font-medium">10개 이상의 대규모 연동 시 <br /> 대량 연동 특별 할인이 제공됩니다.</p>
             </div>
+          </div>
         </div>
       </div>
     </div>

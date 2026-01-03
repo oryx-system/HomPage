@@ -23,11 +23,13 @@ const Logo: React.FC<LogoProps> = ({ className = "" }) => {
   }
 
   return (
-    <img 
-      src="logo.png" 
-      alt="Oryx DataSafe Logo" 
+    <img
+      src="logo.png"
+      alt="Oryx DataSafe Logo"
       className={`${className} object-contain`}
-      style={{ display: 'block' }}
+      style={{
+        display: 'block'
+      }}
       onError={() => setIsError(true)}
     />
   );
