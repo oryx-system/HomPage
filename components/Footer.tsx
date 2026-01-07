@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ setView }) => {
     <footer className="py-24 border-t border-slate-100 bg-white/60 backdrop-blur-2xl px-6 relative z-10">
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
         <div className="col-span-2">
-          <div 
+          <div
             className="mb-8 cursor-pointer group inline-block"
             onClick={() => setView('home')}
           >
@@ -55,13 +55,13 @@ const Footer: React.FC<FooterProps> = ({ setView }) => {
           </ul>
         </div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-400 font-bold gap-6">
         <p>© 2024 Oryx DataSafe Co. All rights reserved. <span className="text-slate-400/60 ml-4 font-normal">21 CFR Part 11 & EU Annex 11 Compliant Platform.</span></p>
         <div className="flex gap-8 uppercase tracking-widest">
-          <span className="hover:text-slate-600 cursor-pointer transition-colors">Sitemap</span>
-          <span className="hover:text-slate-600 cursor-pointer transition-colors">Privacy Policy</span>
-          <span className="hover:text-slate-600 cursor-pointer transition-colors">Security Terms</span>
+          <span onClick={() => alert('사이트맵은 준비 중입니다.')} className="hover:text-slate-600 cursor-pointer transition-colors">Sitemap</span>
+          <span onClick={() => alert('개인정보 처리방침은 준비 중입니다.')} className="hover:text-slate-600 cursor-pointer transition-colors">Privacy Policy</span>
+          <span onClick={() => setView('security')} className="hover:text-slate-600 cursor-pointer transition-colors">Security Terms</span>
         </div>
       </div>
     </footer>
