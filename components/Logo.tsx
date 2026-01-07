@@ -24,7 +24,7 @@ const Logo: React.FC<LogoProps> = ({ className = "" }) => {
 
   return (
     <img
-      src="logo.png"
+      src="/logo.png"
       alt="Oryx DataSafe Logo"
       className={`${className} object-contain`}
       style={{
