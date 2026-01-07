@@ -55,7 +55,7 @@ const Support: React.FC = () => {
                 </div>
                 <div>
                   <p className="font-bold">이메일 문의</p>
-                  <p className="text-sm text-gray-500">support@oryxdatasafe.com</p>
+                  <p className="text-sm text-gray-500">oryx@oryxdatasafe.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-6 p-6 glass rounded-2xl border-white/5 group hover:border-emerald-500/30 cursor-pointer">
@@ -73,7 +73,7 @@ const Support: React.FC = () => {
                 </div>
                 <div>
                   <p className="font-bold">글로벌 핫라인</p>
-                  <p className="text-sm text-gray-500">+82 (0)2-1234-5678</p>
+                  <p className="text-sm text-gray-500">+82 (0)10-6545-0415</p>
                 </div>
               </div>
             </div>
