@@ -108,6 +108,156 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
         </div>
       </section>
 
+      {/* 독보적 기술 섹션 - PLC 직접 연동 강조 */}
+      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-block px-4 py-2 bg-purple-50 text-purple-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
+              Unique Advantage
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
+              경쟁사와의 <br /> <span className="text-purple-600">결정적 차이</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+              20년 PLC 현장 경험이 만든 국내 유일 장비 직접 연동 솔루션
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: <Settings className="w-12 h-12" />,
+                title: 'PLC 직접 연동',
+                description: '경쟁사는 수기 입력에 의존하지만, Oryx는 Siemens, Allen-Bradley, Mitsubishi 등 모든 PLC에서 직접 데이터를 수집합니다.',
+                color: 'from-blue-500 to-cyan-500',
+                stat: 'Sub-10ms 실시간 수집'
+              },
+              {
+                icon: <ShieldCheck className="w-12 h-12" />,
+                title: '원본 데이터 보호',
+                description: '경쟁사는 DB 저장 후 암호화하지만, Oryx는 수집 즉시 AES-256 암호화로 데이터 조작을 원천 차단합니다.',
+                color: 'from-purple-500 to-pink-500',
+                stat: 'ZERO 데이터 조작'
+              },
+              {
+                icon: <Zap className="w-12 h-12" />,
+                title: '빠른 구축',
+                description: '경쟁사는 6-12개월이 걸리지만, Oryx는 2-3개월에 구축 완료. 밸리데이션 패키지 포함으로 즉시 대응 가능합니다.',
+                color: 'from-green-500 to-emerald-500',
+                stat: '70% 기간 단축'
+              }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="group p-10 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-slate-100 hover:border-purple-200"
+              >
+                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform`}>
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mb-4">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed mb-6">{item.description}</p>
+                <div className="text-sm font-black text-purple-600 uppercase tracking-wide">
+                  {item.stat}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <button
+              onClick={() => setView('equipment')}
+              className="group p-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl text-white hover:shadow-2xl transition-all"
+            >
+              <Settings className="w-12 h-12 mb-6 group-hover:rotate-90 transition-transform duration-500" />
+              <h3 className="text-3xl font-black mb-4">장비 연동 기술</h3>
+              <p className="text-blue-100 mb-6">모든 PLC 제조사 100% 호환. 실시간 데이터 수집 및 암호화.</p>
+              <div className="flex items-center gap-2 text-lg font-bold">
+                자세히 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </div>
+            </button>
+
+            <button
+              onClick={() => setView('comparison')}
+              className="group p-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl text-white hover:shadow-2xl transition-all"
+            >
+              <BarChart className="w-12 h-12 mb-6 group-hover:scale-110 transition-transform" />
+              <h3 className="text-3xl font-black mb-4">경쟁사 비교</h3>
+              <p className="text-purple-100 mb-6">왜 Oryx인가? 압도적 기술 우위를 직접 확인하세요.</p>
+              <div className="flex items-center gap-2 text-lg font-bold">
+                비교 분석 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 팟캐스트 Featured 섹션 */}
+      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-block px-4 py-2 bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
+              Knowledge Hub
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
+              21 CFR Part 11 <br /> <span className="text-indigo-600">현장 에피소드</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+              20년 현장 경험의 노하우를 팟캐스트로 공유합니다
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                episode: '01',
+                title: 'FDA 감사관이 묻는 5가지 핵심 질문',
+                duration: '42:15',
+                category: 'FDA 감사'
+              },
+              {
+                episode: '05',
+                title: 'ALCOA+ 완벽 이해하기',
+                duration: '38:42',
+                category: '데이터 무결성'
+              },
+              {
+                episode: '12',
+                title: 'PLC 데이터 수집의 모든 것',
+                duration: '45:30',
+                category: '시스템 관리'
+              }
+            ].map((item) => (
+              <div
+                key={item.episode}
+                className="group p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-100 cursor-pointer"
+                onClick={() => setView('podcast')}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm font-black text-indigo-600">EP {item.episode}</span>
+                  <span className="text-sm text-slate-500">{item.duration}</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                  {item.title}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">{item.category}</span>
+                  <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={() => setView('podcast')}
+              className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all shadow-lg"
+            >
+              전체 에피소드 보기 →
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* 최종 컨버전 섹션 - 블러 및 쉐도우 최적화 */}
       <section className="py-40 px-6 lg:px-12 bg-white relative z-10">
         <div className="max-w-7xl mx-auto bg-blue-600 rounded-[64px] p-20 lg:p-32 text-center relative overflow-hidden group shadow-xl">

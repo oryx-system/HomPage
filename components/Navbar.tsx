@@ -17,9 +17,16 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
     { label: '전자서명 가이드', id: 'concept' },
     { label: '도입 필요성', id: 'necessity' },
     { label: '솔루션', id: 'solutions' },
+    { label: '장비 연동', id: 'equipment' },
+    { label: '경쟁사 비교', id: 'comparison' },
+    { label: '성공 사례', id: 'cases' },
+    { label: '실시간 데모', id: 'demo' },
     { label: '밸리데이션', id: 'validation' },
     { label: '보안 기술', id: 'security' },
     { label: '가격 정책', id: 'pricing' },
+    { label: '팟캐스트', id: 'podcast' },
+    { label: '블로그', id: 'blog' },
+    { label: '자료실', id: 'resources' },
     { label: '기업 개요', id: 'about' },
     { label: '고객 지원', id: 'support' },
   ];
@@ -54,6 +61,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={() => handleNavClick('portal')}
+            className="hidden sm:block px-5 py-2.5 text-[13px] font-black text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all active:scale-95"
+          >
+            고객 포털
+          </button>
           <button
             onClick={() => handleNavClick('contact')}
             className="hidden sm:block px-5 py-2.5 text-[13px] font-black text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95"

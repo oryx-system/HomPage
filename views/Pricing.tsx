@@ -1,5 +1,7 @@
 import React from 'react';
 import { Check, Info, Server, CreditCard, PlusCircle } from 'lucide-react';
+import ROICalculator from '../components/ROICalculator';
+import AnimatedSection from '../components/AnimatedSection';
 
 const Pricing: React.FC = () => {
   return (
@@ -129,6 +131,11 @@ const Pricing: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* ROI Calculator Section */}
+        <AnimatedSection delay={0.3} className="mb-24">
+          <ROICalculator />
+        </AnimatedSection>
       </div>
     </div>
   );
