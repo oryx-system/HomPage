@@ -56,7 +56,16 @@ const Footer: React.FC<FooterProps> = ({ setView }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-400 font-bold gap-6">
+      {/* 사업자 정보 */}
+      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-100">
+        <div className="text-[11px] text-slate-400 font-medium leading-relaxed space-y-1">
+          <p><span className="font-bold text-slate-500">오릭스 데이터세이프</span> | 대표: 홍길동 | 사업자등록번호: 123-45-67890</p>
+          <p>주소: 서울특별시 강남구 테헤란로 123, 오릭스타워 15층 | 대표전화: 02-1234-5678 | 이메일: contact@oryxdatasafe.com</p>
+          <p>통신판매업신고: 제2024-서울강남-12345호 | 개인정보보호책임자: 김보안</p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-400 font-bold gap-6">
         <p>© 2024 Oryx DataSafe Co. All rights reserved. <span className="text-slate-400/60 ml-4 font-normal">21 CFR Part 11 & EU Annex 11 Compliant Platform.</span></p>
         <div className="flex gap-8 uppercase tracking-widest">
           <span onClick={() => alert('사이트맵은 준비 중입니다.')} className="hover:text-slate-600 cursor-pointer transition-colors">Sitemap</span>
