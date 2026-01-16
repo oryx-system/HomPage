@@ -32,7 +32,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
       items: [
         { label: '전자서명 가이드', id: 'concept' as ViewType },
         { label: '도입 필요성', id: 'necessity' as ViewType },
-        { label: '솔루션', id: 'solutions' as ViewType },
       ]
     },
     technology: {
@@ -71,7 +70,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
         { label: '홈', id: 'home' as ViewType },
         { label: '전자서명 가이드', id: 'concept' as ViewType },
         { label: '도입 필요성', id: 'necessity' as ViewType },
-        { label: '솔루션', id: 'solutions' as ViewType },
       ]
     },
     {

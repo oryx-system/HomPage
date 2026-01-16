@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ setView }) => {
           <h4 className="font-black mb-6 text-slate-900 text-xs uppercase tracking-[0.2em]">제품 서비스</h4>
           <ul className="space-y-4 text-slate-500 text-sm font-semibold">
             <li onClick={() => setView('necessity')} className="hover:text-blue-600 cursor-pointer transition-colors text-blue-600 underline underline-offset-4 decoration-2">도입 필요성</li>
-            <li onClick={() => setView('solutions')} className="hover:text-blue-600 cursor-pointer transition-colors">산업별 솔루션</li>
+            <li onClick={() => setView('equipment')} className="hover:text-blue-600 cursor-pointer transition-colors">장비 연동 기술</li>
             <li onClick={() => setView('pricing')} className="hover:text-blue-600 cursor-pointer transition-colors">가격 정책</li>
             <li onClick={() => setView('validation')} className="hover:text-blue-600 cursor-pointer transition-colors">밸리데이션 패키지</li>
           </ul>
