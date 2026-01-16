@@ -129,7 +129,7 @@ const Demo: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={startDemo}
                   disabled={isPlaying}
-                  className="px-8 py-4 bg-blue-600 text-white font-black rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3"
+                  className="px-8 py-4 bg-blue-600 text-white font-black rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3 whitespace-nowrap"
                 >
                   {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   {isPlaying ? '진행 중...' : '데모 시작'}
@@ -138,7 +138,7 @@ const Demo: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={resetDemo}
-                  className="px-8 py-4 bg-slate-200 text-slate-900 font-black rounded-xl hover:bg-slate-300 transition-colors flex items-center gap-3"
+                  className="px-8 py-4 bg-slate-200 text-slate-900 font-black rounded-xl hover:bg-slate-300 transition-colors flex items-center gap-3 whitespace-nowrap"
                 >
                   <RefreshCw className="w-5 h-5" />
                   초기화

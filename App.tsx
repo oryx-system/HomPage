@@ -59,8 +59,8 @@ const App: React.FC = () => {
       case 'blog': return <Blog />;
       case 'resources': return <Resources />;
       case 'podcast': return <Podcast />;
-      case 'comparison': return <Comparison />;
-      case 'equipment': return <EquipmentIntegration />;
+      case 'comparison': return <Comparison setView={setCurrentView} />;
+      case 'equipment': return <EquipmentIntegration setView={setCurrentView} />;
       case 'cases': return <CaseStudies />;
       default: return <Home setView={setCurrentView} />;
     }
