@@ -195,13 +195,13 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={() => setView('contact')}
-                className="px-12 py-6 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30 text-lg"
+                className="px-8 sm:px-12 py-5 sm:py-6 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30 text-base sm:text-lg whitespace-nowrap"
               >
-                무료 상담 및 데모 신청
+                무료 상담·데모 신청
               </button>
               <button
                 onClick={() => setView('pricing')}
-                className="px-12 py-6 bg-white/5 text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all text-lg"
+                className="px-8 sm:px-12 py-5 sm:py-6 bg-white/5 text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all text-base sm:text-lg whitespace-nowrap"
               >
                 도입 비용 확인하기
               </button>

@@ -388,14 +388,14 @@ const CaseStudies: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-6 bg-white text-green-600 font-black rounded-2xl hover:bg-slate-50 transition-colors text-xl"
+                className="px-8 sm:px-12 py-5 sm:py-6 bg-white text-green-600 font-black rounded-2xl hover:bg-slate-50 transition-colors text-base sm:text-xl whitespace-nowrap"
               >
                 무료 현장 진단 신청
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-6 bg-green-800 text-white font-black rounded-2xl hover:bg-green-900 transition-colors text-xl"
+                className="px-8 sm:px-12 py-5 sm:py-6 bg-green-800 text-white font-black rounded-2xl hover:bg-green-900 transition-colors text-base sm:text-xl whitespace-nowrap"
               >
                 상세 사례집 다운로드
               </motion.button>

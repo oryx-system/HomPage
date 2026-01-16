@@ -361,17 +361,17 @@ const Podcast: React.FC = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-red-600 text-white font-black rounded-2xl hover:bg-red-700 transition-colors flex items-center justify-center gap-3"
+                className="px-8 sm:px-10 py-4 sm:py-5 bg-red-600 text-white font-black rounded-2xl hover:bg-red-700 transition-colors flex items-center justify-center gap-3 text-sm sm:text-base whitespace-nowrap"
               >
-                <Youtube className="w-6 h-6" />
+                <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />
                 YouTube 구독
               </motion.a>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-white text-slate-900 font-black rounded-2xl hover:bg-slate-100 transition-colors flex items-center justify-center gap-3"
+                className="px-8 sm:px-10 py-4 sm:py-5 bg-white text-slate-900 font-black rounded-2xl hover:bg-slate-100 transition-colors flex items-center justify-center gap-3 text-sm sm:text-base whitespace-nowrap"
               >
-                <Rss className="w-6 h-6" />
+                <Rss className="w-5 h-5 sm:w-6 sm:h-6" />
                 RSS 피드
               </motion.button>
             </div>

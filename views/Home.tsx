@@ -169,8 +169,8 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
               className="group p-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl text-white hover:shadow-2xl transition-all"
             >
               <Settings className="w-12 h-12 mb-6 group-hover:rotate-90 transition-transform duration-500" />
-              <h3 className="text-3xl font-black mb-4">장비 연동 기술</h3>
-              <p className="text-blue-100 mb-6">모든 PLC 제조사 100% 호환. 실시간 데이터 수집 및 암호화.</p>
+              <h3 className="text-2xl sm:text-3xl font-black mb-4">장비 연동 기술</h3>
+              <p className="text-sm sm:text-base text-blue-100 mb-6">모든 PLC 제조사 100% 호환. 실시간 데이터 수집 및 암호화.</p>
               <div className="flex items-center gap-2 text-lg font-bold">
                 자세히 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -181,8 +181,8 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
               className="group p-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl text-white hover:shadow-2xl transition-all"
             >
               <BarChart className="w-12 h-12 mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-3xl font-black mb-4">경쟁사 비교</h3>
-              <p className="text-purple-100 mb-6">왜 Oryx인가? 압도적 기술 우위를 직접 확인하세요.</p>
+              <h3 className="text-2xl sm:text-3xl font-black mb-4">경쟁사 비교</h3>
+              <p className="text-sm sm:text-base text-purple-100 mb-6">왜 Oryx인가? 압도적 기술 우위를 직접 확인하세요.</p>
               <div className="flex items-center gap-2 text-lg font-bold">
                 비교 분석 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -250,7 +250,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
           <div className="text-center">
             <button
               onClick={() => setView('podcast')}
-              className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all shadow-lg"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all shadow-lg text-sm sm:text-base whitespace-nowrap"
             >
               전체 에피소드 보기 →
             </button>
@@ -273,15 +273,15 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={() => setView('contact')}
-                className="px-12 py-6 bg-white text-blue-600 font-black rounded-2xl hover:bg-slate-50 transition-all text-xl shadow-lg"
+                className="px-8 sm:px-12 py-5 sm:py-6 bg-white text-blue-600 font-black rounded-2xl hover:bg-slate-50 transition-all text-base sm:text-xl shadow-lg whitespace-nowrap"
               >
                 시스템 진단 신청하기
               </button>
               <button
                 onClick={() => setView('necessity')}
-                className="px-12 py-6 bg-blue-700 text-white font-black rounded-2xl hover:bg-blue-800 transition-all text-xl"
+                className="px-8 sm:px-12 py-5 sm:py-6 bg-blue-700 text-white font-black rounded-2xl hover:bg-blue-800 transition-all text-base sm:text-xl whitespace-nowrap"
               >
-                위험 관리 리포트 받기
+                위험관리 리포트 받기
               </button>
             </div>
           </div>

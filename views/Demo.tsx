@@ -272,7 +272,7 @@ const Demo: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-6 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-colors text-xl"
+              className="px-8 sm:px-12 py-5 sm:py-6 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-colors text-base sm:text-xl whitespace-nowrap"
             >
               전문가 상담 신청하기
             </motion.button>

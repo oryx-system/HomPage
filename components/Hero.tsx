@@ -65,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                      whileHover={{ scale: 1.05, y: -2 }}
                      whileTap={{ scale: 0.95 }}
                      onClick={() => setView('contact')}
-                     className="w-full sm:w-auto px-8 md:px-12 py-4 md:py-6 bg-blue-600 text-white font-black rounded-xl md:rounded-2xl hover:bg-blue-700 transition-all shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 group"
+                     className="w-full sm:w-auto px-6 sm:px-8 md:px-12 py-4 md:py-6 bg-blue-600 text-white font-black rounded-xl md:rounded-2xl hover:bg-blue-700 transition-all shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 group whitespace-nowrap"
                   >
                      전문가 상담 예약
                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform" />
@@ -74,7 +74,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                      whileHover={{ scale: 1.05, y: -2 }}
                      whileTap={{ scale: 0.95 }}
                      onClick={() => setView('concept')}
-                     className="w-full sm:w-auto px-8 md:px-12 py-4 md:py-6 bg-white text-slate-900 font-black rounded-xl md:rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all text-base md:text-lg"
+                     className="w-full sm:w-auto px-6 sm:px-8 md:px-12 py-4 md:py-6 bg-white text-slate-900 font-black rounded-xl md:rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all text-sm sm:text-base md:text-lg whitespace-nowrap"
                   >
                      기술 명세서 보기
                   </motion.button>
