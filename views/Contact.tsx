@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-20">
           {/* Left Content */}
           <div className="flex flex-col justify-center">
-            <h1 className="text-5xl lg:text-6xl font-black mb-8 text-slate-900 tracking-tighter leading-[1.1]">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">
               디지털 규제 준수의 <br /> 여정을 함께 시작하세요.
             </h1>
-            <p className="text-slate-400 text-lg mb-12 leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium mb-12">
               무료 데모 세션을 통해 귀사의 프로세스에 Oryx DataSafe가 어떻게 적용될 수 있는지 직접 확인해 보세요.
             </p>
             

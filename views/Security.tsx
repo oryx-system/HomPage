@@ -16,8 +16,8 @@ const Security: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-bold text-blue-400 mb-6 uppercase tracking-widest">
             Enterprise Grade Security
           </div>
-          <h1 className="text-5xl font-bold mb-8">타협 없는 보안 아키텍처</h1>
-          <p className="text-slate-500 text-lg font-medium leading-relaxed">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">타협 없는 보안 아키텍처</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium">
             가장 엄격한 데이터 보안 표준을 충족하도록 설계된 Oryx DataSafe는 여러분의 지식재산권과 품질 데이터를 24/7 전문적으로 보호합니다.
           </p>
         </motion.header>

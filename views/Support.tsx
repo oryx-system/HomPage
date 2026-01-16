@@ -35,8 +35,8 @@ const Support: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
             Customer Support
           </div>
-          <h1 className="text-5xl font-bold mb-6">고객 지원 센터</h1>
-          <p className="text-gray-400 text-lg">궁금한 점이 있으신가요? 규제 준수 전문가가 상시 대기 중입니다.</p>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">고객 지원 센터</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium">궁금한 점이 있으신가요? 규제 준수 전문가가 상시 대기 중입니다.</p>
         </motion.header>
 
         <motion.div

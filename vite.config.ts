@@ -9,6 +9,10 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        allowedHosts: [
+          '3001-i44mqm5rw7ucj4w8fdtt1-5c13a017.sandbox.novita.ai',
+          '.sandbox.novita.ai'
+        ],
       },
       plugins: [
         react(),

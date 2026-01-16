@@ -16,7 +16,7 @@ const About: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
             Our Heritage & Expertise
           </div>
-          <h1 className="text-5xl md:text-6xl font-black mb-8 text-slate-900 tracking-tight leading-none">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">
             현장의 언어를 아는 <br /> <span className="text-blue-600">규제 준수 솔루션.</span>
           </h1>
         </motion.header>

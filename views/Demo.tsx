@@ -100,7 +100,7 @@ const Demo: React.FC = () => {
           <div className="inline-block px-4 py-2 bg-blue-600/10 border border-blue-600/20 text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
             Interactive Demo
           </div>
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
             실시간 <br />
             <span className="text-blue-600">시스템 체험</span>
           </h1>

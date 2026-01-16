@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-4xl md:text-5xl lg:text-huge mb-8 md:mb-12 text-slate-900 leading-tight md:leading-none px-4"
+                  className="text-5xl sm:text-6xl md:text-7xl lg:text-huge mb-8 md:mb-12 text-slate-900 font-black leading-tight md:leading-none px-4"
                >
                   ENGINEERED <br />
                   <span className="text-blue-600">FOR INTEGRITY.</span>
@@ -46,11 +46,11 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="mb-12 md:mb-16 px-4"
                >
-                  <p className="text-base md:text-xl lg:text-2xl text-slate-500 max-w-3xl leading-relaxed md:leading-tight font-medium tracking-tight mb-3 md:mb-4">
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-500 max-w-3xl leading-relaxed md:leading-tight font-medium tracking-tight mb-3 md:mb-4">
                      우리는 단순한 전자서명이 아닌,<br className="md:hidden" /> 제약 공정 데이터의 <br className="hidden md:inline" />
                      <span className="text-slate-900 font-bold">'첫 번째 마일'</span>을 보호하는 엔지니어링 표준입니다.
                   </p>
-                  <p className="text-xs md:text-sm lg:text-base text-blue-600/60 font-bold uppercase tracking-wider md:tracking-widest">
+                  <p className="text-sm md:text-base lg:text-lg text-blue-600/60 font-bold uppercase tracking-wider md:tracking-widest">
                      — 데이터가 생성되는 그 첫 순간부터 무결성 확보
                   </p>
                </motion.div>
@@ -88,27 +88,27 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                transition={{ duration: 1, delay: 0.8 }}
                className="relative mt-20 perspective-view"
             >
-               <div className="max-w-5xl mx-auto glass-card rounded-[48px] p-2 shadow-2xl">
-                  <div className="bg-slate-900 rounded-[46px] p-12 overflow-hidden relative">
+               <div className="max-w-5xl mx-auto glass-card rounded-[32px] md:rounded-[48px] p-1.5 md:p-2 shadow-2xl">
+                  <div className="bg-slate-900 rounded-[30px] md:rounded-[46px] p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden relative">
                      <div className="scanline absolute top-0 left-0" />
 
-                     <div className="grid md:grid-cols-3 gap-12 relative z-10">
+                     <div className="grid md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 relative z-10">
                         <motion.div
                            initial={{ opacity: 0, x: -30 }}
                            animate={{ opacity: 1, x: 0 }}
                            transition={{ duration: 0.8, delay: 1.2 }}
-                           className="space-y-8"
+                           className="space-y-6 sm:space-y-8"
                         >
-                           <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white">
-                                 <Cpu className="w-5 h-5" />
+                           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-blue-600 flex items-center justify-center text-white">
+                                 <Cpu className="w-4 h-4 sm:w-5 sm:h-5" />
                               </div>
                               <div>
-                                 <p className="text-[10px] text-blue-400 font-black tracking-widest uppercase">OT Integration</p>
-                                 <p className="text-white font-bold">PLC Live Stream</p>
+                                 <p className="text-[10px] sm:text-xs text-blue-400 font-black tracking-widest uppercase">OT Integration</p>
+                                 <p className="text-sm sm:text-base md:text-lg text-white font-bold">PLC Live Stream</p>
                               </div>
                            </div>
-                           <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                           <div className="p-4 sm:p-5 md:p-6 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10">
                               <div className="flex justify-between items-end mb-4">
                                  <motion.div
                                     animate={{ height: ['2rem', '2.5rem', '2rem'] }}
@@ -136,7 +136,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                                     className="w-1 bg-blue-500 rounded-full"
                                  />
                               </div>
-                              <p className="text-[10px] text-slate-500 font-mono">ENCRYPTING_PACKET_0x4F2...</p>
+                              <p className="text-[9px] sm:text-[10px] text-slate-500 font-mono">ENCRYPTING_PACKET_0x4F2...</p>
                            </div>
                         </motion.div>
 
@@ -144,7 +144,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                            initial={{ opacity: 0, scale: 0.8 }}
                            animate={{ opacity: 1, scale: 1 }}
                            transition={{ duration: 0.8, delay: 1.4 }}
-                           className="flex flex-col items-center justify-center border-x border-white/10 px-8"
+                           className="flex flex-col items-center justify-center border-x border-white/10 px-4 sm:px-6 md:px-8"
                         >
                            <motion.div
                               animate={{ 
@@ -155,22 +155,22 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                                 rotate: { duration: 30, repeat: Infinity, ease: 'linear' },
                                 y: { duration: 4, repeat: Infinity, ease: 'easeInOut' }
                               }}
-                              className="w-24 h-24 rounded-full border-4 border-blue-600 flex items-center justify-center mb-6 blue-glow"
+                              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-blue-600 flex items-center justify-center mb-4 sm:mb-6 blue-glow"
                            >
-                              <ShieldCheck className="w-12 h-12 text-blue-500" />
+                              <ShieldCheck className="w-10 h-10 sm:w-12 sm:h-12 text-blue-500" />
                            </motion.div>
-                           <p className="text-white font-black text-xl mb-2">ALCOA+ Verified</p>
-                           <p className="text-blue-400 text-[10px] font-black tracking-widest uppercase">Signature Locked</p>
+                           <p className="text-white font-black text-lg sm:text-xl md:text-2xl mb-2">ALCOA+ Verified</p>
+                           <p className="text-blue-400 text-[10px] sm:text-xs font-black tracking-widest uppercase">Signature Locked</p>
                         </motion.div>
 
                         <motion.div
                            initial={{ opacity: 0, x: 30 }}
                            animate={{ opacity: 1, x: 0 }}
                            transition={{ duration: 0.8, delay: 1.6 }}
-                           className="space-y-6"
+                           className="space-y-4 sm:space-y-6"
                         >
-                           <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                              <p className="text-[10px] text-slate-500 font-black mb-4 tracking-widest uppercase">Blockchain Audit Log</p>
+                           <div className="p-4 sm:p-5 md:p-6 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10">
+                              <p className="text-[10px] sm:text-xs text-slate-500 font-black mb-4 tracking-widest uppercase">Blockchain Audit Log</p>
                               <div className="space-y-2">
                                  <motion.div
                                     initial={{ width: 0 }}
@@ -198,15 +198,15 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                                  </motion.div>
                               </div>
                            </div>
-                           <div className="flex gap-4">
-                              <div className="flex-1 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
-                                 <Database className="w-4 h-4 text-slate-500" />
+                           <div className="flex gap-3 sm:gap-4">
+                              <div className="flex-1 h-10 sm:h-12 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 flex items-center justify-center">
+                                 <Database className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500" />
                               </div>
                               <motion.div
                                  whileHover={{ scale: 1.1 }}
-                                 className="flex-1 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20 cursor-pointer"
+                                 className="flex-1 h-10 sm:h-12 bg-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20 cursor-pointer"
                               >
-                                 <Lock className="w-4 h-4 text-white" />
+                                 <Lock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                               </motion.div>
                            </div>
                         </motion.div>

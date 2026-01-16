@@ -11,14 +11,14 @@ const Solutions: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-20 text-center max-w-2xl mx-auto"
+          className="mb-20 text-center max-w-5xl mx-auto"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-6 uppercase tracking-[0.2em]">
             Synergy
           </div>
-          <h1 className="text-4xl font-black mb-6 text-slate-900 tracking-tighter leading-tight">어떤 장비라도, <br /> 어떤 데이터라도 연동합니다.</h1>
-          <p className="text-slate-500 text-md leading-relaxed font-medium">
-            20년 PLC/HMI 현장 노하우로 설계된 독보적인 장비 연동 기술.
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">어떤 장비라도, <br /> 어떤 데이터라도 연동합니다.</h1>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-500 leading-relaxed md:leading-tight font-medium">
+            20년 PLC/HMI 현장 노하우로 설계된 독보적인 장비 연동 기술.<br />
             레거시 설비부터 최신 자동화 라인까지 완벽한 통로를 제공합니다.
           </p>
         </motion.header>

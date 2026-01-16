@@ -125,7 +125,7 @@ const Resources: React.FC = () => {
           <div className="inline-block px-4 py-2 bg-purple-600/10 border border-purple-600/20 text-purple-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
             Resource Center
           </div>
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
             전문 자료 <br />
             <span className="text-purple-600">다운로드</span>
           </h1>

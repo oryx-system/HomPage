@@ -152,11 +152,11 @@ const EquipmentIntegration: React.FC<EquipmentIntegrationProps> = ({ setView }) 
               국내 유일 PLC 직접 연동 전자서명 시스템
             </div>
             
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tighter leading-tight md:leading-none">
               모든 장비와 대화합니다
             </h1>
             
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto">
               20년 현장 엔지니어링 경험으로 설계된<br />
               제약 공정 장비 직접 연동 솔루션
             </p>

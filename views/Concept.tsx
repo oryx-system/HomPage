@@ -15,10 +15,10 @@ const Concept: React.FC = () => {
                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
                   Knowledge Base
                </div>
-               <h1 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 tracking-tighter leading-tight">
+               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">
                   전자서명의 <span className="text-blue-600">본질과 기술</span>
                </h1>
-               <p className="text-slate-500 text-lg leading-relaxed font-medium">
+               <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium">
                   단순한 이미지 서명을 넘어, 법적 효력과 데이터 무결성을 보장하는 <br />
                   전자서명의 기술적 매커니즘과 제약 산업의 규제 기준을 설명합니다.
                </p>

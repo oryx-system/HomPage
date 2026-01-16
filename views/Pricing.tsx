@@ -17,8 +17,8 @@ const Pricing: React.FC = () => {
           <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-6">
             Investment Plans
           </div>
-          <h1 className="text-5xl font-bold mb-8 text-slate-900">투명하고 합리적인 비용</h1>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">투명하고 합리적인 비용</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl mx-auto">
             귀사의 운영 규모와 생산 라인의 복잡도에 최적화된 유연한 플랜을 선택하십시오. <br />
             모든 비용은 시스템의 안정적인 밸리데이션과 무결성을 지원합니다.
           </p>

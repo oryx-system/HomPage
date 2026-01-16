@@ -263,11 +263,11 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
               경쟁사 대비 압도적 우위
             </div>
             
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent tracking-tighter leading-tight md:leading-none">
               왜 Oryx DataSafe인가?
             </h1>
             
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto">
               경쟁사는 '기록을 관리'하지만<br />
               Oryx는 '데이터 생성'부터 보호합니다
             </p>

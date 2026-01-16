@@ -73,10 +73,32 @@
             letter-spacing: -0.04em;
         }
         .text-huge {
-            font-size: clamp(3rem, 8vw, 7rem);
-            line-height: 0.9;
+            font-size: clamp(2.5rem, 5vw + 1rem, 7rem);
+            line-height: 1.0;
             font-weight: 900;
-            letter-spacing: -0.06em;
+            letter-spacing: -0.05em;
+        }
+        
+        /* 더 나은 반응형 텍스트 크기 */
+        @media (min-width: 768px) {
+            .text-huge {
+                font-size: clamp(4rem, 6vw, 6.5rem);
+                line-height: 0.95;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .text-huge {
+                font-size: 6.5rem;
+                line-height: 0.9;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .text-huge {
+                font-size: 7rem;
+                line-height: 0.9;
+            }
         }
         .schematic-bg {
             background-image: 

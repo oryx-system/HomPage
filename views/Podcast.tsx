@@ -125,7 +125,7 @@ const Podcast: React.FC = () => {
             <Mic2 className="w-4 h-4 inline-block mr-2" />
             Oryx 규제 준수 팟캐스트
           </div>
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
             현장의 <br />
             <span className="text-indigo-600">목소리</span>
           </h1>

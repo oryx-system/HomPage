@@ -24,22 +24,22 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
               <div className="inline-block px-4 py-2 bg-blue-600/10 border border-blue-600/20 text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-12">
                 The Founder's DNA
               </div>
-              <h2 className="text-5xl md:text-7xl font-black text-white mb-12 leading-[0.9] tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-12 leading-[0.9] tracking-tighter">
                 코드가 아닌 <br />
                 <span className="text-blue-500">엔지니어링</span>입니다.
               </h2>
-              <p className="text-xl text-slate-400 font-medium leading-relaxed mb-12">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-400 font-medium leading-relaxed mb-12">
                 우리는 화면상의 버튼 하나가 실제 공장의 밸브를 열고 닫는 무게감을 압니다.
                 20년 현장 엔지니어가 직접 설계한 Oryx DataSafe는 장비의 통신 패킷 수준에서
                 데이터 무결성을 검증합니다.
               </p>
               <div className="grid grid-cols-2 gap-8 mb-16">
                 <div className="p-8 bg-white/5 rounded-[32px] border border-white/10">
-                  <p className="text-4xl font-black text-white mb-2 tracking-tighter">20Y+</p>
+                  <p className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">20Y+</p>
                   <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Field Expertise</p>
                 </div>
                 <div className="p-8 bg-white/5 rounded-[32px] border border-white/10">
-                  <p className="text-4xl font-black text-white mb-2 tracking-tighter">ZERO</p>
+                  <p className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">ZERO</p>
                   <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Packet Loss Rate</p>
                 </div>
               </div>
@@ -61,7 +61,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
                   <div className="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center mb-8 shadow-2xl shadow-blue-600/40">
                     <Zap className="w-10 h-10 text-white" />
                   </div>
-                  <p className="text-2xl font-black text-white mb-4">"현장 엔지니어링 기반의 신뢰할 수 있는 솔루션"</p>
+                  <p className="text-lg sm:text-xl md:text-2xl font-black text-white mb-4">"현장 엔지니어링 기반의 신뢰할 수 있는 솔루션"</p>
                   <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Industrial Standard Connectivity</p>
                 </div>
               </div>
@@ -75,17 +75,17 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row gap-12 justify-between items-center py-20 border-y border-slate-100">
             <div className="text-center md:text-left">
-              <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">100%</p>
+              <p className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2">100%</p>
               <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">CFR Part 11 Compliant</p>
             </div>
             <div className="w-px h-12 bg-slate-200 hidden md:block" />
             <div className="text-center md:text-left">
-              <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">ZERO</p>
+              <p className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2">ZERO</p>
               <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Data Manipulation</p>
             </div>
             <div className="w-px h-12 bg-slate-200 hidden md:block" />
             <div className="text-center md:text-left">
-              <p className="text-6xl font-black text-slate-900 tracking-tighter mb-2">99.9%</p>
+              <p className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2">99.9%</p>
               <p className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em]">Uptime Reliability</p>
             </div>
           </div>
@@ -100,7 +100,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
             <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
               System Modules
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
               규제를 넘어 <br /> <span className="text-blue-600">성능을 정의합니다.</span>
             </h2>
           </div>
@@ -115,10 +115,10 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
             <div className="inline-block px-4 py-2 bg-purple-50 text-purple-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
               Unique Advantage
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
               경쟁사와의 <br /> <span className="text-purple-600">결정적 차이</span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto mb-16">
               20년 PLC 현장 경험이 만든 국내 유일 장비 직접 연동 솔루션
             </p>
           </div>
@@ -154,8 +154,8 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
                 <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform`}>
                   {item.icon}
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-4">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed mb-6">{item.description}</p>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 mb-4">{item.title}</h3>
+                <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">{item.description}</p>
                 <div className="text-sm font-black text-purple-600 uppercase tracking-wide">
                   {item.stat}
                 </div>
@@ -198,10 +198,10 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
             <div className="inline-block px-4 py-2 bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-8">
               Knowledge Hub
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-12 tracking-tighter leading-[0.9]">
               21 CFR Part 11 <br /> <span className="text-indigo-600">현장 에피소드</span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto mb-16">
               20년 현장 경험의 노하우를 팟캐스트로 공유합니다
             </p>
           </div>
@@ -263,10 +263,10 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
         <div className="max-w-7xl mx-auto bg-blue-600 rounded-[64px] p-20 lg:p-32 text-center relative overflow-hidden group shadow-xl">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 -skew-x-12 translate-x-1/2" />
           <div className="relative z-10">
-            <h2 className="text-5xl md:text-8xl font-black text-white mb-12 tracking-tighter leading-[0.85]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-12 tracking-tighter leading-[0.85]">
               TRUST IS <br /> THE NEW GOLD.
             </h2>
-            <p className="text-white/80 text-xl md:text-2xl font-medium mb-16 max-w-2xl mx-auto leading-tight">
+            <p className="text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl font-medium mb-16 max-w-2xl mx-auto leading-tight">
               당신의 소중한 데이터를 규제 위반의 위험에서 구하세요. <br />
               지금 바로 전문가와 상의하십시오.
             </p>

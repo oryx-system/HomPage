@@ -16,8 +16,8 @@ const Validation: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-bold text-emerald-400 mb-6">
             GAMP 5 준수
           </div>
-          <h1 className="text-5xl font-bold mb-8">컴퓨터 시스템 밸리데이션(CSV)</h1>
-          <p className="text-gray-400 text-lg">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">컴퓨터 시스템 밸리데이션(CSV)</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium">
             Oryx DataSafe는 GAMP 5 및 V-모델 방법론을 기반으로 설계되었습니다. 도입부터 운영까지 전 단계에서 체계적인 밸리데이션 패키지를 지원합니다.
           </p>
         </motion.header>

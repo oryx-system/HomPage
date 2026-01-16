@@ -161,7 +161,7 @@ const CaseStudies: React.FC = () => {
             <Award className="w-4 h-4 inline-block mr-2" />
             Success Stories
           </div>
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
             검증된 <span className="text-green-600">성공 사례</span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">

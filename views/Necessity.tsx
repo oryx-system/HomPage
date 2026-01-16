@@ -20,10 +20,10 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
             Digital Transformation
           </div>
-          <h1 className="text-5xl md:text-6xl font-black mb-8 text-slate-900 tracking-tight leading-none">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 text-slate-900 tracking-tighter leading-tight md:leading-none">
             왜 지금 <span className="text-blue-600">전자서명</span>인가?
           </h1>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl mx-auto">
             제약 산업에서 '종이 문서'는 단순한 불편함을 넘어 거대한 경영 리스크입니다. <br />
             데이터 무결성은 이제 기업의 신뢰와 직결되는 가장 중요한 자산입니다.
           </p>
@@ -34,13 +34,13 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-40 items-center bg-[#FFF8F8] p-12 lg:p-24 rounded-[64px] border border-red-50 shadow-sm relative overflow-hidden">
+          className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 mb-40 items-center bg-[#FFF8F8] p-6 sm:p-8 md:p-12 lg:p-20 xl:p-24 rounded-[32px] md:rounded-[48px] lg:rounded-[64px] border border-red-50 shadow-sm relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-black mb-12 text-slate-900 leading-[1.1] tracking-tighter">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-8 sm:mb-10 md:mb-12 text-slate-900 leading-[1.1] tracking-tighter">
               종이 기반 관리의 <br />
               <span className="text-red-600 border-b-[6px] border-red-100 pb-1">치명적인 위험요소</span>
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-5 md:space-y-6">
               {[
                 {
                   icon: <FileX className="text-white w-5 h-5" />,
@@ -64,15 +64,15 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
                   color: "bg-[#D97706]"
                 }
               ].map((item, i) => (
-                <div key={i} className="danger-shake flex gap-6 p-7 bg-white rounded-[32px] border border-red-50 shadow-[0_10px_25px_-5px_rgba(239,68,68,0.05)] group transition-all cursor-pointer relative overflow-hidden">
-                  <div className={`mt-1 p-4 ${item.color} rounded-2xl shadow-lg shrink-0`}>{item.icon}</div>
+                <div key={i} className="danger-shake flex gap-4 sm:gap-5 md:gap-6 p-5 sm:p-6 md:p-7 bg-white rounded-[24px] sm:rounded-[28px] md:rounded-[32px] border border-red-50 shadow-[0_10px_25px_-5px_rgba(239,68,68,0.05)] group transition-all cursor-pointer relative overflow-hidden">
+                  <div className={`mt-1 p-3 sm:p-3.5 md:p-4 ${item.color} rounded-xl sm:rounded-2xl shadow-lg shrink-0`}>{item.icon}</div>
                   <div className="flex-1">
-                    <div className="flex justify-between items-center mb-3">
-                      <h4 className="font-black text-lg text-slate-900">{item.title}</h4>
-                      <span className={`text-[9px] font-black px-2.5 py-1 rounded-full ${item.color} text-white tracking-widest`}>{item.level}</span>
+                    <div className="flex justify-between items-center mb-2 sm:mb-3">
+                      <h4 className="font-black text-base sm:text-lg text-slate-900">{item.title}</h4>
+                      <span className={`text-[8px] sm:text-[9px] font-black px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full ${item.color} text-white tracking-wider sm:tracking-widest`}>{item.level}</span>
                     </div>
-                    <p className="text-[14px] text-slate-400 leading-relaxed font-medium">{item.desc}</p>
-                    <div className="mt-4 h-1 bg-slate-50 rounded-full overflow-hidden">
+                    <p className="text-[13px] sm:text-[14px] text-slate-400 leading-relaxed font-medium">{item.desc}</p>
+                    <div className="mt-3 sm:mt-4 h-1 bg-slate-50 rounded-full overflow-hidden">
                       <div className={`h-full ${item.color} ${item.level === 'FATAL' ? 'w-[98%]' : item.level === 'CRITICAL' ? 'w-[85%]' : 'w-[70%]'}`} />
                     </div>
                   </div>
@@ -83,51 +83,51 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
 
           <div className="relative group cursor-crosshair">
             {/* Warning Letter 문서 비주얼화 */}
-            <div className="aspect-[4/5] bg-white rounded-[40px] border border-slate-200 p-10 shadow-2xl relative overflow-hidden flex flex-col group-hover:rotate-1 transition-transform duration-700">
+            <div className="aspect-[4/5] bg-white rounded-[24px] sm:rounded-[32px] md:rounded-[40px] border border-slate-200 p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden flex flex-col group-hover:rotate-1 transition-transform duration-700">
 
               {/* CRITICAL FAILURE 도장 (Stamp) 효과 - 사용자가 요청한 핵심 기능 */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-150 group-hover:scale-100 -rotate-12 group-hover:-rotate-[15deg]">
-                <div className="border-[8px] border-red-600 p-4 bg-white/80 backdrop-blur-sm rounded-md shadow-2xl">
-                  <p className="text-red-600 font-black text-4xl whitespace-nowrap tracking-tighter uppercase px-4">
+                <div className="border-[6px] sm:border-[8px] border-red-600 p-3 sm:p-4 bg-white/80 backdrop-blur-sm rounded-md shadow-2xl">
+                  <p className="text-red-600 font-black text-2xl sm:text-3xl md:text-4xl whitespace-nowrap tracking-tighter uppercase px-2 sm:px-3 md:px-4">
                     CRITICAL FAILURE
                   </p>
-                  <div className="h-[2px] bg-red-600/30 my-2" />
-                  <p className="text-red-600 font-black text-[10px] text-center tracking-[0.3em] uppercase">
+                  <div className="h-[2px] bg-red-600/30 my-1 sm:my-2" />
+                  <p className="text-red-600 font-black text-[8px] sm:text-[9px] md:text-[10px] text-center tracking-[0.25em] sm:tracking-[0.3em] uppercase">
                     Compliance Violation
                   </p>
                 </div>
               </div>
 
-              <div className="border-b-[3px] border-slate-900 pb-5 mb-8 flex justify-between items-end">
+              <div className="border-b-[2px] sm:border-b-[3px] border-slate-900 pb-3 sm:pb-4 md:pb-5 mb-4 sm:mb-6 md:mb-8 flex justify-between items-end">
                 <div>
-                  <p className="text-[11px] font-black text-slate-900 tracking-widest uppercase">DEPARTMENT OF HEALTH & HUMAN SERVICES</p>
-                  <p className="text-[9px] font-bold text-slate-400 italic">Food and Drug Administration</p>
+                  <p className="text-[9px] sm:text-[10px] md:text-[11px] font-black text-slate-900 tracking-wider sm:tracking-widest uppercase">DEPARTMENT OF HEALTH & HUMAN SERVICES</p>
+                  <p className="text-[8px] sm:text-[9px] font-bold text-slate-400 italic">Food and Drug Administration</p>
                 </div>
-                <FileWarning className="w-10 h-10 text-red-600" />
+                <FileWarning className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-red-600" />
               </div>
 
-              <div className="space-y-5">
-                <div className="h-2.5 bg-slate-100 rounded-full w-1/4" />
-                <div className="h-3.5 bg-slate-50 rounded-full w-full" />
-                <div className="h-3.5 bg-slate-50 rounded-full w-5/6" />
-                <div className="h-3.5 bg-slate-50 rounded-full w-full" />
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="h-2 sm:h-2.5 bg-slate-100 rounded-full w-1/4" />
+                <div className="h-2.5 sm:h-3 md:h-3.5 bg-slate-50 rounded-full w-full" />
+                <div className="h-2.5 sm:h-3 md:h-3.5 bg-slate-50 rounded-full w-5/6" />
+                <div className="h-2.5 sm:h-3 md:h-3.5 bg-slate-50 rounded-full w-full" />
 
-                <div className="py-6 px-6 bg-red-50/50 border-l-[6px] border-red-600 rounded-r-2xl">
-                  <p className="text-[11px] font-black text-red-600 mb-4 uppercase tracking-widest">OBSERVATIONS: DATA INTEGRITY</p>
-                  <div className="space-y-2">
-                    <div className="h-2 bg-red-100 rounded-full w-full opacity-60" />
-                    <div className="h-2 bg-red-100 rounded-full w-11/12 opacity-60" />
-                    <div className="h-2 bg-red-100 rounded-full w-full opacity-60" />
+                <div className="py-4 px-4 sm:py-5 sm:px-5 md:py-6 md:px-6 bg-red-50/50 border-l-[4px] sm:border-l-[5px] md:border-l-[6px] border-red-600 rounded-r-xl sm:rounded-r-2xl">
+                  <p className="text-[9px] sm:text-[10px] md:text-[11px] font-black text-red-600 mb-3 sm:mb-4 uppercase tracking-wider sm:tracking-widest">OBSERVATIONS: DATA INTEGRITY</p>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <div className="h-1.5 sm:h-2 bg-red-100 rounded-full w-full opacity-60" />
+                    <div className="h-1.5 sm:h-2 bg-red-100 rounded-full w-11/12 opacity-60" />
+                    <div className="h-1.5 sm:h-2 bg-red-100 rounded-full w-full opacity-60" />
                   </div>
                 </div>
 
-                <div className="h-3.5 bg-slate-50 rounded-full w-4/6" />
-                <div className="h-3.5 bg-slate-50 rounded-full w-full" />
+                <div className="h-2.5 sm:h-3 md:h-3.5 bg-slate-50 rounded-full w-4/6" />
+                <div className="h-2.5 sm:h-3 md:h-3.5 bg-slate-50 rounded-full w-full" />
               </div>
 
-              <div className="mt-auto pt-10 border-t border-slate-50 text-center">
-                <p className="text-3xl font-black text-red-600 mb-2 tracking-tighter">Warning Letter의 80%</p>
-                <p className="text-[10px] text-slate-400 uppercase font-black tracking-[0.25em]">데이터 무결성 결여로 인한 사유</p>
+              <div className="mt-auto pt-6 sm:pt-8 md:pt-10 border-t border-slate-50 text-center">
+                <p className="text-2xl sm:text-3xl font-black text-red-600 mb-1 sm:mb-2 tracking-tighter">Warning Letter의 80%</p>
+                <p className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-black tracking-[0.2em] sm:tracking-[0.25em]">데이터 무결성 결여로 인한 사유</p>
               </div>
             </div>
 
