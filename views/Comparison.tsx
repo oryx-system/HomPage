@@ -167,7 +167,7 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
         oryx: 'ALCOA+ 완전 준수',
         competitor: 'ALCOA 부분 준수',
         highlight: true,
-        detail: '최고 수준 목표'
+        detail: '완전 준수 목표'
       }
     ],
     cost: [
@@ -260,7 +260,7 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
               <Shield className="w-4 h-4" />
-              경쟁사 대비 압도적 우위
+              경쟁사 대비 차별화 포인트
             </div>
             
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-huge font-black mb-8 md:mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent tracking-tighter leading-tight md:leading-none">
@@ -417,7 +417,7 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Oryx만의 독보적 기술</h2>
+            <h2 className="text-4xl font-bold mb-4">Oryx의 기술적 차별화</h2>
             <p className="text-xl text-gray-600">
               20년 현장 경험이 만든 차이
             </p>

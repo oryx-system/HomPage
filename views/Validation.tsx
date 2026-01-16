@@ -30,7 +30,7 @@ const Validation: React.FC = () => {
           className="grid lg:grid-cols-2 gap-12 mb-32 items-center"
         >
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold">검증된 밸리데이션 방법론</h2>
+            <h2 className="text-3xl font-bold">밸리데이션 방법론</h2>
             <p className="text-gray-400 leading-relaxed">
               사용자 요구사항 정의(URS)부터 기능 사양서(FS), 디자인 사양서(DS)를 거쳐 설치 적격성 평가(IQ), 운전 적격성 평가(OQ), 성능 적격성 평가(PQ)에 이르는 전 과정을 지원합니다.
             </p>
@@ -38,7 +38,7 @@ const Validation: React.FC = () => {
               {[
                 { title: 'URS & FS 대응', desc: '고객사의 비즈니스 프로세스에 맞춘 요구사항 문서화 지원' },
                 { title: 'RTM (Traceability Matrix)', desc: '모든 요구사항이 테스트 및 검증되었음을 입증하는 추적성 매트릭스' },
-                { title: 'IQ/OQ/PQ 프로토콜', desc: '산업별 표준을 준수하는 검증된 테스트 시나리오 제공' },
+                { title: 'IQ/OQ/PQ 프로토콜', desc: '산업별 표준을 준수하는 테스트 시나리오 제공' },
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 p-4 glass rounded-xl border-white/5">
                   <div className="mt-1"><ClipboardCheck className="text-blue-400 w-5 h-5" /></div>

@@ -230,9 +230,9 @@ const EquipmentIntegration: React.FC<EquipmentIntegrationProps> = ({ setView }) 
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold mb-4">검증된 장비 연동</h2>
+            <h2 className="text-4xl font-bold mb-4">장비 연동 지원 현황</h2>
             <p className="text-xl text-gray-600">
-              글로벌 주요 PLC 제조사 100% 호환
+              주요 PLC 제조사 호환 지원
             </p>
           </motion.div>
 
@@ -289,9 +289,9 @@ const EquipmentIntegration: React.FC<EquipmentIntegrationProps> = ({ setView }) 
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">데이터 무결성 보장 프로세스</h2>
+            <h2 className="text-4xl font-bold mb-4">데이터 무결성 프로세스</h2>
             <p className="text-xl text-gray-600">
-              수집부터 서명까지, 완벽한 자동화
+              수집부터 서명까지, 통합 자동화
             </p>
           </motion.div>
 

@@ -25,7 +25,7 @@ const Blog: React.FC = () => {
     {
       id: 1,
       title: 'FDA 21 CFR Part 11 준수를 위한 필수 체크리스트',
-      excerpt: '제약 및 바이오 기업이 FDA 규제를 완벽하게 준수하기 위해 반드시 확인해야 할 핵심 요구사항들을 정리했습니다.',
+      excerpt: '제약 및 바이오 기업이 FDA 규제를 준수하기 위해 확인해야 할 핵심 요구사항들을 정리했습니다.',
       category: '규제 준수',
       author: '오릭스 시스템 규제팀',
       date: new Date(2026, 0, 10),
@@ -68,7 +68,7 @@ const Blog: React.FC = () => {
     },
     {
       id: 5,
-      title: '감사 추적(Audit Trail) 완벽 가이드',
+      title: '감사 추적(Audit Trail) 가이드',
       excerpt: '효과적인 감사 추적 시스템 구축 방법과 FDA 감사 대응 전략을 상세히 설명합니다.',
       category: '기술 가이드',
       author: '최동욱 시스템 엔지니어',

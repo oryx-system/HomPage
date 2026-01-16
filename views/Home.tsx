@@ -108,7 +108,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
         </div>
       </section>
 
-      {/* 독보적 기술 섹션 - PLC 직접 연동 강조 */}
+      {/* 기술적 차별화 섹션 - PLC 직접 연동 강조 */}
       <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
@@ -170,7 +170,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
             >
               <Settings className="w-12 h-12 mb-6 group-hover:rotate-90 transition-transform duration-500" />
               <h3 className="text-2xl sm:text-3xl font-black mb-4">장비 연동 기술</h3>
-              <p className="text-sm sm:text-base text-blue-100 mb-6">모든 PLC 제조사 100% 호환. 실시간 데이터 수집 및 암호화.</p>
+              <p className="text-sm sm:text-base text-blue-100 mb-6">주요 PLC 제조사 호환 지원. 실시간 데이터 수집 및 암호화.</p>
               <div className="flex items-center gap-2 text-lg font-bold">
                 자세히 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -182,7 +182,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
             >
               <BarChart className="w-12 h-12 mb-6 group-hover:scale-110 transition-transform" />
               <h3 className="text-2xl sm:text-3xl font-black mb-4">경쟁사 비교</h3>
-              <p className="text-sm sm:text-base text-purple-100 mb-6">왜 Oryx인가? 압도적 기술 우위를 직접 확인하세요.</p>
+              <p className="text-sm sm:text-base text-purple-100 mb-6">왜 Oryx인가? 기술적 차별화를 직접 확인하세요.</p>
               <div className="flex items-center gap-2 text-lg font-bold">
                 비교 분석 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -216,7 +216,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
               },
               {
                 episode: '05',
-                title: 'ALCOA+ 완벽 이해하기',
+                title: 'ALCOA+ 이해하기',
                 duration: '38:42',
                 category: '데이터 무결성'
               },

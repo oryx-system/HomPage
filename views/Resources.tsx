@@ -32,7 +32,7 @@ const Resources: React.FC = () => {
   const resources: Resource[] = [
     {
       id: 1,
-      title: 'FDA 21 CFR Part 11 완벽 준수 가이드',
+      title: 'FDA 21 CFR Part 11 준수 가이드',
       description: 'FDA 전자기록 규제의 모든 요구사항을 상세히 설명하고, 실무 적용 방법을 제시하는 종합 가이드입니다.',
       type: 'whitepaper',
       category: '규제 준수',
