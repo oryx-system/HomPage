@@ -1,8 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ViewType } from '../App';
 import Logo from './Logo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   currentView: ViewType;
@@ -12,24 +13,57 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems: { label: string; id: ViewType }[] = [
-    { label: '홈', id: 'home' },
-    { label: '전자서명 가이드', id: 'concept' },
-    { label: '도입 필요성', id: 'necessity' },
-    { label: '솔루션', id: 'solutions' },
-    { label: '장비 연동', id: 'equipment' },
-    { label: '경쟁사 비교', id: 'comparison' },
-    { label: '성공 사례', id: 'cases' },
-    { label: '실시간 데모', id: 'demo' },
-    { label: '밸리데이션', id: 'validation' },
-    { label: '보안 기술', id: 'security' },
-    { label: '가격 정책', id: 'pricing' },
-    { label: '팟캐스트', id: 'podcast' },
-    { label: '블로그', id: 'blog' },
-    { label: '자료실', id: 'resources' },
-    { label: '기업 개요', id: 'about' },
-    { label: '고객 지원', id: 'support' },
+  // 메뉴 열릴 때 스크롤 방지
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  const navCategories = [
+    {
+      title: '제품',
+      items: [
+        { label: '홈', id: 'home' as ViewType },
+        { label: '전자서명 가이드', id: 'concept' as ViewType },
+        { label: '도입 필요성', id: 'necessity' as ViewType },
+        { label: '솔루션', id: 'solutions' as ViewType },
+      ]
+    },
+    {
+      title: '기술',
+      items: [
+        { label: '장비 연동', id: 'equipment' as ViewType },
+        { label: '경쟁사 비교', id: 'comparison' as ViewType },
+        { label: '실시간 데모', id: 'demo' as ViewType },
+        { label: '밸리데이션', id: 'validation' as ViewType },
+        { label: '보안 기술', id: 'security' as ViewType },
+      ]
+    },
+    {
+      title: '리소스',
+      items: [
+        { label: '팟캐스트', id: 'podcast' as ViewType },
+        { label: '블로그', id: 'blog' as ViewType },
+        { label: '자료실', id: 'resources' as ViewType },
+      ]
+    },
+    {
+      title: '회사',
+      items: [
+        { label: '기업 개요', id: 'about' as ViewType },
+        { label: '가격 정책', id: 'pricing' as ViewType },
+        { label: '고객 지원', id: 'support' as ViewType },
+      ]
+    }
   ];
+
+  const allNavItems = navCategories.flatMap(cat => cat.items);
 
   const handleNavClick = (id: ViewType) => {
     setView(id);
@@ -38,17 +72,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-2 bg-white border-b border-slate-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 lg:px-12 py-3 md:py-2 bg-white border-b border-slate-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
         <div
           className="cursor-pointer flex items-center h-auto shrink-0"
           onClick={() => handleNavClick('home')}
         >
-          <Logo className="h-[42px] md:h-[50px] w-auto" />
+          <Logo className="h-[38px] md:h-[42px] lg:h-[50px] w-auto" />
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-5 text-[13px] font-bold">
-          {navItems.map((item) => (
+          {allNavItems.slice(0, 10).map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
@@ -60,60 +94,129 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
           ))}
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 md:gap-3 shrink-0">
           <button
             onClick={() => handleNavClick('portal')}
-            className="hidden sm:block px-5 py-2.5 text-[13px] font-black text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all active:scale-95"
+            className="hidden sm:block px-4 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[13px] font-black text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all active:scale-95"
           >
             고객 포털
           </button>
           <button
             onClick={() => handleNavClick('contact')}
-            className="hidden sm:block px-5 py-2.5 text-[13px] font-black text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95"
+            className="hidden sm:block px-4 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[13px] font-black text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95"
           >
             상담 신청
           </button>
 
-          {/* Hamburger Button */}
+          {/* Hamburger Button - 모바일 최적화 */}
           <button
-            className="lg:hidden p-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            className="lg:hidden p-2.5 md:p-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors active:scale-95"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="메뉴"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div
-            className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          <div className="absolute right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl p-8 pt-24 animate-in slide-in-from-right duration-300">
-            <div className="flex flex-col gap-6">
-              {navItems.map((item) => (
+      {/* Mobile Menu Overlay - 완전히 새로운 디자인 */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* 배경 오버레이 */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 lg:hidden bg-slate-900/40 backdrop-blur-sm"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* 메뉴 패널 - 전체 화면 */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed right-0 top-0 bottom-0 z-50 lg:hidden w-full max-w-md bg-white shadow-2xl overflow-y-auto"
+            >
+              {/* 헤더 */}
+              <div className="sticky top-0 z-10 bg-white border-b border-slate-100 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Logo className="h-[36px] w-auto" />
+                </div>
                 <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`text-left text-lg font-bold tracking-tight ${currentView === item.id ? 'text-blue-600' : 'text-slate-600'
-                    }`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="p-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors active:scale-95"
+                  aria-label="메뉴 닫기"
                 >
-                  {item.label}
+                  <X size={24} />
                 </button>
-              ))}
-              <hr className="border-slate-100 my-2" />
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="w-full py-4 text-center font-black text-white bg-blue-600 rounded-xl shadow-lg active:scale-95 transition-all"
-              >
-                상담 신청
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+              </div>
+
+              {/* 메뉴 내용 */}
+              <div className="px-6 py-6 space-y-8">
+                {/* 주요 액션 버튼 */}
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => handleNavClick('contact')}
+                    className="px-6 py-4 text-center font-black text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg active:scale-95 transition-all"
+                  >
+                    상담 신청
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('portal')}
+                    className="px-6 py-4 text-center font-black text-blue-600 bg-blue-50 rounded-xl active:scale-95 transition-all"
+                  >
+                    고객 포털
+                  </button>
+                </div>
+
+                {/* 카테고리별 메뉴 */}
+                {navCategories.map((category, catIndex) => (
+                  <motion.div
+                    key={category.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: catIndex * 0.1 }}
+                  >
+                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-wider mb-3 px-2">
+                      {category.title}
+                    </h3>
+                    <div className="space-y-1">
+                      {category.items.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => handleNavClick(item.id)}
+                          className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl transition-all active:scale-98 ${
+                            currentView === item.id
+                              ? 'bg-blue-50 text-blue-600 font-bold'
+                              : 'text-slate-700 font-semibold hover:bg-slate-50'
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          {currentView === item.id && (
+                            <ChevronRight className="w-5 h-5 text-blue-600" />
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* 하단 정보 */}
+                <div className="pt-6 border-t border-slate-100">
+                  <p className="text-xs text-slate-400 text-center">
+                    Oryx DataSafe<br />
+                    제약 업계 데이터 무결성 솔루션
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

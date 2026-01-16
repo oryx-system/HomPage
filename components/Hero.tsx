@@ -11,29 +11,30 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ setView }) => {
    return (
-      <section className="relative pt-24 pb-32 overflow-hidden px-6 lg:px-12">
+      <section className="relative pt-20 md:pt-24 pb-24 md:pb-32 overflow-hidden px-4 md:px-6 lg:px-12">
          <FloatingParticles />
          
          <div className="max-w-[1400px] mx-auto relative z-10">
-            <div className="flex flex-col items-center text-center mb-24">
+            <div className="flex flex-col items-center text-center mb-16 md:mb-24">
                <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="inline-flex items-center gap-3 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-12 uppercase tracking-[0.3em] blue-glow"
+                  className="inline-flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-[9px] md:text-[10px] font-black text-blue-600 mb-8 md:mb-12 uppercase tracking-[0.2em] md:tracking-[0.3em] blue-glow"
                >
                   <span className="relative flex h-2 w-2">
                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                   </span>
-                  21 CFR Part 11 & Annex 11 Native Architecture
+                  <span className="hidden sm:inline">21 CFR Part 11 & Annex 11 Native Architecture</span>
+                  <span className="sm:hidden">21 CFR Part 11 준수</span>
                </motion.div>
 
                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-huge mb-12 text-slate-900"
+                  className="text-4xl md:text-5xl lg:text-huge mb-8 md:mb-12 text-slate-900 leading-tight md:leading-none px-4"
                >
                   ENGINEERED <br />
                   <span className="text-blue-600">FOR INTEGRITY.</span>
@@ -43,14 +44,14 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="mb-16"
+                  className="mb-12 md:mb-16 px-4"
                >
-                  <p className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-tight font-medium tracking-tight mb-4">
-                     우리는 단순한 전자서명이 아닌, 제약 공정 데이터의 <br />
+                  <p className="text-base md:text-xl lg:text-2xl text-slate-500 max-w-3xl leading-relaxed md:leading-tight font-medium tracking-tight mb-3 md:mb-4">
+                     우리는 단순한 전자서명이 아닌,<br className="md:hidden" /> 제약 공정 데이터의 <br className="hidden md:inline" />
                      <span className="text-slate-900 font-bold">'첫 번째 마일'</span>을 보호하는 엔지니어링 표준입니다.
                   </p>
-                  <p className="text-sm md:text-base text-blue-600/60 font-bold uppercase tracking-widest">
-                     — 데이터가 생성되는 그 첫 순간(The Source)부터 무결성을 확보합니다
+                  <p className="text-xs md:text-sm lg:text-base text-blue-600/60 font-bold uppercase tracking-wider md:tracking-widest">
+                     — 데이터가 생성되는 그 첫 순간부터 무결성 확보
                   </p>
                </motion.div>
 
@@ -58,22 +59,22 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-6 items-center"
+                  className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center w-full max-w-2xl px-4"
                >
                   <motion.button
                      whileHover={{ scale: 1.05, y: -2 }}
                      whileTap={{ scale: 0.95 }}
                      onClick={() => setView('contact')}
-                     className="px-12 py-6 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-all shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] text-lg flex items-center gap-3 group"
+                     className="w-full sm:w-auto px-8 md:px-12 py-4 md:py-6 bg-blue-600 text-white font-black rounded-xl md:rounded-2xl hover:bg-blue-700 transition-all shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 group"
                   >
                      전문가 상담 예약
-                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                     <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform" />
                   </motion.button>
                   <motion.button
                      whileHover={{ scale: 1.05, y: -2 }}
                      whileTap={{ scale: 0.95 }}
                      onClick={() => setView('concept')}
-                     className="px-12 py-6 bg-white text-slate-900 font-black rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all text-lg"
+                     className="w-full sm:w-auto px-8 md:px-12 py-4 md:py-6 bg-white text-slate-900 font-black rounded-xl md:rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all text-base md:text-lg"
                   >
                      기술 명세서 보기
                   </motion.button>
