@@ -109,31 +109,31 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
                               </div>
                            </div>
                            <div className="p-4 sm:p-5 md:p-6 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10">
-                              <div className="flex justify-between items-end mb-4">
+                              <div className="flex justify-between items-end h-16 mb-4">
                                  <motion.div
-                                    animate={{ height: ['2rem', '2.5rem', '2rem'] }}
+                                    animate={{ scaleY: [0.5, 0.7, 0.5] }}
                                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                                    className="w-1 bg-blue-500 rounded-full"
+                                    className="w-1 h-full bg-blue-500 rounded-full origin-bottom"
                                  />
                                  <motion.div
-                                    animate={{ height: ['3rem', '2rem', '3rem'] }}
+                                    animate={{ scaleY: [0.75, 0.5, 0.75] }}
                                     transition={{ duration: 3, repeat: Infinity, delay: 0.3, ease: 'easeInOut' }}
-                                    className="w-1 bg-blue-500/50 rounded-full"
+                                    className="w-1 h-full bg-blue-500/50 rounded-full origin-bottom"
                                  />
                                  <motion.div
-                                    animate={{ height: ['4rem', '3rem', '4rem'] }}
+                                    animate={{ scaleY: [1, 0.75, 1] }}
                                     transition={{ duration: 3, repeat: Infinity, delay: 0.6, ease: 'easeInOut' }}
-                                    className="w-1 bg-blue-500 rounded-full"
+                                    className="w-1 h-full bg-blue-500 rounded-full origin-bottom"
                                  />
                                  <motion.div
-                                    animate={{ height: ['2.5rem', '3.5rem', '2.5rem'] }}
+                                    animate={{ scaleY: [0.6, 0.9, 0.6] }}
                                     transition={{ duration: 3, repeat: Infinity, delay: 0.9, ease: 'easeInOut' }}
-                                    className="w-1 bg-blue-500/50 rounded-full"
+                                    className="w-1 h-full bg-blue-500/50 rounded-full origin-bottom"
                                  />
                                  <motion.div
-                                    animate={{ height: ['3.5rem', '2.5rem', '3.5rem'] }}
+                                    animate={{ scaleY: [0.9, 0.6, 0.9] }}
                                     transition={{ duration: 3, repeat: Infinity, delay: 1.2, ease: 'easeInOut' }}
-                                    className="w-1 bg-blue-500 rounded-full"
+                                    className="w-1 h-full bg-blue-500 rounded-full origin-bottom"
                                  />
                               </div>
                               <p className="text-[9px] sm:text-[10px] text-slate-500 font-mono">ENCRYPTING_PACKET_0x4F2...</p>
