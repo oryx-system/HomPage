@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { BookOpen, ShieldCheck, Scale, Cpu, Play, Youtube, Info, CheckCircle2, Lock, History } from 'lucide-react';
 
 const Concept: React.FC = () => {
@@ -6,7 +7,11 @@ const Concept: React.FC = () => {
       <div className="pt-24 pb-24 bg-white">
          <div className="max-w-7xl mx-auto px-6">
             {/* 히어로 섹션 */}
-            <header className="mb-24 text-center max-w-4xl mx-auto">
+            <motion.header
+               initial={{ opacity: 0, y: 30 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6 }}
+               className="mb-24 text-center max-w-4xl mx-auto">
                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
                   Knowledge Base
                </div>
@@ -17,10 +22,14 @@ const Concept: React.FC = () => {
                   단순한 이미지 서명을 넘어, 법적 효력과 데이터 무결성을 보장하는 <br />
                   전자서명의 기술적 매커니즘과 제약 산업의 규제 기준을 설명합니다.
                </p>
-            </header>
+            </motion.header>
 
             {/* 0. 비교 섹션: 단순 이미지 vs 전문 전자서명 */}
-            <section className="mb-32">
+            <motion.section
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.2, duration: 0.6 }}
+               className="mb-32">
                <div className="grid md:grid-cols-2 gap-8">
                   <div className="p-8 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col items-center text-center">
                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Common Misconception</p>
@@ -56,10 +65,14 @@ const Concept: React.FC = () => {
                      </div>
                   </div>
                </div>
-            </section>
+            </motion.section>
 
             {/* 1. 기본 개념 섹션 */}
-            <section className="mb-40 grid lg:grid-cols-3 gap-8">
+            <motion.section
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 0.4, duration: 0.6 }}
+               className="mb-40 grid lg:grid-cols-3 gap-8">
                <div className="p-10 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col">
                   <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-blue-500/20">
                      <Scale className="w-6 h-6" />
@@ -98,10 +111,15 @@ const Concept: React.FC = () => {
                      ALCOA+ Standard
                   </div>
                </div>
-            </section>
+            </motion.section>
 
             {/* 2. 기술적 워크플로우 시각화 */}
-            <section className="mb-40 py-24 px-12 bg-slate-900 rounded-[56px] relative overflow-hidden group">
+            <motion.section
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.6 }}
+               className="mb-40 py-24 px-12 bg-slate-900 rounded-[56px] relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-600/10 blur-[100px] -z-0" />
                <div className="text-center mb-16 relative z-10">
                   <h2 className="text-3xl font-black text-white mb-4 tracking-tight">Oryx 전자서명 기술 프로세스</h2>
@@ -129,10 +147,15 @@ const Concept: React.FC = () => {
                      </div>
                   ))}
                </div>
-            </section>
+            </motion.section>
 
             {/* 3. 유튜브 비디오 라이브러리 (Placeholder) */}
-            <section className="mb-24">
+            <motion.section
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.6 }}
+               className="mb-24">
                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                   <div className="max-w-xl">
                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 text-red-600 text-[9px] font-black uppercase tracking-[0.2em] rounded-md mb-4">
@@ -221,7 +244,7 @@ const Concept: React.FC = () => {
                      뉴스레터 구독하기
                   </button>
                </div>
-            </section>
+            </motion.section>
          </div>
       </div>
    );

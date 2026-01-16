@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -12,7 +13,12 @@ const Contact: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="pt-48 pb-24 text-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="pt-48 pb-24 text-center"
+      >
          <div className="max-w-md mx-auto bg-white p-12 rounded-[40px] border border-slate-100 shadow-2xl">
             <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-8">
                <CheckCircle className="w-10 h-10 text-emerald-500" />
@@ -21,13 +27,18 @@ const Contact: React.FC = () => {
             <p className="text-slate-500 mb-8">전문 상담사가 24시간 이내에 입력하신 연락처로 연락드리겠습니다. 감사합니다.</p>
             <button onClick={() => setSubmitted(false)} className="px-8 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all">돌아가기</button>
          </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
     <div className="pt-40 pb-32 px-6">
-      <div className="max-w-7xl mx-auto border-[3px] border-blue-500 rounded-[48px] p-10 lg:p-20 bg-white shadow-2xl shadow-blue-500/5">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-7xl mx-auto border-[3px] border-blue-500 rounded-[48px] p-10 lg:p-20 bg-white shadow-2xl shadow-blue-500/5"
+      >
         <div className="grid lg:grid-cols-2 gap-20">
           {/* Left Content */}
           <div className="flex flex-col justify-center">
@@ -122,7 +133,7 @@ const Contact: React.FC = () => {
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

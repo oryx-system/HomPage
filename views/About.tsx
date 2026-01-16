@@ -1,21 +1,32 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Target, Eye, Heart, Shield, Settings, Zap } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
     <div className="pt-24 pb-32">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="text-center mb-24">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-24"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
             Our Heritage & Expertise
           </div>
           <h1 className="text-5xl md:text-6xl font-black mb-8 text-slate-900 tracking-tight leading-none">
             현장의 언어를 아는 <br /> <span className="text-blue-600">규제 준수 솔루션.</span>
           </h1>
-        </header>
+        </motion.header>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="grid lg:grid-cols-2 gap-20 items-center mb-32"
+        >
           <div>
             <p className="text-gray-500 text-lg leading-relaxed mb-8 font-medium">
               Oryx DataSafe의 모든 코드는 **20년 경력의 현장 PLC+HMI 엔지니어의 노하우**에서 시작되었습니다.
@@ -33,7 +44,12 @@ const About: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="relative"
+          >
             <div className="aspect-square glass rounded-[60px] flex items-center justify-center p-12 border-white/5 relative overflow-hidden bg-slate-50">
               <Settings className="w-64 h-64 text-blue-600/10 absolute animate-spin-slow opacity-20" />
               <div className="relative z-10 text-center">
@@ -43,10 +59,15 @@ const About: React.FC = () => {
               </div>
             </div>
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 blur-3xl -z-10" />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="p-12 glass rounded-[40px] border-white/10 mb-24 bg-gradient-to-br from-blue-900/10 to-transparent">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="p-12 glass rounded-[40px] border-white/10 mb-24 bg-gradient-to-br from-blue-900/10 to-transparent"
+        >
           <h2 className="text-3xl font-bold mb-10 text-center">우리가 현장에 강한 이유</h2>
           <div className="grid md:grid-cols-3 gap-12">
             <div className="space-y-4">
@@ -62,9 +83,14 @@ const About: React.FC = () => {
               <p className="text-sm text-gray-500 leading-relaxed">실제 오퍼레이터와 QA 담당자가 현장에서 겪는 고충을 반영하여, 가장 직관적이고 오류 없는 승인 워크플로우를 제공합니다.</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="grid md:grid-cols-3 gap-12"
+        >
           {[
             {
               title: "미션 (Mission)",
@@ -82,13 +108,19 @@ const About: React.FC = () => {
               icon: <Heart className="w-8 h-8 text-red-400" />
             }
           ].map((item, i) => (
-            <div key={i} className="p-10 glass rounded-[40px] border-white/5">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 + i * 0.1, duration: 0.6 }}
+              className="p-10 glass rounded-[40px] border-white/5"
+            >
               <div className="mb-6">{item.icon}</div>
               <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
               <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

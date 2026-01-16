@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { AlertTriangle, Clock, ShieldCheck, Database, FileX, Zap, ArrowRight, Skull, ShieldAlert, FileWarning } from 'lucide-react';
 import { ViewType } from '../App';
 
@@ -11,7 +12,11 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
   return (
     <div className="pt-24 pb-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <header className="text-center mb-24">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
             Digital Transformation
           </div>
@@ -22,10 +27,14 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
             제약 산업에서 '종이 문서'는 단순한 불편함을 넘어 거대한 경영 리스크입니다. <br />
             데이터 무결성은 이제 기업의 신뢰와 직결되는 가장 중요한 자산입니다.
           </p>
-        </header>
+        </motion.header>
 
         {/* 리스크 섹션 - 이미지와 동일하게 구현 */}
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-40 items-center bg-[#FFF8F8] p-12 lg:p-24 rounded-[64px] border border-red-50 shadow-sm relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-40 items-center bg-[#FFF8F8] p-12 lg:p-24 rounded-[64px] border border-red-50 shadow-sm relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-4xl md:text-5xl font-black mb-12 text-slate-900 leading-[1.1] tracking-tighter">
               종이 기반 관리의 <br />
@@ -125,10 +134,15 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
             {/* Decorative Elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-red-500/5 blur-[120px] -z-10 rounded-full" />
           </div>
-        </div>
+        </motion.div>
 
         {/* 해결책: ALCOA+ 섹션 */}
-        <div className="mb-40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-40">
           <div className="text-center mb-24">
             <div className="inline-block px-5 py-2 bg-blue-50 text-blue-600 text-[11px] font-black uppercase tracking-[0.25em] rounded-full mb-8 shadow-sm">
               ENGINEERING STANDARD
@@ -160,10 +174,15 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <div className="text-center bg-slate-900 p-16 md:p-24 rounded-[64px] relative overflow-hidden group shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center bg-slate-900 p-16 md:p-24 rounded-[64px] relative overflow-hidden group shadow-2xl">
           <div className="absolute top-0 right-0 w-full h-full schematic-bg opacity-10 pointer-events-none" />
           <div className="relative z-10">
             <h3 className="text-4xl md:text-5xl font-black mb-8 text-white tracking-tight leading-tight">
@@ -188,7 +207,7 @@ const Necessity: React.FC<NecessityProps> = ({ setView }) => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

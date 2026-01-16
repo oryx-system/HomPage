@@ -1,12 +1,18 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Lock, Fingerprint, RefreshCcw, Database, ShieldCheck, HardDrive } from 'lucide-react';
 
 const Security: React.FC = () => {
   return (
     <div className="pt-24 pb-24">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="mb-20 text-center max-w-3xl mx-auto">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 text-center max-w-3xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-bold text-blue-400 mb-6 uppercase tracking-widest">
             Enterprise Grade Security
           </div>
@@ -14,9 +20,14 @@ const Security: React.FC = () => {
           <p className="text-slate-500 text-lg font-medium leading-relaxed">
             가장 엄격한 데이터 보안 표준을 충족하도록 설계된 Oryx DataSafe는 여러분의 지식재산권과 품질 데이터를 24/7 전문적으로 보호합니다.
           </p>
-        </header>
+        </motion.header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
+        >
           {[
             { title: 'AES-256 데이터 암호화', desc: '모든 데이터는 저장 시점(At-rest)과 전송 시점(In-transit) 모두에서 군사 등급 암호화가 적용됩니다.', icon: <Lock /> },
             { title: '다중 요소 인증(MFA)', desc: '생체 인식과 일회용 비밀번호(OTP)를 결합한 접근 제어로 서명자의 신원을 확실히 보장합니다.', icon: <Fingerprint /> },
@@ -25,17 +36,28 @@ const Security: React.FC = () => {
             { title: '인증 기반 인프라', desc: 'ISO 27001, SOC2 Type II 인증을 획득한 글로벌 클러스터에서 안정적으로 운영됩니다.', icon: <ShieldCheck /> },
             { title: '데이터 보존 정책', desc: '규제 기관의 요구에 따라 최장 수십 년간 데이터의 가독성과 무결성을 유지하는 보관 정책을 지원합니다.', icon: <HardDrive /> },
           ].map((item, i) => (
-            <div key={i} className="p-8 glass rounded-3xl border-white/5 hover:border-blue-500/30 transition-all">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
+              className="p-8 glass rounded-3xl border-white/5 hover:border-blue-500/30 transition-all"
+            >
               <div className="mb-6 p-4 bg-blue-500/10 rounded-2xl w-fit text-blue-400">
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold mb-4 text-slate-900">{item.title}</h3>
               <p className="text-sm text-slate-500 leading-relaxed font-medium">{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="p-12 glass rounded-[40px] border-white/10 bg-gradient-to-r from-blue-900/10 to-transparent">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="p-12 glass rounded-[40px] border-white/10 bg-gradient-to-r from-blue-900/10 to-transparent"
+        >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-slate-900">ALCOA+ 원칙의 기술적 구현</h2>
@@ -76,7 +98,7 @@ const Security: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

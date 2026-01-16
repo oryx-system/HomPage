@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Check, Info, Server, CreditCard, PlusCircle } from 'lucide-react';
 import ROICalculator from '../components/ROICalculator';
 import AnimatedSection from '../components/AnimatedSection';
@@ -7,7 +8,12 @@ const Pricing: React.FC = () => {
   return (
     <div className="pt-24 pb-32 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <header className="text-center mb-24">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-24"
+        >
           <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-6">
             Investment Plans
           </div>
@@ -16,7 +22,7 @@ const Pricing: React.FC = () => {
             귀사의 운영 규모와 생산 라인의 복잡도에 최적화된 유연한 플랜을 선택하십시오. <br />
             모든 비용은 시스템의 안정적인 밸리데이션과 무결성을 지원합니다.
           </p>
-        </header>
+        </motion.header>
 
         <div className="grid md:grid-cols-2 gap-10 mb-24">
           {/* 구독형 플랜 */}

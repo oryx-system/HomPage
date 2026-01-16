@@ -1,12 +1,18 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ClipboardCheck, FileSearch, Layers, Zap } from 'lucide-react';
 
 const Validation: React.FC = () => {
   return (
     <div className="pt-24 pb-24">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="mb-20 text-center max-w-3xl mx-auto">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 text-center max-w-3xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-bold text-emerald-400 mb-6">
             GAMP 5 준수
           </div>
@@ -14,10 +20,15 @@ const Validation: React.FC = () => {
           <p className="text-gray-400 text-lg">
             Oryx DataSafe는 GAMP 5 및 V-모델 방법론을 기반으로 설계되었습니다. 도입부터 운영까지 전 단계에서 체계적인 밸리데이션 패키지를 지원합니다.
           </p>
-        </header>
+        </motion.header>
 
         {/* V-Model 인포그래픽 */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-32 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="grid lg:grid-cols-2 gap-12 mb-32 items-center"
+        >
           <div className="space-y-8">
             <h2 className="text-3xl font-bold">검증된 밸리데이션 방법론</h2>
             <p className="text-gray-400 leading-relaxed">
@@ -39,7 +50,12 @@ const Validation: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="relative glass p-10 rounded-[40px] border-white/10 bg-gradient-to-br from-blue-600/5 to-transparent">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="relative glass p-10 rounded-[40px] border-white/10 bg-gradient-to-br from-blue-600/5 to-transparent"
+          >
             <div className="flex flex-col gap-6">
               <div className="flex justify-between items-center bg-white/5 p-6 rounded-2xl border border-white/10">
                 <span className="font-bold text-blue-400 uppercase tracking-widest text-xs">V-Model Phase</span>
@@ -67,10 +83,15 @@ const Validation: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="grid md:grid-cols-3 gap-8"
+        >
           <div className="p-8 glass rounded-3xl border-white/10">
             <Layers className="w-10 h-10 text-blue-400 mb-6" />
             <h3 className="text-xl font-bold mb-4">표준화된 VMP</h3>
@@ -92,7 +113,7 @@ const Validation: React.FC = () => {
               경험 풍부한 컨설턴트들이 고객사의 현장 실사를 대비한 모의 감사 및 맞춤형 밸리데이션 지원을 제공합니다.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

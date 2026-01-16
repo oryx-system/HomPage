@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { HelpCircle, Mail, MessageSquare, Phone } from 'lucide-react';
 
 const Support: React.FC = () => {
@@ -25,28 +26,49 @@ const Support: React.FC = () => {
   return (
     <div className="pt-24 pb-24">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="mb-20 text-center">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 text-center"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-8 uppercase tracking-[0.2em]">
             Customer Support
           </div>
           <h1 className="text-5xl font-bold mb-6">고객 지원 센터</h1>
           <p className="text-gray-400 text-lg">궁금한 점이 있으신가요? 규제 준수 전문가가 상시 대기 중입니다.</p>
-        </header>
+        </motion.header>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-24">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="grid md:grid-cols-2 gap-12 mb-24"
+        >
           <div className="space-y-6">
             <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
               <HelpCircle className="text-blue-500" /> 자주 묻는 질문
             </h2>
             {faqs.map((f, i) => (
-              <div key={i} className="p-6 glass rounded-2xl border-white/5 hover:bg-white/5 transition-colors">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
+                className="p-6 glass rounded-2xl border-white/5 hover:bg-white/5 transition-colors"
+              >
                 <h4 className="font-bold mb-3 text-slate-900">Q. {f.q}</h4>
                 <p className="text-sm text-gray-400 leading-relaxed">A. {f.a}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="space-y-8"
+          >
             <h2 className="text-2xl font-bold mb-8">문의 채널</h2>
             <div className="grid gap-4">
               <div className="flex items-center gap-6 p-6 glass rounded-2xl border-white/5 group hover:border-blue-500/30 cursor-pointer">
@@ -77,8 +99,8 @@ const Support: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

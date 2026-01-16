@@ -1,12 +1,18 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Microscope, Activity, Factory, Beaker, Cpu, Link } from 'lucide-react';
 
 const Solutions: React.FC = () => {
   return (
     <div className="pt-24 pb-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="mb-20 text-center max-w-2xl mx-auto">
+        <motion.header
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 text-center max-w-2xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-[10px] font-black text-blue-600 mb-6 uppercase tracking-[0.2em]">
             Synergy
           </div>
@@ -15,9 +21,14 @@ const Solutions: React.FC = () => {
             20년 PLC/HMI 현장 노하우로 설계된 독보적인 장비 연동 기술.
             레거시 설비부터 최신 자동화 라인까지 완벽한 통로를 제공합니다.
           </p>
-        </header>
+        </motion.header>
 
-        <div className="grid gap-8 relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="grid gap-8 relative"
+        >
           {[
             {
               title: '전 장비 실시간 연동 (Equipment Integration)',
@@ -44,7 +55,13 @@ const Solutions: React.FC = () => {
               tags: ['Batch Record', 'Deviation', 'Review']
             }
           ].map((sol, i) => (
-            <div key={i} className="group bg-white p-10 rounded-[40px] border border-slate-100 flex flex-col lg:flex-row gap-10 items-center hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.06)] transition-all duration-500">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.15, duration: 0.6 }}
+              className="group bg-white p-10 rounded-[40px] border border-slate-100 flex flex-col lg:flex-row gap-10 items-center hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.06)] transition-all duration-500"
+            >
               <div className={`p-6 ${sol.bg} rounded-[24px] ${sol.shadow} shadow-xl group-hover:scale-105 transition-transform duration-500 shrink-0`}>
                 {sol.icon}
               </div>
@@ -60,9 +77,9 @@ const Solutions: React.FC = () => {
               <button className="px-7 py-3.5 bg-white border border-slate-200 text-slate-800 text-[13px] font-black rounded-xl hover:bg-slate-50 hover:border-blue-200 transition-all shrink-0 flex items-center gap-2 shadow-sm active:scale-95">
                 <Link className="w-4 h-4 text-blue-600" /> 연동 리스트
               </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
