@@ -1,14 +1,65 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oryx DataSafe | The Standard of Data Integrity</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Primary Meta Tags -->
+    <title>Oryx DataSafe | FDA 21 CFR Part 11 준수 전자서명 솔루션</title>
+    <meta name="title" content="Oryx DataSafe | FDA 21 CFR Part 11 준수 전자서명 솔루션">
+    <meta name="description" content="제약 및 바이오 산업을 위한 FDA 21 CFR Part 11, EU Annex 11 완벽 준수 데이터 무결성 및 전자서명 시스템. ALCOA+ 원칙 기반 엔터프라이즈 솔루션.">
+    <meta name="keywords" content="FDA 21 CFR Part 11, 전자서명, 데이터 무결성, ALCOA+, EU Annex 11, 제약 컴플라이언스, 감사 추적, 전자기록">
+    <meta name="author" content="Oryx System">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oryxdatasafe.com/">
+    <meta property="og:title" content="Oryx DataSafe | FDA 21 CFR Part 11 준수 전자서명 솔루션">
+    <meta property="og:description" content="제약 및 바이오 산업을 위한 FDA 21 CFR Part 11, EU Annex 11 완벽 준수 데이터 무결성 및 전자서명 시스템.">
+    <meta property="og:image" content="https://oryxdatasafe.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://oryxdatasafe.com/">
+    <meta property="twitter:title" content="Oryx DataSafe | FDA 21 CFR Part 11 준수 전자서명 솔루션">
+    <meta property="twitter:description" content="제약 및 바이오 산업을 위한 FDA 21 CFR Part 11, EU Annex 11 완벽 준수 데이터 무결성 및 전자서명 시스템.">
+    <meta property="twitter:image" content="https://oryxdatasafe.com/og-image.jpg">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Oryx DataSafe",
+      "applicationCategory": "BusinessApplication",
+      "description": "FDA 21 CFR Part 11 준수 전자서명 및 데이터 무결성 솔루션",
+      "operatingSystem": "Web, Cloud",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Oryx System",
+        "url": "https://oryxdatasafe.com"
+      }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
         :root {
             --brand-blue: #2563eb;
@@ -64,12 +115,12 @@
             animation: scanline 4s linear infinite;
         }
         .floating-3d {
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
             transform-style: preserve-3d;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotateX(0); }
-            50% { transform: translateY(-20px) rotateX(2deg); }
+            50% { transform: translateY(-10px) rotateX(1deg); }
         }
         /* 위험 경고 흔들림 효과 */
         @keyframes danger-shake {
@@ -87,6 +138,13 @@
         .blue-glow {
             filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.2));
         }
+        /* Loading Animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
     </style>
 
 <script type="importmap">
@@ -100,7 +158,9 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-DWFKUMuo.js"></script>
+  <script type="module" crossorigin src="/assets/index-_wwA_k1C.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/react-vendor-B--z-fyW.js">
+  <link rel="modulepreload" crossorigin href="/assets/animation-vendor-B4qOPuxf.js">
 </head>
 <body class="schematic-bg">
     <div id="root"></div>
