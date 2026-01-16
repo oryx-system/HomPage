@@ -33,7 +33,7 @@ const Security: React.FC = () => {
             { title: '다중 요소 인증(MFA)', desc: '생체 인식과 일회용 비밀번호(OTP)를 결합한 접근 제어로 서명자의 신원을 확실히 보장합니다.', icon: <Fingerprint /> },
             { title: '실시간 이중화 백업', desc: '재해 복구 시나리오를 대비하여 실시간으로 암호화된 백업이 분산 데이터 센터에 저장됩니다.', icon: <RefreshCcw /> },
             { title: '불변성 감사 로그', desc: '기록된 감사 추적 정보는 수정이나 삭제가 불가능한 불변성(Immutability) 저장소에 기록됩니다.', icon: <Database /> },
-            { title: '인증 기반 인프라', desc: 'ISO 27001, SOC2 Type II 인증을 획득한 글로벌 클러스터에서 안정적으로 운영됩니다.', icon: <ShieldCheck /> },
+            { title: '인증 기반 인프라', desc: 'ISO 27001, SOC2 Type II 인증 기준을 목표로 글로벌 클러스터에서 안정적으로 운영됩니다.', icon: <ShieldCheck /> },
             { title: '데이터 보존 정책', desc: '규제 기관의 요구에 따라 최장 수십 년간 데이터의 가독성과 무결성을 유지하는 보관 정책을 지원합니다.', icon: <HardDrive /> },
           ].map((item, i) => (
             <motion.div
@@ -86,11 +86,11 @@ const Security: React.FC = () => {
               </div>
               <div className="p-6 bg-blue-50 rounded-3xl border border-blue-100 text-center">
                 <p className="text-2xl font-bold text-blue-600 mb-1">ISO 27001</p>
-                <p className="text-[10px] text-slate-500 uppercase tracking-widest">Certified</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest">Target</p>
               </div>
               <div className="p-6 bg-blue-50 rounded-3xl border border-blue-100 text-center">
                 <p className="text-2xl font-bold text-blue-600 mb-1">SOC2</p>
-                <p className="text-[10px] text-slate-500 uppercase tracking-widest">Type II Compliant</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest">Type II Target</p>
               </div>
               <div className="p-6 bg-blue-50 rounded-3xl border border-blue-100 text-center">
                 <p className="text-2xl font-bold text-blue-600 mb-1">GDPR</p>

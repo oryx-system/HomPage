@@ -48,7 +48,7 @@ const Podcast: React.FC = () => {
     {
       id: 2,
       episodeNumber: 'EP19',
-      title: '데이터 무결성 위반으로 50억 과징금? 실제 사례 분석',
+      title: '데이터 무결성 위반 사례 분석 - 규제 리스크 이해하기',
       description: '국내 제약사에서 발생한 데이터 무결성 위반 사례를 심층 분석하고, ALCOA+ 원칙을 통한 예방법을 설명합니다.',
       youtubeId: 'dQw4w9WgXcQ',
       duration: '22:15',
@@ -93,7 +93,7 @@ const Podcast: React.FC = () => {
       id: 6,
       episodeNumber: 'EP15',
       title: '클라우드 시스템도 21 CFR Part 11 준수 가능할까?',
-      description: '클라우드 환경에서의 규제 준수 가능성과 주의사항, 실제 도입 사례를 소개합니다.',
+      description: '클라우드 환경에서의 규제 준수 가능성과 주의사항, 기대 효과를 소개합니다.',
       youtubeId: 'dQw4w9WgXcQ',
       duration: '19:22',
       publishDate: '2025-12-11',

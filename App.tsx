@@ -21,9 +21,8 @@ const Resources = lazy(() => import('./views/Resources'));
 const Podcast = lazy(() => import('./views/Podcast'));
 const Comparison = lazy(() => import('./views/Comparison'));
 const EquipmentIntegration = lazy(() => import('./views/EquipmentIntegration'));
-const CaseStudies = lazy(() => import('./views/CaseStudies'));
 
-export type ViewType = 'home' | 'validation' | 'solutions' | 'security' | 'about' | 'support' | 'contact' | 'pricing' | 'necessity' | 'concept' | 'demo' | 'portal' | 'blog' | 'resources' | 'podcast' | 'comparison' | 'equipment' | 'cases';
+export type ViewType = 'home' | 'validation' | 'solutions' | 'security' | 'about' | 'support' | 'contact' | 'pricing' | 'necessity' | 'concept' | 'demo' | 'portal' | 'blog' | 'resources' | 'podcast' | 'comparison' | 'equipment';
 
 // Loading component
 const LoadingScreen: React.FC = () => (
@@ -61,7 +60,6 @@ const App: React.FC = () => {
       case 'podcast': return <Podcast />;
       case 'comparison': return <Comparison setView={setCurrentView} />;
       case 'equipment': return <EquipmentIntegration setView={setCurrentView} />;
-      case 'cases': return <CaseStudies />;
       default: return <Home setView={setCurrentView} />;
     }
   };

@@ -160,14 +160,14 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
         oryx: '자동 리포트 생성',
         competitor: '수동 작업',
         highlight: true,
-        detail: '대응 시간 90% 단축'
+        detail: '대응 시간 단축 목표'
       },
       {
         feature: '데이터 무결성 보장',
         oryx: 'ALCOA+ 완전 준수',
         competitor: 'ALCOA 부분 준수',
         highlight: true,
-        detail: '최고 수준 보장'
+        detail: '최고 수준 목표'
       }
     ],
     cost: [
@@ -183,7 +183,7 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
         oryx: '1-2명',
         competitor: '3-5명',
         highlight: true,
-        detail: '인건비 70% 절감'
+        detail: '인건비 절감 예상'
       },
       {
         feature: '밸리데이션 비용',
@@ -219,26 +219,26 @@ const Comparison: React.FC<ComparisonProps> = ({ setView }) => {
   const stats = [
     {
       icon: Clock,
-      value: '70%',
-      label: '구축 기간 단축',
+      value: '~70%',
+      label: '구축 기간 단축 목표',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: DollarSign,
-      value: '60%',
-      label: '총 소유 비용 절감',
+      value: '~60%',
+      label: '총 소유 비용 절감 예상',
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: TrendingUp,
-      value: '90%',
-      label: 'FDA 감사 대응 시간 단축',
+      value: '~90%',
+      label: 'FDA 감사 대응 시간 단축 목표',
       color: 'from-purple-500 to-pink-500'
     },
     {
       icon: Users,
-      value: '50%',
-      label: '필요 인력 감소',
+      value: '~50%',
+      label: '필요 인력 감소 예상',
       color: 'from-orange-500 to-red-500'
     }
   ];

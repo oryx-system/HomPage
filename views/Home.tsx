@@ -70,23 +70,23 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
         </div>
       </section>
 
-      {/* 압도적인 신뢰 지표 섹션 */}
+      {/* 기술 목표 섹션 */}
       <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row gap-12 justify-between items-center py-20 border-y border-slate-100">
             <div className="text-center md:text-left">
               <p className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2">100%</p>
-              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">CFR Part 11 Compliant</p>
+              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">CFR Part 11 설계 기준</p>
             </div>
             <div className="w-px h-12 bg-slate-200 hidden md:block" />
             <div className="text-center md:text-left">
               <p className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2">ZERO</p>
-              <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Data Manipulation</p>
+              <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Data Manipulation 목표</p>
             </div>
             <div className="w-px h-12 bg-slate-200 hidden md:block" />
             <div className="text-center md:text-left">
               <p className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2">99.9%</p>
-              <p className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em]">Uptime Reliability</p>
+              <p className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em]">Uptime 목표 안정성</p>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
               경쟁사와의 <br /> <span className="text-purple-600">결정적 차이</span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto mb-16">
-              20년 PLC 현장 경험이 만든 국내 유일 장비 직접 연동 솔루션
+              20년 PLC 현장 경험 기반 장비 직접 연동 전문 솔루션
             </p>
           </div>
 

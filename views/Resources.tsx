@@ -37,7 +37,7 @@ const Resources: React.FC = () => {
       type: 'whitepaper',
       category: '규제 준수',
       pages: 45,
-      downloads: 1523,
+      downloads: 0,
       icon: <Shield className="w-8 h-8" />,
       fileSize: '3.2 MB'
     },
@@ -48,18 +48,18 @@ const Resources: React.FC = () => {
       type: 'checklist',
       category: '데이터 무결성',
       pages: 12,
-      downloads: 2847,
+      downloads: 0,
       icon: <FileCheck className="w-8 h-8" />,
       fileSize: '850 KB'
     },
     {
       id: 3,
-      title: '글로벌 제약사 도입 사례 연구',
-      description: '국내외 주요 제약사의 Oryx DataSafe 도입 사례와 ROI 분석, 성공 요인을 분석한 케이스 스터디입니다.',
-      type: 'case-study',
-      category: '도입 사례',
+      title: '전자서명 시스템 ROI 분석 가이드',
+      description: '전자서명 시스템 도입 시 예상되는 ROI와 효율화 효과를 분석한 가이드입니다.',
+      type: 'guide',
+      category: 'ROI 분석',
       pages: 28,
-      downloads: 1256,
+      downloads: 0,
       icon: <Users className="w-8 h-8" />,
       fileSize: '4.5 MB'
     },
@@ -70,7 +70,7 @@ const Resources: React.FC = () => {
       type: 'guide',
       category: '시스템 선택',
       pages: 32,
-      downloads: 1894,
+      downloads: 0,
       icon: <BookOpen className="w-8 h-8" />,
       fileSize: '2.8 MB'
     },
@@ -81,18 +81,18 @@ const Resources: React.FC = () => {
       type: 'whitepaper',
       category: '기술',
       pages: 38,
-      downloads: 967,
+      downloads: 0,
       icon: <FileText className="w-8 h-8" />,
       fileSize: '3.9 MB'
     },
     {
       id: 6,
       title: 'ROI 계산 및 비용 절감 분석',
-      description: 'Oryx DataSafe 도입 시 예상되는 비용 절감 효과와 투자 대비 수익률을 계산하는 방법을 안내합니다.',
+      description: '전자서명 시스템 도입 시 예상되는 비용 절감 효과와 투자 대비 수익률을 계산하는 방법을 안내합니다.',
       type: 'guide',
       category: '비즈니스',
       pages: 18,
-      downloads: 2134,
+      downloads: 0,
       icon: <TrendingUp className="w-8 h-8" />,
       fileSize: '1.5 MB'
     }

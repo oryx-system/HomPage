@@ -20,8 +20,8 @@ const Footer: React.FC<FooterProps> = ({ setView }) => {
             <Logo className="h-12 w-auto" />
           </div>
           <p className="text-slate-600 max-w-sm mb-8 leading-relaxed font-medium">
-            엄격한 규제 환경에 최적화된 세계 최고의 전자서명 플랫폼입니다. <br />
-            제약 공정의 첫 1초부터 데이터의 무결성을 보장하는 유일한 기술을 제공합니다.
+            엄격한 규제 환경에 최적화된 전자서명 플랫폼입니다. <br />
+            제약 공정의 첫 1초부터 데이터 무결성을 목표로 설계된 전문 솔루션입니다.
           </p>
           <div className="flex gap-4">
             <div className="p-2.5 bg-white rounded-xl border border-slate-100 hover:text-blue-600 cursor-pointer transition-all shadow-sm">

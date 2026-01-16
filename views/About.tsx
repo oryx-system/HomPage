@@ -99,7 +99,7 @@ const About: React.FC = () => {
             },
             {
               title: "비전 (Vision)",
-              desc: "글로벌 GxP 표준의 실시간 디지털 검증을 주도하는 세계 최고의 데이터 컴플라이언스 플랫폼이 됩니다.",
+              desc: "글로벌 GxP 표준의 실시간 디지털 검증을 선도하는 데이터 컴플라이언스 플랫폼을 목표로 합니다.",
               icon: <Eye className="w-8 h-8 text-purple-400" />
             },
             {
