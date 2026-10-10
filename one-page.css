@@ -127,11 +127,13 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 
 /* DataStation uses the official dark product section and a restrained divider hierarchy. */
 .ds-page .ds-hero {padding-block:104px;background:#071b31;border-color:#325277;color:white;}
+.ds-hero .eyebrow {color:#94b9e9;}
 .ds-hero-layout {grid-template-columns:1.3fr 1fr;gap:14%;}
 .ds-page .ds-product-title {font-size:clamp(2rem,3.35vw,3rem);font-weight:700;line-height:1.4;letter-spacing:-.06em;color:white;}
 .ds-page .ds-headline {font-size:1.7rem;line-height:1.55;font-weight:600;letter-spacing:-.025em;color:#86b7ff;}
 .ds-page .ds-hero-lead {font-size:1.0625rem;line-height:2;color:#b5c7dd;}
-.ds-page .ds-source-note {font-size:.875rem;line-height:1.85;color:#b8cce5;}
+.ds-page .ds-source-note {font-size:.875rem;line-height:1.85;color:var(--muted);}
+.ds-hero .ds-source-note {color:#b8cce5;}
 .ds-hero .ds-flow-figure {border:1px solid #325277;border-radius:0;background:#0d2847;padding:30px;box-shadow:none;}
 .ds-hero .ds-flow-heading {color:#94b9e9;font-size:.875rem;}
 .ds-hero .ds-flow-list li {min-width:0;border-color:#325277;border-radius:0;background:#0d2847;}
@@ -141,6 +143,7 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .ds-hero .ds-flow-list strong {font-size:1.0625rem;color:white;font-weight:650;}
 .ds-hero .ds-flow-list p {font-size:.9375rem;color:#d5e6fc;}
 .ds-hero .ds-flow-number {color:#a7cdff;}
+.ds-hero .ds-flow-list li:nth-child(2) .ds-flow-number {color:#d5e6fc;}
 .ds-hero .ds-flow-foundation {border-color:#325277;color:#c5d8f1;font-size:.875rem;}
 .ds-hero .ds-flow-figure figcaption {color:#b8cce5;font-size:.875rem;}
 .ds-feature-grid {gap:50px;}
@@ -177,6 +180,7 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .brochure-card .section-kicker {font-size:.875rem;letter-spacing:.06em;color:#99bdf0;}
 .brochure-card h3 {font-size:1.625rem;line-height:1.5;font-weight:650;margin:9px 0 12px;color:white;}
 .brochure-card-content > p:not(.section-kicker) {font-size:1rem;line-height:1.85;color:#b7cce5;}
+.brochure-card .text-link {color:#99bdf0;}
 .brochure-actions {gap:14px;margin-top:20px;}
 .brochure-actions .button {flex:0 1 auto;min-width:0;font-size:.875rem;padding-inline:25px;gap:10px;}
 .brochure-card .button-secondary {background:transparent;color:#e2eeff;border-color:#7492b6;}
