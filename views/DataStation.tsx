@@ -113,7 +113,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
               <a className="button button-primary" href={inquiryUrl}>{t("DataStation 도입 문의")}<Mail size={17} aria-hidden="true" /></a>
               <a className="button button-secondary" href="#brochures">{t("제품 소개서 보기")}<ArrowRight size={17} aria-hidden="true" /></a>
             </div>
-            <p className="ds-source-note">{t("Oryx DataSafe의 DataStation 제품 소개서 기반 안내입니다.")}<br />{t("전자서명과 원격 검토 기능은 제품 구성에 따라 다릅니다.")}</p>
+            <p className="ds-source-note">{t("DataStation 제품 소개서에 근거한 기능 안내입니다.")}<br />{t("전자서명과 원격 검토 기능은 제품 구성에 따라 다릅니다.")}</p>
           </div>
           <DataFlow />
         </div>
@@ -122,7 +122,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
       <div className="ds-intro-bar">
         <div className="container">
           <strong>{t("수집 · 보호 · 보고서 · 검토 · 보관")}</strong>
-          <p>{t("DataStation은 기록 관리 소프트웨어입니다. 설비 제어기·조작 화면(PLC/HMI) 프로그램은 별도로 제공합니다.")}</p>
+          <p>{t("DataStation은 기록 관리 소프트웨어입니다. 설비 제어기·조작 화면(PLC/HMI) 프로그램은 DataStation의 기능 범위에 포함되지 않습니다.")}</p>
         </div>
       </div>
 

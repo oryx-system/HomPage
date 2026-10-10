@@ -71,9 +71,9 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Confidential material, passwords and personal information are not needed for an initial inquiry.",
     "ru": "Для первоначального обращения не нужны конфиденциальные материалы, пароли или персональные данные."
   },
-  "ABOUT ORYX SYSTEM": {
-    "en": "ABOUT ORYX SYSTEM",
-    "ru": "О КОМПАНИИ ORYX SYSTEM"
+  "ABOUT ORYX DATASAFE": {
+    "en": "ABOUT ORYX DATASAFE",
+    "ru": "О КОМПАНИИ ORYX DATASAFE"
   },
   "소재지": {
     "en": "Location",
@@ -86,10 +86,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
   "CONTACT": {
     "en": "CONTACT",
     "ru": "КОНТАКТЫ"
-  },
-  "오릭스 시스템": {
-    "en": "Oryx System",
-    "ru": "Oryx System"
   },
   "SYSTEM · PROCESS · VALIDATION": {
     "en": "SYSTEM · PROCESS · VALIDATION",
@@ -183,9 +179,9 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "The formal privacy policy, including how email inquiries are handled and how long they are retained, still requires the operator’s confirmation and finalization.",
     "ru": "Официальная политика обработки персональных данных, включая порядок обработки обращений по электронной почте и срок их хранения, еще требует проверки и окончательного утверждения оператором сайта."
   },
-  "Oryx DataSafe는 오릭스 시스템의 전자기록·전자서명·데이터 무결성 솔루션입니다.": {
-    "en": "Oryx DataSafe is Oryx System’s solution for electronic records, electronic signatures and data integrity.",
-    "ru": "Oryx DataSafe — решение Oryx System для электронных записей, электронных подписей и целостности данных."
+  "Oryx DataSafe는 홍승철 대표가 운영하는 IT 중심 회사이며 Oryx System과 별도로 운영됩니다. 전자기록과 데이터 관리, 무결성·보안을 위한 소프트웨어를 개발합니다.": {
+    "en": "Oryx DataSafe is an IT-focused company run by Seung-cheol Hong and operates separately from Oryx System. It develops software for electronic records, data management, data integrity, and security.",
+    "ru": "Oryx DataSafe — ИТ-компания под руководством Seung-cheol Hong, работающая отдельно от Oryx System. Она разрабатывает программное обеспечение для электронных записей, управления данными, обеспечения их целостности и безопасности."
   },
   "대표": {
     "en": "Representative",
@@ -207,9 +203,17 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Information to discuss: deliverables, schedule, contract terms",
     "ru": "Темы для обсуждения: результаты работ, сроки, условия договора"
   },
-  "대표의 국내외 20년 현장 경험을 바탕으로 업무와 설비에 맞는 적용 범위를 검토합니다.": {
-    "en": "Drawing on our founder’s 20 years of field experience in Korea and abroad, we review the scope of application suited to your work and equipment.",
-    "ru": "Опираясь на 20 лет практического опыта основателя в Корее и за рубежом, мы оцениваем область применения с учетом рабочих процессов и оборудования."
+  "DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.": {
+    "en": "DataStation supports the collection, protection, and review of equipment records; LockDown supports access control for work PCs; Calibration supports the management of calibration records and workflows.",
+    "ru": "DataStation поддерживает сбор, защиту и проверку записей оборудования; LockDown — контроль доступа к рабочим ПК; Calibration — управление записями калибровки и рабочими процессами."
+  },
+  "대표의 현장 경험": {
+    "en": "Representative’s field experience",
+    "ru": "Практический опыт руководителя"
+  },
+  "국내외 20년": {
+    "en": "20 years in Korea and abroad",
+    "ru": "20 лет в Корее и за рубежом"
   },
   "PRIVACY": {
     "en": "PRIVACY",

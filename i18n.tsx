@@ -38,7 +38,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     position.current = null;
     atTop.current = false;
     const title = t('Oryx DataSafe | 전자기록·전자서명·데이터 무결성');
-    const description = t('오릭스 시스템의 전자기록, 전자서명, 데이터 무결성 및 교정 업무 솔루션. 제품 기능과 도입 범위를 확인하세요.');
+    const description = t('Oryx DataSafe의 전자기록, 전자서명, 데이터 무결성 및 교정 업무 소프트웨어. 제품 기능과 도입 범위를 확인하세요.');
     document.title = title;
     for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) document.querySelector(selector)?.setAttribute('content', description);
     for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) document.querySelector(selector)?.setAttribute('content', title);

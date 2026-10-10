@@ -133,14 +133,15 @@ export function AboutSection() {
     <section id="about" className="section supporting-section" data-main-section tabIndex={-1} aria-labelledby="about-heading">
       <div className="container">
         <div className="section-heading reveal">
-          <p className="section-kicker">{t("ABOUT ORYX SYSTEM")}</p>
-          <h2 id="about-heading">{t("오릭스 시스템")}</h2>
-          <p>{t("Oryx DataSafe는 오릭스 시스템의 전자기록·전자서명·데이터 무결성 솔루션입니다.")}</p>
+          <p className="section-kicker">{t("ABOUT ORYX DATASAFE")}</p>
+          <h2 id="about-heading">Oryx DataSafe</h2>
+          <p>{t("Oryx DataSafe는 홍승철 대표가 운영하는 IT 중심 회사이며 Oryx System과 별도로 운영됩니다. 전자기록과 데이터 관리, 무결성·보안을 위한 소프트웨어를 개발합니다.")}</p>
         </div>
         <div className="company-summary reveal">
-          <p>{t("대표의 국내외 20년 현장 경험을 바탕으로 업무와 설비에 맞는 적용 범위를 검토합니다.")}</p>
+          <p>{t("DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.")}</p>
           <dl className="about-facts">
             <div><dt>{t("대표")}</dt><dd>{t("홍승철 · Founder & CEO")}</dd></div>
+            <div><dt>{t("대표의 현장 경험")}</dt><dd>{t("국내외 20년")}</dd></div>
             <div><dt>{t("소재지")}</dt><dd>{t("충청남도 금산군 비호산로 4 1층")}</dd></div>
           </dl>
         </div>

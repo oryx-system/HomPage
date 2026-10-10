@@ -21,7 +21,6 @@ export const brochureTranslations: Record<string, { en: string; ru: string }> = 
   "DataStation 기능 살펴보기": { en: "Explore DataStation features", ru: "Узнать о функциях DataStation" },
   "미리보기는 원본 PDF를 새 탭에서 엽니다. 기기의 PDF 뷰어 설정에 따라 파일이 다운로드될 수 있습니다.": { en: "Preview opens the original PDF in a new tab. Your device's PDF viewer settings may cause the file to download instead.", ru: "Просмотр открывает оригинал PDF в новой вкладке. В зависимости от настроек PDF на вашем устройстве файл может быть скачан." },
   "제품별 한국어·영어 원본 PDF를 제공합니다.": { en: "Original product PDFs are provided in Korean and English.", ru: "Оригиналы PDF для каждого продукта предоставляются на корейском и английском языках." },
-  "공식 사이트 방문": { en: "Visit the official website", ru: "Открыть официальный сайт" },
   "언어별 구성과 페이지 수는 다를 수 있으며, 적용 기능과 제공 버전은 도입 상담에서 확인해 주세요.": { en: "Content and page counts may differ by language. Confirm applicable features and available versions during your implementation consultation.", ru: "Содержание и количество страниц могут отличаться в разных языковых версиях. Доступные функции и версии уточняются на консультации по внедрению." },
   "러시아어 PDF는 제공되지 않습니다. 한국어 또는 영어 원본을 확인해 주세요.": { en: "A Russian PDF is not available. Please use the Korean or English originals.", ru: "PDF на русском языке не предоставляется. Пожалуйста, используйте оригиналы на корейском или английском языке." },
   "LET’S TALK": { en: "LET’S TALK", ru: "ОБСУДИМ ВНЕДРЕНИЕ" },

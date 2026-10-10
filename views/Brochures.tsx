@@ -62,7 +62,7 @@ export default function BrochuresPage({ embedded = false }: { embedded?: boolean
           </div>
           <div className="brochure-guidance">
             <p>{t("미리보기는 원본 PDF를 새 탭에서 엽니다. 기기의 PDF 뷰어 설정에 따라 파일이 다운로드될 수 있습니다.")}</p>
-            <p>{t("제품별 한국어·영어 원본 PDF를 제공합니다.")} <a href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer">{t("공식 사이트 방문")}<span className="sr-only"> {t("(새 탭)")}</span></a> {t("언어별 구성과 페이지 수는 다를 수 있으며, 적용 기능과 제공 버전은 도입 상담에서 확인해 주세요.")}</p>
+            <p>{t("제품별 한국어·영어 원본 PDF를 제공합니다.")} <a href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer">{t("관련 사이트 · Oryx System")}<span className="sr-only"> {t("(새 탭)")}</span></a> {t("언어별 구성과 페이지 수는 다를 수 있으며, 적용 기능과 제공 버전은 도입 상담에서 확인해 주세요.")}</p>
             {uiLanguage === "ru" && <p>{t("러시아어 PDF는 제공되지 않습니다. 한국어 또는 영어 원본을 확인해 주세요.")}</p>}
           </div>
         </div>

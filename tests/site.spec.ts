@@ -34,6 +34,42 @@ async function expectNoOverflow(page: Page) {
   expect(dimensions.body, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
 }
 
+async function expectDataSafeIdentity(page: Page) {
+  const organization = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() ?? '{}');
+  expect(organization['@type']).toBe('Organization');
+  expect(organization.name).toMatch(/DataSafe|데이터세이프/i);
+  expect(`${organization.name} ${organization.alternateName ?? ''}`).not.toMatch(/Oryx\s*System|오릭스\s*시스템/i);
+  expect(new URL(organization.url).origin).toBe('https://oryxdatasafe.com');
+  await expect(page.locator('meta[name="author"]')).toHaveAttribute('content', /DataSafe|데이터세이프/i);
+  for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+    const description = await page.locator(selector).getAttribute('content');
+    expect(description).toBeTruthy();
+    expect(description).not.toMatch(/Oryx\s*System|오릭스\s*시스템|Орикс\s*Систем/i);
+  }
+  // A related company-site link may retain its proper name. The site's own
+  // introduction and copyright must reflect the corrected DataSafe identity.
+  const identityText = await page.locator('#home, .proof-strip, .site-footer').evaluateAll(roots => {
+    const text: string[] = [];
+    for (const root of roots) {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const parent = node.parentElement;
+        if (!parent || !parent.getClientRects().length || parent.closest('a[href^="https://oryxsystem.co.kr"]')) continue;
+        text.push(node.textContent ?? '');
+      }
+    }
+    return text.join(' ');
+  });
+  expect(identityText).not.toMatch(/Oryx\s*System|오릭스\s*시스템|Орикс\s*Систем/i);
+  await expect(page.locator('#about')).toContainText(/DataSafe|데이터세이프/i);
+  // About may name Oryx System to explain the corrected distinction.
+  // Verify that distinction rather than rejecting the company name itself.
+  await expect(page.locator('#about')).toContainText(/별도로\s*운영|operates\s+separately\s+from|отдельно\s+от/i);
+  await expect(page.locator('.proof-strip')).not.toContainText(/\b20\b|20\s*년|\b2023\b/);
+  await expect(page.locator('.hero-artwork figcaption')).toHaveCount(0);
+  await expect(page.locator('.hero-monitor')).toHaveAccessibleName(/.+/);
+}
+
 async function expectAnchorVisible(page: Page, id: string) {
   const section = page.locator(`#${id}`);
   await expect(section).toHaveCount(1);
@@ -205,6 +241,7 @@ test('stable one-page metadata and referenced icon or social images are availabl
   expect(description).toBeTruthy();
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://oryxdatasafe.com/');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
+  await expectDataSafeIdentity(page);
   const assets = await page.locator('link[rel~="icon"], link[rel="apple-touch-icon"], meta[property="og:image"], meta[name="twitter:image"]').evaluateAll(elements => elements.map(element => element.getAttribute('href') || element.getAttribute('content')));
   expect(assets.length).toBeGreaterThanOrEqual(3);
   for (const asset of new Set(assets)) {
@@ -286,6 +323,7 @@ test('three site languages translate every section and preserve the reading posi
     // Legacy URL redirects and unchanged approved PDF bytes are outside this check.
     expect(await page.locator('body').innerText()).not.toMatch(/가격|견적|요금|\b(?:quotation|pricing|cost|price|quote)s?\b|коммерческ[а-яё]*|стоимост[а-яё]*/i);
     await expectNoOverflow(page);
+    await expectDataSafeIdentity(page);
     for (const id of sections) {
       await page.locator(`#${id}`).scrollIntoViewIfNeeded();
       await expect(page.locator(`#${id}`).locator('h1, h2').first()).toBeVisible();

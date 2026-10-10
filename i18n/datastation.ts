@@ -187,9 +187,9 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     en: "View product brochures",
     ru: "Смотреть брошюры",
   },
-  "Oryx DataSafe의 DataStation 제품 소개서 기반 안내입니다.": {
-    en: "This overview is based on Oryx DataSafe's DataStation product brochure.",
-    ru: "Описание основано на брошюре DataStation от Oryx DataSafe.",
+  "DataStation 제품 소개서에 근거한 기능 안내입니다.": {
+    en: "This feature overview is based on the DataStation product brochure.",
+    ru: "Описание функций основано на брошюре DataStation.",
   },
   "전자서명과 원격 검토 기능은 제품 구성에 따라 다릅니다.": {
     en: "Electronic signature and remote review features depend on the product edition.",
@@ -199,9 +199,9 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     en: "Collect · Protect · Report · Review · Retain",
     ru: "Сбор · Защита · Отчёты · Проверка · Хранение",
   },
-  "DataStation은 기록 관리 소프트웨어입니다. 설비 제어기·조작 화면(PLC/HMI) 프로그램은 별도로 제공합니다.": {
-    en: "DataStation manages records. Equipment control and operator interface programs (PLC/HMI) are provided separately.",
-    ru: "DataStation предназначен для управления записями. Программы управления оборудованием и операторских интерфейсов (PLC/HMI) предоставляются отдельно.",
+  "DataStation은 기록 관리 소프트웨어입니다. 설비 제어기·조작 화면(PLC/HMI) 프로그램은 DataStation의 기능 범위에 포함되지 않습니다.": {
+    en: "DataStation is record management software. Equipment control and operator interface programs (PLC/HMI) are outside DataStation's scope.",
+    ru: "DataStation — программное обеспечение для управления записями. Программы управления оборудованием и операторских интерфейсов (PLC/HMI) не входят в функции DataStation.",
   },
   "COLLECT & PROTECT": {
     en: "COLLECT & PROTECT",

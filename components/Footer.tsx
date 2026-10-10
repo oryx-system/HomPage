@@ -8,11 +8,11 @@ export default function Footer() {
   return <footer className="site-footer"><div className="container">
     <div className="footer-top">
       <div className="footer-brand">
-        <a href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer" aria-label={t('오릭스 시스템 사이트')}><Logo variant="company" /></a>
-        <a className="text-link" href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer">{t('오릭스 시스템 사이트')}<ArrowUpRight size={15} aria-hidden="true" /><span className="sr-only">{t(' (새 탭)')}</span></a>
+        <a href="#home" aria-label={t('Oryx DataSafe 홈')}><Logo /></a>
+        <a className="text-link" href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer">{t('관련 사이트 · Oryx System')}<ArrowUpRight size={15} aria-hidden="true" /><span className="sr-only">{t(' (새 탭)')}</span></a>
       </div>
       <nav aria-label={t('하단 메뉴')}><p className="footer-label">DATASAFE</p>{links.map(([id,label])=><a key={id} href={`#${id}`}>{t(label)}</a>)}</nav>
     </div>
-    <div className="footer-bottom"><p>© {new Date().getFullYear()} Oryx System. {t('All rights reserved.')}</p></div>
+    <div className="footer-bottom"><p>© {new Date().getFullYear()} Oryx DataSafe. {t('All rights reserved.')}</p></div>
   </div></footer>;
 }
