@@ -64,6 +64,9 @@ test('approved monitor stays still while its shield and label brighten together,
       baseTransform: getComputedStyle(base).transform,
       monitorTransform: getComputedStyle(element).transform,
       edgeMask: getComputedStyle(element).maskImage,
+      lightFilter: getComputedStyle(group).filter,
+      pulseFilter: getComputedStyle(group.querySelector('image')!).filter,
+      labelFill: getComputedStyle(group.querySelector('text')!).fill,
       masks,
     };
   });
@@ -78,6 +81,13 @@ test('approved monitor stays still while its shield and label brighten together,
   expect(effect.baseTransform).toBe('none');
   expect(effect.monitorTransform).toBe('none');
   expect(effect.edgeMask).not.toBe('none');
+  expect(effect.lightFilter).not.toBe('none');
+  expect(Number(effect.pulseFilter.match(/brightness\(([^)]+)\)/)?.[1])).toBeGreaterThanOrEqual(2);
+  expect(Number(effect.pulseFilter.match(/saturate\(([^)]+)\)/)?.[1])).toBeGreaterThanOrEqual(1.2);
+  const labelRGB = effect.labelFill.match(/[\d.]+/g)?.map(Number) ?? [];
+  expect(labelRGB[0]).toBeGreaterThanOrEqual(200);
+  expect(labelRGB[1]).toBeGreaterThanOrEqual(240);
+  expect(labelRGB[2]).toBeGreaterThanOrEqual(245);
   expect(effect.masks.every(mask => mask.exists && mask.type === 'mask' && mask.paths! > 0)).toBe(true);
 
   await mkdir(directory, { recursive: true });
@@ -92,15 +102,21 @@ test('approved monitor stays still while its shield and label brighten together,
     frames.push({ phase, milliseconds, box, opacity });
     await monitor.screenshot({ path: join(directory, `${testInfo.project.name}-hero-${phase}.png`) });
   }
-  expect(frames[0].opacity).toBeLessThanOrEqual(0.05);
-  expect(frames[1].opacity).toBeGreaterThanOrEqual(0.35);
+  expect(frames[0].opacity).toBeGreaterThanOrEqual(0.15);
+  expect(frames[0].opacity).toBeLessThanOrEqual(0.2);
+  expect(frames[1].opacity).toBeGreaterThanOrEqual(0.9);
+  expect(frames[1].opacity - frames[0].opacity).toBeGreaterThanOrEqual(0.6);
   expect(frames[0].box).toEqual(frames[1].box);
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect.poll(() => light.evaluate(element => ({ opacity: getComputedStyle(element).opacity, animations: element.getAnimations().length }))).toEqual({ opacity: '0', animations: 0 });
+  const reduced = () => light.evaluate(element => ({ opacity: Number(getComputedStyle(element).opacity), animations: element.getAnimations().length }));
+  await expect.poll(async () => (await reduced()).animations).toBe(0);
+  const reducedEffect = await reduced();
+  expect(reducedEffect.opacity).toBeGreaterThanOrEqual(0.7);
+  expect(reducedEffect.opacity).toBeLessThanOrEqual(0.75);
   await expect(monitor).toBeVisible();
   const reducedBox = await monitor.boundingBox();
   expect(reducedBox).toEqual(frames[0].box);
   await monitor.screenshot({ path: join(directory, `${testInfo.project.name}-hero-reduced.png`) });
-  await writeFile(join(directory, `${testInfo.project.name}-hero-evidence.json`), JSON.stringify({ approvedImage, approvedBytes, approvedSHA256, effect, frames, reducedBox, errors }, null, 2));
+  await writeFile(join(directory, `${testInfo.project.name}-hero-evidence.json`), JSON.stringify({ approvedImage, approvedBytes, approvedSHA256, effect, frames, reducedEffect, reducedBox, errors }, null, 2));
   expect(errors).toEqual([]);
 });

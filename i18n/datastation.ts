@@ -387,9 +387,9 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     en: "Choose the edition that fits your workflow.",
     ru: "Выберите редакцию под ваши задачи.",
   },
-  "전자서명과 사무실 검토, 전용 보관의 필요에 따라 Standard·Professional·Enterprise를 검토합니다. 가격은 개별 견적으로 안내합니다.": {
-    en: "Consider Standard, Professional or Enterprise based on your need for electronic signatures, office-based review and a dedicated repository. Pricing is provided by individual quotation.",
-    ru: "Выбирайте Standard, Professional или Enterprise с учётом необходимости электронных подписей, проверки из офиса и отдельного хранилища. Стоимость определяется индивидуальным предложением.",
+  "전자서명과 사무실 검토, 전용 보관의 필요에 따라 Standard·Professional·Enterprise를 검토합니다.": {
+    en: "Consider Standard, Professional or Enterprise based on your need for electronic signatures, office-based review and a dedicated repository.",
+    ru: "Выбирайте Standard, Professional или Enterprise с учётом необходимости электронных подписей, проверки из офиса и отдельного хранилища.",
   },
   "비교표가 화면보다 넓으면 좌우로 스크롤하세요.": {
     en: "Scroll horizontally if the comparison table is wider than your screen.",

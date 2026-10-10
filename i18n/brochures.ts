@@ -26,6 +26,6 @@ export const brochureTranslations: Record<string, { en: string; ru: string }> = 
   "러시아어 PDF는 제공되지 않습니다. 한국어 또는 영어 원본을 확인해 주세요.": { en: "A Russian PDF is not available. Please use the Korean or English originals.", ru: "PDF на русском языке не предоставляется. Пожалуйста, используйте оригиналы на корейском или английском языке." },
   "LET’S TALK": { en: "LET’S TALK", ru: "ОБСУДИМ ВНЕДРЕНИЕ" },
   "자료에서 찾은 기능을 현장에 연결하세요.": { en: "Bring the features in the brochure to your site.", ru: "Обсудите применение функций на вашем объекте." },
-  "대상 설비와 기록 형식, 사용자 역할을 알려주시면 적용 범위와 견적을 함께 검토합니다.": { en: "Share your equipment, record formats, and user roles so we can review the scope and quotation together.", ru: "Расскажите об оборудовании, форматах записей и ролях пользователей, чтобы согласовать объём внедрения и расчёт стоимости." },
+  "대상 설비와 기록 형식, 사용자 역할을 바탕으로 적용 범위를 검토합니다.": { en: "Review the implementation scope based on equipment, record formats and user roles.", ru: "Область внедрения оценивается с учётом оборудования, форматов записей и ролей пользователей." },
   "도입 문의": { en: "Discuss implementation", ru: "Обсудить внедрение" },
 };

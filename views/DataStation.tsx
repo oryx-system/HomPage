@@ -221,7 +221,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
           <div className="section-heading reveal">
             <p className="section-kicker">{t("CHOOSE YOUR CONFIGURATION")}</p>
             <SectionTitle id="ds-editions-title" className="ds-section-title">{t("업무 범위에 맞는 구성을 선택합니다.")}</SectionTitle>
-            <p>{t("전자서명과 사무실 검토, 전용 보관의 필요에 따라 Standard·Professional·Enterprise를 검토합니다. 가격은 개별 견적으로 안내합니다.")}</p>
+            <p>{t("전자서명과 사무실 검토, 전용 보관의 필요에 따라 Standard·Professional·Enterprise를 검토합니다.")}</p>
           </div>
           <p className="ds-table-hint">{t("비교표가 화면보다 넓으면 좌우로 스크롤하세요.")}</p>
           <div className="ds-table-wrap reveal" role="region" tabIndex={0} aria-label={t("DataStation 제품 구성 비교표 (좌우 스크롤 가능)")}>

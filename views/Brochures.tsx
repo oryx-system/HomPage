@@ -70,7 +70,7 @@ export default function BrochuresPage({ embedded = false }: { embedded?: boolean
       {!embedded && <section className="section">
         <div className="container">
           <div className="cta-panel">
-            <div><p className="section-kicker">{t("LET’S TALK")}</p><h2>{t("자료에서 찾은 기능을 현장에 연결하세요.")}</h2><p>{t("대상 설비와 기록 형식, 사용자 역할을 알려주시면 적용 범위와 견적을 함께 검토합니다.")}</p></div>
+            <div><p className="section-kicker">{t("LET’S TALK")}</p><h2>{t("자료에서 찾은 기능을 현장에 연결하세요.")}</h2><p>{t("대상 설비와 기록 형식, 사용자 역할을 바탕으로 적용 범위를 검토합니다.")}</p></div>
             <a className="button button-primary" href="#contact">{t("도입 문의")} <ArrowRight size={18} aria-hidden="true" /></a>
           </div>
         </div>

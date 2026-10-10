@@ -232,10 +232,21 @@ test('contact has direct mail and telephone links without a form or false succes
   const contact = page.locator('#contact');
   await expect(page.locator('main form, main textarea, main input')).toHaveCount(0);
   await expect(contact.locator('[role="status"], [role="alert"]')).toHaveCount(0);
-  const sendEmail = contact.locator('a.button[href="mailto:schong@oryxsystem.co.kr"]');
+  const sendEmail = contact.locator('a[href="mailto:schong@oryxsystem.co.kr"]');
   await expect(sendEmail).toHaveCount(1);
   await expect(sendEmail).toBeVisible();
-  await expect(contact.locator('a[href="tel:+821065450415"]').first()).toBeVisible();
+  const telephone = contact.locator('a[href="tel:+821065450415"]');
+  await expect(telephone).toHaveCount(1);
+  await expect(telephone).toBeVisible();
+  for (const duplicateArea of [page.locator('#privacy'), page.locator('.site-footer')]) {
+    await expect(duplicateArea.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(0);
+    await expect(duplicateArea).not.toContainText('schong@oryxsystem.co.kr');
+    await expect(duplicateArea).not.toContainText(/6545[\s-]*0415/);
+  }
+  // Keep direct contact in a single main section. Product links may carry a
+  // subject, but repeated bare email/telephone actions add no new destination.
+  await expect(page.locator('main a[href="mailto:schong@oryxsystem.co.kr"]')).toHaveCount(1);
+  await expect(page.locator('main a[href="tel:+821065450415"]')).toHaveCount(1);
   await sendEmail.focus();
   await page.keyboard.press('Enter');
   await expect.poll(() => requestedMail).toBe('mailto:schong@oryxsystem.co.kr');
@@ -271,6 +282,9 @@ test('three site languages translate every section and preserve the reading posi
     expect(after).toBeTruthy();
     expect(Math.abs(after!.y - before!.y), `${currentLanguage}→${language}: same reading heading`).toBeLessThanOrEqual(2);
     expect(new URL(page.url()).hash).toBe(hashBefore);
+    // Prices and quotations were removed by the user across all visible UI.
+    // Legacy URL redirects and unchanged approved PDF bytes are outside this check.
+    expect(await page.locator('body').innerText()).not.toMatch(/가격|견적|요금|\b(?:quotation|pricing|cost|price|quote)s?\b|коммерческ[а-яё]*|стоимост[а-яё]*/i);
     await expectNoOverflow(page);
     for (const id of sections) {
       await page.locator(`#${id}`).scrollIntoViewIfNeeded();
@@ -324,8 +338,24 @@ test('language dropdown supports keyboard selection and Escape focus restoration
   const trigger = page.locator('.language-trigger:visible').first();
   await expect(trigger).toBeVisible();
   const bounds = await trigger.boundingBox();
-  expect(bounds?.width).toBeGreaterThanOrEqual(44);
+  expect(bounds?.width).toBeCloseTo(133, 0);
   expect(bounds?.height).toBeGreaterThanOrEqual(44);
+  // Independent company reference: OryxSystem_Web main
+  // 1daee2080482666bb60466dc6ee56514aa05e467 public/index.html.
+  const globe = trigger.locator('..').locator('.language-globe');
+  await expect(globe).toHaveCount(1);
+  await expect(globe).toHaveAttribute('viewBox', '0 0 24 24');
+  await expect(globe).toHaveAttribute('aria-hidden', 'true');
+  await expect(globe.locator('circle[cx="12"][cy="12"][r="9"]')).toHaveCount(1);
+  await expect(globe.locator('ellipse[cx="12"][cy="12"][rx="4"][ry="9"]')).toHaveCount(1);
+  await expect(globe.locator('path[d="M3 12h18"]')).toHaveCount(1);
+  expect(await globe.evaluate(element => parseFloat(getComputedStyle(element).strokeWidth))).toBe(1.6);
+  const globeBounds = await globe.boundingBox();
+  expect(globeBounds).toBeTruthy();
+  expect(globeBounds!.x).toBeGreaterThanOrEqual(bounds!.x);
+  expect(globeBounds!.x + globeBounds!.width).toBeLessThanOrEqual(bounds!.x + bounds!.width);
+  expect(globeBounds!.y).toBeGreaterThanOrEqual(bounds!.y);
+  expect(globeBounds!.y + globeBounds!.height).toBeLessThanOrEqual(bounds!.y + bounds!.height);
   await trigger.focus();
   await page.keyboard.press('Enter');
   const options = page.locator('.language-options:visible');
@@ -340,6 +370,7 @@ test('language dropdown supports keyboard selection and Escape focus restoration
     await selectSiteLanguage(page, language);
     await expect(page.locator('html')).toHaveAttribute('lang', language);
     await expect(trigger).toBeFocused();
+    expect((await trigger.boundingBox())?.width).toBeCloseTo(133, 0);
     await expectNoOverflow(page);
   }
 });

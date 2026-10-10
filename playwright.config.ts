@@ -19,6 +19,7 @@ export default defineConfig({
     reducedMotion: 'reduce',
   },
   projects: [
+    { name: 'phone-320', use: { viewport: { width: 320, height: 740 }, isMobile: true, hasTouch: true } },
     { name: 'phone-360', use: { viewport: { width: 360, height: 800 }, isMobile: true, hasTouch: true } },
     { name: 'phone-390', use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },
     { name: 'tablet-768', use: { viewport: { width: 768, height: 1024 }, hasTouch: true } },

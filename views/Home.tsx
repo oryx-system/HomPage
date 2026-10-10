@@ -27,6 +27,10 @@ export default function Home() {
               <mask id="security-light-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024">
                 <path d="M1044 324L1152 363L1144 491L1075 594L1024 623L937 553L915 440L929 378L984 355Z" fill="white" filter="url(#security-edge-feather)" />
               </mask>
+              <filter id="security-neon-glow" filterUnits="userSpaceOnUse" x="885" y="290" width="315" height="425" colorInterpolationFilters="sRGB">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="halo" />
+                <feMerge><feMergeNode in="halo" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
             </defs>
             <image href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#monitor-edge-mask)" aria-hidden="true" />
             <text className="hero-security-label" x="1038" y="658" textAnchor="middle" transform="rotate(3 1038 658)" aria-hidden="true">DATA SECURITY</text>

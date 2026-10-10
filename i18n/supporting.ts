@@ -23,18 +23,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Confirm: features and versions, integration conditions, roles and permissions",
     "ru": "Уточните: функции и версии, условия интеграции, роли и права доступа"
   },
-  "도입 계획과 견적 협의": {
-    "en": "Discuss the implementation plan and quotation",
-    "ru": "Согласование плана внедрения и стоимости"
-  },
-  "구성, 일정, 검증 요구와 지원 범위를 협의한 뒤 견적을 확인합니다.": {
-    "en": "We discuss the configuration, schedule, validation requirements and support scope before reviewing the quotation.",
-    "ru": "Мы обсуждаем конфигурацию, сроки, требования к валидации и объем поддержки, после чего согласуем коммерческое предложение."
-  },
-  "협의할 정보: 산출물, 비용, 일정, 계약 조건": {
-    "en": "Agree: deliverables, cost, schedule and contract terms",
-    "ru": "Согласуйте: результаты работ, стоимость, сроки и условия договора"
-  },
   "검증과 운영 준비": {
     "en": "Validation and operational readiness",
     "ru": "Валидация и подготовка к эксплуатации"
@@ -83,65 +71,9 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Confidential material, passwords and personal information are not needed for an initial inquiry.",
     "ru": "Для первоначального обращения не нужны конфиденциальные материалы, пароли или персональные данные."
   },
-  "가격과 지원은 견적으로 확인합니다.": {
-    "en": "Confirm pricing and support in your quotation.",
-    "ru": "Стоимость и поддержка уточняются в коммерческом предложении."
-  },
-  "구성 및 적용 범위에 따라 필요한 작업이 달라집니다. 제품 가격, 도입 비용, 유지보수와 서비스 수준은 개별 견적 및 계약에서 확인합니다.": {
-    "en": "The work required depends on the configuration and scope. Product pricing, implementation costs, maintenance and service levels are specified in an individual quotation and contract.",
-    "ru": "Необходимые работы зависят от конфигурации и области применения. Цена продукта, стоимость внедрения, обслуживание и уровень сервиса определяются в индивидуальном коммерческом предложении и договоре."
-  },
-  "견적에서 포함된 항목과 별도 협의가 필요한 항목을 함께 확인해 주세요.": {
-    "en": "Review what the quotation includes and which items require a separate agreement.",
-    "ru": "Уточните, что включено в предложение и какие пункты требуют отдельного согласования."
-  },
-  "견적 문의하기": {
-    "en": "Request a quotation",
-    "ru": "Запросить стоимость"
-  },
   "ABOUT ORYX SYSTEM": {
     "en": "ABOUT ORYX SYSTEM",
     "ru": "О КОМПАНИИ ORYX SYSTEM"
-  },
-  "현장의 경험을 기록의 신뢰로 연결합니다.": {
-    "en": "Field experience informs trustworthy records.",
-    "ru": "Практический опыт помогает обеспечивать надежность записей."
-  },
-  "Oryx DataSafe는 오릭스 시스템의 전자기록·전자서명·데이터 무결성 솔루션입니다. 제약·산업 현장의 업무와 데이터 관리 요구를 살펴봅니다.": {
-    "en": "Oryx DataSafe is Oryx System’s solution for electronic records, electronic signatures and data integrity. We review operational and data management needs at pharmaceutical and industrial sites.",
-    "ru": "Oryx DataSafe — решение Oryx System для электронных записей, электронных подписей и целостности данных. Мы изучаем рабочие процессы и потребности в управлении данными на фармацевтических и промышленных объектах."
-  },
-  "업무와 설비를 이해하는 데서 시작합니다.": {
-    "en": "We start by understanding your work and equipment.",
-    "ru": "Мы начинаем с понимания процессов и оборудования."
-  },
-  "기록을 만드는 사람, 확인하는 사람과 실제 운영 환경을 이해하고, 필요한 기능과 관리 절차를 구체적으로 논의합니다.": {
-    "en": "We seek to understand the people who create and review records and the actual operating environment, then discuss the required features and management procedures in detail.",
-    "ru": "Мы учитываем потребности тех, кто создает и проверяет записи, и реальные условия эксплуатации, а затем подробно обсуждаем необходимые функции и процедуры управления."
-  },
-  "오릭스 시스템 회사 사이트": {
-    "en": "Oryx System company website",
-    "ru": "Сайт компании Oryx System"
-  },
-  "FOUNDER & CEO": {
-    "en": "FOUNDER & CEO",
-    "ru": "ОСНОВАТЕЛЬ И РУКОВОДИТЕЛЬ"
-  },
-  "홍승철": {
-    "en": "Seung-cheol Hong",
-    "ru": "Seung-cheol Hong"
-  },
-  "오릭스 시스템 대표": {
-    "en": "Representative of Oryx System",
-    "ru": "Руководитель Oryx System"
-  },
-  "현장 경험": {
-    "en": "Field experience",
-    "ru": "Практический опыт"
-  },
-  "국내외 20년": {
-    "en": "20 years in Korea and abroad",
-    "ru": "20 лет в Корее и за рубежом"
   },
   "소재지": {
     "en": "Location",
@@ -155,105 +87,9 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "CONTACT",
     "ru": "КОНТАКТЫ"
   },
-  "현장의 과제부터 이야기해 주세요.": {
-    "en": "Tell us about the challenges at your site.",
-    "ru": "Расскажите о задачах на вашем объекте."
-  },
-  "제품 기능 확인, 도입 검토와 견적 문의를 받고 있습니다. 필요한 업무와 대상 설비를 알려주시면 상담의 출발점을 정리할 수 있습니다.": {
-    "en": "Contact us to discuss product features, implementation and quotations. Tell us about your workflow and equipment to establish a starting point for the consultation.",
-    "ru": "Обращайтесь по вопросам функций продукта, внедрения и стоимости. Опишите рабочие процессы и оборудование, чтобы определить исходные данные для консультации."
-  },
-  "DIRECT CONTACT": {
-    "en": "DIRECT CONTACT",
-    "ru": "ПРЯМАЯ СВЯЗЬ"
-  },
   "오릭스 시스템": {
     "en": "Oryx System",
     "ru": "Oryx System"
-  },
-  "담당자 홍승철 · Founder & CEO": {
-    "en": "Contact: Seung-cheol Hong · Founder & CEO",
-    "ru": "Контактное лицо: Seung-cheol Hong · Основатель и руководитель"
-  },
-  "이메일": {
-    "en": "Email",
-    "ru": "Электронная почта"
-  },
-  "전화": {
-    "en": "Telephone",
-    "ru": "Телефон"
-  },
-  "주소": {
-    "en": "Address",
-    "ru": "Адрес"
-  },
-  "메일 앱을 사용할 수 없다면 위 이메일 주소를 복사해 사용하는 이메일 서비스에서 직접 보내주세요.": {
-    "en": "If a mail app is unavailable, copy the email address above and send your message using your preferred email service.",
-    "ru": "Если почтовое приложение недоступно, скопируйте указанный адрес и отправьте сообщение через привычный почтовый сервис."
-  },
-  "이메일로 문의하기": {
-    "en": "Contact us by email",
-    "ru": "Написать по электронной почте"
-  },
-  "제품·기능 확인, 도입 검토와 견적 문의는 아래 이메일로 보내주세요.": {
-    "en": "Send questions about product features, implementation and quotations to the email address below.",
-    "ru": "Направляйте вопросы о функциях продукта, внедрении и стоимости на указанный ниже адрес."
-  },
-  "이메일 버튼은 기기의 메일 앱을 엽니다. 문의는 메일 앱에서 직접 작성하고 전송합니다.": {
-    "en": "The email button opens your device’s mail app. Write and send your inquiry directly in that app.",
-    "ru": "Кнопка электронной почты открывает почтовое приложение на вашем устройстве. Напишите и отправьте обращение непосредственно в этом приложении."
-  },
-  "이 사이트는 문의 내용을 입력받거나 전송·저장하지 않으며, 발송 여부를 확인하지 않습니다.": {
-    "en": "This site does not collect, transmit or store inquiry content and cannot confirm whether an email was sent.",
-    "ru": "Этот сайт не принимает, не передает и не сохраняет текст обращения и не подтверждает отправку письма."
-  },
-  "초기 문의에는 비밀번호, API 키, 기밀 자료나 민감한 개인정보를 포함하지 마세요.": {
-    "en": "Do not include passwords, API keys, confidential material or sensitive personal information in your initial inquiry.",
-    "ru": "Не включайте в первоначальное обращение пароли, ключи API, конфиденциальные материалы или чувствительные персональные данные."
-  },
-  "문의 및 개인정보 안내": {
-    "en": "Contact and privacy information",
-    "ru": "Информация об обращениях и персональных данных"
-  },
-  "PRIVACY & CONTACT": {
-    "en": "PRIVACY & CONTACT",
-    "ru": "КОНФИДЕНЦИАЛЬНОСТЬ И ОБРАЩЕНИЯ"
-  },
-  "이 웹사이트의 이메일 문의 경로와 관련 안내입니다.": {
-    "en": "Information about contacting us by email through this website.",
-    "ru": "Информация об обращениях по электронной почте через этот сайт."
-  },
-  "웹사이트 문의 경로": {
-    "en": "How to contact us through the website",
-    "ru": "Как связаться с нами через сайт"
-  },
-  "이 사이트는 직접 이메일 링크를 제공합니다. 이메일 버튼을 선택하면 기기의 메일 앱에서 문의를 작성할 수 있습니다.": {
-    "en": "This site provides direct email links. Selecting the email button lets you write an inquiry in your device’s mail app.",
-    "ru": "На сайте размещены прямые ссылки электронной почты. Нажав кнопку, вы можете написать обращение в почтовом приложении своего устройства."
-  },
-  "웹사이트에는 문의 입력 폼이 없으며 문의 내용을 수집·전송·저장하지 않습니다.": {
-    "en": "The website has no inquiry form and does not collect, transmit or store inquiry content.",
-    "ru": "На сайте нет формы обращения; сайт не собирает, не передает и не сохраняет текст обращения."
-  },
-  "이메일 문의": {
-    "en": "Email inquiries",
-    "ru": "Обращения по электронной почте"
-  },
-  "작성한 문의는 사용자가 메일 앱에서 직접 전송합니다. 메일 서비스 이용에는 해당 서비스의 개인정보 및 이용 정책이 적용됩니다.": {
-    "en": "You send your inquiry directly from your mail app. The privacy and usage policies of your email service apply when you use that service.",
-    "ru": "Вы отправляете обращение непосредственно из почтового приложения. При использовании почтового сервиса действуют его правила конфиденциальности и условия использования."
-  },
-  "발송된 문의의 처리 방식, 보관 기간과 개인정보 관련 문의는 아래 담당 연락처로 확인해 주세요.": {
-    "en": "Use the contact address below to ask how sent inquiries are handled and retained, or to raise questions about personal information.",
-    "ru": "По указанному ниже адресу можно уточнить порядок обработки и сроки хранения отправленных обращений, а также задать вопросы о персональных данных."
-  },
-  "정식 개인정보 처리방침 확인이 필요합니다.": {
-    "en": "A formal privacy policy still requires confirmation.",
-    "ru": "Официальную политику обработки персональных данных необходимо подтвердить."
-  },
-  "현재 안내는 웹사이트의 직접 이메일 링크 동작을 설명합니다. 이메일 문의 처리에 관한 정식 개인정보 처리방침은 운영자의 확인과 확정이 필요하며, 확인되지 않은 보관 기간이나 개인정보 담당자 정보를 기재하지 않습니다.": {
-    "en": "This information explains how the website’s direct email links work. The operator must confirm and finalize a formal privacy policy for handling email inquiries. Unconfirmed retention periods or personal information officer details are not published.",
-    "ru": "Эта информация описывает работу прямых ссылок электронной почты на сайте. Оператору необходимо подтвердить и утвердить официальную политику обработки обращений по электронной почте. Неподтвержденные сроки хранения и сведения об ответственном за персональные данные не публикуются."
   },
   "SYSTEM · PROCESS · VALIDATION": {
     "en": "SYSTEM · PROCESS · VALIDATION",
@@ -323,8 +159,60 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "This guidance is intended to help organize initial requirements. It does not replace legal advice, a certificate, or product validation results.",
     "ru": "Этот материал помогает сформулировать первоначальные требования. Он не заменяет юридическую консультацию, сертификат или результаты валидации продукта."
   },
-  "대표 홍승철은 20년의 국내외 현장 경험을 바탕으로 오릭스 시스템을 시작했습니다. 현장 업무와 기술을 연결하는 관점으로 Oryx DataSafe의 적용 범위를 검토합니다.": {
-    "en": "Seung-cheol Hong founded Oryx System drawing on 20 years of field experience in Korea and abroad. He reviews the scope of Oryx DataSafe by connecting site operations with technology.",
-    "ru": "Seung-cheol Hong основал Oryx System, опираясь на 20 лет практического опыта в Корее и за рубежом. Он рассматривает область применения Oryx DataSafe с учетом связи между рабочими процессами и технологиями."
+  "홍승철 · Founder & CEO": {
+    "en": "Seung-cheol Hong · Founder & CEO",
+    "ru": "Seung-cheol Hong · Основатель и руководитель"
+  },
+  "제품 및 도입 문의": {
+    "en": "Product and implementation inquiries",
+    "ru": "Вопросы о продукте и внедрении"
+  },
+  "제품 기능과 도입 검토는 이메일 또는 전화로 문의해 주세요.": {
+    "en": "Contact us by email or phone to discuss product features and implementation.",
+    "ru": "Обращайтесь по электронной почте или телефону, чтобы обсудить функции продукта и возможность внедрения."
+  },
+  "이메일 링크는 기기의 메일 앱을 엽니다. 메일 앱을 사용할 수 없다면 주소를 복사해 보내주세요.": {
+    "en": "The email link opens your device’s mail app. If you cannot use a mail app, copy the address and send your message.",
+    "ru": "Ссылка на электронную почту открывает почтовое приложение на вашем устройстве. Если вы не можете воспользоваться приложением, скопируйте адрес и отправьте письмо."
+  },
+  "이 사이트에는 문의 입력 폼이 없으며 문의 내용을 수집·전송·저장하지 않습니다. 이메일은 사용자가 직접 보내며, 이용하는 메일 서비스의 개인정보 및 이용 정책이 적용됩니다.": {
+    "en": "This site has no inquiry form and does not collect, transmit, or store inquiry content. Users send emails themselves, and their email service’s privacy policy and terms of use apply.",
+    "ru": "На этом сайте нет формы обращения; сайт не собирает, не передает и не хранит содержание обращений. Пользователи отправляют письма самостоятельно, при этом действуют политика конфиденциальности и условия использования выбранного почтового сервиса."
+  },
+  "이메일 문의의 처리 방식과 보관 기간을 포함한 정식 개인정보 처리방침은 운영자의 확인과 확정이 필요합니다.": {
+    "en": "The formal privacy policy, including how email inquiries are handled and how long they are retained, still requires the operator’s confirmation and finalization.",
+    "ru": "Официальная политика обработки персональных данных, включая порядок обработки обращений по электронной почте и срок их хранения, еще требует проверки и окончательного утверждения оператором сайта."
+  },
+  "Oryx DataSafe는 오릭스 시스템의 전자기록·전자서명·데이터 무결성 솔루션입니다.": {
+    "en": "Oryx DataSafe is Oryx System’s solution for electronic records, electronic signatures and data integrity.",
+    "ru": "Oryx DataSafe — решение Oryx System для электронных записей, электронных подписей и целостности данных."
+  },
+  "대표": {
+    "en": "Representative",
+    "ru": "Руководитель"
+  },
+  "개인정보 안내": {
+    "en": "Privacy information",
+    "ru": "Информация о конфиденциальности"
+  },
+  "도입 계획 협의": {
+    "en": "Discuss the implementation plan",
+    "ru": "Обсуждение плана внедрения"
+  },
+  "구성, 일정, 검증 요구와 지원 범위를 협의합니다.": {
+    "en": "We discuss the configuration, schedule, validation requirements, and scope of support.",
+    "ru": "Обсуждаем конфигурацию, сроки, требования к валидации и объем поддержки."
+  },
+  "협의할 정보: 산출물, 일정, 계약 조건": {
+    "en": "Information to discuss: deliverables, schedule, contract terms",
+    "ru": "Темы для обсуждения: результаты работ, сроки, условия договора"
+  },
+  "대표의 국내외 20년 현장 경험을 바탕으로 업무와 설비에 맞는 적용 범위를 검토합니다.": {
+    "en": "Drawing on our founder’s 20 years of field experience in Korea and abroad, we review the scope of application suited to your work and equipment.",
+    "ru": "Опираясь на 20 лет практического опыта основателя в Корее и за рубежом, мы оцениваем область применения с учетом рабочих процессов и оборудования."
+  },
+  "PRIVACY": {
+    "en": "PRIVACY",
+    "ru": "КОНФИДЕНЦИАЛЬНОСТЬ"
   }
 };
