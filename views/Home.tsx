@@ -1,14 +1,15 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useLanguage } from '../i18n';
 
-export default function Home() {
-  const { t } = useLanguage();
+export default function Home({ children }: { children?: ReactNode }) {
+  const { language, t } = useLanguage();
   return <>
     <section id="home" className="home-hero" data-main-section tabIndex={-1} aria-labelledby="home-heading">
       <div className="container hero-layout">
         <div className="hero-copy reveal">
           <p className="eyebrow"><span />{t('IT SOFTWARE & DATA SECURITY')}</p>
-          <h1 id="home-heading">{t('데이터를 지키고,')}<br /><span>{t('기록의 신뢰를')}</span><br />{t('이어갑니다.')}</h1>
+          <h1 id="home-heading">{language === 'ko' ? <><span className="hero-title-opening">데이터를 지키고<span className="hero-title-punctuation">,</span></span><br /><span className="hero-title-continuation"><span className="hero-title-accent">기록의 신뢰를</span><br className="hero-title-desktop-break" /><span className="hero-title-mobile-space"> </span>이어갑니다<span className="hero-title-punctuation">.</span></span></> : <>{t('데이터를 지키고,')}<br /><span>{t('기록의 신뢰를')}</span><br />{t('이어갑니다.')}</>}</h1>
           <p className="hero-lead">{t('Oryx DataSafe는 IT 소프트웨어를 중심으로 전자기록 보호, 이력 관리, 역할별 전자서명과 교정 업무를 지원합니다. 기록의 수집부터 검토·보관까지, 필요한 기능과 도입 범위를 함께 확인합니다.')}</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#datastation">{t('DataStation 살펴보기')}<ArrowRight size={18} aria-hidden="true" /></a>
@@ -46,6 +47,7 @@ export default function Home() {
       </div>
       <div className="container hero-bottom"><span>{t('RECORDS. SIGNATURES. INTEGRITY.')}</span><a href="#implementation">{t('도입 과정 살펴보기')}<ArrowRight size={14} aria-hidden="true" /></a></div>
     </section>
+    {children}
     <section className="proof-strip" aria-label={t('DataSafe 소프트웨어 기능')}>
       <div className="container proof-grid">
         <div className="proof-intro"><span className="section-kicker">{t('RECORDS & DATA SECURITY')}</span><p>{t('IT 소프트웨어로 기록 관리의 흐름을 연결합니다.')}</p></div>

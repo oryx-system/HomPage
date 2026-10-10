@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n';
 
 export default function Footer() {
   const { t } = useLanguage();
-  const links = [['datastation', 'Oryx DataStation'], ['lockdown', 'Oryx LockDown'], ['calibration', 'Oryx Calibration'], ['brochures', '제품 브로셔'], ['implementation', '도입 과정'], ['validation', '규제 검토 가이드'], ['about', '회사 소개'], ['contact', '제품 및 도입 문의'], ['privacy', '개인정보 안내']];
+  const links = [['about', '회사 소개'], ['datastation', 'Oryx DataStation'], ['lockdown', 'Oryx LockDown'], ['calibration', 'Oryx Calibration'], ['brochures', '제품 브로셔'], ['implementation', '도입 과정'], ['validation', '규제 검토 가이드'], ['contact', '제품 및 도입 문의'], ['privacy', '개인정보 안내']];
   return <footer className="site-footer"><div className="container">
     <div className="footer-top">
       <div className="footer-brand">

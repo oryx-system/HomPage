@@ -179,9 +179,13 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "The formal privacy policy, including how email inquiries are handled and how long they are retained, still requires the operator’s confirmation and finalization.",
     "ru": "Официальная политика обработки персональных данных, включая порядок обработки обращений по электронной почте и срок их хранения, еще требует проверки и окончательного утверждения оператором сайта."
   },
-  "Oryx DataSafe는 홍승철 대표가 운영하는 IT 중심 회사이며 Oryx System과 별도로 운영됩니다. 전자기록과 데이터 관리, 무결성·보안을 위한 소프트웨어를 개발합니다.": {
-    "en": "Oryx DataSafe is an IT-focused company run by Seung-cheol Hong and operates separately from Oryx System. It develops software for electronic records, data management, data integrity, and security.",
-    "ru": "Oryx DataSafe — ИТ-компания под руководством Seung-cheol Hong, работающая отдельно от Oryx System. Она разрабатывает программное обеспечение для электронных записей, управления данными, обеспечения их целостности и безопасности."
+  "Oryx DataSafe는 홍승철 대표가 운영하는 IT 기업으로, Oryx System과 별도로 운영됩니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.": {
+    "en": "Oryx DataSafe is an IT company run by Seung-cheol Hong and operates separately from Oryx System. It designs and develops software centered on electronic records, data management, integrity, and security to meet pharmaceutical companies’ work and site needs, providing programs tailored to each customer’s workflows and operating environment.",
+    "ru": "Oryx DataSafe — ИТ-компания под руководством Seung-cheol Hong, работающая отдельно от Oryx System. Компания проектирует и разрабатывает программное обеспечение в области электронных записей, управления данными, целостности и безопасности с учетом рабочих задач и требований на объектах фармацевтических компаний, предоставляя программы, адаптированные к рабочим процессам и условиям эксплуатации каждого заказчика."
+  },
+  "메일 보내기": {
+    "en": "Send email",
+    "ru": "Отправить письмо"
   },
   "대표": {
     "en": "Representative",

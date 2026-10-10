@@ -7,7 +7,7 @@ import { useLanguage } from "./i18n";
 import "./styles.css";
 import "./one-page.css";
 
-const sections = ["home", "datastation", "lockdown", "calibration", "brochures", "implementation", "validation", "about", "contact", "privacy"];
+const sections = ["home", "about", "datastation", "lockdown", "calibration", "brochures", "implementation", "validation", "contact", "privacy"];
 const legacyAnchors: Record<string, string> = {
   "/": "home", "/home": "home", "/products": "datastation", "/solutions": "datastation",
   "/equipment": "datastation", "/necessity": "datastation", "/datastation": "datastation",

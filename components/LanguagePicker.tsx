@@ -16,7 +16,7 @@ export default function LanguagePicker() {
     return () => document.removeEventListener('pointerdown', outside);
   }, []);
   const keyboard = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Escape') { event.preventDefault(); close(true); }
+    if (open && event.key === 'Escape') { event.preventDefault(); close(true); }
     if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     if (!open) { setOpen(true); return; }

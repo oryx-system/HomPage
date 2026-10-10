@@ -97,7 +97,8 @@ main:focus {
 }
 .skip-link {
   position: fixed;
-  top: -100px;
+  top: 0;
+  transform: translateY(-100%);
   left: 20px;
   z-index: 200;
   padding: 14px 20px;
@@ -106,6 +107,7 @@ main:focus {
 }
 .skip-link:focus {
   top: 12px;
+  transform: none;
 }
 .button {
   display: inline-flex;
@@ -185,7 +187,7 @@ main:focus {
   background: var(--blue);
 }
 
-/* Shared header and native keyboard-accessible mobile navigation. */
+/* Shared header and keyboard-accessible mobile disclosure navigation. */
 .site-header {
   position: sticky;
   top: 0;
@@ -248,29 +250,39 @@ main:focus {
   min-height: 44px;
 }
 .mobile-menu {
+  position: absolute;
+  inset: 100% 0 auto;
+  z-index: 1;
   border: none;
   padding: 0;
-  margin: 0 0 0 auto;
-  height: 100dvh;
-  max-height: 100dvh;
-  width: min(420px, 100%);
-  max-width: 100%;
+  margin: 0;
+  max-height: var(--mobile-menu-height, calc(100dvh - 93px));
+  width: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: white;
   color: var(--navy);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 14px 28px #06172720;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-12px);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 220ms ease, transform 220ms ease, opacity 180ms ease, visibility 0s 220ms;
 }
-.mobile-menu::backdrop {
-  background: #112d5066;
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  clip-path: inset(0);
+  transition-delay: 0s;
 }
 .mobile-menu-inner {
-  padding: 24px;
-}
-.mobile-menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-.mobile-menu-header .logo {
-  width: 216px;
+  padding: 24px 32px;
+  max-width: 1304px;
+  margin-inline: auto;
 }
 .mobile-menu nav {
   display: flex;
@@ -286,7 +298,9 @@ main:focus {
   border-bottom: 1px solid var(--line);
   font-size: 20px;
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
+.mobile-menu nav a svg { flex-shrink: 0; }
 .mobile-menu nav a[aria-current="location"] {
   color: var(--blue);
 }
@@ -295,7 +309,7 @@ main:focus {
 }
 .mobile-menu-contact {
   margin-top: 40px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
 }
 .mobile-menu-contact a {
@@ -303,6 +317,28 @@ main:focus {
   margin-top: 12px;
   color: var(--blue);
   padding-block: 8px;
+}
+.site-footer .footer-top nav > a { overflow-wrap: anywhere; }
+.skip-link { max-width: calc(100% - 40px); overflow-wrap: anywhere; }
+.ds-hero-layout > * { min-width: 0; }
+.site-header > .header-inner { position: relative; z-index: 2; }
+@media (max-width: 1199px) {
+  .site-header > .header-inner {
+    height: auto;
+    min-height: 93px;
+    flex-wrap: wrap;
+    padding-block: 12px;
+    row-gap: 8px;
+  }
+  .site-header > .header-inner .brand { flex: 1 1 0; min-width: 100px; }
+  .site-header .language-picker { max-width: calc(100% - 54px); }
+  .site-header .language-trigger { white-space: normal; }
+}
+@media (max-width: 680px) {
+  .site-header > .header-inner { min-height: 75px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { transition: none; transform: none; }
 }
 .route-notice {
   padding: 16px 20px;
@@ -2020,9 +2056,6 @@ main:focus {
   }
   .mobile-menu-inner {
     padding: 22px;
-  }
-  .mobile-menu-header {
-    margin-bottom: 35px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

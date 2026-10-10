@@ -1,49 +1,75 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useLanguage } from "../i18n";
 import LanguagePicker from "./LanguagePicker";
 import Logo from "./Logo";
 const links = [
+  { path: "about", label: "회사 소개" },
   { path: "datastation", label: "DataStation" },
   { path: "lockdown", label: "LockDown" },
   { path: "calibration", label: "Calibration" },
   { path: "brochures", label: "브로셔" },
   { path: "implementation", label: "도입 과정" },
-  { path: "about", label: "회사 소개" },
 ];
 export default function Navbar({ currentPath }: { currentPath: string }) {
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
-  const dialog = useRef<HTMLDialogElement>(null);
+  const header = useRef<HTMLElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
-  const restoreOpener = useRef(true);
   const close = (restoreFocus = true) => {
-    if (dialog.current?.open) restoreOpener.current = restoreFocus;
-    dialog.current?.close();
     setOpen(false);
+    if (restoreFocus) trigger.current?.focus({ preventScroll: true });
   };
-  const keepFocusInMenu = (event: KeyboardEvent<HTMLDialogElement>) => {
-    if (event.key !== "Tab") return;
-    const items = Array.from(event.currentTarget.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), [tabindex="0"]',
-    )).filter(item => item.getClientRects().length > 0);
-    const first = items[0];
-    const last = items.at(-1);
-    if (event.shiftKey && document.activeElement === first) {
+  const menuKeyboard = (event: KeyboardEvent<HTMLElement>) => {
+    if (!open || event.defaultPrevented) return;
+    if (event.key === "Escape") {
       event.preventDefault();
-      last?.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first?.focus();
+      close();
+      return;
     }
   };
-  useEffect(() => {
-    if (open && !dialog.current?.open) dialog.current?.showModal();
-    const oldOverflow = document.body.style.overflow;
-    if (open) document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = oldOverflow;
+  useLayoutEffect(() => {
+    const element = header.current;
+    if (!element) return;
+    const viewport = window.visualViewport;
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const bottom = element.getBoundingClientRect().bottom;
+      const viewportBottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
+      element.style.setProperty("--mobile-menu-height", `${Math.max(0, viewportBottom - bottom)}px`);
     };
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(measure); };
+    const observer = new ResizeObserver(schedule);
+    observer.observe(element);
+    window.addEventListener("resize", schedule);
+    viewport?.addEventListener("resize", schedule);
+    viewport?.addEventListener("scroll", schedule);
+    measure();
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", schedule);
+      viewport?.removeEventListener("resize", schedule);
+      viewport?.removeEventListener("scroll", schedule);
+    };
+  }, []);
+  useLayoutEffect(() => {
+    if (!open) return;
+    if (panel.current) panel.current.scrollTop = 0;
+    panel.current?.querySelector<HTMLAnchorElement>("nav a")?.focus({ preventScroll: true });
+  }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const outside = (event: PointerEvent) => {
+      if (!(event.target instanceof Node)) return;
+      if (panel.current?.contains(event.target) || trigger.current?.contains(event.target) ||
+        header.current?.querySelector(".language-picker")?.contains(event.target)) return;
+      close(false);
+    };
+    document.addEventListener("pointerdown", outside);
+    return () => document.removeEventListener("pointerdown", outside);
   }, [open]);
   useEffect(() => {
     const media = window.matchMedia("(min-width: 1200px)");
@@ -59,9 +85,11 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
     return () => window.removeEventListener("hashchange", onAnchorChange);
   }, []);
   return (
-    <header className="site-header">
+    <header className="site-header" ref={header} onKeyDown={menuKeyboard} onBlur={event => {
+      if (open && (!(event.relatedTarget instanceof Node) || !event.currentTarget.contains(event.relatedTarget))) close(false);
+    }}>
       <div className="header-inner container">
-        <a className="brand" href="#home" aria-label={t("Oryx DataSafe 홈")}>
+        <a className="brand" href="#home" aria-label={t("Oryx DataSafe 홈")} onClick={() => close(false)}>
           <Logo />
         </a>
         <nav className="desktop-nav" aria-label={t("주 메뉴")}>
@@ -76,52 +104,31 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
           ))}
         </nav>
         <LanguagePicker />
-        <a className="button button-primary header-cta" href="#contact">
+        <a className="button button-primary header-cta" href="#contact" onClick={() => close(false)}>
           {t("도입 문의")} <ArrowUpRight size={16} aria-hidden="true" />
         </a>
         <button
           ref={trigger}
           type="button"
           className="menu-trigger"
-          aria-label={t("메뉴 열기")}
+          aria-label={t(open ? "메뉴 닫기" : "메뉴 열기")}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          onClick={() => setOpen(true)}
+          onClick={() => open ? close() : setOpen(true)}
         >
-          <Menu size={25} aria-hidden="true" />
+          {open ? <X size={25} aria-hidden="true" /> : <Menu size={25} aria-hidden="true" />}
         </button>
       </div>
-      <dialog
-        ref={dialog}
+      <div
+        ref={panel}
         id="mobile-menu"
-        className="mobile-menu"
+        className={`mobile-menu${open ? " is-open" : ""}`}
+        role="region"
         aria-label={t("전체 메뉴")}
-        onKeyDown={keepFocusInMenu}
-        onCancel={() => {
-          restoreOpener.current = true;
-          setOpen(false);
-        }}
-        onClose={() => {
-          setOpen(false);
-          if (restoreOpener.current) trigger.current?.focus();
-        }}
-        onClick={(event) => {
-          if (event.target === dialog.current) close();
-        }}
+        aria-hidden={!open}
+        inert={!open}
       >
         <div className="mobile-menu-inner">
-          <div className="mobile-menu-header">
-            <Logo />
-            <button
-              type="button"
-              className="menu-trigger"
-              aria-label={t("메뉴 닫기")}
-              onClick={() => close()}
-              autoFocus
-            >
-              <X size={25} aria-hidden="true" />
-            </button>
-          </div>
           <span className="section-kicker">ORYX DATASAFE</span>
           <nav aria-label={t("모바일 주 메뉴")}>
             <a
@@ -148,10 +155,9 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
           </a>
           <div className="mobile-menu-contact">
             <p>{t("현장에 맞는 시작을 함께 찾습니다.")}</p>
-            <a href="mailto:schong@oryxsystem.co.kr">schong@oryxsystem.co.kr</a>
           </div>
         </div>
-      </dialog>
+      </div>
     </header>
   );
 }

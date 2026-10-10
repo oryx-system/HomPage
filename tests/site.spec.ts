@@ -222,7 +222,7 @@ test('keyboard skip link reaches the single main content landmark', async ({ pag
   await expect(page.locator('main')).toBeFocused();
 });
 
-test('mobile menu traps focus, restores Escape focus, and closes for anchor navigation', async ({ page }, testInfo) => {
+test('mobile menu allows natural keyboard exit, restores Escape focus, and closes for anchor navigation', async ({ page }, testInfo) => {
   await visitAnchor(page, 'home');
   const opener = page.locator('.site-header > .header-inner .menu-trigger');
   test.skip(!await opener.isVisible(), 'Desktop navigation is visible at this viewport');
@@ -231,26 +231,34 @@ test('mobile menu traps focus, restores Escape focus, and closes for anchor navi
   expect(bounds?.height).toBeGreaterThanOrEqual(44);
   await opener.focus();
   await page.keyboard.press('Enter');
-  const dialog = page.locator('#mobile-menu');
-  await expect(dialog).toBeVisible();
+  const panel = page.locator('#mobile-menu');
+  await expect(panel).toBeVisible();
   await expect(opener).toHaveAttribute('aria-expanded', 'true');
   await mkdir(screenshotDirectory, { recursive: true });
   await page.screenshot({ path: join(screenshotDirectory, `${testInfo.project.name}-menu.png`) });
-  for (let step = 0; step < 18; step += 1) {
-    await page.keyboard.press('Tab');
-    expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
-  }
+  await expect(panel.locator('nav a').first()).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(panel.locator('nav a').nth(1)).toHaveAttribute('href', '#about');
+  await expect(panel.locator('nav a').nth(1)).toBeFocused();
   await page.keyboard.press('Shift+Tab');
-  expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
+  await page.keyboard.press('Shift+Tab');
+  await expect(opener).toBeFocused();
+  await panel.locator('a[href="#contact"]').focus();
+  await page.keyboard.press('Tab');
+  expect(await page.locator('.site-header').evaluate(element => element.contains(document.activeElement))).toBe(false);
+  await expect(panel).not.toBeVisible();
+  await opener.focus();
+  await page.keyboard.press('Enter');
+  await expect(panel).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(dialog).not.toBeVisible();
+  await expect(panel).not.toBeVisible();
   await expect(opener).toBeFocused();
   await expect(opener).toHaveAttribute('aria-expanded', 'false');
   for (const id of ['calibration', 'lockdown', 'brochures', 'contact', 'contact']) {
     await opener.click();
-    await dialog.locator(`a[href="#${id}"]`).focus();
+    await panel.locator(`a[href="#${id}"]`).focus();
     await page.keyboard.press('Enter');
-    await expect(dialog).not.toBeVisible();
+    await expect(panel).not.toBeVisible();
     await expect(page).toHaveURL(new RegExp(`#${id}$`));
     await expectAnchorVisible(page, id);
     await expect(page.locator(`#${id}`)).toBeFocused();
@@ -259,7 +267,7 @@ test('mobile menu traps focus, restores Escape focus, and closes for anchor navi
   const initialViewport = page.viewportSize()!;
   await opener.click();
   await page.setViewportSize({ width: 1440, height: initialViewport.height });
-  await expect(dialog).not.toBeVisible();
+  await expect(panel).not.toBeVisible();
   expect(await page.locator('body').evaluate(element => element.style.overflow)).not.toBe('hidden');
   await page.setViewportSize(initialViewport);
   await expect(opener).toBeVisible();

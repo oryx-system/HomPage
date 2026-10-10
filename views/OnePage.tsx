@@ -10,7 +10,7 @@ export default function OnePage() {
   const { t } = useLanguage();
   return (
     <>
-      <Home />
+      <Home><AboutSection /></Home>
       <div id="datastation" data-main-section tabIndex={-1}><DataStationPage embedded /></div>
       <section id="lockdown" className="section lockdown-section" data-main-section tabIndex={-1} aria-labelledby="lockdown-heading">
         <div className="container">
@@ -27,7 +27,6 @@ export default function OnePage() {
       <div id="brochures" data-main-section tabIndex={-1}><BrochuresPage embedded /></div>
       <ImplementationSection />
       <ValidationSection />
-      <AboutSection />
       <ContactSection />
       <PrivacySection />
     </>

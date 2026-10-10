@@ -13,9 +13,16 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
 .desktop-nav {gap:16px;}
 .desktop-nav a {font-size:14px;font-weight:600;white-space:nowrap;}
 .header-cta {background:#102a45;padding:13px 19px;min-height:49px;font-size:14px;}
-.button {border-radius:0;transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;}
+.button {border-radius:0;transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;touch-action:manipulation;}
 .button-primary {background:var(--blue);}
+.button-primary:hover,.button-primary:focus-visible {background:#1b64db;}
+.button:focus-visible {outline:3px solid #488aff;outline-offset:5px;transform:translateY(-2px);box-shadow:0 7px 18px #09213c20;}
+.button:active {transform:translateY(0);box-shadow:none;}
+.button-primary:active {background:#104bb8;}
+.button-secondary:focus-visible {background:#edf3fb;border-color:#94afd1;}
+.button-secondary:active {background:#deebfa;border-color:#7299c4;}
 .text-link {font-size:15px;line-height:1.65;}
+.text-link:focus-visible {text-decoration:underline;text-underline-offset:5px;}
 .section {padding-block:104px;}
 .section-heading {margin-bottom:40px;}
 .section-heading h2 {font-size:clamp(32px,3.34vw,48px);line-height:1.4;letter-spacing:-.025em;}
@@ -33,7 +40,11 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
 .supporting-section .split-section h3 {font-size:28px;line-height:1.4;letter-spacing:-.02em;margin-bottom:20px;}
 .supporting-section .split-section p {font-size:17px;line-height:1.85;}
 #implementation {background:white;}
-#validation,#contact {background:var(--pale);}
+#validation {background:var(--pale);}
+#contact {padding-block:80px;background:#123968;color:white;}
+#contact .section-kicker {color:#b5d1fc;}
+#contact .section-heading h2 {color:white;}
+#contact .section-heading > p:not(.section-kicker) {color:#c3d9fa;}
 #about,#privacy {background:white;}
 .contact-details > h3,.contact-form > h3 {font-size:26px;line-height:1.4;letter-spacing:-.02em;margin-bottom:12px;}
 .contact-form {background:white;}
@@ -44,6 +55,13 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
 .contact-primary {display:flex;flex-wrap:wrap;align-items:center;gap:14px;}
 .contact-primary .button {max-width:100%;min-height:50px;padding:14px 18px;font-size:16px;gap:10px;}
 .contact-primary .form-note {flex-basis:100%;margin-top:2px;max-width:780px;color:var(--muted);}
+#contact .contact-primary .button-primary {background:white;color:#102d51;}
+#contact .contact-primary .button-primary:hover,#contact .contact-primary .button-primary:focus-visible {background:#deebff;}
+#contact .contact-primary .button-primary:active {background:#c6ddfb;}
+#contact .contact-primary .button-secondary {background:transparent;border-color:#8cabd0;color:white;}
+#contact .contact-primary .button-secondary:hover,#contact .contact-primary .button-secondary:focus-visible {background:#1a4a7a;border-color:#b8d1ef;}
+#contact .contact-primary .button-secondary:active {background:#0e2f53;}
+#contact .contact-primary .form-note {color:#c6dcfc;}
 #privacy {padding-block:56px;}
 #privacy .section-heading {margin-bottom:20px;}
 #privacy .section-heading h2 {font-size:28px;}
@@ -62,9 +80,14 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
 .hero-copy .eyebrow > span {background:var(--blue-bright);}
 .hero-copy h1 {font-size:clamp(43px,4.17vw,60px);line-height:1.35;letter-spacing:-.035em;color:white;margin-top:27px;}
 .hero-copy h1 > span {color:var(--blue-bright);}
+.hero-copy h1 > .hero-title-opening,.hero-copy h1 > .hero-title-continuation {color:inherit;}
+.hero-title-accent {color:var(--blue-bright);}
+.hero-title-mobile-space {display:none;}
 .hero-lead {font-size:18px;color:#c4d1df;line-height:1.85;max-width:58ch;}
 .home-hero .button-secondary {background:transparent;border-color:#7892ab;color:white;}
 .home-hero .button-secondary:hover {background:#173d60;border-color:#a8c8e7;}
+.home-hero .button-secondary:focus-visible {background:#173d60;border-color:#a8c8e7;}
+.home-hero .button-secondary:active {background:#0d2c49;border-color:#8cabd0;}
 .hero-small {color:#a9bed4;font-size:14px;line-height:1.75;align-items:flex-start;}
 .hero-small .small-line {margin-top:.85em;flex-shrink:0;}
 .hero-bottom {border-color:#355370;color:#c8d7e6;}
@@ -121,6 +144,7 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
   .hero-copy {max-width:660px;}
   .record-figure {max-width:600px;width:100%;margin-inline:auto;}
   .section {padding-block:76px;}
+  #contact {padding-block:68px;}
   .section-heading h2,.brochure-toolbar h2 {font-size:36px;}
   .lockdown-details {align-items:flex-start;flex-direction:column;gap:12px;}
 }
@@ -133,6 +157,9 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
   .hero-layout {padding-block:56px;gap:35px;}
   .hero-copy .eyebrow {font-size:11px;letter-spacing:.07em;}
   .hero-copy h1 {font-size:39px;line-height:1.33;margin-top:25px;}
+  html[lang="ko"] .hero-copy h1 {font-size:clamp(1.5rem,7.5vw,2rem);line-height:1.5;}
+  html[lang="ko"] .hero-title-punctuation,html[lang="ko"] .hero-title-desktop-break {display:none;}
+  html[lang="ko"] .hero-title-mobile-space {display:inline;}
   .hero-lead {font-size:16px;line-height:1.85;}
   .hero-actions .button {font-size:15px;padding:13px 16px;gap:10px;}
   .hero-small {font-size:14px;}
@@ -141,6 +168,7 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
   .hero-bottom a {font-size:14px;}
   .proof-item strong {font-size:26px;}
   .section {padding-block:56px;}
+  #contact {padding-block:56px;}
   .section-heading {margin-bottom:28px;}
   .section-heading h2,.brochure-toolbar h2 {font-size:30px;line-height:1.45;}
   .section-heading > p:not(.section-kicker) {font-size:16px;line-height:1.85;}
@@ -165,7 +193,7 @@ body {font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-wor
 @media(prefers-reduced-motion:reduce) {
   html {scroll-behavior:auto;}
   *,*::before,*::after {animation:none!important;transition:none!important;}
-  .button:hover,.brochure-card:hover,.brochure-card:focus-within {transform:none!important;}
+  .button:hover,.button:focus-visible,.brochure-card:hover,.brochure-card:focus-within {transform:none!important;}
 }
 
 /* Language controls and the monitor share the company site's quiet visual rhythm. */
@@ -194,10 +222,10 @@ html[lang="en"] .hero-copy h1,html[lang="ru"] .hero-copy h1 {letter-spacing:-.02
 .proof-item {min-width:0;}
 .proof-focus strong {font-size:clamp(20px,2vw,26px);}
 .footer-brand .logo {width:230px;max-width:100%;}
-.brochure-language button {white-space:nowrap;}
+.brochure-language button {white-space:normal;overflow-wrap:anywhere;}
 .brochure-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;}
 .brochure-card-content {padding:28px;}
-.brochure-actions .button {font-size:15px;padding-inline:14px;gap:10px;min-width:0;flex:1 1 130px;}
+.brochure-actions .button {font-size:15px;padding-inline:14px;gap:10px;min-width:0;flex:1 1 max(130px,8em);}
 .brochure-card h3 {font-size:26px;}
 .brochure-card .section-kicker {font-size:14px;letter-spacing:.06em;}
 @media(min-width:1200px) {
