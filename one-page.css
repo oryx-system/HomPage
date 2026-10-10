@@ -174,11 +174,10 @@ html[lang="en"] .hero-copy h1,html[lang="ru"] .hero-copy h1 {letter-spacing:-.04
 .desktop-nav {gap:13px;}
 .hero-artwork {width:100%;min-width:0;margin:0;align-self:center;}
 .hero-monitor {display:block;width:100%;height:auto;overflow:hidden;mask-image:linear-gradient(to bottom,transparent,#000 8%,#000 94%,transparent),linear-gradient(to right,#000 96%,transparent);mask-composite:intersect;}
-.hero-security-light {pointer-events:none;opacity:.30;animation:security-light 7.2s cubic-bezier(.45,0,.55,1) infinite;}
-.hero-security-pulse {filter:brightness(1.4) saturate(1.02);}
+.hero-lock-light {pointer-events:none;opacity:.30;animation:lock-light 7.2s cubic-bezier(.45,0,.55,1) infinite;}
+.hero-lock-pulse {filter:brightness(1.4) saturate(1.02);}
 .hero-security-label {font-size:20px;font-weight:600;letter-spacing:2.4px;fill:#9cbdda;}
-.hero-security-light .hero-security-label {fill:#cfe5f5;}
-@keyframes security-light {0%,100% {opacity:.12;}50% {opacity:.42;}}
+@keyframes lock-light {0%,100% {opacity:.12;}50% {opacity:.42;}}
 .proof-grid {grid-template-columns:1.35fr 1fr 1.2fr;gap:28px;}
 .proof-item {min-width:0;}
 .proof-focus strong {font-size:clamp(20px,2vw,26px);}
@@ -218,4 +217,4 @@ html[lang="en"] .hero-copy h1,html[lang="ru"] .hero-copy h1 {letter-spacing:-.04
   .brochure-grid {grid-template-columns:1fr;}
 }
 @media(max-width:380px) {.site-header .header-inner {width:calc(100% - 16px);}}
-@media(prefers-reduced-motion:reduce) {.hero-security-light {animation:none;opacity:.30;}}
+@media(prefers-reduced-motion:reduce) {.hero-lock-light {animation:none;opacity:.30;}}

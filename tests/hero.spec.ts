@@ -10,14 +10,14 @@ const directory = process.env.QA_EVIDENCE_DIR
   ? join(process.cwd(), process.env.QA_EVIDENCE_DIR, 'screenshots')
   : join(process.cwd(), 'review', 'production-screenshots');
 
-test('approved monitor keeps a quiet shared highlight and readable label, respecting reduced motion', async ({ page }, testInfo) => {
+test('only the approved monitor padlock has a quiet highlight, respecting reduced motion', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/#home', { waitUntil: 'networkidle' });
   const monitor = page.locator('.hero-monitor');
-  const light = monitor.locator('.hero-security-light');
+  const light = monitor.locator('.hero-lock-light');
   await expect(monitor).toBeVisible();
   await expect(monitor).toHaveAttribute('viewBox', '660 80 880 850');
   await expect(monitor).toHaveAccessibleName(/.+/);
@@ -25,6 +25,10 @@ test('approved monitor keeps a quiet shared highlight and readable label, respec
   const baseLabel = monitor.locator(':scope > text');
   await expect(baseLabel).toHaveCount(1);
   await expect(baseLabel).toHaveText('DATA SECURITY');
+  await expect(monitor.locator('text')).toHaveCount(1);
+  await expect(light.locator('text')).toHaveCount(0);
+  await expect(light.locator('image')).toHaveCount(1);
+  await expect(light.locator('.hero-lock-pulse')).toHaveAttribute('mask', 'url(#lock-light-mask)');
   await expect(monitor.locator('image')).toHaveCount(2);
   // The effect repeats the approved bitmap at the same coordinates; it does
   // not introduce a second shield drawing or move the monitor.
@@ -47,7 +51,7 @@ test('approved monitor keeps a quiet shared highlight and readable label, respec
   await expect.poll(() => page.locator('.hero-artwork').evaluate(element => getComputedStyle(element).opacity)).toBe('1');
   await monitor.scrollIntoViewIfNeeded();
   const effect = await monitor.evaluate(element => {
-    const group = element.querySelector('.hero-security-light')!;
+    const group = element.querySelector('.hero-lock-light')!;
     const animation = group.getAnimations()[0];
     const target = (animation?.effect as KeyframeEffect | null)?.target;
     const masks = [...element.querySelectorAll('image')].map(image => {
@@ -62,7 +66,7 @@ test('approved monitor keeps a quiet shared highlight and readable label, respec
       groupAnimations: group.getAnimations().length,
       groupIsAnimated: target === group,
       childAnimations: [...group.children].map(child => child.getAnimations().length),
-      sharedGroup: Boolean(group.querySelector('image') && group.querySelector('text')),
+      lockOnlyGroup: Boolean(group.children.length === 1 && group.querySelector('image') && !group.querySelector('text')),
       baseAnimations: base.getAnimations().length,
       monitorAnimations: element.getAnimations().length,
       baseTransform: getComputedStyle(base).transform,
@@ -70,7 +74,6 @@ test('approved monitor keeps a quiet shared highlight and readable label, respec
       edgeMask: getComputedStyle(element).maskImage,
       lightFilter: getComputedStyle(group).filter,
       pulseFilter: getComputedStyle(group.querySelector('image')!).filter,
-      labelFill: getComputedStyle(group.querySelector('text')!).fill,
       masks,
     };
   });
@@ -78,8 +81,8 @@ test('approved monitor keeps a quiet shared highlight and readable label, respec
   expect(effect.iterations).toBe('infinite');
   expect(effect.groupAnimations).toBe(1);
   expect(effect.groupIsAnimated).toBe(true);
-  expect(effect.sharedGroup).toBe(true);
-  expect(effect.childAnimations).toEqual([0, 0]);
+  expect(effect.lockOnlyGroup).toBe(true);
+  expect(effect.childAnimations).toEqual([0]);
   expect(effect.baseAnimations).toBe(0);
   expect(effect.monitorAnimations).toBe(0);
   expect(effect.baseTransform).toBe('none');
@@ -92,12 +95,6 @@ test('approved monitor keeps a quiet shared highlight and readable label, respec
   expect(brightness).toBeLessThanOrEqual(1.5);
   expect(saturation).toBeGreaterThanOrEqual(1);
   expect(saturation).toBeLessThanOrEqual(1.08);
-  const labelRGB = effect.labelFill.match(/[\d.]+/g)?.map(Number) ?? [];
-  expect(labelRGB[0]).toBeGreaterThanOrEqual(190);
-  expect(labelRGB[0]).toBeLessThanOrEqual(225);
-  expect(labelRGB[1]).toBeGreaterThanOrEqual(215);
-  expect(labelRGB[1]).toBeLessThanOrEqual(245);
-  expect(labelRGB[2]).toBeGreaterThanOrEqual(235);
   expect(effect.masks.every(mask => mask.exists && mask.type === 'mask' && mask.paths! > 0)).toBe(true);
 
   await mkdir(directory, { recursive: true });

@@ -23,16 +23,15 @@ export default function Home() {
               <mask id="monitor-edge-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024">
                 <path d="M760 0H1536V1024H650L660 900L682 760L698 670L717 530L737 420L760 260Z" fill="white" filter="url(#monitor-edge-feather)" />
               </mask>
-              <filter id="security-edge-feather"><feGaussianBlur stdDeviation="7" /></filter>
-              <mask id="security-light-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024">
-                <path d="M1044 324L1152 363L1144 491L1075 594L1024 623L937 553L915 440L929 378L984 355Z" fill="white" filter="url(#security-edge-feather)" />
+              <filter id="lock-edge-feather"><feGaussianBlur stdDeviation="1.8" /></filter>
+              <mask id="lock-light-mask" maskUnits="userSpaceOnUse" x="974" y="386" width="115" height="161">
+                <path d="M1001 450L1006 428C1009 407 1022 393 1040 395C1059 397 1071 409 1071 429L1069 450L1073 451Q1080 452 1079 464L1074 525Q1073 535 1064 537L997 537Q985 537 987 526L992 463Q993 452 1001 450Z" fill="white" filter="url(#lock-edge-feather)" />
               </mask>
             </defs>
             <image href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#monitor-edge-mask)" aria-hidden="true" />
             <text className="hero-security-label" x="1038" y="658" textAnchor="middle" transform="rotate(3 1038 658)" aria-hidden="true">DATA SECURITY</text>
-            <g className="hero-security-light" aria-hidden="true">
-              <image className="hero-security-pulse" href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#security-light-mask)" />
-              <text className="hero-security-label" x="1038" y="658" textAnchor="middle" transform="rotate(3 1038 658)">DATA SECURITY</text>
+            <g className="hero-lock-light" aria-hidden="true">
+              <image className="hero-lock-pulse" href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#lock-light-mask)" />
             </g>
           </svg>
         </figure>
