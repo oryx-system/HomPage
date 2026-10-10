@@ -63,7 +63,7 @@ test('shared product titles, final brochure links and keyboard details work in t
     await expect(page.locator('#home .hero-actions a').first()).toHaveAttribute('href', '#datastation');
     const restoredButton = page.locator('#home .hero-actions a[href="#datastation"]');
     await expect(restoredButton).toHaveClass(/button-primary/);
-    await expect(restoredButton).toHaveText({ ko: 'DataStation 살펴보기', en: 'Explore DataStation', ru: 'Узнать о DataStation' }[value]);
+    await expect(restoredButton).toHaveText({ ko: 'DataStation 살펴보기', en: 'View DataStation', ru: 'О DataStation' }[value]);
     await restoredButton.click();
     await expect(page).toHaveURL(/#datastation$/);
     await expect(page.locator('#ds-product-title')).toBeInViewport();

@@ -483,7 +483,6 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
   gap:8px;
 }
 .home-hero .hero-actions .button span {min-width:0;overflow-wrap:anywhere;}
-.home-hero .hero-actions .button svg {flex-shrink:0;}
 @media(max-width:300px) {
   .home-hero .hero-actions {flex-direction:column;width:100%;}
 }

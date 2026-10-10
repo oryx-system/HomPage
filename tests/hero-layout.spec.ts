@@ -4,6 +4,8 @@ test('hero CTAs share a row, height and text alignment without clipping enlarged
   for (const language of ['ko', 'en', 'ru']) {
     await page.addInitScript(lang => localStorage.setItem('oryx-language', lang), language);
     await page.goto('/', { waitUntil: 'networkidle' });
+    await expect(page.locator('.hero-actions svg')).toHaveCount(0);
+    await expect(page.locator('.hero-bottom a svg')).toHaveCount(1);
     const normal = await page.locator('.hero-actions').evaluate(element => {
       const [first, second] = [...element.querySelectorAll('a')].map(a => a.getBoundingClientRect());
       return { top: second.y - first.y, height: second.height - first.height, gap: second.x - first.right, left: first.x - document.querySelector('.hero-lead')!.getBoundingClientRect().x };
