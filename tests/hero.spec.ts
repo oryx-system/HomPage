@@ -10,7 +10,7 @@ const directory = process.env.QA_EVIDENCE_DIR
   ? join(process.cwd(), process.env.QA_EVIDENCE_DIR, 'screenshots')
   : join(process.cwd(), 'review', 'production-screenshots');
 
-test('only the approved monitor padlock has a quiet highlight, respecting reduced motion', async ({ page }, testInfo) => {
+test('only the approved monitor padlock fades out and returns every second, respecting reduced motion', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
@@ -29,10 +29,15 @@ test('only the approved monitor padlock has a quiet highlight, respecting reduce
   await expect(light.locator('text')).toHaveCount(0);
   await expect(light.locator('image')).toHaveCount(1);
   await expect(light.locator('.hero-lock-pulse')).toHaveAttribute('mask', 'url(#lock-light-mask)');
+  const background = monitor.locator(':scope > .hero-lock-background');
+  await expect(background).toHaveCount(1);
+  await expect(background.locator('rect')).toHaveCount(1);
+  const exclusion = monitor.locator('#monitor-edge-mask .hero-lock-exclusion');
+  await expect(exclusion).toHaveCount(1);
+  await expect(exclusion).toHaveAttribute('fill', 'black');
   await expect(monitor.locator('image')).toHaveCount(2);
-  // The effect repeats the approved bitmap at the same coordinates; it does
-  // not introduce a second shield drawing or move the monitor.
-  await expect(monitor.locator(':scope > path, :scope > circle, :scope > polygon, :scope > rect')).toHaveCount(0);
+  // Keep the approved bitmap intact. A static dark replacement removes its
+  // baked lock, and the original lock pixels supply the fading foreground.
   for (const image of await monitor.locator('image').all()) {
     await expect(image).toHaveAttribute('href', approvedImage);
     await expect(image).toHaveAttribute('width', '1536');
@@ -60,6 +65,13 @@ test('only the approved monitor padlock has a quiet highlight, respecting reduce
       return { id, exists: Boolean(mask), type: mask?.tagName.toLowerCase(), paths: mask?.querySelectorAll('path').length };
     });
     const base = element.querySelector(':scope > image')!;
+    const baseMask = base.getAttribute('mask')?.match(/^url\(#(.+)\)$/)?.[1];
+    const exclusion = baseMask ? document.getElementById(baseMask)?.querySelector('.hero-lock-exclusion') : null;
+    const background = element.querySelector(':scope > .hero-lock-background')!;
+    const backgroundFill = background.querySelector('rect')?.getAttribute('fill');
+    const gradientID = backgroundFill?.match(/^url\(#(.+)\)$/)?.[1];
+    const gradient = gradientID ? document.getElementById(gradientID) : null;
+    const stops = [...gradient?.querySelectorAll('stop') ?? []].map(stop => getComputedStyle(stop).stopColor);
     return {
       duration: animation?.effect?.getTiming().duration,
       iterations: animation?.effect?.getTiming().iterations === Infinity ? 'infinite' : animation?.effect?.getTiming().iterations,
@@ -74,10 +86,14 @@ test('only the approved monitor padlock has a quiet highlight, respecting reduce
       edgeMask: getComputedStyle(element).maskImage,
       lightFilter: getComputedStyle(group).filter,
       pulseFilter: getComputedStyle(group.querySelector('image')!).filter,
+      bakedLockExcluded: Boolean(exclusion && getComputedStyle(exclusion).fill === 'rgb(0, 0, 0)'),
+      backgroundGradientExists: gradient?.tagName.toLowerCase() === 'lineargradient',
+      backgroundStops: stops,
+      backgroundBehindBase: Boolean(background.compareDocumentPosition(base) & Node.DOCUMENT_POSITION_FOLLOWING),
       masks,
     };
   });
-  expect(effect.duration).toBe(7200);
+  expect(effect.duration).toBe(1000);
   expect(effect.iterations).toBe('infinite');
   expect(effect.groupAnimations).toBe(1);
   expect(effect.groupIsAnimated).toBe(true);
@@ -89,17 +105,21 @@ test('only the approved monitor padlock has a quiet highlight, respecting reduce
   expect(effect.monitorTransform).toBe('none');
   expect(effect.edgeMask).not.toBe('none');
   expect(effect.lightFilter).toBe('none');
-  const brightness = Number(effect.pulseFilter.match(/brightness\(([^)]+)\)/)?.[1]);
-  const saturation = Number(effect.pulseFilter.match(/saturate\(([^)]+)\)/)?.[1]);
-  expect(brightness).toBeGreaterThanOrEqual(1.3);
-  expect(brightness).toBeLessThanOrEqual(1.5);
-  expect(saturation).toBeGreaterThanOrEqual(1);
-  expect(saturation).toBeLessThanOrEqual(1.08);
+  expect(effect.pulseFilter).toBe('none');
+  expect(effect.bakedLockExcluded).toBe(true);
+  expect(effect.backgroundBehindBase).toBe(true);
+  expect(effect.backgroundGradientExists).toBe(true);
+  expect(effect.backgroundStops.length).toBeGreaterThanOrEqual(2);
+  for (const stop of effect.backgroundStops) {
+    const channels = stop.match(/[\d.]+/g)?.map(Number) ?? [];
+    expect(channels).toHaveLength(3);
+    expect(Math.max(...channels)).toBeLessThanOrEqual(128);
+  }
   expect(effect.masks.every(mask => mask.exists && mask.type === 'mask' && mask.paths! > 0)).toBe(true);
 
   await mkdir(directory, { recursive: true });
   const frames = [];
-  for (const [phase, milliseconds] of [['min', 0], ['max', 3600]] as const) {
+  for (const [phase, milliseconds] of [['min', 0], ['max', 500]] as const) {
     await light.evaluate((element, time) => {
       const animation = element.getAnimations()[0]; animation.pause(); animation.currentTime = time;
     }, milliseconds);
@@ -113,26 +133,37 @@ test('only the approved monitor padlock has a quiet highlight, respecting reduce
         animations: element.getAnimations().length,
         box: { x: box.x, y: box.y, width: box.width, height: box.height } };
     });
-    frames.push({ phase, milliseconds, box, opacity, label });
+    const backdrop = await background.evaluate(element => {
+      const style = getComputedStyle(element);
+      const box = element.getBoundingClientRect();
+      return { opacity: style.opacity, filter: style.filter, transform: style.transform,
+        animations: element.getAnimations().length,
+        childAnimations: [...element.children].map(child => child.getAnimations().length),
+        box: { x: box.x, y: box.y, width: box.width, height: box.height } };
+    });
+    frames.push({ phase, milliseconds, box, opacity, label, backdrop });
     await monitor.screenshot({ path: join(directory, `${testInfo.project.name}-hero-${phase}.png`) });
   }
-  expect(frames[0].opacity).toBeGreaterThanOrEqual(0.1);
-  expect(frames[0].opacity).toBeLessThanOrEqual(0.14);
-  expect(frames[1].opacity).toBeGreaterThanOrEqual(0.4);
-  expect(frames[1].opacity).toBeLessThanOrEqual(0.44);
-  expect(frames[1].opacity - frames[0].opacity).toBeGreaterThanOrEqual(0.28);
-  expect(frames[1].opacity - frames[0].opacity).toBeLessThanOrEqual(0.34);
+  expect(frames[0].opacity).toBeGreaterThanOrEqual(0.02);
+  expect(frames[0].opacity).toBeLessThanOrEqual(0.04);
+  expect(frames[1].opacity).toBe(1);
+  expect(frames[1].opacity - frames[0].opacity).toBeGreaterThanOrEqual(0.95);
   expect(frames[0].box).toEqual(frames[1].box);
   expect(frames[0].label).toEqual(frames[1].label);
   expect(frames[0].label.opacity).toBe('1');
   expect(frames[0].label.filter).toBe('none');
   expect(frames[0].label.animations).toBe(0);
+  expect(frames[0].backdrop).toEqual(frames[1].backdrop);
+  expect(frames[0].backdrop.opacity).toBe('1');
+  expect(frames[0].backdrop.filter).toBe('none');
+  expect(frames[0].backdrop.transform).toBe('none');
+  expect(frames[0].backdrop.animations).toBe(0);
+  expect(frames[0].backdrop.childAnimations).toEqual([0]);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const reduced = () => light.evaluate(element => ({ opacity: Number(getComputedStyle(element).opacity), animations: element.getAnimations().length }));
   await expect.poll(async () => (await reduced()).animations).toBe(0);
   const reducedEffect = await reduced();
-  expect(reducedEffect.opacity).toBeGreaterThanOrEqual(0.28);
-  expect(reducedEffect.opacity).toBeLessThanOrEqual(0.32);
+  expect(reducedEffect.opacity).toBe(1);
   await expect(monitor).toBeVisible();
   const reducedBox = await monitor.boundingBox();
   expect(reducedBox).toEqual(frames[0].box);
