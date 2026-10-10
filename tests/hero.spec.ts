@@ -10,7 +10,7 @@ const directory = process.env.QA_EVIDENCE_DIR
   ? join(process.cwd(), process.env.QA_EVIDENCE_DIR, 'screenshots')
   : join(process.cwd(), 'review', 'production-screenshots');
 
-test('only the approved monitor padlock fades out and returns every second, respecting reduced motion', async ({ page }, testInfo) => {
+test('only the approved monitor padlock disappears fully and returns every three seconds, respecting reduced motion', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
@@ -93,7 +93,7 @@ test('only the approved monitor padlock fades out and returns every second, resp
       masks,
     };
   });
-  expect(effect.duration).toBe(1000);
+  expect(effect.duration).toBe(3000);
   expect(effect.iterations).toBe('infinite');
   expect(effect.groupAnimations).toBe(1);
   expect(effect.groupIsAnimated).toBe(true);
@@ -119,7 +119,7 @@ test('only the approved monitor padlock fades out and returns every second, resp
 
   await mkdir(directory, { recursive: true });
   const frames = [];
-  for (const [phase, milliseconds] of [['min', 0], ['max', 500]] as const) {
+  for (const [phase, milliseconds] of [['min', 0], ['max', 1500]] as const) {
     await light.evaluate((element, time) => {
       const animation = element.getAnimations()[0]; animation.pause(); animation.currentTime = time;
     }, milliseconds);
@@ -144,8 +144,7 @@ test('only the approved monitor padlock fades out and returns every second, resp
     frames.push({ phase, milliseconds, box, opacity, label, backdrop });
     await monitor.screenshot({ path: join(directory, `${testInfo.project.name}-hero-${phase}.png`) });
   }
-  expect(frames[0].opacity).toBeGreaterThanOrEqual(0.02);
-  expect(frames[0].opacity).toBeLessThanOrEqual(0.04);
+  expect(frames[0].opacity).toBe(0);
   expect(frames[1].opacity).toBe(1);
   expect(frames[1].opacity - frames[0].opacity).toBeGreaterThanOrEqual(0.95);
   expect(frames[0].box).toEqual(frames[1].box);

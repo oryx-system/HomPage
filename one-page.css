@@ -174,9 +174,9 @@ html[lang="en"] .hero-copy h1,html[lang="ru"] .hero-copy h1 {letter-spacing:-.04
 .desktop-nav {gap:13px;}
 .hero-artwork {width:100%;min-width:0;margin:0;align-self:center;}
 .hero-monitor {display:block;width:100%;height:auto;overflow:hidden;mask-image:linear-gradient(to bottom,transparent,#000 8%,#000 94%,transparent),linear-gradient(to right,#000 96%,transparent);mask-composite:intersect;}
-.hero-lock-light {pointer-events:none;opacity:1;animation:lock-light 1s cubic-bezier(.45,0,.55,1) infinite;}
+.hero-lock-light {pointer-events:none;opacity:1;animation:lock-light 3s cubic-bezier(.45,0,.55,1) infinite;}
 .hero-security-label {font-size:20px;font-weight:600;letter-spacing:2.4px;fill:#9cbdda;}
-@keyframes lock-light {0%,100% {opacity:.03;}50% {opacity:1;}}
+@keyframes lock-light {0%,100% {opacity:0;}50% {opacity:1;}}
 .proof-grid {grid-template-columns:1.35fr 1fr 1.2fr;gap:28px;}
 .proof-item {min-width:0;}
 .proof-focus strong {font-size:clamp(20px,2vw,26px);}

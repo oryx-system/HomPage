@@ -20,21 +20,22 @@ export default function Home() {
           <svg className="hero-monitor" viewBox="660 80 880 850" width="880" height="850" role="img" aria-label={t('보안 방패를 표시한 모니터를 표현한 Oryx DataSafe 콘셉트 이미지.')}>
             <defs>
               <filter id="monitor-edge-feather"><feGaussianBlur stdDeviation="8" /></filter>
-              <filter id="lock-removal-feather"><feGaussianBlur stdDeviation="2.5" /></filter>
-              <clipPath id="lock-safe-region"><path d="M978 375H1096V490L1083 536L1069 557H998L979 530Z" /></clipPath>
+              <filter id="lock-removal-feather"><feGaussianBlur stdDeviation="3" /></filter>
+              <clipPath id="lock-safe-region"><path d="M1005 375H1096V490L1083 532L1067 553H998L979 530L978 395Z" /></clipPath>
               <linearGradient id="lock-screen-fill" gradientUnits="userSpaceOnUse" x1="980" y1="380" x2="1090" y2="550">
-                <stop stopColor="#012b55" /><stop offset="1" stopColor="#003b76" />
+                <stop stopColor="#012b55" /><stop offset=".5" stopColor="#012a54" /><stop offset="1" stopColor="#002d5b" />
               </linearGradient>
               <mask id="monitor-edge-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024">
                 <path d="M760 0H1536V1024H650L660 900L682 760L698 670L717 530L737 420L760 260Z" fill="white" filter="url(#monitor-edge-feather)" />
-                <rect className="hero-lock-exclusion" x="976" y="381" width="115" height="171" rx="17" fill="black" filter="url(#lock-removal-feather)" clipPath="url(#lock-safe-region)" />
+                <path d="M1046 354Q1005 383 962 399L957 452C953 511 976 549 1024 580C1090 565 1118 498 1126 388Q1082 377 1046 354Z" fill="black" filter="url(#lock-removal-feather)" />
+                <rect className="hero-lock-exclusion" x="985" y="392" width="95" height="148" fill="black" clipPath="url(#lock-safe-region)" />
               </mask>
               <filter id="lock-edge-feather"><feGaussianBlur stdDeviation="1.8" /></filter>
               <mask id="lock-light-mask" maskUnits="userSpaceOnUse" x="967" y="367" width="137" height="197">
-                <path d="M978 375H1096V490L1083 536L1069 557H998L979 530Z" fill="white" filter="url(#lock-edge-feather)" clipPath="url(#lock-safe-region)" />
+                <path d="M1005 375H1096V490L1083 532L1067 553H998L979 530L978 395Z" fill="white" filter="url(#lock-edge-feather)" clipPath="url(#lock-safe-region)" />
               </mask>
             </defs>
-            <g className="hero-lock-background" aria-hidden="true"><rect x="964" y="369" width="139" height="197" fill="url(#lock-screen-fill)" /></g>
+            <g className="hero-lock-background" aria-hidden="true"><rect x="945" y="340" width="195" height="255" fill="url(#lock-screen-fill)" /></g>
             <image href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#monitor-edge-mask)" aria-hidden="true" />
             <text className="hero-security-label" x="1038" y="658" textAnchor="middle" transform="rotate(3 1038 658)" aria-hidden="true">DATA SECURITY</text>
             <g className="hero-lock-light" aria-hidden="true">
