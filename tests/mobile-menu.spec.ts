@@ -102,13 +102,16 @@ async function capture(page: Page, name: string) {
 async function enlargeText(page: Page) {
   return page.evaluate(() => {
     const targets = [...document.querySelectorAll<HTMLElement>('body *')].filter(element =>
-      element instanceof HTMLElement && element.getClientRects().length > 0 &&
+      element instanceof HTMLElement && (element.getClientRects().length > 0 || element.closest('#mobile-menu')) &&
       !['SCRIPT', 'STYLE'].includes(element.tagName) && Boolean(element.textContent?.trim()),
     );
     const snapshot = targets.map(element => ({ element, size: parseFloat(getComputedStyle(element).fontSize) }));
     const originalTrigger = parseFloat(getComputedStyle(document.querySelector('.language-trigger')!).fontSize);
+    // The instant disclosure is display:none while closed. Its text still
+    // needs the same enlargement when the user opens it after changing size.
+    const originalMenuLink = parseFloat(getComputedStyle(document.querySelector('#mobile-menu nav a')!).fontSize);
     for (const { element, size } of snapshot) element.style.fontSize = `${size * 2}px`;
-    return originalTrigger;
+    return { languageTrigger: originalTrigger, menuLink: originalMenuLink };
   });
 }
 
@@ -264,7 +267,7 @@ test('company introduction leads the document and the Korean hero remains readab
       await page.reload({ waitUntil: 'networkidle' });
       await selectLanguage(page, language);
       const original = await enlargeText(page);
-      expect(await page.locator('.language-trigger').evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBe(original * 2);
+      expect(await page.locator('.language-trigger').evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBe(original.languageTrigger * 2);
       expect(await page.locator('.skip-link').evaluate(element => element.getBoundingClientRect().bottom),
         `Unfocused ${language} skip link stays above the viewport at enlarged text`).toBeLessThanOrEqual(0);
       await expect(page.locator('.language-trigger')).toBeVisible();
@@ -278,6 +281,7 @@ test('company introduction leads the document and the Korean hero remains readab
       expect(labelFits, `Enlarged ${language} language name stays inside its control`).toBe(true);
       if (await trigger(page).isVisible()) {
         await openMenu(page);
+        await expect(panel(page).locator('nav a').first()).toHaveCSS('font-size', `${original.menuLink * 2}px`);
         await panel(page).locator('a[href="#contact"]').focus();
         await noOverflow(page);
         await capture(page, `${testInfo.project.name}-${language}-text200-menu`);
