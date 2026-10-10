@@ -155,10 +155,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "This guidance is intended to help organize initial requirements. It does not replace legal advice, a certificate, or product validation results.",
     "ru": "Этот материал помогает сформулировать первоначальные требования. Он не заменяет юридическую консультацию, сертификат или результаты валидации продукта."
   },
-  "홍승철 · Founder & CEO": {
-    "en": "Seung-cheol Hong · Founder & CEO",
-    "ru": "Seung-cheol Hong · Основатель и руководитель"
-  },
   "전화": {
     "en": "Phone",
     "ru": "Телефон"
@@ -186,10 +182,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
   "이메일 문의의 처리 방식과 보관 기간을 포함한 정식 개인정보 처리방침은 운영자의 확인과 확정이 필요합니다.": {
     "en": "The formal privacy policy, including how email inquiries are handled and how long they are retained, still requires the operator’s confirmation and finalization.",
     "ru": "Официальная политика обработки персональных данных, включая порядок обработки обращений по электронной почте и срок их хранения, еще требует проверки и окончательного утверждения оператором сайта."
-  },
-  "Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.": {
-    "en": "Oryx DataSafe is an IT company operating separately from Oryx System. It designs and develops software centered on electronic records, data management, integrity, and security to meet pharmaceutical companies’ work and site needs, providing programs tailored to each customer’s workflows and operating environment.",
-    "ru": "Oryx DataSafe — ИТ-компания, работающая отдельно от Oryx System. Компания проектирует и разрабатывает программное обеспечение в области электронных записей, управления данными, целостности и безопасности с учетом рабочих задач и требований на объектах фармацевтических компаний, предоставляя программы, адаптированные к рабочим процессам и условиям эксплуатации каждого заказчика."
   },
   "업무에 맞춘 소프트웨어를 설계합니다.": {
     "en": "We design software around your work.",
@@ -219,10 +211,19 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Information to discuss: deliverables, schedule, contract terms",
     "ru": "Темы для обсуждения: результаты работ, сроки, условия договора"
   },
-  "DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.": {
-    "en": "DataStation supports the collection, protection, and review of equipment records; LockDown supports access control for work PCs; Calibration supports the management of calibration records and workflows.",
-    "ru": "DataStation поддерживает сбор, защиту и проверку записей оборудования; LockDown — контроль доступа к рабочим ПК; Calibration — управление записями калибровки и рабочими процессами."
-  },
+  "Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다.": {"en": "Oryx DataSafe is an IT company operating separately from Oryx System.", "ru": "Oryx DataSafe — ИТ-компания, работающая отдельно от Oryx System."},
+  "전자기록·데이터 무결성·보안을 중심으로, 제약회사의 업무와 운영 환경에 맞는 소프트웨어를 설계·개발합니다.": {"en": "We design and develop software for pharmaceutical workflows and operating environments, focusing on electronic records, data integrity and security.", "ru": "Мы разрабатываем ПО для рабочих процессов и условий эксплуатации фармацевтических компаний, уделяя внимание электронным записям, целостности и защите данных."},
+  "장비 기록 관리": {"en": "Equipment records", "ru": "Записи оборудования"},
+  "장비 기록을 수집·보호하고 검토합니다.": {"en": "Collect, protect and review equipment records.", "ru": "Сбор, защита и проверка записей оборудования."},
+  "PC 접근 통제": {"en": "PC access control", "ru": "Контроль доступа к ПК"},
+  "업무용 PC의 접근과 허용 앱을 관리합니다.": {"en": "Manage access and approved apps on work PCs.", "ru": "Управление доступом и разрешёнными приложениями на рабочих ПК."},
+  "교정 기록과 검토·승인 흐름을 관리합니다.": {"en": "Manage calibration records, review and approval workflows.", "ru": "Управление записями калибровки, проверкой и согласованием."},
+  "PHONE": {"en": "PHONE", "ru": "ТЕЛЕФОН"},
+  "EMAIL": {"en": "EMAIL", "ru": "ЭЛЕКТРОННАЯ ПОЧТА"},
+  "도입 문의 · 대표 홍승철": {"en": "Implementation inquiries · Seungchul Hong, Representative", "ru": "Вопросы о внедрении · Руководитель Хон Сынчхоль"},
+  "대표 홍승철": {"en": "Representative: Seungchul Hong", "ru": "Руководитель Хон Сынчхоль"},
+  "오릭스 데이터세이프": {"en": "Oryx DataSafe", "ru": "Oryx DataSafe"},
+  "충청남도 금산군 비호산로 4, 1층": {"en": "1F, 4 Bihosan-ro, Geumsan-gun, Chungcheongnam-do, South Korea", "ru": "Провинция Чхунчхон-Намдо, уезд Кымсан, ул. Пихосан-ро, 4, 1-й этаж"},
   "PRIVACY": {
     "en": "PRIVACY",
     "ru": "КОНФИДЕНЦИАЛЬНОСТЬ"

@@ -3,11 +3,14 @@ import { useLanguage } from '../i18n';
 
 export default function Footer() {
   const { t } = useLanguage();
-  const links = [['about', '회사 소개'], ['brochures', '제품 브로셔'], ['implementation', '도입 과정'], ['privacy', '개인정보 안내'], ['contact', '제품 및 도입 문의']];
   return <footer className="site-footer"><div className="container">
     <div className="footer-main">
       <a className="footer-brand" href="#home" aria-label={t('Oryx DataSafe 홈')}><Logo /></a>
-      <nav aria-label={t('하단 메뉴')}>{links.map(([id, label]) => <a key={id} href={`#${id}`}>{t(label)}</a>)}</nav>
+      <div className="footer-company">
+        <strong>{t('오릭스 데이터세이프')}</strong>
+        <p>{t('대표 홍승철')}<span>{t('충청남도 금산군 비호산로 4, 1층')}</span></p>
+        <p><a href="tel:+821065450415">010-6545-0415</a><span><a href="mailto:schong@oryxsystem.co.kr">schong@oryxsystem.co.kr</a></span></p>
+      </div>
       <a className="back-top" href="#home">{t('맨 위로')}</a>
     </div>
     <div className="footer-bottom">

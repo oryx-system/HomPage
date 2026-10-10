@@ -86,13 +86,14 @@ async function expectDataSafeIdentity(page: Page) {
   }
   // A related company-site link may retain its proper name. The site's own
   // introduction and copyright must reflect the corrected DataSafe identity.
+  // The retained contact email uses the System domain and is not a brand claim.
   const identityText = await page.locator('#home, .proof-strip, .site-footer').evaluateAll(roots => {
     const text: string[] = [];
     for (const root of roots) {
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
       for (let node = walker.nextNode(); node; node = walker.nextNode()) {
         const parent = node.parentElement;
-        if (!parent || !parent.getClientRects().length || parent.closest('a[href^="https://oryxsystem.co.kr"]')) continue;
+        if (!parent || !parent.getClientRects().length || parent.closest('a[href^="https://oryxsystem.co.kr"], a[href="mailto:schong@oryxsystem.co.kr"]')) continue;
         text.push(node.textContent ?? '');
       }
     }
@@ -111,26 +112,22 @@ async function expectDataSafeIdentity(page: Page) {
 
 async function expectCompanyContactDistribution(page: Page) {
   const about = page.locator('#about');
-  // Company introduction describes the software business. Personal details
-  // belong to its single contact section rather than repeating through the page.
-  await expect(about).not.toContainText(/홍승철|Seung[-\s]?cheol\s+Hong|Founder|CEO|Основатель|대표|Representative|Руководитель|비호산로|Bihosan[-\s]?ro|\b20\b|20\s*년/i);
+  // The introduction stays focused on software; the footer holds company facts.
+  await expect(about).not.toContainText(/홍승철|Seungchul|Хон Сынчхоль|Founder|CEO|비호산로|Bihosan|Пихосан|\b20\b|20\s*년/i);
   await expect(about.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(0);
-  const person = page.locator('#contact .contact-fact-person dd');
-  const address = page.locator('#contact .contact-fact-address dd');
-  await expect(person).toHaveCount(1);
-  await expect(address).toHaveCount(1);
-  await expect(person).toContainText(/홍승철|Seung[-\s]?cheol\s+Hong/i);
-  await expect(address).toContainText(/비호산로|Bihosan[-\s]?ro/i);
-  await expect(page.locator('main a[href^="mailto:"]')).toHaveCount(1);
-  await expect(page.locator('main a[href^="tel:"]')).toHaveCount(1);
-  const text = await page.locator('body').innerText();
-  for (const [label, pattern] of [
-    ['representative', /홍승철|Seung[-\s]?cheol\s+Hong/gi],
-    ['address', /비호산로|Bihosan[-\s]?ro/gi],
-    ['email', /schong@oryxsystem\.co\.kr/gi],
-    ['telephone', /\+82[-\s]*10[-\s]*6545[-\s]*0415/g],
-  ] as const) {
-    expect(text.match(pattern) ?? [], `${label} appears once in visible HTML, independent of unchanged PDF contents`).toHaveLength(1);
+  await expect(about.locator('.about-capability')).toHaveCount(3);
+  const contact = page.locator('#contact');
+  const footer = page.locator('.site-footer');
+  await expect(contact.locator('.contact-person')).toContainText(/홍승철|Seungchul Hong|Хон Сынчхоль/i);
+  await expect(contact).not.toContainText(/비호산로|Bihosan|Пихосан|Founder|CEO|Основатель/i);
+  await expect(footer.locator('.footer-company')).toContainText(/DataSafe|데이터세이프/i);
+  await expect(footer.locator('.footer-company')).toContainText(/홍승철|Seungchul Hong|Хон Сынчхоль/i);
+  await expect(footer.locator('.footer-company')).toContainText(/비호산로|Bihosan|Пихосан/i);
+  await expect(footer.locator('nav')).toHaveCount(0);
+  await expect(page.locator('body')).not.toContainText(/Founder|CEO|Основатель/i);
+  for (const area of [contact, footer]) {
+    await expect(area.locator('a[href="tel:+821065450415"]')).toHaveText('010-6545-0415');
+    await expect(area.locator('a[href="mailto:schong@oryxsystem.co.kr"]')).toHaveCount(1);
   }
   const order = await page.locator('main [data-main-section]').evaluateAll(elements => elements.map(element => element.id));
   expect(order.slice(-2), 'Privacy information precedes the final contact section').toEqual(['privacy', 'contact']);
@@ -353,15 +350,10 @@ test('contact has direct mail and telephone links without a form or false succes
   const telephone = contact.locator('a[href="tel:+821065450415"]');
   await expect(telephone).toHaveCount(1);
   await expect(telephone).toBeVisible();
-  for (const duplicateArea of [page.locator('#privacy'), page.locator('.site-footer')]) {
-    await expect(duplicateArea.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(0);
-    await expect(duplicateArea).not.toContainText('schong@oryxsystem.co.kr');
-    await expect(duplicateArea).not.toContainText(/6545[\s-]*0415/);
-  }
-  // Keep direct contact in a single main section. Product links may carry a
-  // subject, but repeated bare email/telephone actions add no new destination.
+  await expect(page.locator('#privacy a[href^="mailto:"], #privacy a[href^="tel:"]')).toHaveCount(0);
   await expect(page.locator('main a[href="mailto:schong@oryxsystem.co.kr"]')).toHaveCount(1);
   await expect(page.locator('main a[href="tel:+821065450415"]')).toHaveCount(1);
+  await expect(contact.locator('.button')).toHaveAttribute('href', 'mailto:schong@oryxsystem.co.kr?subject=Oryx%20DataSafe');
   await sendEmail.focus();
   await page.keyboard.press('Enter');
   await expect.poll(() => requestedMail).toBe('mailto:schong@oryxsystem.co.kr');

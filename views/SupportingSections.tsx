@@ -7,10 +7,13 @@ import {
   Search,
   ShieldCheck,
   Signature,
+  Database,
+  LockKeyhole,
+  ClipboardList,
 } from "lucide-react";
 
 const email = "schong@oryxsystem.co.kr";
-const phone = "+82-10-6545-0415";
+const phone = "010-6545-0415";
 const regulationUrl =
   "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11";
 
@@ -140,9 +143,23 @@ export function AboutSection() {
             <h2 id="about-heading">{t("업무에 맞춘 소프트웨어를 설계합니다.")}</h2>
           </div>
           <div className="company-summary reveal">
-            <p>{t("Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.")}</p>
-            <p>{t("DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.")}</p>
+            <p>{t("Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다.")}</p>
+            <p>{t("전자기록·데이터 무결성·보안을 중심으로, 제약회사의 업무와 운영 환경에 맞는 소프트웨어를 설계·개발합니다.")}</p>
           </div>
+        </div>
+        <div className="about-capabilities">
+          {[
+            { icon: Database, name: 'DataStation', title: '장비 기록 관리', description: '장비 기록을 수집·보호하고 검토합니다.', id: 'datastation' },
+            { icon: LockKeyhole, name: 'LockDown', title: 'PC 접근 통제', description: '업무용 PC의 접근과 허용 앱을 관리합니다.', id: 'lockdown' },
+            { icon: ClipboardList, name: 'Calibration', title: '교정 업무 관리', description: '교정 기록과 검토·승인 흐름을 관리합니다.', id: 'calibration' },
+          ].map(({ icon: Icon, name, title, description, id }) => (
+            <article className="about-capability reveal" key={id}>
+              <Icon size={44} strokeWidth={1.65} aria-hidden="true" />
+              <h3><a href={`#${id}`}>{name}</a></h3>
+              <strong>{t(title)}</strong>
+              <p>{t(description)}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -165,12 +182,11 @@ export function ContactSection() {
           </div>
           <div className="contact-primary reveal">
             <dl className="contact-facts">
-              <div><dt>{t("전화")}</dt><dd><a href="tel:+821065450415">{phone}</a></dd></div>
-              <div><dt>{t("이메일")}</dt><dd>{email}</dd></div>
-              <div className="contact-fact-person"><dt>{t("대표")}</dt><dd>{t("홍승철 · Founder & CEO")}</dd></div>
-              <div className="contact-fact-address"><dt>{t("소재지")}</dt><dd>{t("충청남도 금산군 비호산로 4 1층")}</dd></div>
+              <div><dt>{t("PHONE")}</dt><dd><a href="tel:+821065450415">{phone}</a></dd></div>
+              <div><dt>{t("EMAIL")}</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
             </dl>
-            <a className="button button-primary" href={`mailto:${email}`}><Mail size={18} aria-hidden="true" />{t("메일 보내기")}</a>
+            <p className="contact-person">{t("도입 문의 · 대표 홍승철")}</p>
+            <a className="button button-primary" href={`mailto:${email}?subject=Oryx%20DataSafe`}><Mail size={18} aria-hidden="true" />{t("메일 보내기")}</a>
             <p className="form-note">{t("이메일 링크는 기기의 메일 앱을 엽니다. 메일 앱을 사용할 수 없다면 주소를 복사해 보내주세요.")}</p>
           </div>
         </div>
