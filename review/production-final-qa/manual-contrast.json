@@ -1,0 +1,95 @@
+{
+  "method": "WCAG sRGB relative luminance; computed foregrounds against conservative hero gradient endpoints and static table/menu backgrounds. Pending approved hero image remains excluded.",
+  "pairs": [
+    {
+      "description": "hero white",
+      "foreground": "#ffffff",
+      "background": "#061725",
+      "ratio": 18.15
+    },
+    {
+      "description": "hero white",
+      "foreground": "#ffffff",
+      "background": "#0b253d",
+      "ratio": 15.6
+    },
+    {
+      "description": "hero white",
+      "foreground": "#ffffff",
+      "background": "#102c47",
+      "ratio": 14.25
+    },
+    {
+      "description": "hero blue",
+      "foreground": "#80b4ff",
+      "background": "#061725",
+      "ratio": 8.55
+    },
+    {
+      "description": "hero blue",
+      "foreground": "#80b4ff",
+      "background": "#0b253d",
+      "ratio": 7.35
+    },
+    {
+      "description": "hero blue",
+      "foreground": "#80b4ff",
+      "background": "#102c47",
+      "ratio": 6.71
+    },
+    {
+      "description": "hero lead",
+      "foreground": "#c4d1df",
+      "background": "#061725",
+      "ratio": 11.7
+    },
+    {
+      "description": "hero lead",
+      "foreground": "#c4d1df",
+      "background": "#0b253d",
+      "ratio": 10.05
+    },
+    {
+      "description": "hero lead",
+      "foreground": "#c4d1df",
+      "background": "#102c47",
+      "ratio": 9.19
+    },
+    {
+      "description": "hero small/caption/bottom",
+      "foreground": "#a9bed4",
+      "background": "#061725",
+      "ratio": 9.51
+    },
+    {
+      "description": "hero small/caption/bottom",
+      "foreground": "#a9bed4",
+      "background": "#0b253d",
+      "ratio": 8.17
+    },
+    {
+      "description": "hero small/caption/bottom",
+      "foreground": "#a9bed4",
+      "background": "#102c47",
+      "ratio": 7.47
+    },
+    {
+      "description": "table body text",
+      "foreground": "#425a76",
+      "background": "#ffffff",
+      "ratio": 7.1
+    },
+    {
+      "description": "language selected option/checkmark",
+      "foreground": "#1055bc",
+      "background": "#edf3fc",
+      "ratio": 6.18
+    }
+  ],
+  "minimum": 6.18,
+  "scope": "Final production build: unchanged computed foreground colours and hero gradient endpoints; static table/menu backgrounds. Approved monitor artwork has no copy overlay; decorative SVG label and light group are aria-hidden.",
+  "buildAssets": [
+    "index-BWx-SOL-.js",
+    "index-CpvS-GFA.css"
+  ]
+}

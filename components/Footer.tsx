@@ -1,80 +1,24 @@
-
-import React from 'react';
-import { Linkedin, Twitter, Github } from 'lucide-react';
-import { ViewType } from '../App';
+import { ArrowUpRight, Mail, Phone } from 'lucide-react';
 import Logo from './Logo';
+import { useLanguage } from '../i18n';
 
-interface FooterProps {
-  setView: (view: ViewType) => void;
+export default function Footer() {
+  const { t } = useLanguage();
+  const links = [['datastation', 'Oryx DataStation'], ['lockdown', 'Oryx LockDown'], ['calibration', 'Oryx Calibration'], ['brochures', '제품 브로셔'], ['implementation', '도입 과정'], ['validation', '규제 검토 가이드'], ['about', '회사 소개']];
+  return <footer className="site-footer"><div className="container">
+    <div className="footer-top">
+      <div className="footer-brand">
+        <a href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer" aria-label={t('오릭스 시스템 사이트')}><Logo variant="company" /></a>
+        <p>{t('현장의 기록을, 신뢰할 수 있는 데이터로.')}<br />{t('오릭스 시스템의 전자기록·전자서명·데이터 무결성 솔루션.')}</p>
+        <a className="text-link" href="https://oryxsystem.co.kr" target="_blank" rel="noopener noreferrer">{t('오릭스 시스템 사이트')}<ArrowUpRight size={15} aria-hidden="true" /><span className="sr-only">{t(' (새 탭)')}</span></a>
+      </div>
+      <nav aria-label={t('하단 메뉴')}><p className="footer-label">DATASAFE</p>{links.map(([id,label])=><a key={id} href={`#${id}`}>{t(label)}</a>)}</nav>
+      <div className="footer-contact"><p className="footer-label">{t('LET’S TALK')}</p>
+        <a href="mailto:schong@oryxsystem.co.kr"><Mail size={16} aria-hidden="true" />schong@oryxsystem.co.kr</a>
+        <a href="tel:+821065450415"><Phone size={16} aria-hidden="true" />+82-10-6545-0415</a>
+        <p>{t('충청남도 금산군 비호산로 4 1층')}</p>
+      </div>
+    </div>
+    <div className="footer-bottom"><div><p>{t('오릭스 시스템 · 대표 홍승철')}</p><p>© {new Date().getFullYear()} Oryx System. {t('All rights reserved.')}</p></div><a href="#privacy">{t('문의와 개인정보 안내')}</a><a href="#contact">{t('견적 및 자료 문의')}<ArrowUpRight size={14} aria-hidden="true" /></a></div>
+  </div></footer>;
 }
-
-const Footer: React.FC<FooterProps> = ({ setView }) => {
-  return (
-    <footer className="py-24 border-t border-slate-100 bg-white/60 backdrop-blur-2xl px-6 relative z-10">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-        <div className="col-span-2">
-          <div
-            className="mb-8 cursor-pointer group inline-block"
-            onClick={() => setView('home')}
-          >
-            <Logo className="h-12 w-auto" />
-          </div>
-          <p className="text-slate-600 max-w-sm mb-8 leading-relaxed font-medium">
-            엄격한 규제 환경에 최적화된 전자서명 플랫폼입니다. <br />
-            제약 공정의 첫 1초부터 데이터 무결성을 목표로 설계된 전문 솔루션입니다.
-          </p>
-          <div className="flex gap-4">
-            <div className="p-2.5 bg-white rounded-xl border border-slate-100 hover:text-blue-600 cursor-pointer transition-all shadow-sm">
-              <Linkedin className="w-5 h-5" />
-            </div>
-            <div className="p-2.5 bg-white rounded-xl border border-slate-100 hover:text-blue-400 cursor-pointer transition-all shadow-sm">
-              <Twitter className="w-5 h-5" />
-            </div>
-            <div className="p-2.5 bg-white rounded-xl border border-slate-100 hover:text-slate-900 cursor-pointer transition-all shadow-sm">
-              <Github className="w-5 h-5" />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-black mb-6 text-slate-900 text-xs uppercase tracking-[0.2em]">제품 서비스</h4>
-          <ul className="space-y-4 text-slate-500 text-sm font-semibold">
-            <li onClick={() => setView('necessity')} className="hover:text-blue-600 cursor-pointer transition-colors text-blue-600 underline underline-offset-4 decoration-2">도입 필요성</li>
-            <li onClick={() => setView('equipment')} className="hover:text-blue-600 cursor-pointer transition-colors">장비 연동 기술</li>
-            <li onClick={() => setView('pricing')} className="hover:text-blue-600 cursor-pointer transition-colors">가격 정책</li>
-            <li onClick={() => setView('validation')} className="hover:text-blue-600 cursor-pointer transition-colors">밸리데이션 패키지</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-black mb-6 text-slate-900 text-xs uppercase tracking-[0.2em]">회사 정보</h4>
-          <ul className="space-y-4 text-slate-500 text-sm font-semibold">
-            <li onClick={() => setView('about')} className="hover:text-blue-600 cursor-pointer transition-colors">회사 개요</li>
-            <li onClick={() => setView('support')} className="hover:text-blue-600 cursor-pointer transition-colors">기술 지원 및 FAQ</li>
-            <li onClick={() => setView('contact')} className="hover:text-blue-600 cursor-pointer transition-colors">상담 및 도입 문의</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* 사업자 정보 */}
-      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-100">
-        <div className="text-[11px] text-slate-400 font-medium leading-relaxed space-y-1">
-          <p><span className="font-bold text-slate-500">오릭스 데이터세이프</span> | 대표: 홍길동 | 사업자등록번호: 123-45-67890</p>
-          <p>주소: 서울특별시 강남구 테헤란로 123, 오릭스타워 15층 | 대표전화: 02-1234-5678 | 이메일: contact@oryxdatasafe.com</p>
-          <p>통신판매업신고: 제2024-서울강남-12345호 | 개인정보보호책임자: 김보안</p>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-400 font-bold gap-6">
-        <p>© 2024 Oryx DataSafe Co. All rights reserved. <span className="text-slate-400/60 ml-4 font-normal">21 CFR Part 11 & EU Annex 11 Compliant Platform.</span></p>
-        <div className="flex gap-8 uppercase tracking-widest">
-          <span onClick={() => alert('사이트맵은 준비 중입니다.')} className="hover:text-slate-600 cursor-pointer transition-colors">Sitemap</span>
-          <span onClick={() => alert('개인정보 처리방침은 준비 중입니다.')} className="hover:text-slate-600 cursor-pointer transition-colors">Privacy Policy</span>
-          <span onClick={() => setView('security')} className="hover:text-slate-600 cursor-pointer transition-colors">Security Terms</span>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;

@@ -1,0 +1,30 @@
+[
+  {
+    "product": "Oryx Calibration",
+    "language": "ko",
+    "pdf": "OryxCalibration_고객소개브로셔_20261010.pdf",
+    "pdfBytes": 3580768,
+    "pdfSHA256": "8f20191487dc4a75162615dd676011a7b80563893ed5168a71f2c9f99a6f6690",
+    "pages": 7,
+    "cover": "OryxCalibration_KO-cover.webp",
+    "width": 745,
+    "height": 1053,
+    "coverBytes": 53400,
+    "coverSHA256": "d06bcafb9550ac7df6b5003baa8e2b918dfa9523ee544332cef881736dfb06fe",
+    "source": "actual PDF page 1"
+  },
+  {
+    "product": "Oryx Calibration",
+    "language": "en",
+    "pdf": "OryxCalibration_Introduction_EN_20261010.pdf",
+    "pdfBytes": 7120817,
+    "pdfSHA256": "16d5865761ad2a626ae96fd4d923e49861a09351caf42931c8483dd6bcbd23fa",
+    "pages": 7,
+    "cover": "OryxCalibration_EN-cover.webp",
+    "width": 745,
+    "height": 1053,
+    "coverBytes": 58960,
+    "coverSHA256": "d28a4b216542f3e58ce9f862e1a49fe0785cd7738740de0abeac399ccbe507a1",
+    "source": "actual PDF page 1"
+  }
+]

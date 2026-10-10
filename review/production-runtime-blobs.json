@@ -1,0 +1,194 @@
+[
+  {
+    "path": ".gitignore",
+    "gitBlobSha": "b8f703c61be408f2a01076c2b20858a280003d52",
+    "bytes": 312,
+    "sha256": "273a0378722dcaab73e70f6a2938f8648c54f5e841646a0ebf819b91c65e1913"
+  },
+  {
+    "path": "App.tsx",
+    "gitBlobSha": "437895706dd9325b9fd556e94658dcd514a9598d",
+    "bytes": 3474,
+    "sha256": "0ff178a301995ea54470b0ad039ccb3b21d476dafaa5de76ba84439e0c26d275"
+  },
+  {
+    "path": "components/Footer.tsx",
+    "gitBlobSha": "0e5a0e008922ab7ee586e7b59013b81f8b8caf1a",
+    "bytes": 2097,
+    "sha256": "6ce4b8486652579bb1053752986a34c26b811465204a7f7e9f5ff5d1d50d0252"
+  },
+  {
+    "path": "components/LanguagePicker.tsx",
+    "gitBlobSha": "a51f15b117c6cf3a097df11e036cb728fab1782e",
+    "bytes": 3025,
+    "sha256": "7566779f9f44f7ad2a1d56bb5229f246677cfc5c8df16d6153d655efbbadf9a6"
+  },
+  {
+    "path": "components/Logo.tsx",
+    "gitBlobSha": "9deb8a74301bf75b4f645b4856118e984b28089d",
+    "bytes": 454,
+    "sha256": "bdab13527ae24ad62a6abeea752a5ad46a8a72d9a418f2f494a09d7ec7a51159"
+  },
+  {
+    "path": "components/Navbar.tsx",
+    "gitBlobSha": "d85a96326ff904f0d8a075c8b1b35624e69834ff",
+    "bytes": 5598,
+    "sha256": "7cc69b2ae9e74d3e3cf356d4a4b33653a35dabc296af1fc8994b65bdc54a480e"
+  },
+  {
+    "path": "data/brochures.ts",
+    "gitBlobSha": "57885a117c9e7a293d490a9e81abd2a7ca2d8b6d",
+    "bytes": 3078,
+    "sha256": "a4e96360234e7e5596ad1200838164ce264c4e6db9be5385a1c686466cc751c2"
+  },
+  {
+    "path": "hooks/useRevealMotion.ts",
+    "gitBlobSha": "739631c26c0f15630b6067079e5b6404dcc09efc",
+    "bytes": 2404,
+    "sha256": "f1624ed79d64362777aac4e5b16607a3706057a6163491d5457bc7e0e5b06c2a"
+  },
+  {
+    "path": "i18n.tsx",
+    "gitBlobSha": "81545774542f808dc555496df4f1266ec75c3818",
+    "bytes": 3833,
+    "sha256": "f7003cdc7d069045ceb5f395e17f3772a7cff185de99034dc99a8b9f6e69ee05"
+  },
+  {
+    "path": "i18n/brochures.ts",
+    "gitBlobSha": "978a4995f91716f01bd38b38a3bf41daf97df431",
+    "bytes": 6248,
+    "sha256": "f3f1a37621ef370599845c854bc501619f7e3fdcf0e157ef574d4b69749f3520"
+  },
+  {
+    "path": "i18n/calibration.ts",
+    "gitBlobSha": "c51e194d0f17f827e3349ea255cf3603399e3580",
+    "bytes": 6593,
+    "sha256": "3ec4922eaf0b844ed18d2729859a87343fd0e1a95314117591383322399e02da"
+  },
+  {
+    "path": "i18n/common.ts",
+    "gitBlobSha": "a44a6e4c83384cb1d37793d488540f40d676e675",
+    "bytes": 12330,
+    "sha256": "30cb69c74fec31dcfb10eaaef88589aa92204c2bd130b7ecb28c8cc02011474a"
+  },
+  {
+    "path": "i18n/datastation.ts",
+    "gitBlobSha": "1f15c6ed99775d67eb009b3ee43acda67b637685",
+    "bytes": 37261,
+    "sha256": "f673c4cd9c93686b8652b8a33821b858b2d3260c33526b842f1f6270474305e6"
+  },
+  {
+    "path": "i18n/supporting.ts",
+    "gitBlobSha": "0195009950ca3ee3ebdb16e5d31857962febd4b5",
+    "bytes": 28676,
+    "sha256": "0274d9f9b84a41ba4217ec38570fdffec829df27d13f3a067a03d9d2bd8b9154"
+  },
+  {
+    "path": "index.html",
+    "gitBlobSha": "dca98211b46ff85a7bd658e890e4d4120bf76b35",
+    "bytes": 3197,
+    "sha256": "b2eefe2f2378adbe77cf374ee390a994ae20be4024ab28c989f185ff129318b2"
+  },
+  {
+    "path": "index.tsx",
+    "gitBlobSha": "e9b9529ab777f8b4a795bdcafc9ecd624ff47512",
+    "bytes": 431,
+    "sha256": "caa294650fdd817eff4fb6e1e95ebe278845df4d877331a3b767bd1988153e06"
+  },
+  {
+    "path": "metadata.json",
+    "gitBlobSha": "d6a3e8f8f981980a0a1dd832ff4e053b176329d7",
+    "bytes": 344,
+    "sha256": "4639c14a7bb0ac0c095a96ceab9beb1bef0a469ce1e588171fab07cb434aecf4"
+  },
+  {
+    "path": "one-page.css",
+    "gitBlobSha": "a5ec0f3f02298f4998a696b5738e6788589bf2db",
+    "bytes": 11471,
+    "sha256": "26c6297c5fd5f06bd9f4530dc94cede5c59adabfe9479c867392d9722cd56cce"
+  },
+  {
+    "path": "package-lock.json",
+    "gitBlobSha": "23a9279f12c02275f94e59fdabd46b5aa7b30feb",
+    "bytes": 58892,
+    "sha256": "0cb08911a3c7b346e6129b3d033a634d7af2ea15bc2a5bf0f1185697eb8d05b6"
+  },
+  {
+    "path": "package.json",
+    "gitBlobSha": "a66defd0c1908f4533368aa904b0d04c5674643f",
+    "bytes": 736,
+    "sha256": "c6d8307dd1e2949ee0b6b9f4c87aa189bae430c0af1a35c2d7c68c6abfd85da3"
+  },
+  {
+    "path": "scripts/verify-production-assets.mjs",
+    "gitBlobSha": "b447f0c83ebaa21a63ad907b36b54c4ab7e96de5",
+    "bytes": 1585,
+    "sha256": "447dd5ebc8f3c2f5bb6647cc44ca0da429cc8ea5e174af009ae2d51ba05dd09d"
+  },
+  {
+    "path": "styles.css",
+    "gitBlobSha": "767965cde6d85cfabe57fa33094c86399ae5f7f3",
+    "bytes": 35167,
+    "sha256": "adfcf8065af1997986142c69c1a43c6234ec29316c93958f74890605418b9226"
+  },
+  {
+    "path": "tsconfig.json",
+    "gitBlobSha": "6c82477c072159f458e9a2a62feb4bac60ffe7e5",
+    "bytes": 564,
+    "sha256": "d3c742c34805b7905ad5d1846f1ee536948ffa667ee77e693b2b735d40f99bbc"
+  },
+  {
+    "path": "views/Brochures.tsx",
+    "gitBlobSha": "95dcfb352ece8a2829d83738a3278f4892de6814",
+    "bytes": 5690,
+    "sha256": "7caf402974ea09534079ec445ee16f6e11a4a25bc6625ecc08ec691f99088643"
+  },
+  {
+    "path": "views/Calibration.tsx",
+    "gitBlobSha": "cd56f554fdbcf81cff82e7b8671586f68452a9d5",
+    "bytes": 3295,
+    "sha256": "19f8eddb2486248177333adf49d2485c5f24ed2aa8c981b25566b2cc1821371f"
+  },
+  {
+    "path": "views/DataStation.tsx",
+    "gitBlobSha": "78d0c48e40085aa7ca341790af047a2d2eb9eb4d",
+    "bytes": 19783,
+    "sha256": "e6f34e786ec2fa55f9d67923a097351ac84ac2430e83399738f8b2143d60e516"
+  },
+  {
+    "path": "views/Home.tsx",
+    "gitBlobSha": "0dc15ea9ccc5f730edfbdd7db44348e345d34801",
+    "bytes": 4084,
+    "sha256": "7e416f950a78fa678ac6ae5249a75c8649d85a35a60801e93a021f4019c58cdc"
+  },
+  {
+    "path": "views/OnePage.tsx",
+    "gitBlobSha": "0bdc6a5fc97e6111b21cf6cb55e7318065dcd327",
+    "bytes": 3037,
+    "sha256": "14f72a00aee61448e57fa7a16317d973cd2fa65e55a7191bf02824d9ac08ac57"
+  },
+  {
+    "path": "views/SupportingSections.tsx",
+    "gitBlobSha": "76127d34e366d847c453e99364d3006c55b88871",
+    "bytes": 15208,
+    "sha256": "33704b9426d45d36edf44ff1f1140f41d3468d0657e07af1a46c7c60cfa434bb"
+  },
+  {
+    "path": "views/brochures.css",
+    "gitBlobSha": "2402308aba1165232e332ebbbb0139454f43bdc6",
+    "bytes": 3092,
+    "sha256": "f3486616463087e237e5f4c72b8795c2cad8a309d7722abc76317d5bb55935fb"
+  },
+  {
+    "path": "views/datastation.css",
+    "gitBlobSha": "81dc56394a780b3caf69df05260ca0681eedf894",
+    "bytes": 12436,
+    "sha256": "13aaff6b27ec59b897e5005c247cbd6fcba4241e67bfcde53b705c3ad542c77c"
+  },
+  {
+    "path": "vite.config.ts",
+    "gitBlobSha": "40fbfe93bfbe603ee81682dbf45f3b04c7fe9dce",
+    "bytes": 544,
+    "sha256": "7643d01efb3965df02340de639e30cc883dfeed8ca88b4c3b84a1eed3f25a300"
+  }
+]

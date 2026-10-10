@@ -1,0 +1,233 @@
+[
+  {
+    "path": "public/downloads/OryxCalibration_EN-cover.webp",
+    "bytes": 58960,
+    "sha256": "d28a4b216542f3e58ce9f862e1a49fe0785cd7738740de0abeac399ccbe507a1",
+    "gitBlobSha": "06916b3089a8f6f642c7fbaf0879e7f0b2d0e9b8",
+    "usage": "active",
+    "sourceReferences": [
+      "data/brochures.ts"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 58960,
+      "sha256": "d28a4b216542f3e58ce9f862e1a49fe0785cd7738740de0abeac399ccbe507a1",
+      "gitBlobSha": "06916b3089a8f6f642c7fbaf0879e7f0b2d0e9b8",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/OryxCalibration_KO-cover.webp",
+    "bytes": 53400,
+    "sha256": "d06bcafb9550ac7df6b5003baa8e2b918dfa9523ee544332cef881736dfb06fe",
+    "gitBlobSha": "cab5d183288496b0fd58846fb76a728c19e9972b",
+    "usage": "active",
+    "sourceReferences": [
+      "data/brochures.ts"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 53400,
+      "sha256": "d06bcafb9550ac7df6b5003baa8e2b918dfa9523ee544332cef881736dfb06fe",
+      "gitBlobSha": "cab5d183288496b0fd58846fb76a728c19e9972b",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/OryxDataStation_Brochure_EN-cover.1714e2ab1b27.webp",
+    "bytes": 75612,
+    "sha256": "1714e2ab1b279fa48b0418458c994d199c436e33e44d1c5a2c2782a9c3e63f3e",
+    "gitBlobSha": "6d571b91c1cafa15f41c2adca043b0db329cca21",
+    "usage": "active",
+    "sourceReferences": [
+      "data/brochures.ts"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 75612,
+      "sha256": "1714e2ab1b279fa48b0418458c994d199c436e33e44d1c5a2c2782a9c3e63f3e",
+      "gitBlobSha": "6d571b91c1cafa15f41c2adca043b0db329cca21",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/OryxDataStation_Brochure_EN-cover.png",
+    "bytes": 560057,
+    "sha256": "f5ba62405f7061bac9dcff81ecb093fde1ecfd12f770dd3b91910e02c82f3272",
+    "gitBlobSha": "915a4a175fa850c6d391372cbddfdeddb7321c99",
+    "usage": "preserved-original-cover",
+    "sourceReferences": [],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 560057,
+      "sha256": "f5ba62405f7061bac9dcff81ecb093fde1ecfd12f770dd3b91910e02c82f3272",
+      "gitBlobSha": "915a4a175fa850c6d391372cbddfdeddb7321c99",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/OryxLockDown_Brochure_EN-cover.dcdb69ceb057.webp",
+    "bytes": 96876,
+    "sha256": "dcdb69ceb057edb4a434e9d0f9a3cc109a4d0508ae906877b962f6fb980cc8ce",
+    "gitBlobSha": "14bd96de1d10263e2916e1a7aa701810df7a8e91",
+    "usage": "active",
+    "sourceReferences": [
+      "data/brochures.ts"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 96876,
+      "sha256": "dcdb69ceb057edb4a434e9d0f9a3cc109a4d0508ae906877b962f6fb980cc8ce",
+      "gitBlobSha": "14bd96de1d10263e2916e1a7aa701810df7a8e91",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/OryxLockDown_Brochure_EN-cover.png",
+    "bytes": 757913,
+    "sha256": "d761d7921b61b6d746ec7e642017eead1dd863712eb09413c3d14dac0e59e58b",
+    "gitBlobSha": "019ac1cde30cbc05363effd37067ff7544067642",
+    "usage": "preserved-original-cover",
+    "sourceReferences": [],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 757913,
+      "sha256": "d761d7921b61b6d746ec7e642017eead1dd863712eb09413c3d14dac0e59e58b",
+      "gitBlobSha": "019ac1cde30cbc05363effd37067ff7544067642",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/Oryx_DataStation_Brochure-cover.ac71b44ef603.webp",
+    "bytes": 69168,
+    "sha256": "ac71b44ef603e749f1fd6d55edae68dd9c6a5188cee2dc7c337280904ec31e48",
+    "gitBlobSha": "86afbbc791c35cb5274814d1095bebb3016df07f",
+    "usage": "active",
+    "sourceReferences": [
+      "data/brochures.ts"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 69168,
+      "sha256": "ac71b44ef603e749f1fd6d55edae68dd9c6a5188cee2dc7c337280904ec31e48",
+      "gitBlobSha": "86afbbc791c35cb5274814d1095bebb3016df07f",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/Oryx_DataStation_Brochure-cover.png",
+    "bytes": 554343,
+    "sha256": "e3b639a8eda5a2d240e3147c473e62647f9981f70a39a7ba5b3f2b614dbc2fd8",
+    "gitBlobSha": "16d6468fd80d996a2d90a76ead0557be6ab26b6c",
+    "usage": "preserved-original-cover",
+    "sourceReferences": [],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 554343,
+      "sha256": "e3b639a8eda5a2d240e3147c473e62647f9981f70a39a7ba5b3f2b614dbc2fd8",
+      "gitBlobSha": "16d6468fd80d996a2d90a76ead0557be6ab26b6c",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/Oryx_LockDown_Brochure-cover.408c02d357e7.webp",
+    "bytes": 84224,
+    "sha256": "408c02d357e7410ab1751bd1f936d925dd2fa03558c84e5ae4dc47aa04bce733",
+    "gitBlobSha": "b09e1a6e28868c1609a52e304bf23f83657b3a1f",
+    "usage": "active",
+    "sourceReferences": [
+      "data/brochures.ts"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 84224,
+      "sha256": "408c02d357e7410ab1751bd1f936d925dd2fa03558c84e5ae4dc47aa04bce733",
+      "gitBlobSha": "b09e1a6e28868c1609a52e304bf23f83657b3a1f",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/downloads/Oryx_LockDown_Brochure-cover.png",
+    "bytes": 661051,
+    "sha256": "24a230e142fe993b4cff44ab010c6789bd80f13730040287ce40b6f94d9d7edc",
+    "gitBlobSha": "9182ee675c37f942fc06ae8ded1db7883634f6ae",
+    "usage": "preserved-original-cover",
+    "sourceReferences": [],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 661051,
+      "sha256": "24a230e142fe993b4cff44ab010c6789bd80f13730040287ce40b6f94d9d7edc",
+      "gitBlobSha": "9182ee675c37f942fc06ae8ded1db7883634f6ae",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/favicon.png",
+    "bytes": 36982,
+    "sha256": "1bfac3971d7a46d932c2c6e5bf3ca355bfc8639c19f6599e164411c400ec5947",
+    "gitBlobSha": "d71b076bb26839c957a9726b3db43bb9e65e2849",
+    "usage": "active",
+    "sourceReferences": [
+      "index.html"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 36982,
+      "sha256": "1bfac3971d7a46d932c2c6e5bf3ca355bfc8639c19f6599e164411c400ec5947",
+      "gitBlobSha": "d71b076bb26839c957a9726b3db43bb9e65e2849",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/logo.png",
+    "bytes": 371686,
+    "sha256": "739ef386b1cc4c32e02edf7683894c78afae6de48ce30637ec3fbb4d172649f2",
+    "gitBlobSha": "efd24b03127bfe2550902d1e23257f2a70cab440",
+    "usage": "active",
+    "sourceReferences": [
+      "components/Logo.tsx"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 371686,
+      "sha256": "739ef386b1cc4c32e02edf7683894c78afae6de48ce30637ec3fbb4d172649f2",
+      "gitBlobSha": "efd24b03127bfe2550902d1e23257f2a70cab440",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/og-image.png",
+    "bytes": 174745,
+    "sha256": "a64b016bd70295601d84f162f08ad541ca82385cf0de914919fd240730bb46e7",
+    "gitBlobSha": "e84151c1ed3ab69c286f6bc851377d26c753af3c",
+    "usage": "active",
+    "sourceReferences": [
+      "index.html"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 174745,
+      "sha256": "a64b016bd70295601d84f162f08ad541ca82385cf0de914919fd240730bb46e7",
+      "gitBlobSha": "e84151c1ed3ab69c286f6bc851377d26c753af3c",
+      "unchanged": true
+    }
+  },
+  {
+    "path": "public/oryx-system-logo.png",
+    "bytes": 191701,
+    "sha256": "cc4f5d12d596ffa937391f68b25650e46760cccc1260fea3e4eb2a18357de4c2",
+    "gitBlobSha": "471b02013bc130c2425fc96d30daf92a720b8c32",
+    "usage": "active",
+    "sourceReferences": [
+      "index.html",
+      "components/Logo.tsx"
+    ],
+    "uploaded": true,
+    "postUploadVerification": {
+      "bytes": 191701,
+      "sha256": "cc4f5d12d596ffa937391f68b25650e46760cccc1260fea3e4eb2a18357de4c2",
+      "gitBlobSha": "471b02013bc130c2425fc96d30daf92a720b8c32",
+      "unchanged": true
+    }
+  }
+]

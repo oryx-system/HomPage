@@ -1,20 +1,49 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Oryx DataSafe
 
-# Run and deploy your AI Studio app
+오릭스 시스템의 전자기록·전자서명·데이터 무결성 및 교정 업무 솔루션 소개 사이트입니다. React 19, TypeScript, Vite로 구성하며 한국어·영어·러시아어로 한 페이지의 같은 제품 내용을 제공합니다. Oryx DataSafe를 별도 법인으로 표시하지 않습니다.
 
-This contains everything you need to run your app locally.
+## 실행과 검증
 
-View your app in AI Studio: https://ai.studio/apps/drive/1n4ivD2pAHM6t-d09TActTeapXeWZStQg
+Node.js 20.19 이상 또는 22.12 이상에서 실행합니다. API 키나 외부 문의 전송 서비스가 필요하지 않습니다.
 
-## Run Locally
+```sh
+npm ci
+npm run dev
+npm run typecheck
+npm test
+npm run build
+npm run preview
+npm run test:e2e
+```
 
-**Prerequisites:**  Node.js
+클라우드에서는 쓰기 가능한 npm 캐시를 지정할 수 있습니다: `npm ci --cache /tmp/oryx-npm-cache`. 개발 서버 기본 포트는 3000, 프로덕션 미리보기는 4173입니다. Playwright는 `/usr/bin/chromium` 또는 `CHROMIUM_PATH`를 사용합니다. 이미 실행한 빌드를 검사하려면 `E2E_BASE_URL=http://127.0.0.1:4186 npm run test:e2e`로 실행합니다. 브라우저 검증 중에는 해당 빌드를 교체하지 않습니다.
 
+`prebuild`는 [자산 매니페스트](review/production-required-assets.json)의 실제 파일·바이트·SHA256·파일 형식을 확인합니다. 승인 자산이 누락되거나 변경되면 Vite 빌드 전에 중단합니다. `npm test`는 비공개 API 환경변수의 클라이언트 삽입 방지와 메타데이터·favicon·OG 원본을 별도로 검사합니다.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 주소와 사용자 동작
+
+한 문서에 소개 `#home`, 상세 기능 `#datastation`, 별도 PC 운영 제품 `#lockdown`, 교정 업무 `#calibration`, 자료 `#brochures`, 도입 `#implementation`, 규제·운영 검토 `#validation`, 회사 `#about`, 문의 `#contact`, 문의·개인정보 안내 `#privacy`가 있습니다. 기존 `/#/…` 경로는 해당 섹션으로 연결하며 브라우저 뒤로·앞으로와 직접 접속을 지원합니다. 시연 로그인·가격 페이지·예시 영상은 실제 문의 또는 검토 안내로 연결합니다.
+
+헤더의 지구본 메뉴는 KO/EN/RU를 전환하고 읽던 제목·문단의 위치를 보존합니다. 선택 언어는 기기에 저장되는 선택적 표시 설정입니다. 본문 바로가기, 섹션 포커스, 키보드 언어 메뉴, 모바일 모달 메뉴의 Tab 순환·Escape 복귀를 제공합니다. 메뉴 전환 기준은 1200px입니다.
+
+문의는 `mailto:schong@oryxsystem.co.kr`과 `tel:+821065450415`를 제공합니다. 입력 양식·전송 서버·접수 성공 표시가 없습니다. 실제 이메일 발송은 사용자의 메일 앱에서 이루어집니다. 회사 주소는 충청남도 금산군 비호산로 4 1층이며, 관련 회사 사이트는 https://oryxsystem.co.kr 입니다. 대표 홍승철·Founder & CEO와 국내외 현장 경험 20년만 확인된 소개 정보로 사용합니다. 미확인 사업자번호나 개인정보 담당자는 만들지 않습니다.
+
+## 원본 자료와 제품 범위
+
+DataStation, LockDown, Calibration의 한국어·영어 원본 PDF 6개를 `public/downloads`에 보존합니다. DataStation은 언어별 13쪽, LockDown은 8쪽, 최종 Calibration 소개서는 7쪽입니다. Calibration 두 PDF의 이메일·홈페이지와 전체 원본 SHA256을 대조했습니다. [Calibration 매니페스트](review/calibration-final-manifest.json)와 브라우저 검사는 원본 파일의 바이트·페이지·다운로드 동일성을 구분합니다.
+
+표지는 실제 PDF 첫 페이지의 가벼운 WebP 이미지이며 즉시 로드하고 두 자료 언어 모두 미리 준비합니다. PDF 본문은 사용자가 미리보기나 다운로드를 누를 때만 요청합니다. 러시아어 PDF는 제공하지 않으며 한국어·영어 원본을 안내합니다. PDF 원본은 편집하지 않습니다.
+
+DataStation의 CSV→DB→PDF, 원본 보호·해시 비교·Audit Trail·역할별 서명과 백업·보관을 실제 지원 범위로 설명합니다. 전자서명은 Professional·Enterprise, Enterprise의 원격 범위는 사무실에서 보관 기록의 조회·검토입니다. LockDown의 앱·접근 경로 제한은 구성에 따라 달라지며 모든 우회를 차단한다고 보장하지 않습니다.
+
+Calibration은 접수·배정, 측정 기록, 별도 검토·승인, 성적서 발행·고객 조회를 설명합니다. 고객 공개 여부·권한별 COPY 조회를 구분합니다. 온라인 사진·업로드 뒤 서버 OCR 결과를 사용자가 확인하며, 오프라인 사진·수기 입력값은 재연결 후 업로드합니다. 오프라인 즉시 자동 OCR을 지원한다고 표시하지 않습니다.
+
+21 CFR Part 11·ALCOA는 지원 기능과 사용 조직의 절차·교육·설정·검증 및 운영 책임을 함께 설명합니다. 제품 도입만으로 인증·준수·감사 통과를 보장하지 않습니다. 가격·서비스 수준·일정은 개별 견적과 계약에서 확인합니다.
+
+## 디자인과 배포
+
+기존 로고와 오릭스 시스템의 블루·화이트 팔레트·여백·타이포그래피를 사용합니다. 회사 저장소는 읽기 전용 근거로만 참고했습니다. 모니터는 회사 사이트와 같은 `viewBox="660 80 880 850"` 범위를 사용하며, 승인 이미지의 단일 방패와 DATA SECURITY 문구만 4.4초 주기로 함께 밝아집니다. 모니터 본체는 움직이지 않으며 모션 감소 설정은 반복 효과와 등장 효과를 중지합니다. Footer는 기존 투명 Oryx System 로고입니다.
+
+기존 `.github/workflows/deploy.yml`이 main push로 빌드한 `dist`를 GitHub Pages에 게시하며 `public/CNAME`은 `oryxdatasafe.com`입니다. 운영 반영은 사용자에게 승인된 범위이며 기존 호스팅과 보안 설정을 사용합니다. OryxSystem_Web는 변경하지 않습니다. 이전 비공개 Sites v3 배포, 로컬 `7e466ce` 소스와 기존 작업 경로는 별도로 보존했습니다.
+
+최종 검증 기록은 `review/production-final-qa`와 최종 배포 보고서를 기준으로 합니다. 과거 대기 상태 QA를 최종 자산·운영 배포의 성공 증거로 사용하지 않습니다.

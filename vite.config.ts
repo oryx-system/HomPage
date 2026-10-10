@@ -1,51 +1,26 @@
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import path from 'node:path';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import viteCompression from 'vite-plugin-compression';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
-        allowedHosts: [
-          '3001-i44mqm5rw7ucj4w8fdtt1-5c13a017.sandbox.novita.ai',
-          '.sandbox.novita.ai'
-        ],
-      },
-      plugins: [
-        react(),
-        viteCompression({
-          algorithm: 'gzip',
-          ext: '.gz',
-        }),
-        viteCompression({
-          algorithm: 'brotliCompress',
-          ext: '.br',
-        })
-      ],
-      build: {
-        rollupOptions: {
-          output: {
-            manualChunks: {
-              'react-vendor': ['react', 'react-dom'],
-              'animation-vendor': ['framer-motion'],
-              'utils': ['date-fns', 'clsx']
-            }
-          }
+// This is a static marketing site. No server credentials belong in this bundle.
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
         },
-        minify: 'esbuild',
-        chunkSizeWarningLimit: 1000
       },
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
-      }
-    };
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(import.meta.dirname, '.'),
+    },
+  },
 });

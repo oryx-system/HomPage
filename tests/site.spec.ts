@@ -1,0 +1,384 @@
+import { test, expect, type Page } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const sections = ['home', 'datastation', 'lockdown', 'calibration', 'brochures', 'implementation', 'validation', 'about', 'contact', 'privacy'];
+const screenshotSections = new Set(['home', 'datastation', 'lockdown', 'calibration', 'brochures', 'contact']);
+const screenshotDirectory = process.env.QA_EVIDENCE_DIR
+  ? join(process.cwd(), process.env.QA_EVIDENCE_DIR, 'screenshots')
+  : join(process.cwd(), 'review', 'production-screenshots');
+
+async function selectSiteLanguage(page: Page, language: 'ko' | 'en' | 'ru') {
+  const trigger = page.locator('.language-trigger:visible').first();
+  const bounds = await trigger.boundingBox();
+  expect(bounds).toBeTruthy();
+  // Locator.click scrolls a sticky ancestor into view before clicking it.
+  // A user can click the already-visible header without that synthetic scroll.
+  await page.mouse.click(bounds!.x + bounds!.width / 2, bounds!.y + bounds!.height / 2);
+  const options = page.locator('.language-options:visible');
+  const option = options.locator(`[role="menuitemradio"][data-language="${language}"], [role="menuitemradio"][lang="${language}"]`);
+  await expect(option).toHaveCount(1);
+  for (let step = 0; step < 3; step += 1) {
+    if (await option.evaluate(element => element === document.activeElement)) break;
+    await page.keyboard.press('ArrowDown');
+  }
+  await expect(option).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('html')).toHaveAttribute('lang', language);
+  await expect(options).not.toBeVisible();
+}
+
+async function expectNoOverflow(page: Page) {
+  const dimensions = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, document: document.documentElement.scrollWidth, body: document.body.scrollWidth }));
+  expect(dimensions.document, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
+  expect(dimensions.body, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
+}
+
+async function expectAnchorVisible(page: Page, id: string) {
+  const section = page.locator(`#${id}`);
+  await expect(section).toHaveCount(1);
+  const heading = section.locator('h1, h2').first();
+  await expect(heading).toBeVisible();
+  await expect.poll(async () => {
+    const target = await heading.boundingBox();
+    const header = await page.locator('.site-header').boundingBox();
+    return Boolean(target && header && target.y >= header.y + header.height - 1 && target.y + target.height <= page.viewportSize()!.height + 1);
+  }, { message: `${id} heading should appear below the fixed header` }).toBe(true);
+}
+
+async function visitAnchor(page: Page, id: string) {
+  await page.goto(`/#${id}`, { waitUntil: 'networkidle' });
+  await expectAnchorVisible(page, id);
+}
+
+test('one document renders all ten sections without overflow or browser errors', async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  page.on('requestfailed', request => { if (request.failure()?.errorText !== 'net::ERR_ABORTED') errors.push(`${request.url()}: ${request.failure()?.errorText}`); });
+  page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
+  await visitAnchor(page, 'home');
+  await expect(page.locator('main')).toHaveAttribute('id', 'main-content');
+  await expect(page.locator('main h1')).toHaveCount(1);
+  await expect(page.locator('main form')).toHaveCount(0);
+  await expect(page.locator('img:not([alt])')).toHaveCount(0);
+  const title = await page.title();
+  const description = await page.locator('meta[name="description"]').getAttribute('content');
+  const socialDescription = await page.locator('meta[property="og:description"]').getAttribute('content');
+  expect(title).toContain('Oryx DataSafe');
+  expect(description).toBeTruthy();
+  expect(socialDescription).toBeTruthy();
+  await mkdir(screenshotDirectory, { recursive: true });
+  // Visit all content before the full capture so reveal effects cannot leave it hidden.
+  for (const id of sections) {
+    await page.locator(`#${id}`).scrollIntoViewIfNeeded();
+    await expectNoOverflow(page);
+  }
+  await page.locator('a[href="#home"]:visible').first().click();
+  await expectAnchorVisible(page, 'home');
+  await page.screenshot({ path: join(screenshotDirectory, `${testInfo.project.name}-full.png`), fullPage: true });
+  for (const id of sections) {
+    await page.goto(`/#${id}`, { waitUntil: 'networkidle' });
+    await expectAnchorVisible(page, id);
+    await expect(page.locator('main h1')).toHaveCount(1);
+    await expect(page).toHaveTitle(title);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', description!);
+    await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', socialDescription!);
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
+    await expectNoOverflow(page);
+    if (screenshotSections.has(id)) await page.screenshot({ path: join(screenshotDirectory, `${testInfo.project.name}-${id}.png`) });
+  }
+  expect(errors).toEqual([]);
+});
+
+test('anchors support keyboard, history, direct addresses, and reload below the header', async ({ page }) => {
+  await visitAnchor(page, 'home');
+  await page.locator('a[href="#datastation"]:visible').first().focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#datastation$/);
+  await expectAnchorVisible(page, 'datastation');
+  await expect(page.locator('#datastation')).toBeFocused();
+  // Repeating the same hash does not emit hashchange; native navigation must
+  // still return to the target after keyboard focus has moved to a link.
+  await page.locator('a[href="#datastation"]:visible').first().focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#datastation$/);
+  await expectAnchorVisible(page, 'datastation');
+  await expect(page.locator('#datastation')).toBeFocused();
+  await page.locator('a[href="#contact"]:visible').first().focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#contact$/);
+  await expectAnchorVisible(page, 'contact');
+  await expect(page.locator('#contact')).toBeFocused();
+  await page.goBack();
+  await expect(page).toHaveURL(/#datastation$/);
+  await expectAnchorVisible(page, 'datastation');
+  await page.goBack();
+  await expect(page).toHaveURL(/#home$/);
+  await expectAnchorVisible(page, 'home');
+  await page.goForward();
+  await expect(page).toHaveURL(/#datastation$/);
+  await expectAnchorVisible(page, 'datastation');
+  await page.reload({ waitUntil: 'networkidle' });
+  await expectAnchorVisible(page, 'datastation');
+  await visitAnchor(page, 'privacy');
+  await expectNoOverflow(page);
+});
+
+test('legacy addresses retain destinations and unknown anchors remain usable', async ({ page }) => {
+  const legacyDestinations = [['/', 'home'], ['products', 'datastation'], ['datastation', 'datastation'], ['calibration', 'calibration'], ['brochures', 'brochures'], ['resources', 'brochures'], ['implementation', 'implementation'], ['guide', 'validation'], ['about', 'about'], ['contact', 'contact'], ['privacy', 'privacy'], ['portal', 'contact'], ['demo', 'contact'], ['pricing', 'contact'], ['podcast', 'validation']];
+  for (const [route, destination] of legacyDestinations) {
+    await page.goto(route === '/' ? '/#/' : `/#/${route}`, { waitUntil: 'networkidle' });
+    await expectAnchorVisible(page, destination);
+    await expect(page.locator('main h1')).toHaveCount(1);
+    await expect(page.locator('input[type="password"], iframe')).toHaveCount(0);
+    await expectNoOverflow(page);
+  }
+  await page.goto('/#not-real', { waitUntil: 'networkidle' });
+  await expect(page.locator('main h1')).toBeVisible();
+  await page.locator('a[href="#contact"]:visible').first().click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expectAnchorVisible(page, 'contact');
+  await expect(page.locator('#contact')).toContainText('schong@oryxsystem.co.kr');
+});
+
+test('keyboard skip link reaches the single main content landmark', async ({ page }) => {
+  // A new visitor starts without anchor focus; the first Tab should reach the skip link.
+  await page.goto('/');
+  await page.keyboard.press('Tab');
+  const skipLink = page.locator('.skip-link');
+  await expect(skipLink).toBeFocused();
+  await expect(skipLink).toBeVisible();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('main')).toBeFocused();
+});
+
+test('mobile menu traps focus, restores Escape focus, and closes for anchor navigation', async ({ page }, testInfo) => {
+  await visitAnchor(page, 'home');
+  const opener = page.locator('.site-header > .header-inner .menu-trigger');
+  test.skip(!await opener.isVisible(), 'Desktop navigation is visible at this viewport');
+  const bounds = await opener.boundingBox();
+  expect(bounds?.width).toBeGreaterThanOrEqual(44);
+  expect(bounds?.height).toBeGreaterThanOrEqual(44);
+  await opener.focus();
+  await page.keyboard.press('Enter');
+  const dialog = page.locator('#mobile-menu');
+  await expect(dialog).toBeVisible();
+  await expect(opener).toHaveAttribute('aria-expanded', 'true');
+  await mkdir(screenshotDirectory, { recursive: true });
+  await page.screenshot({ path: join(screenshotDirectory, `${testInfo.project.name}-menu.png`) });
+  for (let step = 0; step < 18; step += 1) {
+    await page.keyboard.press('Tab');
+    expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
+  }
+  await page.keyboard.press('Shift+Tab');
+  expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
+  await page.keyboard.press('Escape');
+  await expect(dialog).not.toBeVisible();
+  await expect(opener).toBeFocused();
+  await expect(opener).toHaveAttribute('aria-expanded', 'false');
+  for (const id of ['calibration', 'lockdown', 'brochures', 'contact', 'contact']) {
+    await opener.click();
+    await dialog.locator(`a[href="#${id}"]`).focus();
+    await page.keyboard.press('Enter');
+    await expect(dialog).not.toBeVisible();
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    await expectAnchorVisible(page, id);
+    await expect(page.locator(`#${id}`)).toBeFocused();
+    await expectNoOverflow(page);
+  }
+  const initialViewport = page.viewportSize()!;
+  await opener.click();
+  await page.setViewportSize({ width: 1440, height: initialViewport.height });
+  await expect(dialog).not.toBeVisible();
+  expect(await page.locator('body').evaluate(element => element.style.overflow)).not.toBe('hidden');
+  await page.setViewportSize(initialViewport);
+  await expect(opener).toBeVisible();
+});
+
+test('stable one-page metadata and referenced icon or social images are available', async ({ page }) => {
+  await visitAnchor(page, 'home');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ko');
+  await expect(page).toHaveTitle(/Oryx DataSafe/);
+  const title = await page.title();
+  const description = await page.locator('meta[name="description"]').getAttribute('content');
+  expect(description).toBeTruthy();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://oryxdatasafe.com/');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
+  const assets = await page.locator('link[rel~="icon"], link[rel="apple-touch-icon"], meta[property="og:image"], meta[name="twitter:image"]').evaluateAll(elements => elements.map(element => element.getAttribute('href') || element.getAttribute('content')));
+  expect(assets.length).toBeGreaterThanOrEqual(3);
+  for (const asset of new Set(assets)) {
+    expect(asset).toBeTruthy();
+    const path = new URL(asset!, page.url()).pathname;
+    const response = await page.request.get(path);
+    expect(response.status(), path).toBe(200);
+    expect(response.headers()['content-type'], path).toMatch(/^image\//);
+  }
+  for (const id of ['lockdown', 'brochures', 'validation', 'contact']) {
+    await page.goto(`/#${id}`, { waitUntil: 'networkidle' });
+    await expect(page).toHaveTitle(title);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', description!);
+  }
+});
+
+test('contact has direct mail and telephone links without a form or false success', async ({ page }) => {
+  const submissions: string[] = [];
+  page.on('request', request => { if (request.method() !== 'GET') submissions.push(request.url()); });
+  const session = await page.context().newCDPSession(page);
+  await session.send('Page.enable');
+  let requestedMail = '';
+  session.on('Page.frameRequestedNavigation', event => { if (event.url.startsWith('mailto:')) requestedMail = event.url; });
+  await visitAnchor(page, 'contact');
+  const contact = page.locator('#contact');
+  await expect(page.locator('main form, main textarea, main input')).toHaveCount(0);
+  await expect(contact.locator('[role="status"], [role="alert"]')).toHaveCount(0);
+  const sendEmail = contact.locator('a.button[href="mailto:schong@oryxsystem.co.kr"]');
+  await expect(sendEmail).toHaveCount(1);
+  await expect(sendEmail).toBeVisible();
+  await expect(contact.locator('a[href="tel:+821065450415"]').first()).toBeVisible();
+  await sendEmail.focus();
+  await page.keyboard.press('Enter');
+  await expect.poll(() => requestedMail).toBe('mailto:schong@oryxsystem.co.kr');
+  expect(submissions).toEqual([]);
+  // A headless browser observes the mailto URI; it cannot verify email delivery.
+  const freshPage = await page.context().newPage();
+  await freshPage.goto('/#contact');
+  await expect(freshPage.locator('main form')).toHaveCount(0);
+  await expect(freshPage.locator('#contact [role="status"], #contact [role="alert"]')).toHaveCount(0);
+  await freshPage.close();
+  expect(submissions).toEqual([]);
+  await session.detach();
+});
+
+test('three site languages translate every section and preserve the reading position', async ({ page }, testInfo) => {
+  await visitAnchor(page, 'calibration');
+  const readingHeading = page.locator('#calibration-heading');
+  await expect(readingHeading).toBeVisible();
+  let currentLanguage = 'ko';
+  for (const language of ['en', 'ru', 'ko'] as const) {
+    // Put the heading at the current reading line. At an anchor's initial
+    // position the preceding kicker can be the first readable element, and
+    // its translated line wrapping can legitimately move the heading below it.
+    await readingHeading.evaluate(element => {
+      const readingLine = (document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 94) + 36;
+      window.scrollBy({ top: element.getBoundingClientRect().top - readingLine, behavior: 'instant' });
+    });
+    const before = await readingHeading.boundingBox();
+    const hashBefore = new URL(page.url()).hash;
+    await selectSiteLanguage(page, language);
+    const after = await readingHeading.boundingBox();
+    expect(before).toBeTruthy();
+    expect(after).toBeTruthy();
+    expect(Math.abs(after!.y - before!.y), `${currentLanguage}→${language}: same reading heading`).toBeLessThanOrEqual(2);
+    expect(new URL(page.url()).hash).toBe(hashBefore);
+    await expectNoOverflow(page);
+    for (const id of sections) {
+      await page.locator(`#${id}`).scrollIntoViewIfNeeded();
+      await expect(page.locator(`#${id}`).locator('h1, h2').first()).toBeVisible();
+      await expectNoOverflow(page);
+    }
+    if (language !== 'ko') {
+      const untranslatedText = await page.locator('main, .site-footer').evaluateAll(roots => {
+        const remaining: string[] = [];
+        for (const root of roots) {
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+          for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+            const parent = node.parentElement;
+            const value = node.textContent?.trim() ?? '';
+            if (!parent || !value || !parent.getClientRects().length || parent.closest('.language-options, .brochure-language, [lang="ko"]')) continue;
+            if (/[가-힣]/.test(value)) remaining.push(value);
+          }
+        }
+        return remaining;
+      });
+      expect(untranslatedText, `Visible ${language} content should be translated`).toEqual([]);
+    }
+    await page.goto('/#calibration', { waitUntil: 'networkidle' });
+    await expect(page.locator('html')).toHaveAttribute('lang', language);
+    await mkdir(screenshotDirectory, { recursive: true });
+    await page.screenshot({ path: join(screenshotDirectory, `${testInfo.project.name}-calibration-${language}.png`) });
+    await expectAnchorVisible(page, 'calibration');
+    currentLanguage = language;
+  }
+  // Preserve a paragraph in the middle of the detailed product explanation,
+  // where translated sections above it can have substantially different heights.
+  await visitAnchor(page, 'datastation');
+  const readingParagraph = page.locator('#datastation .ds-report-details > p').first();
+  await readingParagraph.evaluate(element => {
+    const readingLine = (document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 94) + 36;
+    window.scrollBy({ top: element.getBoundingClientRect().top - readingLine, behavior: 'instant' });
+  });
+  for (const language of ['en', 'ru', 'ko'] as const) {
+    const before = await readingParagraph.boundingBox();
+    await selectSiteLanguage(page, language);
+    const after = await readingParagraph.boundingBox();
+    expect(before).toBeTruthy();
+    expect(after).toBeTruthy();
+    expect(Math.abs(after!.y - before!.y), `DataStation paragraph after switching to ${language}`).toBeLessThanOrEqual(2);
+    await expectNoOverflow(page);
+  }
+});
+
+test('language dropdown supports keyboard selection and Escape focus restoration', async ({ page }) => {
+  await visitAnchor(page, 'home');
+  const trigger = page.locator('.language-trigger:visible').first();
+  await expect(trigger).toBeVisible();
+  const bounds = await trigger.boundingBox();
+  expect(bounds?.width).toBeGreaterThanOrEqual(44);
+  expect(bounds?.height).toBeGreaterThanOrEqual(44);
+  await trigger.focus();
+  await page.keyboard.press('Enter');
+  const options = page.locator('.language-options:visible');
+  await expect(options).toBeVisible();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  await expect(options.locator('[role="menuitemradio"]')).toHaveCount(3);
+  await page.keyboard.press('Escape');
+  await expect(options).not.toBeVisible();
+  await expect(trigger).toBeFocused();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  for (const language of ['en', 'ru', 'ko'] as const) {
+    await selectSiteLanguage(page, language);
+    await expect(page.locator('html')).toHaveAttribute('lang', language);
+    await expect(trigger).toBeFocused();
+    await expectNoOverflow(page);
+  }
+});
+
+test('normal visual effects respect reduced-motion and keep all sections readable', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await visitAnchor(page, 'home');
+  const motion = await page.evaluate(async () => {
+    const evidence: { duration: number; opacity: string; transform: string }[] = [];
+    document.querySelector('#implementation')?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    for (let frame = 0; frame < 24; frame += 1) {
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      for (const animation of document.getAnimations()) {
+        const effect = animation.effect as KeyframeEffect | null;
+        if (effect?.target instanceof Element && effect.target.matches('.reveal')) {
+          const style = getComputedStyle(effect.target);
+          evidence.push({ duration: Number(effect.getTiming().duration), opacity: style.opacity, transform: style.transform });
+        }
+      }
+    }
+    return evidence;
+  });
+  expect(motion.some(frame => frame.opacity !== '1' && frame.transform !== 'none'), 'An entering section should visibly animate').toBe(true);
+  expect(motion.some(frame => Number(frame.duration) > 0)).toBe(true);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload({ waitUntil: 'networkidle' });
+  for (const id of sections) {
+    await page.locator(`#${id}`).scrollIntoViewIfNeeded();
+    await expect(page.locator(`#${id}`).locator('h1, h2').first()).toBeVisible();
+    const headings = await page.locator(`#${id}`).locator('h1, h2').first().evaluate(element => {
+      const reveal = element.closest('.reveal') ?? element;
+      return { opacity: getComputedStyle(reveal).opacity, animations: reveal.getAnimations().length };
+    });
+    expect(headings).toEqual({ opacity: '1', animations: 0 });
+    await expectNoOverflow(page);
+  }
+  const prolonged = await page.evaluate(() => [...document.querySelectorAll('main *')].filter(element => {
+    const style = getComputedStyle(element);
+    return style.animationName !== 'none' && style.animationDuration.split(',').some(value => parseFloat(value) > 0.02);
+  }).map(element => `${element.tagName}.${element.className}`));
+  expect(prolonged).toEqual([]);
+});

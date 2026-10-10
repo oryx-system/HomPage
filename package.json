@@ -1,32 +1,29 @@
 {
-  "name": "oryx-datasafe---enterprise-e-signature-for-pharma",
+  "name": "oryx-datasafe-website",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/build-boundary.test.mjs",
+    "test:e2e": "playwright test",
+    "prebuild": "node scripts/verify-production-assets.mjs"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "framer-motion": "^11.15.0",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-intersection-observer": "^9.14.0",
-    "react-markdown": "^9.0.3"
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@playwright/test": "^1.56.0",
     "@vitejs/plugin-react": "^5.0.0",
-    "autoprefixer": "^10.4.20",
-    "gh-pages": "^6.3.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
     "typescript": "~5.8.2",
-    "vite": "^6.2.0",
-    "vite-plugin-compression": "^0.5.1"
+    "vite": "^6.2.0"
   }
 }

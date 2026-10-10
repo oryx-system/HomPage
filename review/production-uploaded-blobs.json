@@ -1,0 +1,30 @@
+[
+  {
+    "path": "public/downloads/Oryx_DataStation_Brochure.pdf",
+    "bytes": 5714476,
+    "sha256": "0dfa3a3911826c580a3c2e21e800af32f6f369b8a45e8c06790d459034ce74cd",
+    "gitBlobSha": "208770af5ed010c2ffe7848e7888a6adee13d844",
+    "uploaded": true
+  },
+  {
+    "path": "public/downloads/OryxDataStation_Brochure_EN.pdf",
+    "bytes": 5802066,
+    "sha256": "23310048c56fd6285b51f9cfc962284e6baccfe04b9cdced4ea8dc3976ab2a11",
+    "gitBlobSha": "fa05d9e3c08d3d01f4f1de0a6facf625d0d6f9cc",
+    "uploaded": true
+  },
+  {
+    "path": "public/downloads/Oryx_LockDown_Brochure.pdf",
+    "bytes": 6200826,
+    "sha256": "c8d018ee579adfab09cc53c29b50d036c273abc6341432c30fa42fbf6ca2cb5d",
+    "gitBlobSha": "c2b80eda78bfed4c3452569a705575f3b6f6b8d3",
+    "uploaded": true
+  },
+  {
+    "path": "public/downloads/OryxLockDown_Brochure_EN.pdf",
+    "bytes": 795854,
+    "sha256": "ead0169f1f0bcda5bd77eb80488821c60379db5c7e88c7b76344d8f34e64a4e9",
+    "gitBlobSha": "e6ef35c8f3fd7598cdfa68a02b5914acda29917a",
+    "uploaded": true
+  }
+]

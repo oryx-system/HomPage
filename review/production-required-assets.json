@@ -1,0 +1,154 @@
+{
+  "status": "verified_originals_and_static_assets",
+  "files": [
+    {
+      "path": "downloads/OryxCalibration_고객소개브로셔_20261010.pdf",
+      "bytes": 3580768,
+      "sha256": "8f20191487dc4a75162615dd676011a7b80563893ed5168a71f2c9f99a6f6690",
+      "mime": "application/pdf",
+      "gitBlobSha": "2c06f8d1de71cd27ea68d07586c1fe70dc83bd75",
+      "relayPath": "downloads/OryxCalibration_고객소개브로셔_20261010.pdf"
+    },
+    {
+      "path": "downloads/OryxCalibration_Introduction_EN_20261010.pdf",
+      "bytes": 7120817,
+      "sha256": "16d5865761ad2a626ae96fd4d923e49861a09351caf42931c8483dd6bcbd23fa",
+      "mime": "application/pdf",
+      "gitBlobSha": "88d8fc039f833cf20cc4930f35e6d5b87eeae1a2",
+      "relayPath": "downloads/OryxCalibration_Introduction_EN_20261010.pdf"
+    },
+    {
+      "path": "downloads/OryxCalibration_고객소개브로셔_표지_20261010.png",
+      "bytes": 1923733,
+      "sha256": "65d7a91d01954034b8340a0d03c65c1caef69cb69fb7c3a331989409c2ecdf91",
+      "mime": "image/png",
+      "gitBlobSha": "b869a9102f86f7e6d1555e6cff550cc4882c595a",
+      "relayPath": "downloads/OryxCalibration_고객소개브로셔_표지_20261010.png"
+    },
+    {
+      "path": "downloads/OryxCalibration_Introduction_EN_Cover_20261010.png",
+      "bytes": 1934851,
+      "sha256": "d5823ad4ee2b7f7edfded3f56a93ea9a00ff7c99992c9f2be17372f568c8d584",
+      "mime": "image/png",
+      "gitBlobSha": "2abf523951d6e8b4aea9fdc1c9d9a0d9fcbbd8c4",
+      "relayPath": "downloads/OryxCalibration_Introduction_EN_Cover_20261010.png"
+    },
+    {
+      "path": "oryx-datasafe-monitor-hero.webp",
+      "bytes": 47474,
+      "sha256": "ebb0810a322815d0acce1d6a13d34f18d5cc3652972ab0fc32de23ee02fc8566",
+      "mime": "image/webp",
+      "gitBlobSha": "6763ab452db89a4483257859100a394cf736f0e3",
+      "relayPath": "oryx-datasafe-monitor-hero.webp"
+    },
+    {
+      "path": "downloads/OryxCalibration_EN-cover.webp",
+      "bytes": 58960,
+      "sha256": "d28a4b216542f3e58ce9f862e1a49fe0785cd7738740de0abeac399ccbe507a1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/OryxCalibration_KO-cover.webp",
+      "bytes": 53400,
+      "sha256": "d06bcafb9550ac7df6b5003baa8e2b918dfa9523ee544332cef881736dfb06fe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/OryxDataStation_Brochure_EN-cover.1714e2ab1b27.webp",
+      "bytes": 75612,
+      "sha256": "1714e2ab1b279fa48b0418458c994d199c436e33e44d1c5a2c2782a9c3e63f3e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/OryxDataStation_Brochure_EN-cover.png",
+      "bytes": 560057,
+      "sha256": "f5ba62405f7061bac9dcff81ecb093fde1ecfd12f770dd3b91910e02c82f3272",
+      "mime": "image/png"
+    },
+    {
+      "path": "downloads/OryxDataStation_Brochure_EN.pdf",
+      "bytes": 5802066,
+      "sha256": "23310048c56fd6285b51f9cfc962284e6baccfe04b9cdced4ea8dc3976ab2a11",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxLockDown_Brochure_EN-cover.dcdb69ceb057.webp",
+      "bytes": 96876,
+      "sha256": "dcdb69ceb057edb4a434e9d0f9a3cc109a4d0508ae906877b962f6fb980cc8ce",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/OryxLockDown_Brochure_EN-cover.png",
+      "bytes": 757913,
+      "sha256": "d761d7921b61b6d746ec7e642017eead1dd863712eb09413c3d14dac0e59e58b",
+      "mime": "image/png"
+    },
+    {
+      "path": "downloads/OryxLockDown_Brochure_EN.pdf",
+      "bytes": 795854,
+      "sha256": "ead0169f1f0bcda5bd77eb80488821c60379db5c7e88c7b76344d8f34e64a4e9",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/Oryx_DataStation_Brochure-cover.ac71b44ef603.webp",
+      "bytes": 69168,
+      "sha256": "ac71b44ef603e749f1fd6d55edae68dd9c6a5188cee2dc7c337280904ec31e48",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/Oryx_DataStation_Brochure-cover.png",
+      "bytes": 554343,
+      "sha256": "e3b639a8eda5a2d240e3147c473e62647f9981f70a39a7ba5b3f2b614dbc2fd8",
+      "mime": "image/png"
+    },
+    {
+      "path": "downloads/Oryx_DataStation_Brochure.pdf",
+      "bytes": 5714476,
+      "sha256": "0dfa3a3911826c580a3c2e21e800af32f6f369b8a45e8c06790d459034ce74cd",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/Oryx_LockDown_Brochure-cover.408c02d357e7.webp",
+      "bytes": 84224,
+      "sha256": "408c02d357e7410ab1751bd1f936d925dd2fa03558c84e5ae4dc47aa04bce733",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/Oryx_LockDown_Brochure-cover.png",
+      "bytes": 661051,
+      "sha256": "24a230e142fe993b4cff44ab010c6789bd80f13730040287ce40b6f94d9d7edc",
+      "mime": "image/png"
+    },
+    {
+      "path": "downloads/Oryx_LockDown_Brochure.pdf",
+      "bytes": 6200826,
+      "sha256": "c8d018ee579adfab09cc53c29b50d036c273abc6341432c30fa42fbf6ca2cb5d",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "favicon.png",
+      "bytes": 36982,
+      "sha256": "1bfac3971d7a46d932c2c6e5bf3ca355bfc8639c19f6599e164411c400ec5947",
+      "mime": "image/png"
+    },
+    {
+      "path": "logo.png",
+      "bytes": 371686,
+      "sha256": "739ef386b1cc4c32e02edf7683894c78afae6de48ce30637ec3fbb4d172649f2",
+      "mime": "image/png"
+    },
+    {
+      "path": "og-image.png",
+      "bytes": 174745,
+      "sha256": "a64b016bd70295601d84f162f08ad541ca82385cf0de914919fd240730bb46e7",
+      "mime": "image/png"
+    },
+    {
+      "path": "oryx-system-logo.png",
+      "bytes": 191701,
+      "sha256": "cc4f5d12d596ffa937391f68b25650e46760cccc1260fea3e4eb2a18357de4c2",
+      "mime": "image/png"
+    }
+  ],
+  "sourceCommit": "52cdbc6a4294eed52be74728c75fd53fb996d81a"
+}

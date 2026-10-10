@@ -1,80 +1,76 @@
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import OnePage from "./views/OnePage";
+import { useRevealMotion } from "./hooks/useRevealMotion";
+import { useLanguage } from "./i18n";
+import "./styles.css";
+import "./one-page.css";
 
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './views/Home';
-
-// Lazy load views for better performance
-const Validation = lazy(() => import('./views/Validation'));
-const Solutions = lazy(() => import('./views/Solutions'));
-const Security = lazy(() => import('./views/Security'));
-const About = lazy(() => import('./views/About'));
-const Support = lazy(() => import('./views/Support'));
-const Contact = lazy(() => import('./views/Contact'));
-const Pricing = lazy(() => import('./views/Pricing'));
-const Necessity = lazy(() => import('./views/Necessity'));
-const Concept = lazy(() => import('./views/Concept'));
-const Demo = lazy(() => import('./views/Demo'));
-const Portal = lazy(() => import('./views/Portal'));
-const Blog = lazy(() => import('./views/Blog'));
-const Resources = lazy(() => import('./views/Resources'));
-const Podcast = lazy(() => import('./views/Podcast'));
-const Comparison = lazy(() => import('./views/Comparison'));
-const EquipmentIntegration = lazy(() => import('./views/EquipmentIntegration'));
-
-export type ViewType = 'home' | 'validation' | 'solutions' | 'security' | 'about' | 'support' | 'contact' | 'pricing' | 'necessity' | 'concept' | 'demo' | 'portal' | 'blog' | 'resources' | 'podcast' | 'comparison' | 'equipment';
-
-// Loading component
-const LoadingScreen: React.FC = () => (
-  <div className="min-h-[80vh] flex items-center justify-center">
-    <div className="text-center">
-      <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-      <p className="text-slate-600 font-bold">로딩 중...</p>
-    </div>
-  </div>
-);
-
-const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewType>('home');
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentView]);
-
-  const renderView = () => {
-    switch (currentView) {
-      case 'home': return <Home setView={setCurrentView} />;
-      case 'validation': return <Validation />;
-      case 'solutions': return <Solutions />;
-      case 'security': return <Security />;
-      case 'about': return <About />;
-      case 'support': return <Support />;
-      case 'contact': return <Contact />;
-      case 'pricing': return <Pricing />;
-      case 'necessity': return <Necessity setView={setCurrentView} />;
-      case 'concept': return <Concept />;
-      case 'demo': return <Demo />;
-      case 'portal': return <Portal />;
-      case 'blog': return <Blog />;
-      case 'resources': return <Resources />;
-      case 'podcast': return <Podcast />;
-      case 'comparison': return <Comparison setView={setCurrentView} />;
-      case 'equipment': return <EquipmentIntegration setView={setCurrentView} />;
-      default: return <Home setView={setCurrentView} />;
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <Navbar currentView={currentView} setView={setCurrentView} />
-      <Suspense fallback={<LoadingScreen />}>
-        <main className="min-h-[80vh]">
-          {renderView()}
-        </main>
-      </Suspense>
-      <Footer setView={setCurrentView} />
-    </div>
-  );
+const sections = ["home", "datastation", "lockdown", "calibration", "brochures", "implementation", "validation", "about", "contact", "privacy"];
+const legacyAnchors: Record<string, string> = {
+  "/": "home", "/home": "home", "/products": "datastation", "/solutions": "datastation",
+  "/equipment": "datastation", "/necessity": "datastation", "/datastation": "datastation",
+  "/lockdown": "lockdown", "/calibration": "calibration", "/resources": "brochures", "/brochures": "brochures",
+  "/implementation": "implementation", "/validation": "validation", "/guide": "validation",
+  "/concept": "validation", "/security": "validation", "/podcast": "validation", "/blog": "validation",
+  "/about": "about", "/contact": "contact", "/pricing": "contact", "/support": "contact",
+  "/portal": "contact", "/demo": "contact", "/comparison": "datastation", "/privacy": "privacy",
 };
 
-export default App;
+export default function App() {
+  const { t } = useLanguage();
+  const mainRef = useRef<HTMLElement>(null);
+  const [currentSection, setCurrentSection] = useState("home");
+  useRevealMotion(mainRef);
+
+  useLayoutEffect(() => {
+    const resolveAnchor = (initial = false) => {
+      const hash = window.location.hash.slice(1);
+      const legacy = hash.startsWith("/");
+      const anchor = legacy ? legacyAnchors[hash.replace(/\/+$/, "") || "/"] ?? "home" : sections.includes(hash) ? hash : "home";
+      if (legacy) window.history.replaceState(null, "", `#${anchor}`);
+      const target = document.getElementById(anchor);
+      if (hash && target) {
+        target.focus({ preventScroll: true });
+        if (initial || legacy) target.scrollIntoView({ block: "start", behavior: initial || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+      }
+      setCurrentSection(anchor);
+    };
+    const onHash = () => resolveAnchor();
+    resolveAnchor(true);
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const line = (document.querySelector(".site-header")?.getBoundingClientRect().height ?? 94) + 60;
+      let active = "home";
+      for (const id of sections) {
+        if ((document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) <= line) active = id;
+      }
+      setCurrentSection(active);
+    };
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
+
+  return (
+    <>
+      <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>{t('본문 바로가기')}</a>
+      <Navbar currentPath={currentSection} />
+      <main id="main-content" ref={mainRef} tabIndex={-1}><OnePage /></main>
+      <Footer />
+    </>
+  );
+}

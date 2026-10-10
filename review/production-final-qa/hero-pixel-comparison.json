@@ -1,0 +1,115 @@
+{
+  "method": "Compare actual Chromium PNG screenshots at minimum and maximum light-group opacity. Monitor geometry stays unchanged. Difference threshold: >2 RGB levels. ROI includes the approved shield, rotated label and 5-sigma feathering, mapped from native SVG coordinates.",
+  "reports": [
+    {
+      "profile": "phone-360",
+      "size": [
+        340,
+        330
+      ],
+      "expectedROI": [
+        85,
+        79,
+        205,
+        237
+      ],
+      "changedPixelsAbove2Levels": 8620,
+      "insideROI": 8620,
+      "outsideROI": 0,
+      "changedBoundingBox": [
+        96,
+        94,
+        191,
+        226
+      ]
+    },
+    {
+      "profile": "phone-390",
+      "size": [
+        370,
+        358
+      ],
+      "expectedROI": [
+        92,
+        86,
+        223,
+        257
+      ],
+      "changedPixelsAbove2Levels": 10348,
+      "insideROI": 10348,
+      "outsideROI": 0,
+      "changedBoundingBox": [
+        105,
+        100,
+        209,
+        244
+      ]
+    },
+    {
+      "profile": "tablet-768",
+      "size": [
+        650,
+        629
+      ],
+      "expectedROI": [
+        162,
+        151,
+        392,
+        452
+      ],
+      "changedPixelsAbove2Levels": 31553,
+      "insideROI": 31553,
+      "outsideROI": 0,
+      "changedBoundingBox": [
+        184,
+        177,
+        367,
+        430
+      ]
+    },
+    {
+      "profile": "tablet-1024",
+      "size": [
+        474,
+        458
+      ],
+      "expectedROI": [
+        118,
+        110,
+        286,
+        329
+      ],
+      "changedPixelsAbove2Levels": 16703,
+      "insideROI": 16703,
+      "outsideROI": 0,
+      "changedBoundingBox": [
+        134,
+        129,
+        267,
+        313
+      ]
+    },
+    {
+      "profile": "desktop-1440",
+      "size": [
+        682,
+        659
+      ],
+      "expectedROI": [
+        170,
+        158,
+        411,
+        473
+      ],
+      "changedPixelsAbove2Levels": 34557,
+      "insideROI": 34557,
+      "outsideROI": 0,
+      "changedBoundingBox": [
+        193,
+        185,
+        385,
+        451
+      ]
+    }
+  ]
+}
