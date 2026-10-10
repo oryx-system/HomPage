@@ -1,0 +1,35 @@
+{
+  "status": "awaiting_approved_bytes",
+  "files": [
+    {
+      "path": "downloads/OryxCalibration_고객소개브로셔_20261010.pdf",
+      "bytes": 3580768,
+      "sha256": "8f20191487dc4a75162615dd676011a7b80563893ed5168a71f2c9f99a6f6690",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxCalibration_Introduction_EN_20261010.pdf",
+      "bytes": 7120817,
+      "sha256": "16d5865761ad2a626ae96fd4d923e49861a09351caf42931c8483dd6bcbd23fa",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxCalibration_고객소개브로셔_표지_20261010.png",
+      "bytes": 1923733,
+      "sha256": null,
+      "mime": "image/png"
+    },
+    {
+      "path": "downloads/OryxCalibration_Introduction_EN_Cover_20261010.png",
+      "bytes": 1934851,
+      "sha256": null,
+      "mime": "image/png"
+    },
+    {
+      "path": "oryx-datasafe-monitor-hero.webp",
+      "bytes": 47474,
+      "sha256": null,
+      "mime": "image/webp"
+    }
+  ]
+}
