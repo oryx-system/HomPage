@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+const privacyText = JSON.parse(readFileSync(new URL('../review/shared-privacy-text.json', import.meta.url), 'utf8')) as Record<string, string>;
 
 test('regulatory scope and logo explanation remain readable in KO/EN/RU', async ({ page }) => {
   for (const language of ['ko','en','ru']) {
@@ -24,12 +26,13 @@ test('regulatory scope and logo explanation remain readable in KO/EN/RU', async 
 
 test('privacy notice describes website inquiries without publishing internal policy work', async ({ page }) => {
   await page.goto('/#privacy', { waitUntil: 'networkidle' });
-  for (const language of ['ko', 'en', 'ru']) {
+  for (const language of ['ko', 'en', 'ru'] as const) {
     await page.evaluate(lang => localStorage.setItem('oryx-language', lang), language);
     await page.reload({ waitUntil: 'networkidle' });
     await expect(page.locator('html')).toHaveAttribute('lang', language);
     const notice = page.locator('#privacy .privacy-brief');
     await expect(notice.locator('p')).toHaveCount(1);
+    await expect(notice.locator('p')).toHaveText(privacyText[language]);
     await expect(page.locator('main form, main input, main textarea')).toHaveCount(0);
     expect(await notice.innerText()).not.toMatch(/확인과 확정|подтверждения оператором|requires.*operator/i);
     if (language !== 'ko') expect(await notice.innerText()).not.toMatch(/[가-힣]/);
