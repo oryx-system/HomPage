@@ -1,0 +1,7 @@
+{
+  "ko": "이 사이트에는 문의 입력 폼이 없으며, 사이트에서 문의 내용을 직접 수집·전송·저장하지 않습니다. 이메일 문의는 사용자가 자신의 메일 앱 또는 서비스를 통해 직접 보내며, 해당 서비스의 개인정보 및 이용 정책이 적용됩니다.",
+  "en": "This site has no inquiry form and does not directly collect, transmit or store inquiry content through the site. Users send email inquiries themselves through their own email app or service, whose privacy and terms of use policies apply.",
+  "ru": "На этом сайте нет формы для обращений, и сайт напрямую не собирает, не передает и не хранит содержание обращений. Пользователь сам отправляет обращение по электронной почте через свое почтовое приложение или сервис; применяются правила конфиденциальности и условия использования этого сервиса.",
+  "scope": "website inquiry form/content only; no company email retention or hosting log policy assertion",
+  "implementation": "No inquiry form or transmission backend; mailto links only"
+}

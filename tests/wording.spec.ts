@@ -21,3 +21,20 @@ test('regulatory scope and logo explanation remain readable in KO/EN/RU', async 
     await expect(page.locator('#contact a[href="tel:+821065450415"]')).toHaveText('010-6545-0415');
   }
 });
+
+test('privacy notice describes website inquiries without publishing internal policy work', async ({ page }) => {
+  await page.goto('/#privacy', { waitUntil: 'networkidle' });
+  for (const language of ['ko', 'en', 'ru']) {
+    await page.evaluate(lang => localStorage.setItem('oryx-language', lang), language);
+    await page.reload({ waitUntil: 'networkidle' });
+    await expect(page.locator('html')).toHaveAttribute('lang', language);
+    const notice = page.locator('#privacy .privacy-brief');
+    await expect(notice.locator('p')).toHaveCount(1);
+    await expect(page.locator('main form, main input, main textarea')).toHaveCount(0);
+    expect(await notice.innerText()).not.toMatch(/확인과 확정|подтверждения оператором|requires.*operator/i);
+    if (language !== 'ko') expect(await notice.innerText()).not.toMatch(/[가-힣]/);
+    await page.addStyleTag({ content: '#privacy p { font-size:200% !important }' });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    await expect(page.locator('#contact a[href^="mailto:"]').last()).toHaveAttribute('href', 'mailto:schong@oryxsystem.co.kr?subject=Oryx%20DataSafe');
+  }
+});
