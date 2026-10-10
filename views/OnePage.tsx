@@ -27,8 +27,8 @@ export default function OnePage() {
       <div id="brochures" data-main-section tabIndex={-1}><BrochuresPage embedded /></div>
       <ImplementationSection />
       <ValidationSection />
-      <ContactSection />
       <PrivacySection />
+      <ContactSection />
     </>
   );
 }

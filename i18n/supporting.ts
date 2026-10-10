@@ -159,6 +159,14 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Seung-cheol Hong · Founder & CEO",
     "ru": "Seung-cheol Hong · Основатель и руководитель"
   },
+  "전화": {
+    "en": "Phone",
+    "ru": "Телефон"
+  },
+  "이메일": {
+    "en": "Email",
+    "ru": "Электронная почта"
+  },
   "제품 및 도입 문의": {
     "en": "Product and implementation inquiries",
     "ru": "Вопросы о продукте и внедрении"
@@ -179,9 +187,13 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "The formal privacy policy, including how email inquiries are handled and how long they are retained, still requires the operator’s confirmation and finalization.",
     "ru": "Официальная политика обработки персональных данных, включая порядок обработки обращений по электронной почте и срок их хранения, еще требует проверки и окончательного утверждения оператором сайта."
   },
-  "Oryx DataSafe는 홍승철 대표가 운영하는 IT 기업으로, Oryx System과 별도로 운영됩니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.": {
-    "en": "Oryx DataSafe is an IT company run by Seung-cheol Hong and operates separately from Oryx System. It designs and develops software centered on electronic records, data management, integrity, and security to meet pharmaceutical companies’ work and site needs, providing programs tailored to each customer’s workflows and operating environment.",
-    "ru": "Oryx DataSafe — ИТ-компания под руководством Seung-cheol Hong, работающая отдельно от Oryx System. Компания проектирует и разрабатывает программное обеспечение в области электронных записей, управления данными, целостности и безопасности с учетом рабочих задач и требований на объектах фармацевтических компаний, предоставляя программы, адаптированные к рабочим процессам и условиям эксплуатации каждого заказчика."
+  "Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.": {
+    "en": "Oryx DataSafe is an IT company operating separately from Oryx System. It designs and develops software centered on electronic records, data management, integrity, and security to meet pharmaceutical companies’ work and site needs, providing programs tailored to each customer’s workflows and operating environment.",
+    "ru": "Oryx DataSafe — ИТ-компания, работающая отдельно от Oryx System. Компания проектирует и разрабатывает программное обеспечение в области электронных записей, управления данными, целостности и безопасности с учетом рабочих задач и требований на объектах фармацевтических компаний, предоставляя программы, адаптированные к рабочим процессам и условиям эксплуатации каждого заказчика."
+  },
+  "업무에 맞춘 소프트웨어를 설계합니다.": {
+    "en": "We design software around your work.",
+    "ru": "Мы проектируем программное обеспечение под ваши рабочие задачи."
   },
   "메일 보내기": {
     "en": "Send email",
@@ -210,14 +222,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
   "DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.": {
     "en": "DataStation supports the collection, protection, and review of equipment records; LockDown supports access control for work PCs; Calibration supports the management of calibration records and workflows.",
     "ru": "DataStation поддерживает сбор, защиту и проверку записей оборудования; LockDown — контроль доступа к рабочим ПК; Calibration — управление записями калибровки и рабочими процессами."
-  },
-  "대표의 현장 경험": {
-    "en": "Representative’s field experience",
-    "ru": "Практический опыт руководителя"
-  },
-  "국내외 20년": {
-    "en": "20 years in Korea and abroad",
-    "ru": "20 лет в Корее и за рубежом"
   },
   "PRIVACY": {
     "en": "PRIVACY",

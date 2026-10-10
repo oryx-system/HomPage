@@ -46,6 +46,16 @@ export default function Home({ children }: { children?: ReactNode }) {
         </figure>
       </div>
       <div className="container hero-bottom"><span>{t('RECORDS. SIGNATURES. INTEGRITY.')}</span><a href="#implementation">{t('도입 과정 살펴보기')}<ArrowRight size={14} aria-hidden="true" /></a></div>
+      <nav className="solution-directory" aria-label={t('제품 및 자료 바로가기')}>
+        <div className="container directory-inner">
+          {[
+            { id: 'datastation', category: '장비 데이터 관리', name: 'DataStation' },
+            { id: 'lockdown', category: 'PC 접근 관리', name: 'LockDown' },
+            { id: 'calibration', category: '교정 업무 관리', name: 'Calibration' },
+            { id: 'brochures', category: '한국어·영어 PDF', name: t('제품 브로셔') },
+          ].map((item, index) => <a key={item.id} href={`#${item.id}`}><span className="directory-id">0{index + 1}</span><span className="directory-copy"><small>{t(item.category)}</small><strong>{item.name}</strong></span></a>)}
+        </div>
+      </nav>
     </section>
     {children}
     <section className="proof-strip" aria-label={t('DataSafe 소프트웨어 기능')}>

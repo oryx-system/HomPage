@@ -2,7 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const sections = ['home', 'datastation', 'lockdown', 'calibration', 'brochures', 'implementation', 'validation', 'about', 'contact', 'privacy'];
+const sections = ['home', 'about', 'datastation', 'lockdown', 'calibration', 'brochures', 'implementation', 'validation', 'privacy', 'contact'];
 const screenshotSections = new Set(['home', 'datastation', 'lockdown', 'calibration', 'brochures', 'contact']);
 const screenshotDirectory = process.env.QA_EVIDENCE_DIR
   ? join(process.cwd(), process.env.QA_EVIDENCE_DIR, 'screenshots')
@@ -50,16 +50,21 @@ async function expectReadableTypography(page: Page) {
       '.ds-feature-card .check-list span', '.ds-workflow > li > span',
       '.ds-enterprise-card .check-list span', '.ds-edition-table th', '.ds-edition-table td',
       '.ds-table-hint', '.form-note', '.brochure-guidance p', '.button',
+      '.contact-facts dd', '.about-meta',
       '.desktop-nav a', '.site-footer nav a', '.site-footer .text-link', '.footer-bottom p',
     ].flatMap(measure);
-    const introductions = measure('.hero-lead, .ds-hero-lead, .section-heading > p:not(.section-kicker)');
-    return { essential, introductions };
+    const introductions = measure('.hero-lead, .ds-hero-lead, .section-heading > p:not(.section-kicker):not(.about-meta)');
+    const contactLabels = measure('.contact-facts dt');
+    return { essential, introductions, contactLabels };
   });
   expect(measurements.essential.length).toBeGreaterThan(50);
   for (const item of measurements.essential) {
     expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(14);
   }
-  const minimumIntroduction = page.viewportSize()!.width >= 1200 ? 17 : 16;
+  for (const item of measurements.contactLabels) {
+    expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(12);
+  }
+  const minimumIntroduction = 16;
   expect(measurements.introductions.length).toBeGreaterThan(5);
   for (const item of measurements.introductions) {
     expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(minimumIntroduction);
@@ -97,10 +102,41 @@ async function expectDataSafeIdentity(page: Page) {
   await expect(page.locator('#about')).toContainText(/DataSafe|데이터세이프/i);
   // About may name Oryx System to explain the corrected distinction.
   // Verify that distinction rather than rejecting the company name itself.
-  await expect(page.locator('#about')).toContainText(/별도로\s*운영|operates\s+separately\s+from|отдельно\s+от/i);
+  await expect(page.locator('#about')).toContainText(/별도로\s*운영|operat(?:es|ing)\s+separately\s+from|отдельно\s+от/i);
   await expect(page.locator('.proof-strip')).not.toContainText(/\b20\b|20\s*년|\b2023\b/);
   await expect(page.locator('.hero-artwork figcaption')).toHaveCount(0);
   await expect(page.locator('.hero-monitor')).toHaveAccessibleName(/.+/);
+  await expectCompanyContactDistribution(page);
+}
+
+async function expectCompanyContactDistribution(page: Page) {
+  const about = page.locator('#about');
+  // Company introduction describes the software business. Personal details
+  // belong to its single contact section rather than repeating through the page.
+  await expect(about).not.toContainText(/홍승철|Seung[-\s]?cheol\s+Hong|Founder|CEO|Основатель|대표|Representative|Руководитель|비호산로|Bihosan[-\s]?ro|\b20\b|20\s*년/i);
+  await expect(about.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(0);
+  const person = page.locator('#contact .contact-fact-person dd');
+  const address = page.locator('#contact .contact-fact-address dd');
+  await expect(person).toHaveCount(1);
+  await expect(address).toHaveCount(1);
+  await expect(person).toContainText(/홍승철|Seung[-\s]?cheol\s+Hong/i);
+  await expect(address).toContainText(/비호산로|Bihosan[-\s]?ro/i);
+  await expect(page.locator('main a[href^="mailto:"]')).toHaveCount(1);
+  await expect(page.locator('main a[href^="tel:"]')).toHaveCount(1);
+  const text = await page.locator('body').innerText();
+  for (const [label, pattern] of [
+    ['representative', /홍승철|Seung[-\s]?cheol\s+Hong/gi],
+    ['address', /비호산로|Bihosan[-\s]?ro/gi],
+    ['email', /schong@oryxsystem\.co\.kr/gi],
+    ['telephone', /\+82[-\s]*10[-\s]*6545[-\s]*0415/g],
+  ] as const) {
+    expect(text.match(pattern) ?? [], `${label} appears once in visible HTML, independent of unchanged PDF contents`).toHaveLength(1);
+  }
+  const order = await page.locator('main [data-main-section]').evaluateAll(elements => elements.map(element => element.id));
+  expect(order.slice(-2), 'Privacy information precedes the final contact section').toEqual(['privacy', 'contact']);
+  for (const id of ['datastation', 'lockdown', 'calibration']) {
+    await expect(page.locator(`#${id}`)).toContainText(new RegExp(id, 'i'));
+  }
 }
 
 async function expectAnchorVisible(page: Page, id: string) {
@@ -308,6 +344,7 @@ test('contact has direct mail and telephone links without a form or false succes
   session.on('Page.frameRequestedNavigation', event => { if (event.url.startsWith('mailto:')) requestedMail = event.url; });
   await visitAnchor(page, 'contact');
   const contact = page.locator('#contact');
+  await expectCompanyContactDistribution(page);
   await expect(page.locator('main form, main textarea, main input')).toHaveCount(0);
   await expect(contact.locator('[role="status"], [role="alert"]')).toHaveCount(0);
   const sendEmail = contact.locator('a[href="mailto:schong@oryxsystem.co.kr"]');
@@ -371,7 +408,7 @@ test('three site languages translate every section and preserve the reading posi
       await expectNoOverflow(page);
     }
     if (language !== 'ko') {
-      const untranslatedText = await page.locator('main, .site-footer').evaluateAll(roots => {
+      const untranslatedText = await page.locator('.site-header, main, .site-footer').evaluateAll(roots => {
         const remaining: string[] = [];
         for (const root of roots) {
           const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);

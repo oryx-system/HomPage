@@ -1,26 +1,31 @@
 @charset "UTF-8";
 
 :root {
-  font-family:
-    "Pretendard",
-    "Noto Sans KR",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  color: #142a43;
+  --font: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-family: var(--font);
+  color: #112237;
   background: #fff;
   font-synthesis: none;
-  --blue: #1558d6;
-  --navy: #112d50;
-  --muted: #52667d;
-  --line: #dce5ef;
+  --ink: #112237;
+  --blue: #135fec;
+  --blue-bright: #80b4ff;
+  --navy: #061727;
+  --muted: #5c6879;
+  --line: #d7e0eb;
+  --pale: #f2f5f9;
+  --wrap: 1304px;
 }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink);
+  background: white;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
 }
 a {
@@ -50,6 +55,8 @@ button {
 }
 img {
   max-width: 100%;
+  height: auto;
+  display: block;
 }
 h1,
 h2,
@@ -61,10 +68,13 @@ figure {
 h1,
 h2,
 h3 {
+  line-height: 1.4;
+  letter-spacing: -.055em;
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 p {
+  letter-spacing: -.025em;
   line-height: 1.8;
   word-break: keep-all;
   overflow-wrap: anywhere;
@@ -73,7 +83,7 @@ svg {
   flex-shrink: 0;
 }
 :focus-visible {
-  outline: 3px solid #145adb;
+  outline: 3px solid #488aff;
   outline-offset: 5px;
   border-radius: 3px;
 }
@@ -81,7 +91,8 @@ main:focus {
   outline: none;
 }
 .container {
-  width: min(1176px, calc(100% - 80px));
+  width: calc(100% - 112px);
+  max-width: var(--wrap);
   margin-inline: auto;
 }
 .sr-only {
@@ -114,26 +125,27 @@ main:focus {
   min-height: 50px;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  border-radius: 5px;
-  padding: 14px 22px;
+  gap: 10px;
+  border-radius: 0;
+  padding: 12px 25px;
   border: 1px solid transparent;
-  font-size: 15px;
+  font-size: .875rem;
   font-weight: 650;
   line-height: 1.5;
-  transition:
-    background 0.18s,
-    border-color 0.18s,
-    box-shadow 0.18s;
+  transition: transform .22s ease, background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
   text-align: center;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  touch-action: manipulation;
 }
 .button-primary {
-  background: var(--blue);
+  background: #1461ed;
   color: white;
 }
-.button-primary:hover {
-  background: #1048b3;
-  box-shadow: 0 4px 15px #1558d61b;
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: #1b64db;
 }
 .button-secondary {
   border-color: #c5d3e3;
@@ -141,15 +153,15 @@ main:focus {
   color: var(--navy);
 }
 .button-secondary:hover {
-  background: #f0f5fc;
+  background: #edf3fb;
   border-color: #94afd1;
 }
 .button-white {
   background: white;
-  color: #174e9f;
+  color: #102d51;
 }
 .button-white:hover {
-  background: #edf4ff;
+  background: #deebff;
 }
 .text-link {
   display: inline-flex;
@@ -322,24 +334,6 @@ main:focus {
 .skip-link { max-width: calc(100% - 40px); overflow-wrap: anywhere; }
 .ds-hero-layout > * { min-width: 0; }
 .site-header > .header-inner { position: relative; z-index: 2; }
-@media (max-width: 1199px) {
-  .site-header > .header-inner {
-    height: auto;
-    min-height: 93px;
-    flex-wrap: wrap;
-    padding-block: 12px;
-    row-gap: 8px;
-  }
-  .site-header > .header-inner .brand { flex: 1 1 0; min-width: 100px; }
-  .site-header .language-picker { max-width: calc(100% - 54px); }
-  .site-header .language-trigger { white-space: normal; }
-}
-@media (max-width: 680px) {
-  .site-header > .header-inner { min-height: 75px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .mobile-menu { transition: none; transform: none; }
-}
 .route-notice {
   padding: 16px 20px;
   margin-top: 25px;
@@ -1461,9 +1455,7 @@ main:focus {
     gap: 45px;
   }
   .hero-actions .button {
-    font-size: 15px;
-    gap: 13px;
-    padding-inline: 18px;
+    gap: 10px;
   }
   .proof-item {
     padding-left: 23px;
@@ -1706,9 +1698,9 @@ main:focus {
     margin-top: 25px;
   }
   .hero-actions .button {
-    padding: 12px 14px;
-    font-size: 11px;
-    gap: 12px;
+    padding: 12px 19px;
+    font-size: .875rem;
+    gap: 10px;
   }
   .hero-actions .button-primary {
     flex: 1;

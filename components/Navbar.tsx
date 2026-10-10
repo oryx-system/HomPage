@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useLanguage } from "../i18n";
 import LanguagePicker from "./LanguagePicker";
 import Logo from "./Logo";
@@ -36,7 +35,9 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
     let frame = 0;
     const measure = () => {
       frame = 0;
-      const bottom = element.getBoundingClientRect().bottom;
+      const bounds = element.getBoundingClientRect();
+      const bottom = bounds.bottom;
+      document.documentElement.style.setProperty("--header-height", `${bounds.height}px`);
       const viewportBottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
       element.style.setProperty("--mobile-menu-height", `${Math.max(0, viewportBottom - bottom)}px`);
     };
@@ -72,7 +73,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
     return () => document.removeEventListener("pointerdown", outside);
   }, [open]);
   useEffect(() => {
-    const media = window.matchMedia("(min-width: 1200px)");
+    const media = window.matchMedia("(min-width: 1281px)");
     const onResize = () => {
       if (media.matches) close();
     };
@@ -102,12 +103,13 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
               {t(label)}
             </a>
           ))}
+          <a className="button button-primary header-cta" href="#contact" onClick={() => close(false)}>
+            {t("도입 문의")}
+          </a>
         </nav>
-        <LanguagePicker />
-        <a className="button button-primary header-cta" href="#contact" onClick={() => close(false)}>
-          {t("도입 문의")} <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
-        <button
+        <div className="header-tools">
+          <LanguagePicker />
+          <button
           ref={trigger}
           type="button"
           className="menu-trigger"
@@ -116,8 +118,9 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
           aria-controls="mobile-menu"
           onClick={() => open ? close() : setOpen(true)}
         >
-          {open ? <X size={25} aria-hidden="true" /> : <Menu size={25} aria-hidden="true" />}
-        </button>
+            <span>{t("메뉴")}</span><span className="menu-lines" aria-hidden="true" />
+          </button>
+        </div>
       </div>
       <div
         ref={panel}
@@ -129,14 +132,13 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         inert={!open}
       >
         <div className="mobile-menu-inner">
-          <span className="section-kicker">ORYX DATASAFE</span>
           <nav aria-label={t("모바일 주 메뉴")}>
             <a
               href="#home"
               aria-current={currentPath === "home" ? "location" : undefined}
               onClick={() => close(false)}
             >
-              {t("홈")} <ArrowUpRight aria-hidden="true" />
+              {t("홈")}
             </a>
             {links.map(({ path, label }) => (
               <a
@@ -146,16 +148,12 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
                 onClick={() => close(false)}
               >
                 {t(label)}
-                <ArrowUpRight size={20} aria-hidden="true" />
               </a>
             ))}
           </nav>
           <a className="button button-primary" href="#contact" onClick={() => close(false)}>
-            {t("도입 문의")} <ArrowUpRight size={18} aria-hidden="true" />
+            {t("도입 문의")}
           </a>
-          <div className="mobile-menu-contact">
-            <p>{t("현장에 맞는 시작을 함께 찾습니다.")}</p>
-          </div>
         </div>
       </div>
     </header>

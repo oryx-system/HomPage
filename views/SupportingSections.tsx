@@ -4,7 +4,6 @@ import {
   ClipboardCheck,
   ExternalLink,
   Mail,
-  Phone,
   Search,
   ShieldCheck,
   Signature,
@@ -134,16 +133,16 @@ export function AboutSection() {
       <div className="container">
         <div className="section-heading reveal">
           <p className="section-kicker">{t("ABOUT ORYX DATASAFE")}</p>
-          <h2 id="about-heading">{t("회사 소개")}</h2>
-          <p>{t("Oryx DataSafe는 홍승철 대표가 운영하는 IT 기업으로, Oryx System과 별도로 운영됩니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.")}</p>
+          <p className="about-meta">{t("회사 소개")}</p>
         </div>
-        <div className="company-summary reveal">
-          <p>{t("DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.")}</p>
-          <dl className="about-facts">
-            <div><dt>{t("대표")}</dt><dd>{t("홍승철 · Founder & CEO")}</dd></div>
-            <div><dt>{t("대표의 현장 경험")}</dt><dd>{t("국내외 20년")}</dd></div>
-            <div><dt>{t("소재지")}</dt><dd>{t("충청남도 금산군 비호산로 4 1층")}</dd></div>
-          </dl>
+        <div className="about-intro">
+          <div className="about-lead reveal">
+            <h2 id="about-heading">{t("업무에 맞춘 소프트웨어를 설계합니다.")}</h2>
+          </div>
+          <div className="company-summary reveal">
+            <p>{t("Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다. 전자기록·데이터 관리·무결성·보안을 바탕으로 제약회사의 업무와 현장 요구에 맞는 소프트웨어를 설계·개발하며, 고객별 업무 흐름과 운영 환경에 맞춘 프로그램을 제공합니다.")}</p>
+            <p>{t("DataStation은 장비 기록의 수집·보호·검토를, LockDown은 업무용 PC의 접근 통제를, Calibration은 교정 기록과 업무 흐름 관리를 지원합니다.")}</p>
+          </div>
         </div>
       </div>
     </section>
@@ -156,15 +155,24 @@ export function ContactSection() {
   return (
     <section id="contact" className="section supporting-section" data-main-section tabIndex={-1} aria-labelledby="contact-heading">
       <div className="container">
-        <div className="section-heading reveal">
-          <p className="section-kicker">{t("CONTACT")}</p>
-          <h2 id="contact-heading">{t("제품 및 도입 문의")}</h2>
-          <p>{t("제품 기능과 도입 검토는 이메일 또는 전화로 문의해 주세요.")}</p>
-        </div>
-        <div className="contact-primary reveal">
-          <a className="button button-primary" href={`mailto:${email}`}><Mail size={18} aria-hidden="true" />{t("메일 보내기")}</a>
-          <a className="button button-secondary" href="tel:+821065450415"><Phone size={18} aria-hidden="true" />{phone}</a>
-          <p className="form-note"><strong>{email}</strong><br />{t("이메일 링크는 기기의 메일 앱을 엽니다. 메일 앱을 사용할 수 없다면 주소를 복사해 보내주세요.")}</p>
+        <div className="contact-layout">
+          <div className="contact-details reveal">
+            <div className="section-heading">
+              <p className="section-kicker">{t("CONTACT")}</p>
+              <h2 id="contact-heading">{t("제품 및 도입 문의")}</h2>
+              <p>{t("제품 기능과 도입 검토는 이메일 또는 전화로 문의해 주세요.")}</p>
+            </div>
+          </div>
+          <div className="contact-primary reveal">
+            <dl className="contact-facts">
+              <div><dt>{t("전화")}</dt><dd><a href="tel:+821065450415">{phone}</a></dd></div>
+              <div><dt>{t("이메일")}</dt><dd>{email}</dd></div>
+              <div className="contact-fact-person"><dt>{t("대표")}</dt><dd>{t("홍승철 · Founder & CEO")}</dd></div>
+              <div className="contact-fact-address"><dt>{t("소재지")}</dt><dd>{t("충청남도 금산군 비호산로 4 1층")}</dd></div>
+            </dl>
+            <a className="button button-primary" href={`mailto:${email}`}><Mail size={18} aria-hidden="true" />{t("메일 보내기")}</a>
+            <p className="form-note">{t("이메일 링크는 기기의 메일 앱을 엽니다. 메일 앱을 사용할 수 없다면 주소를 복사해 보내주세요.")}</p>
+          </div>
         </div>
       </div>
     </section>

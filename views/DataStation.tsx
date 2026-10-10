@@ -95,7 +95,7 @@ function DataFlow() {
 
 export default function DataStationPage({ embedded = false }: { embedded?: boolean }) {
   const { t } = useLanguage();
-  const inquiryUrl = `mailto:schong@oryxsystem.co.kr?subject=${encodeURIComponent(t("Oryx DataStation 도입 문의"))}`;
+  const inquiryUrl = "#contact";
   const Intro = embedded ? "section" : "header";
   const ProductTitle = embedded ? "h2" : "h1";
   const SectionTitle = embedded ? "h3" : "h2";
@@ -283,7 +283,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
             </div>
             <div className="ds-actions">
               <a className="button button-secondary" href="#brochures">{t("자료 확인")}<ArrowRight size={17} aria-hidden="true" /></a>
-              <a className="button button-primary" href={inquiryUrl}>{t("메일로 도입 문의")}<Mail size={17} aria-hidden="true" /></a>
+              <a className="button button-primary" href={inquiryUrl}>{t("도입 문의")}<Mail size={17} aria-hidden="true" /></a>
             </div>
           </div>
         </div>

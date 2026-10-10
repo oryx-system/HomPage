@@ -38,6 +38,22 @@ async function noOverflow(page: Page) {
   expect(dimensions.body, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
 }
 
+async function expectHeaderControlsFit(page: Page) {
+  const layout = await page.evaluate(() => {
+    const boxes = [...document.querySelectorAll('.site-header .brand, .desktop-nav, .language-trigger, .site-header .menu-trigger')]
+      .filter(element => element.getClientRects().length > 0 && getComputedStyle(element).visibility !== 'hidden')
+      .map(element => element.getBoundingClientRect());
+    return {
+      outside: boxes.some(box => box.left < -1 || box.right > document.documentElement.clientWidth + 1),
+      overlap: boxes.some((a, index) => boxes.slice(index + 1).some(b =>
+        Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 &&
+        Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1,
+      )),
+    };
+  });
+  expect(layout, 'Header controls remain inside the viewport and do not cover each other').toEqual({ outside: false, overlap: false });
+}
+
 async function expectPanelGeometry(page: Page) {
   await expect(panel(page)).toBeVisible();
   await expect.poll(async () => page.evaluate(() => {
@@ -96,7 +112,7 @@ async function enlargeText(page: Page) {
   });
 }
 
-test('slide-down menu keeps header controls usable and adapts to viewport, text and motion', async ({ page }, testInfo) => {
+test('instant menu keeps header controls usable and adapts to viewport and enlarged text', async ({ page }, testInfo) => {
   test.setTimeout(120_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -107,7 +123,7 @@ test('slide-down menu keeps header controls usable and adapts to viewport, text 
     await selectLanguage(page, language);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     const transition = await panel(page).evaluate(element => getComputedStyle(element).transitionDuration.split(',').map(value => parseFloat(value)));
-    expect(Math.max(...transition)).toBeGreaterThan(0);
+    expect(Math.max(...transition), 'The menu opens immediately, including with normal motion enabled').toBe(0);
     await openMenu(page);
     const menuLinks = panel(page).locator('nav a');
     await expect(menuLinks.first()).toBeFocused();
@@ -185,6 +201,25 @@ test('slide-down menu keeps header controls usable and adapts to viewport, text 
     await expectPanelGeometry(page);
     await closeWithEscape(page);
     await page.locator('.header-inner').evaluate(element => { (element as HTMLElement).style.removeProperty('min-height'); });
+
+    // The System header switches at 1280/1281px. Russian is the longest
+    // navigation translation and must fit on both sides of that boundary.
+    for (const width of [1280, 1281]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/#home', { waitUntil: 'networkidle' });
+      await selectLanguage(page, 'ru');
+      await noOverflow(page);
+      await expectHeaderControlsFit(page);
+      if (width === 1280) {
+        await expect(trigger(page)).toBeVisible();
+        await openMenu(page);
+        await closeWithEscape(page);
+      } else {
+        await expect(trigger(page)).not.toBeVisible();
+        await expect(page.locator('.desktop-nav')).toBeVisible();
+      }
+      await capture(page, `ru-header-boundary-${width}`);
+    }
   }
   expect(errors).toEqual([]);
 });
@@ -222,8 +257,7 @@ test('company introduction leads the document and the Korean hero remains readab
     expect(lines, `Rendered Korean headline at ${page.viewportSize()!.width}px`).toBe(2);
   }
 
-  if (testInfo.project.name === 'phone-390') {
-    for (const language of languages) {
+  for (const language of languages) {
       await page.goto('/#home', { waitUntil: 'networkidle' });
       // Revisiting an identical hash may be a same-document navigation. Reset
       // the browser-only enlargement before measuring the next language.
@@ -233,9 +267,8 @@ test('company introduction leads the document and the Korean hero remains readab
       expect(await page.locator('.language-trigger').evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBe(original * 2);
       expect(await page.locator('.skip-link').evaluate(element => element.getBoundingClientRect().bottom),
         `Unfocused ${language} skip link stays above the viewport at enlarged text`).toBeLessThanOrEqual(0);
-      await openMenu(page);
       await expect(page.locator('.language-trigger')).toBeVisible();
-      await expect(trigger(page)).toBeVisible();
+      await expectHeaderControlsFit(page);
       const labelFits = await page.locator('.language-trigger').evaluate(element => {
         const range = document.createRange();
         range.selectNodeContents(element);
@@ -243,11 +276,16 @@ test('company introduction leads the document and the Korean hero remains readab
         return [...range.getClientRects()].every(rect => rect.left >= box.left - 1 && rect.right <= box.right + 1 && rect.top >= box.top - 1 && rect.bottom <= box.bottom + 1);
       });
       expect(labelFits, `Enlarged ${language} language name stays inside its control`).toBe(true);
-      const last = panel(page).locator('a[href="#contact"]');
-      await last.focus();
-      await noOverflow(page);
-      await capture(page, `${language}-390-text200-menu`);
-      await closeWithEscape(page);
+      if (await trigger(page).isVisible()) {
+        await openMenu(page);
+        await panel(page).locator('a[href="#contact"]').focus();
+        await noOverflow(page);
+        await capture(page, `${testInfo.project.name}-${language}-text200-menu`);
+        await closeWithEscape(page);
+      } else {
+        await noOverflow(page);
+        await capture(page, `${testInfo.project.name}-${language}-text200-header`);
+      }
       await page.locator('#home-heading').scrollIntoViewIfNeeded();
       await page.evaluate(() => {
         const title = document.querySelector('#home-heading')!.getBoundingClientRect();
@@ -260,7 +298,6 @@ test('company introduction leads the document and the Korean hero remains readab
         return box.left >= clip.left - 1 && box.right <= clip.right + 1 && element.scrollWidth <= element.clientWidth + 1;
       });
       expect(titleFits, `Enlarged ${language} hero may wrap but must not be clipped`).toBe(true);
-      await capture(page, `${language}-390-text200-hero`);
-    }
+      await capture(page, `${testInfo.project.name}-${language}-text200-hero`);
   }
 });
