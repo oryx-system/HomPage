@@ -116,7 +116,7 @@ main:focus {
   border-radius: 5px;
   padding: 14px 22px;
   border: 1px solid transparent;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 650;
   line-height: 1.5;
   transition:
@@ -807,7 +807,7 @@ main:focus {
   display: flex;
   flex-direction: column;
   gap: 13px;
-  font-size: 13px;
+  font-size: 16px;
   color: #445b76;
 }
 .check-list li {
@@ -879,7 +879,7 @@ main:focus {
   color: #1b3f71;
 }
 .notice p {
-  font-size: 14px;
+  font-size: 16px;
   color: #486180;
 }
 .notice .text-link {
@@ -903,7 +903,7 @@ main:focus {
 }
 .cta-panel p:not(.section-kicker) {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 17px;
   margin-top: 13px;
 }
 .cta-panel > a {
@@ -927,7 +927,7 @@ main:focus {
   margin-top: 24px;
   border-top: 1px solid var(--line);
   padding-top: 16px;
-  font-size: 12px;
+  font-size: 15px;
 }
 .faq-list {
   border-top: 1px solid #bdcce0;
@@ -979,13 +979,13 @@ main:focus {
   border-top: 1px solid var(--line);
   padding-block: 15px;
   display: grid;
-  grid-template-columns: 82px 1fr;
+  grid-template-columns: 100px 1fr;
   gap: 15px;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.8;
 }
 .about-facts dt {
-  color: #60748b;
+  color: var(--muted);
 }
 .about-facts dd {
   margin: 0;
@@ -1314,8 +1314,8 @@ main:focus {
   line-height: 1.8;
 }
 .form-note {
-  color: #61738b;
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 15px;
   line-height: 1.85;
 }
 .contact-form .button {
@@ -1343,16 +1343,16 @@ main:focus {
 }
 .footer-brand > p {
   color: #5b6e87;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 21px;
   line-height: 1.9;
 }
 .footer-brand .text-link {
-  font-size: 11px;
+  font-size: 15px;
   margin-top: 10px;
 }
 .footer-label {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #33567f;
@@ -1364,7 +1364,7 @@ main:focus {
   align-items: flex-start;
 }
 .footer-top nav > a {
-  font-size: 12px;
+  font-size: 15px;
   color: #4a617e;
   padding-block: 7px;
 }
@@ -1395,7 +1395,7 @@ main:focus {
   align-items: center;
   gap: 30px;
   padding-block: 23px;
-  font-size: 10px;
+  font-size: 14px;
   color: #5d728c;
 }
 .footer-bottom > div {
@@ -1425,7 +1425,7 @@ main:focus {
     gap: 45px;
   }
   .hero-actions .button {
-    font-size: 12px;
+    font-size: 15px;
     gap: 13px;
     padding-inline: 18px;
   }
@@ -1604,7 +1604,7 @@ main:focus {
     font-size: 13px;
   }
   .check-list {
-    font-size: 12px;
+    font-size: 16px;
   }
   .flow-steps {
     grid-template-columns: repeat(2, 1fr);
@@ -1904,7 +1904,7 @@ main:focus {
     font-size: 14px;
   }
   .check-list {
-    font-size: 13px;
+    font-size: 16px;
   }
   .notice {
     padding: 23px 20px;
@@ -1915,7 +1915,7 @@ main:focus {
     font-size: 18px;
   }
   .notice p {
-    font-size: 13px;
+    font-size: 16px;
   }
   .split-section > div > p:not(.section-kicker) {
     font-size: 14px;
@@ -1930,7 +1930,7 @@ main:focus {
     font-size: 26px;
   }
   .cta-panel p:not(.section-kicker) {
-    font-size: 13px;
+    font-size: 16px;
   }
   .flow-steps {
     grid-template-columns: 1fr;
@@ -1993,7 +1993,7 @@ main:focus {
     width: 222px;
   }
   .footer-brand > p {
-    font-size: 11px;
+    font-size: 15px;
   }
   .footer-top nav {
     display: grid;

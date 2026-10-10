@@ -37,7 +37,7 @@ export default function Home() {
             </defs>
             <g className="hero-lock-background" aria-hidden="true"><rect x="945" y="340" width="195" height="255" fill="url(#lock-screen-fill)" /></g>
             <image href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#monitor-edge-mask)" aria-hidden="true" />
-            <text className="hero-security-label" x="1038" y="658" textAnchor="middle" transform="rotate(3 1038 658)" aria-hidden="true">DATA SECURITY</text>
+            <text className="hero-security-label" x="0" y="0" textAnchor="middle" transform="matrix(1 0.029 -0.087 1 1019 658)" aria-hidden="true">DATA SECURITY</text>
             <g className="hero-lock-light" aria-hidden="true">
               <image className="hero-lock-pulse" href="/oryx-datasafe-monitor-hero.webp" width="1536" height="1024" mask="url(#lock-light-mask)" />
             </g>

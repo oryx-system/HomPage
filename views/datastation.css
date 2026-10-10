@@ -14,7 +14,7 @@
   font-size: 35px;
   line-height: 1.4;
   font-weight: 700;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.025em;
 }
 
 .ds-hero {
@@ -35,7 +35,7 @@
   color: var(--ds-ink);
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.25;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.025em;
   font-weight: 750;
 }
 
@@ -45,14 +45,15 @@
   font-size: clamp(23px, 2.7vw, 31px);
   font-weight: 650;
   line-height: 1.55;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .ds-hero-lead {
   margin-top: 23px;
   color: var(--muted);
-  font-size: 15px;
-  max-width: 510px;
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: 60ch;
 }
 
 .ds-actions {
@@ -65,9 +66,10 @@
 
 .ds-source-note {
   margin-top: 18px;
-  font-size: 12px;
-  color: #5c6f86;
+  font-size: 15px;
+  color: var(--muted);
   line-height: 1.8;
+  max-width: 80ch;
 }
 
 .ds-flow-figure {
@@ -85,9 +87,9 @@
   gap: 15px;
   margin-bottom: 25px;
   color: #4b6483;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 650;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
 }
 
 .ds-flow-heading > span {
@@ -146,17 +148,20 @@
   background: #eaf1fc;
   color: #2361b9;
   border-radius: 6px;
+  flex-shrink: 0;
 }
+
+.ds-flow-list li > div:not(.ds-flow-icon) {min-width: 0;}
 
 .ds-flow-list strong {
   display: block;
-  font-size: 16px;
-  letter-spacing: -0.03em;
+  font-size: 17px;
+  letter-spacing: -0.015em;
   line-height: 1.5;
 }
 
 .ds-flow-list p {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
   margin-top: 3px;
 }
@@ -164,7 +169,7 @@
 .ds-flow-number {
   margin-left: auto;
   color: #57718f;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .ds-flow-foundation {
@@ -176,7 +181,7 @@
   padding: 18px 0 0;
   margin-top: 19px;
   border-top: 1px solid #e0e8f3;
-  font-size: 11px;
+  font-size: 14px;
   color: #476589;
 }
 
@@ -188,9 +193,9 @@
 
 .ds-flow-figure figcaption {
   margin-top: 15px;
-  color: #68788d;
-  font-size: 10px;
-  line-height: 1.7;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
   text-align: center;
 }
 
@@ -207,13 +212,13 @@
 }
 
 .ds-intro-bar p {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
 }
 
 .ds-intro-bar strong {
   color: var(--ds-ink);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 650;
 }
 
@@ -241,25 +246,25 @@
 
 .ds-feature-top span {
   color: #61758d;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .ds-feature-card .ds-card-title {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.5;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.015em;
 }
 
 .ds-feature-card > p {
   margin-top: 14px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .ds-feature-card .check-list {
   margin-top: 20px;
-  font-size: 12px;
-  gap: 9px;
+  font-size: 16px;
+  gap: 12px;
 }
 
 .ds-workflow-section {
@@ -288,18 +293,18 @@
   display: block;
   margin-bottom: 21px;
   color: var(--blue);
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 14px;
+  letter-spacing: 0.05em;
   font-weight: 700;
 }
 
 .ds-workflow .ds-card-title {
   font-size: 22px;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.015em;
 }
 
 .ds-workflow p {
-  font-size: 14px;
+  font-size: 17px;
   color: var(--muted);
   margin-top: 13px;
 }
@@ -326,12 +331,12 @@
   margin-top: 15px;
   font-size: 34px;
   line-height: 1.5;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.025em;
 }
 
 .ds-enterprise p:not(.section-kicker) {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
   margin-top: 19px;
 }
 
@@ -350,11 +355,11 @@
 .ds-enterprise-card .ds-card-title {
   font-size: 23px;
   line-height: 1.5;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.015em;
 }
 
 .ds-enterprise-card .check-list {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .ds-scope-section {
@@ -377,13 +382,15 @@
 .ds-scope-card .ds-card-title {
   margin-top: 15px;
   font-size: 21px;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.015em;
   line-height: 1.5;
 }
 
+.ds-scope-card .section-kicker {font-size: 14px;letter-spacing: 0.06em;}
+
 .ds-scope-card p:not(.section-kicker) {
   margin-top: 15px;
-  font-size: 14px;
+  font-size: 17px;
   color: var(--muted);
 }
 
@@ -484,7 +491,7 @@
   display: grid;
   gap: 16px;
   margin-top: 25px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
 }
 
@@ -519,8 +526,8 @@
   width: 100%;
   min-width: 700px;
   border-collapse: collapse;
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.8;
   text-align: left;
   color: #425a76;
 }
@@ -535,7 +542,7 @@
 .ds-edition-table thead th {
   background: #f2f6fc;
   color: #214a7a;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 650;
 }
 
@@ -551,8 +558,8 @@
 
 .ds-table-hint {
   display: none;
-  font-size: 12px;
-  color: #5b718d;
+  font-size: 14px;
+  color: var(--muted);
   margin-bottom: 11px;
 }
 
@@ -632,7 +639,7 @@
     margin-top: 14px;
   }
   .ds-hero-lead {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 19px;
   }
   .ds-actions {
@@ -644,13 +651,13 @@
     width: 100%;
   }
   .ds-source-note {
-    font-size: 11px;
+    font-size: 14px;
   }
   .ds-flow-figure {
     padding: 21px;
   }
   .ds-flow-heading {
-    font-size: 9px;
+    font-size: 14px;
   }
   .ds-flow-list li {
     padding: 15px 13px;
@@ -660,16 +667,16 @@
     left: 33px;
   }
   .ds-flow-list strong {
-    font-size: 15px;
+    font-size: 16px;
   }
   .ds-flow-list p {
-    font-size: 11px;
+    font-size: 15px;
   }
   .ds-flow-number {
-    font-size: 10px;
+    font-size: 12px;
   }
   .ds-flow-foundation {
-    font-size: 10px;
+    font-size: 14px;
     gap: 8px 12px;
   }
   .ds-intro-bar .container {
@@ -678,7 +685,7 @@
     gap: 10px;
   }
   .ds-intro-bar p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .ds-feature-grid,
   .ds-scope-grid {
@@ -694,6 +701,7 @@
   .ds-feature-card .ds-card-title {
     font-size: 21px;
   }
+  .ds-feature-card > p,.ds-workflow p,.ds-scope-card p:not(.section-kicker) {font-size: 16px;}
   .ds-embedded .ds-feature-card,
   .ds-embedded .ds-feature-card:nth-child(3n) {
     border-right: 0;
@@ -703,7 +711,7 @@
     font-size: 28px;
   }
   .ds-enterprise p:not(.section-kicker) {
-    font-size: 14px;
+    font-size: 16px;
   }
   .ds-page .cta-panel > .ds-actions {
     width: 100%;

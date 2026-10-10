@@ -10,6 +10,36 @@ const directory = process.env.QA_EVIDENCE_DIR
   ? join(process.cwd(), process.env.QA_EVIDENCE_DIR, 'screenshots')
   : join(process.cwd(), 'review', 'production-screenshots');
 
+function measureMonitorLabel(element: SVGElement | HTMLElement) {
+  const label = element as SVGTextElement;
+  const monitor = label.ownerSVGElement!;
+  const style = getComputedStyle(label);
+  const box = label.getBoundingClientRect();
+  // Normalize screen coordinates to the approved image's SVG source space.
+  // This stays independent of viewport scaling and the chosen matrix syntax.
+  const transform = monitor.getScreenCTM()!.inverse().multiply(label.getScreenCTM()!);
+  const anchor = new DOMPoint(label.x.baseVal.getItem(0).value, label.y.baseVal.getItem(0).value).matrixTransform(transform);
+  const horizontal = new DOMPoint(1, 0).matrixTransform(transform);
+  const origin = new DOMPoint(0, 0).matrixTransform(transform);
+  const vertical = new DOMPoint(0, 1).matrixTransform(transform);
+  // The approved shield's top and tip define the visual centerline. Extend
+  // that line below the shield instead of asserting a copied CSS matrix.
+  const shieldTop = { x: 1046, y: 342 };
+  const shieldTip = { x: 1024, y: 596 };
+  const expectedAxisX = shieldTop.x + (anchor.y - shieldTop.y) * (shieldTip.x - shieldTop.x) / (shieldTip.y - shieldTop.y);
+  return {
+    text: label.textContent, fill: style.fill, opacity: style.opacity, filter: style.filter,
+    animations: label.getAnimations().length,
+    box: { x: box.x, y: box.y, width: box.width, height: box.height },
+    geometry: {
+      anchorX: anchor.x, anchorY: anchor.y, expectedAxisX,
+      axisError: Math.abs(anchor.x - expectedAxisX),
+      baselineAngleDegrees: Math.atan2(horizontal.y - origin.y, horizontal.x - origin.x) * 180 / Math.PI,
+      verticalSlope: (vertical.x - origin.x) / (vertical.y - origin.y),
+    },
+  };
+}
+
 test('only the approved monitor padlock disappears fully and returns every three seconds, respecting reduced motion', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -55,6 +85,22 @@ test('only the approved monitor padlock disappears fully and returns every three
   }, approvedImage)).toEqual({ width: 1536, height: 1024 });
   await expect.poll(() => page.locator('.hero-artwork').evaluate(element => getComputedStyle(element).opacity)).toBe('1');
   await monitor.scrollIntoViewIfNeeded();
+  // Native anchor scrolling can still be settling after the artwork is
+  // visible. Measure static geometry only after that viewport motion ends.
+  await monitor.evaluate(element => new Promise<void>((resolve, reject) => {
+    let previous = element.getBoundingClientRect();
+    let stableFrames = 0;
+    const started = performance.now();
+    const frame = () => {
+      const current = element.getBoundingClientRect();
+      stableFrames = Math.abs(current.y - previous.y) < 0.01 && Math.abs(current.x - previous.x) < 0.01 ? stableFrames + 1 : 0;
+      previous = current;
+      if (stableFrames >= 5) resolve();
+      else if (performance.now() - started > 2000) reject(new Error('Monitor viewport position did not settle before geometry measurement'));
+      else requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }));
   const effect = await monitor.evaluate(element => {
     const group = element.querySelector('.hero-lock-light')!;
     const animation = group.getAnimations()[0];
@@ -126,13 +172,7 @@ test('only the approved monitor padlock disappears fully and returns every three
     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => resolve())));
     const box = await monitor.boundingBox();
     const opacity = await light.evaluate(element => Number(getComputedStyle(element).opacity));
-    const label = await baseLabel.evaluate(element => {
-      const style = getComputedStyle(element);
-      const box = element.getBoundingClientRect();
-      return { text: element.textContent, fill: style.fill, opacity: style.opacity, filter: style.filter,
-        animations: element.getAnimations().length,
-        box: { x: box.x, y: box.y, width: box.width, height: box.height } };
-    });
+    const label = await baseLabel.evaluate(measureMonitorLabel);
     const backdrop = await background.evaluate(element => {
       const style = getComputedStyle(element);
       const box = element.getBoundingClientRect();
@@ -152,6 +192,11 @@ test('only the approved monitor padlock disappears fully and returns every three
   expect(frames[0].label.opacity).toBe('1');
   expect(frames[0].label.filter).toBe('none');
   expect(frames[0].label.animations).toBe(0);
+  expect(frames[0].label.geometry.axisError).toBeLessThanOrEqual(2);
+  expect(frames[0].label.geometry.anchorY).toBeGreaterThan(596);
+  expect(frames[0].label.geometry.baselineAngleDegrees).toBeGreaterThanOrEqual(1);
+  expect(frames[0].label.geometry.baselineAngleDegrees).toBeLessThanOrEqual(2.5);
+  expect(frames[0].label.geometry.verticalSlope).toBeLessThan(0);
   expect(frames[0].backdrop).toEqual(frames[1].backdrop);
   expect(frames[0].backdrop.opacity).toBe('1');
   expect(frames[0].backdrop.filter).toBe('none');
@@ -166,7 +211,9 @@ test('only the approved monitor padlock disappears fully and returns every three
   await expect(monitor).toBeVisible();
   const reducedBox = await monitor.boundingBox();
   expect(reducedBox).toEqual(frames[0].box);
+  const reducedLabel = await baseLabel.evaluate(measureMonitorLabel);
+  expect(reducedLabel).toEqual(frames[0].label);
   await monitor.screenshot({ path: join(directory, `${testInfo.project.name}-hero-reduced.png`) });
-  await writeFile(join(directory, `${testInfo.project.name}-hero-evidence.json`), JSON.stringify({ approvedImage, approvedBytes, approvedSHA256, effect, frames, reducedEffect, reducedBox, errors }, null, 2));
+  await writeFile(join(directory, `${testInfo.project.name}-hero-evidence.json`), JSON.stringify({ approvedImage, approvedBytes, approvedSHA256, effect, frames, reducedEffect, reducedBox, reducedLabel, errors }, null, 2));
   expect(errors).toEqual([]);
 });

@@ -34,6 +34,39 @@ async function expectNoOverflow(page: Page) {
   expect(dimensions.body, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
 }
 
+async function expectReadableTypography(page: Page) {
+  const measurements = await page.evaluate(() => {
+    const visible = (element: Element) => element.getClientRects().length > 0 && getComputedStyle(element).visibility !== 'hidden';
+    const measure = (selector: string) => [...document.querySelectorAll(selector)].filter(visible).map(element => ({
+      selector,
+      text: element.textContent?.trim().slice(0, 120),
+      fontSize: parseFloat(getComputedStyle(element).fontSize),
+      lineHeight: parseFloat(getComputedStyle(element).lineHeight),
+    }));
+    // Support limitations and actions must stay readable in every translation.
+    // Decorative kickers and step numbers are outside this reading contract.
+    const essential = [
+      '.hero-small', '.proof-strip p', '.ds-source-note', '.ds-flow-list p',
+      '.ds-feature-card .check-list span', '.ds-workflow > li > span',
+      '.ds-enterprise-card .check-list span', '.ds-edition-table th', '.ds-edition-table td',
+      '.ds-table-hint', '.form-note', '.brochure-guidance p', '.button',
+      '.desktop-nav a', '.site-footer nav a', '.site-footer .text-link', '.footer-bottom p',
+    ].flatMap(measure);
+    const introductions = measure('.hero-lead, .ds-hero-lead, .section-heading > p:not(.section-kicker)');
+    return { essential, introductions };
+  });
+  expect(measurements.essential.length).toBeGreaterThan(50);
+  for (const item of measurements.essential) {
+    expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(14);
+  }
+  const minimumIntroduction = page.viewportSize()!.width >= 1200 ? 17 : 16;
+  expect(measurements.introductions.length).toBeGreaterThan(5);
+  for (const item of measurements.introductions) {
+    expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(minimumIntroduction);
+    expect(item.lineHeight / item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(1.65);
+  }
+}
+
 async function expectDataSafeIdentity(page: Page) {
   const organization = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() ?? '{}');
   expect(organization['@type']).toBe('Organization');
@@ -345,6 +378,7 @@ test('three site languages translate every section and preserve the reading posi
       });
       expect(untranslatedText, `Visible ${language} content should be translated`).toEqual([]);
     }
+    await expectReadableTypography(page);
     await page.goto('/#calibration', { waitUntil: 'networkidle' });
     await expect(page.locator('html')).toHaveAttribute('lang', language);
     await mkdir(screenshotDirectory, { recursive: true });

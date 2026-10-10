@@ -1,5 +1,5 @@
 {
-  "status": "verified_originals_and_static_assets",
+  "status": "verified_reviewed_documents_and_static_assets",
   "files": [
     {
       "path": "downloads/OryxCalibration_고객소개브로셔_20261010.pdf",
@@ -72,22 +72,25 @@
       "mime": "application/pdf"
     },
     {
-      "path": "downloads/OryxLockDown_Brochure_EN-cover.dcdb69ceb057.webp",
-      "bytes": 96876,
-      "sha256": "dcdb69ceb057edb4a434e9d0f9a3cc109a4d0508ae906877b962f6fb980cc8ce",
-      "mime": "image/webp"
+      "path": "downloads/OryxLockDown_Brochure_EN-cover.7d92ec6dac03.webp",
+      "bytes": 183444,
+      "sha256": "7d92ec6dac03bc5de34bac8f6a26c6f43bfcfca35962525c2e28cc2a19326c42",
+      "mime": "image/webp",
+      "sourceCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
     },
     {
       "path": "downloads/OryxLockDown_Brochure_EN-cover.png",
-      "bytes": 757913,
-      "sha256": "d761d7921b61b6d746ec7e642017eead1dd863712eb09413c3d14dac0e59e58b",
-      "mime": "image/png"
+      "bytes": 1695313,
+      "sha256": "5ab3416f75385b12fc023a65b51d01b55b4f397a8ab4c823f78fc81ff67d8d6b",
+      "mime": "image/png",
+      "sourceCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
     },
     {
       "path": "downloads/OryxLockDown_Brochure_EN.pdf",
-      "bytes": 795854,
-      "sha256": "ead0169f1f0bcda5bd77eb80488821c60379db5c7e88c7b76344d8f34e64a4e9",
-      "mime": "application/pdf"
+      "bytes": 791484,
+      "sha256": "27e8275256f8af35f73dcfaa64157144eba5156164baf98432c607ce6e64b20a",
+      "mime": "application/pdf",
+      "sourceCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
     },
     {
       "path": "downloads/Oryx_DataStation_Brochure-cover.ac71b44ef603.webp",
@@ -108,22 +111,25 @@
       "mime": "application/pdf"
     },
     {
-      "path": "downloads/Oryx_LockDown_Brochure-cover.408c02d357e7.webp",
-      "bytes": 84224,
-      "sha256": "408c02d357e7410ab1751bd1f936d925dd2fa03558c84e5ae4dc47aa04bce733",
-      "mime": "image/webp"
+      "path": "downloads/Oryx_LockDown_Brochure-cover.2786311e4565.webp",
+      "bytes": 156278,
+      "sha256": "2786311e4565deb9c4133c1520fa819b6fd9a797b50b81f1e11270ea546bd0cf",
+      "mime": "image/webp",
+      "sourceCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
     },
     {
       "path": "downloads/Oryx_LockDown_Brochure-cover.png",
-      "bytes": 661051,
-      "sha256": "24a230e142fe993b4cff44ab010c6789bd80f13730040287ce40b6f94d9d7edc",
-      "mime": "image/png"
+      "bytes": 1604336,
+      "sha256": "3023461174b1a3ac8002b4f4e393ae7bf59ec04e5be0409d42c5bc1ccd71be1e",
+      "mime": "image/png",
+      "sourceCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
     },
     {
       "path": "downloads/Oryx_LockDown_Brochure.pdf",
-      "bytes": 6200826,
-      "sha256": "c8d018ee579adfab09cc53c29b50d036c273abc6341432c30fa42fbf6ca2cb5d",
-      "mime": "application/pdf"
+      "bytes": 6200816,
+      "sha256": "662f9882d5d79259ab2ccb7f3381263e79d12c7313c016072b2efd4acc527055",
+      "mime": "application/pdf",
+      "sourceCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
     },
     {
       "path": "favicon.png",
@@ -150,5 +156,6 @@
       "mime": "image/png"
     }
   ],
-  "sourceCommit": "52cdbc6a4294eed52be74728c75fd53fb996d81a"
+  "sourceCommit": "52cdbc6a4294eed52be74728c75fd53fb996d81a",
+  "lockdownRevisionCommit": "ad0353ee5bbd8d370dc16455e9bce4512118c41e"
 }

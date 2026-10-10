@@ -7,9 +7,9 @@ import { join } from 'node:path';
 // values imported from the application's brochure data.
 const officialDocuments = [
   { product: 'Oryx DataStation', language: 'ko', filename: 'Oryx_DataStation_Brochure.pdf', bytes: 5714476, sha256: '0dfa3a3911826c580a3c2e21e800af32f6f369b8a45e8c06790d459034ce74cd' },
-  { product: 'Oryx LockDown', language: 'ko', filename: 'Oryx_LockDown_Brochure.pdf', bytes: 6200826, sha256: 'c8d018ee579adfab09cc53c29b50d036c273abc6341432c30fa42fbf6ca2cb5d' },
+  { product: 'Oryx LockDown', language: 'ko', filename: 'Oryx_LockDown_Brochure.pdf', bytes: 6200816, sha256: '662f9882d5d79259ab2ccb7f3381263e79d12c7313c016072b2efd4acc527055' },
   { product: 'Oryx DataStation', language: 'en', filename: 'OryxDataStation_Brochure_EN.pdf', bytes: 5802066, sha256: '23310048c56fd6285b51f9cfc962284e6baccfe04b9cdced4ea8dc3976ab2a11' },
-  { product: 'Oryx LockDown', language: 'en', filename: 'OryxLockDown_Brochure_EN.pdf', bytes: 795854, sha256: 'ead0169f1f0bcda5bd77eb80488821c60379db5c7e88c7b76344d8f34e64a4e9' },
+  { product: 'Oryx LockDown', language: 'en', filename: 'OryxLockDown_Brochure_EN.pdf', bytes: 791484, sha256: '27e8275256f8af35f73dcfaa64157144eba5156164baf98432c607ce6e64b20a' },
   // Reviewed final 7-page originals; checks stay blocked until the approved
   // bytes and cards are present. No Russian PDF is invented.
   { product: 'Oryx Calibration', language: 'ko', filename: 'OryxCalibration_고객소개브로셔_20261010.pdf', bytes: 3580768, sha256: '8f20191487dc4a75162615dd676011a7b80563893ed5168a71f2c9f99a6f6690' },

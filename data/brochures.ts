@@ -34,14 +34,14 @@ export const brochures: Brochure[] = [
   {
     product: "Oryx LockDown", language: "ko", languageLabel: "한국어",
     fileName: "Oryx_LockDown_Brochure.pdf", href: "/downloads/Oryx_LockDown_Brochure.pdf",
-    cover: "/downloads/Oryx_LockDown_Brochure-cover.408c02d357e7.webp", coverWidth: 745, coverHeight: 1053,
-    description: lockDownDescription, bytes: 6200826, pages: 8,
+    cover: "/downloads/Oryx_LockDown_Brochure-cover.2786311e4565.webp", coverWidth: 1191, coverHeight: 1684,
+    description: lockDownDescription, bytes: 6200816, pages: 8,
   },
   {
     product: "Oryx LockDown", language: "en", languageLabel: "English",
     fileName: "OryxLockDown_Brochure_EN.pdf", href: "/downloads/OryxLockDown_Brochure_EN.pdf",
-    cover: "/downloads/OryxLockDown_Brochure_EN-cover.dcdb69ceb057.webp", coverWidth: 745, coverHeight: 1053,
-    description: lockDownDescription, bytes: 795854, pages: 8,
+    cover: "/downloads/OryxLockDown_Brochure_EN-cover.7d92ec6dac03.webp", coverWidth: 1191, coverHeight: 1684,
+    description: lockDownDescription, bytes: 791484, pages: 8,
   },
   {
     product: "Oryx Calibration", language: "ko", languageLabel: "한국어",
