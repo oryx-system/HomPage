@@ -14,7 +14,7 @@ export default function OnePage() {
       <div id="datastation" data-main-section tabIndex={-1}><DataStationPage embedded /></div>
       <section id="lockdown" className="section lockdown-section" data-main-section tabIndex={-1} aria-labelledby="lockdown-heading">
         <div className="container">
-          <div className="section-heading reveal"><p className="section-kicker">{t("ORYX LOCKDOWN · PC OPERATING ENVIRONMENT")}</p><h2 id="lockdown-heading">{t("업무에 필요한 앱으로,")}<br />{t("PC 운영 환경을 단순하게.")}</h2><p>{t("Oryx LockDown은 Windows PC의 전용 운영 화면과 허용 앱을 중심으로 접근과 작업 환경을 통제하는 별도 제품입니다. DataStation의 기록 관리와 적용 목적을 구분합니다.")}</p></div>
+          <div className="section-heading reveal"><p className="section-kicker">{t("ORYX LOCKDOWN · PC OPERATING ENVIRONMENT")}</p><h2 id="lockdown-heading" className="product-heading">Oryx LockDown</h2><p className="product-subtitle">{t("업무에 필요한 앱으로,")} {t("PC 운영 환경을 단순하게.")}</p><p>{t("Oryx LockDown은 Windows PC의 전용 운영 화면과 허용 앱을 중심으로 접근과 작업 환경을 통제하는 별도 제품입니다. DataStation의 기록 관리와 적용 목적을 구분합니다.")}</p></div>
           <div className="grid-3">
             <article className="card reveal"><div className="card-icon"><LockKeyhole size={25} aria-hidden="true" /></div><h3>{t("전용 운영 화면과 허용 앱")}</h3><p>{t("대상 사용자의 로그인 후 운영 화면을 전용 런처로 구성합니다. 관리자가 등록한 업무 앱을 선택·실행합니다.")}</p></article>
             <article className="card reveal"><div className="card-icon"><ShieldCheck size={25} aria-hidden="true" /></div><h3>{t("주요 접근 경로 제한")}</h3><p>{t("바탕화면, Windows 키·Alt+Tab, 작업 관리자와 실행 메뉴 접근을 설정에 따라 제한합니다. 모든 실행 파일과 우회 경로의 차단을 보장하지 않습니다.")}</p></article>

@@ -9,56 +9,20 @@ import {
   HardDrive,
   History,
   LockKeyhole,
-  Mail,
   Network,
   Timer,
+  ShieldCheck,
 } from "lucide-react";
 import { useLanguage } from "../i18n";
 import "./datastation.css";
 
 const features = [
-  {
-    icon: FileSpreadsheet,
-    title: "CSV 수집과 데이터 조회",
-    description:
-      "장비의 CSV 기록을 자동으로 수집하고, DB 파일로 변환해 저장·검색·조회합니다. 수치와 시간에 따른 변화, 설정값과 실제 측정값을 함께 확인합니다.",
-    points: ["장비 원본 기록 수집", "DB 변환과 조회", "검토·인쇄용 PDF 보고서 생성"],
-  },
-  {
-    icon: LockKeyhole,
-    title: "파일 보호와 접근 권한",
-    description:
-      "새로 생성하는 CSV·DB·PDF 파일에 암호화와 파일 접근 권한을 적용해 허용되지 않은 열람과 수정을 제한합니다.",
-    points: ["새 파일의 암호화·접근 제한", "기존 비암호화 CSV·DB도 처리", "역할별 접근과 운영 설정"],
-  },
-  {
-    icon: Fingerprint,
-    title: "원본 확인과 버전 구분",
-    description:
-      "보관한 원본의 해시값과 비교해 파일의 변경 여부를 확인합니다. CSV·DB 파일명과 디지털 지문을 PDF에 함께 남깁니다.",
-    points: ["발행 원본과 해시값 비교", "최초 보고서와 이후 버전 보관", "서명한 PDF는 앱에서 재생성 불가"],
-  },
-  {
-    icon: History,
-    title: "장비·프로그램 활동 이력",
-    description:
-      "연결된 장비의 작업·변경 이력(Audit Trail)을 가져와 조회하고 보고서로 내보냅니다. 프로그램 사용과 시스템 동작 이력도 기록합니다.",
-    points: ["연결 장비의 Audit Trail 조회·내보내기", "프로그램·시스템 활동 기록", "필요 항목과 전체 이력 확인"],
-  },
-  {
-    icon: HardDrive,
-    title: "정기 백업과 선택 복원",
-    description:
-      "기록과 설정의 백업 대상, 경로와 일정을 정하고 정기적으로 보관합니다. 복원할 때에는 필요한 범위를 선택합니다.",
-    points: ["백업 대상·경로·실행 일정 설정", "필요 범위 선택 복원", "NAS·서버 공유 경로·USB 등 외부 보관"],
-  },
-  {
-    icon: Timer,
-    title: "장기 보관과 PC 시간 맞춤",
-    description:
-      "보관 기간을 설정하고 외부 보관 확인 후 PC 정리 정책을 적용합니다. 각 설치 PC는 지정한 NTP 시간 서버를 참조해 자신의 시간을 맞춥니다.",
-    points: ["보관 기간과 PC 정리 정책 설정", "설치 PC별 NTP 시간 동기화", "현장 운영 기준에 맞춘 설정"],
-  },
+  { icon: FileSpreadsheet, title: "CSV 수집과 데이터 조회", description: "장비 CSV를 자동 수집해 DB로 저장·조회하고 PDF 보고서를 만듭니다." },
+  { icon: LockKeyhole, title: "파일 보호와 접근 권한", description: "새 CSV·DB·PDF 파일에 암호화와 접근 권한을 적용합니다." },
+  { icon: Fingerprint, title: "원본 확인과 버전 구분", description: "원본 해시값으로 변경을 확인하고 최초 보고서와 이후 버전을 보관합니다." },
+  { icon: History, title: "장비·프로그램 활동 이력", description: "연결 장비의 Audit Trail을 조회·내보내고 프로그램·시스템 활동을 기록합니다." },
+  { icon: HardDrive, title: "정기 백업과 선택 복원", description: "대상·경로·일정을 정해 백업하고 필요한 범위를 선택해 복원합니다." },
+  { icon: Timer, title: "장기 보관과 PC 시간 맞춤", description: "외부 보관 확인 후 PC 정리 정책을 적용하고, 설치 PC별로 NTP 시간을 맞춥니다." },
 ];
 
 function DataFlow() {
@@ -95,7 +59,6 @@ function DataFlow() {
 
 export default function DataStationPage({ embedded = false }: { embedded?: boolean }) {
   const { t } = useLanguage();
-  const inquiryUrl = "#contact";
   const Intro = embedded ? "section" : "header";
   const ProductTitle = embedded ? "h2" : "h1";
   const SectionTitle = embedded ? "h3" : "h2";
@@ -106,13 +69,9 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         <div className="container ds-hero-layout">
           <div className="reveal">
             <p className="eyebrow">{t("EQUIPMENT DATA MANAGEMENT")}</p>
-            <ProductTitle id="ds-product-title" className="ds-product-title">Oryx DataStation</ProductTitle>
-            <p className="ds-headline">{t("설비의 기록을, 검토 가능한 데이터로.")}</p>
-            <p className="ds-hero-lead">{t("장비의 CSV 기록을 수집하고 DB로 변환해 관리합니다. PDF 보고서, 변경 확인과 감사 이력, 전자서명으로 기록의 수집부터 검토·보관까지 연결하는 장비 데이터 관리 소프트웨어입니다.")}</p>
-            <div className="ds-actions">
-              <a className="button button-primary" href={inquiryUrl}>{t("DataStation 도입 문의")}<Mail size={17} aria-hidden="true" /></a>
-              <a className="button button-secondary" href="#brochures">{t("제품 소개서 보기")}<ArrowRight size={17} aria-hidden="true" /></a>
-            </div>
+            <ProductTitle id="ds-product-title" className="ds-product-title product-heading">Oryx DataStation</ProductTitle>
+            <p className="ds-headline product-subtitle">{t("설비의 기록을, 검토 가능한 데이터로.")}</p>
+            <p className="ds-hero-lead">{t("장비 CSV를 수집·보호하고 PDF 보고서로 검토·보관합니다. 전자서명과 사무실 검토는 제품 구성에 따라 제공합니다.")}</p>
             <p className="ds-source-note">{t("DataStation 제품 소개서에 근거한 기능 안내입니다.")}<br />{t("전자서명과 원격 검토 기능은 제품 구성에 따라 다릅니다.")}</p>
           </div>
           <DataFlow />
@@ -126,6 +85,18 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </div>
 
+      <section className="ds-core-flow section" aria-label={t("DataStation 핵심 흐름")}>
+        <div className="container">
+          <ol>{[
+            { icon: Database, title: "수집", text: "CSV 수집 · DB 조회" },
+            { icon: ShieldCheck, title: "보호", text: "파일 보호 · 변경 확인" },
+            { icon: ClipboardCheck, title: "검토", text: "PDF 보고서 · 역할별 서명" },
+            { icon: HardDrive, title: "보관", text: "백업 · 선택 복원" },
+          ].map(({ icon: Icon, title, text }) => <li key={title}><Icon size={40} aria-hidden="true" /><strong>{t(title)}</strong><span>{t(text)}</span></li>)}</ol>
+          <p className="ds-source-note">{t("전자서명은 Professional·Enterprise에서 제공합니다. 장비 연결과 지원 범위는 현장 구성에 따라 확인합니다.")}</p>
+        </div>
+      </section>
+
       <section className="section" aria-labelledby="ds-features-title">
         <div className="container">
           <div className="section-heading reveal">
@@ -134,14 +105,12 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
             <p>{t("수집한 파일을 찾고, 변경 여부를 확인하고, 필요한 기록을 보관하는 기능을 제공합니다.")}</p>
           </div>
           <div className="ds-feature-grid">
-            {features.map(({ icon: Icon, title, description, points }, index) => (
+            {features.map(({ icon: Icon, title, description }, index) => (
               <article className="ds-feature-card reveal" key={title}>
                 <div className="ds-feature-top"><Icon size={25} strokeWidth={1.65} aria-hidden="true" /><span>0{index + 1}</span></div>
                 <ItemTitle className="ds-card-title">{t(title)}</ItemTitle>
                 <p>{t(description)}</p>
-                <ul className="check-list">
-                  {points.map(point => <li key={point}><Check size={15} aria-hidden="true" /><span>{t(point)}</span></li>)}
-                </ul>
+
               </article>
             ))}
           </div>
@@ -149,6 +118,17 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </section>
 
+      <details className="product-details ds-detail-group">
+        <summary>{t("보고서·역할·원격 검토 자세히 보기")}</summary>
+        <div className="detail-content container">
+          <h3>{t("파일·보관 설정의 적용 조건")}</h3>
+          <ul className="check-list">
+            <li><Check size={16} aria-hidden="true" /><span>{t("기존 비암호화 CSV·DB도 처리하며, 새 파일의 보호 범위와 역할별 권한은 설정에 따라 확인합니다.")}</span></li>
+            <li><Check size={16} aria-hidden="true" /><span>{t("CSV·DB 파일명과 디지털 지문을 PDF에 남깁니다. 전자서명한 PDF는 앱에서 다시 생성할 수 없습니다.")}</span></li>
+            <li><Check size={16} aria-hidden="true" /><span>{t("수치·시간 변화와 설정값·측정값을 비교하고, 필요한 항목 또는 전체 이력을 확인합니다.")}</span></li>
+            <li><Check size={16} aria-hidden="true" /><span>{t("NAS·서버 공유 경로·USB 등 외부 보관 경로와 보관 기간, NTP 서버는 현장 운영 기준에 맞춰 설정합니다.")}</span></li>
+          </ul>
+        </div>
       <section className="section ds-workflow-section" aria-labelledby="ds-report-title">
         <div className="container">
           <div className="section-heading reveal">
@@ -216,6 +196,8 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </section>
 
+      </details>
+
       <section className="section" aria-labelledby="ds-editions-title">
         <div className="container">
           <div className="section-heading reveal">
@@ -223,6 +205,11 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
             <SectionTitle id="ds-editions-title" className="ds-section-title">{t("업무 범위에 맞는 구성을 선택합니다.")}</SectionTitle>
             <p>{t("전자서명과 사무실 검토, 전용 보관의 필요에 따라 Standard·Professional·Enterprise를 검토합니다.")}</p>
           </div>
+          <ul className="edition-summary" aria-label={t("제품 구성 핵심 차이")}>
+            <li><strong>Standard</strong><span>{t("현장 기록 관리 · 전자서명 미제공")}</span></li>
+            <li><strong>Professional</strong><span>{t("현장 기록 관리 · 역할별 전자서명")}</span></li>
+            <li><strong>Enterprise</strong><span>{t("사무실 원격 조회·검토 · 전자서명 · 전용 보관함")}</span></li>
+          </ul>
           <p className="ds-table-hint">{t("비교표가 화면보다 넓으면 좌우로 스크롤하세요.")}</p>
           <div className="ds-table-wrap reveal" role="region" tabIndex={0} aria-label={t("DataStation 제품 구성 비교표 (좌우 스크롤 가능)")}>
             <table className="ds-edition-table">
@@ -238,6 +225,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
             </table>
           </div>
           <p className="ds-source-note">{t("Professional도 전자서명한 보고서를 저장합니다. Enterprise의 별도 PDF·서명 이력 보관함과는 구분됩니다. 앱 전체 화면의 한국어·영어 전환을 지원합니다.")}</p>
+          <div className="lockdown-details reveal"><a className="text-link" href="#brochures">{t("DataStation 소개서 보기")}<ArrowRight size={17} aria-hidden="true" /></a></div>
         </div>
       </section>
 
@@ -252,7 +240,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
               <p className="section-kicker">{t("21 CFR PART 11 · ALCOA+")}</p>
               <ItemTitle className="ds-card-title">{t("규제·무결성 요구를 지원하는 기능")}</ItemTitle>
               <p>{t("기록 보호, 원본 확인, 활동 이력, 역할별 권한과 전자서명은 전자기록 및 데이터 무결성 요구를 검토하는 데 활용할 수 있습니다.")}</p>
-              <p>{t("실제 적합성은 제품 설정과 고객의 운영 절차, 교육, 검증을 함께 평가해야 합니다. 제품 도입만으로 인증이나 규제 준수가 보장되지는 않습니다.")}</p>
+              <p>{t("관련 요구사항을 고려한 설계입니다. 실제 적합성은 지원 기능·설정·사용 목적과 고객의 절차·교육·검증을 함께 평가해야 합니다. 제품의 외부 인증이나 규정 충족을 뜻하지 않습니다.")}</p>
               <a className="text-link" href="#validation">{t("검토 가이드 보기")}<ArrowRight size={16} aria-hidden="true" /></a>
             </article>
             <article className="ds-scope-card">
@@ -273,21 +261,6 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </section>}
 
-      {!embedded && <section className="section">
-        <div className="container">
-          <div className="cta-panel">
-            <div>
-              <p className="section-kicker">{t("NEXT STEP")}</p>
-              <h2>{t("현장의 기록 흐름에 맞춰 검토하세요.")}</h2>
-              <p>{t("제품 소개서를 확인하거나, 대상 장비와 필요한 업무 범위를 알려주세요.")}</p>
-            </div>
-            <div className="ds-actions">
-              <a className="button button-secondary" href="#brochures">{t("자료 확인")}<ArrowRight size={17} aria-hidden="true" /></a>
-              <a className="button button-primary" href={inquiryUrl}>{t("도입 문의")}<Mail size={17} aria-hidden="true" /></a>
-            </div>
-          </div>
-        </div>
-      </section>}
     </div>
   );
 }

@@ -9,7 +9,7 @@ export type Language = 'ko' | 'en' | 'ru';
 const translations = { ...commonTranslations, ...supportingTranslations, ...datastationTranslations, ...brochureTranslations, ...calibrationTranslations };
 type LanguageContextValue = { language: Language; setLanguage: (language: Language) => void; t: (source: string) => string };
 const LanguageContext = createContext<LanguageContextValue | null>(null);
-export const readingElements = 'main h1, main h2, main h3, main h4, main p, main li, main figure, main tr';
+export const readingElements = 'main h1, main h2, main h3, main h4, main p, main li, main figure, main tr, main summary';
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, changeLanguage] = useState<Language>(() => {
@@ -21,7 +21,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (next === language) return;
     atTop.current = window.scrollY < 4;
     const line = (document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 94) + 40;
-    const elements = Array.from(document.querySelectorAll(readingElements));
+    // Closed details can retain layout rectangles for their hidden descendants.
+    // Only visible content should anchor a language change.
+    const elements = Array.from(document.querySelectorAll(readingElements)).filter(el => {
+      const closedDetails = el.closest('details:not([open])');
+      return !closedDetails || el === closedDetails.querySelector(':scope > summary');
+    });
     const element = elements.find(el => { const r = el.getBoundingClientRect(); return r.height > 0 && r.top <= line && r.bottom > line; })
       ?? elements.find(el => { const r = el.getBoundingClientRect(); return r.height > 0 && r.top >= line && r.top < innerHeight; });
     position.current = element ? { element, top: element.getBoundingClientRect().top } : null;

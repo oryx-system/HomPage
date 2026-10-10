@@ -415,3 +415,75 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
   .footer-company p > span {display:block;margin-top:6px;}
   .footer-main .back-top {margin-left:0;}
 }
+
+/* Progressive product detail and concise configuration summaries. */
+.ds-core-flow.section {padding-block:40px;background:#f4f7fb;}
+.ds-core-flow ol {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0;}
+.ds-core-flow li {display:flex;flex-direction:column;gap:12px;min-width:0;}
+.ds-core-flow svg {color:#2866ad;}
+.ds-core-flow strong {font-size:1.5rem;line-height:1.5;}
+.ds-core-flow li span {font-size:1rem;line-height:1.8;color:#4c6076;}
+.product-details {min-width:0;border-block:1px solid var(--line);margin:24px 0;background:white;}
+.product-details > summary {padding:24px;cursor:pointer;font-size:1.125rem;font-weight:650;line-height:1.7;overflow-wrap:anywhere;color:#173b63;}
+.product-details > summary:focus-visible {outline:3px solid #488aff;outline-offset:-3px;}
+.product-details > summary:hover {background:#f4f7fb;}
+.ds-detail-group > summary {max-width:var(--wrap);margin:auto;}
+.detail-content {padding-block:28px;}
+.detail-content h3 {font-size:1.5rem;margin-bottom:20px;line-height:1.5;}
+.ds-detail-group .section {padding-block:52px;}
+.validation-detail-group .supporting-details {padding:0 24px 28px;margin-top:16px;}
+.edition-summary {display:none;list-style:none;margin:24px 0;padding:0;}
+.edition-summary li {display:flex;flex-direction:column;gap:8px;padding:20px 0;border-bottom:1px solid var(--line);min-width:0;}
+.edition-summary strong {font-size:1.25rem;line-height:1.6;}
+.edition-summary span {font-size:1rem;line-height:1.8;color:#4c6076;}
+.pdf-language-note {max-width:52ch;margin-top:18px;font-size:1rem;line-height:1.8;color:#c6dcfc;}
+.lockdown-details {flex-wrap:wrap;}
+.lockdown-details > p {flex-basis:100%;}
+.lockdown-details > .button {max-width:100%;}
+@media(max-width:800px) {
+  .ds-core-flow ol {grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;}
+  .edition-summary {display:block;}
+}
+@media(max-width:600px) {
+  .product-details > summary {padding:20px;}
+  .ds-detail-group .section {padding-block:32px;}
+  .validation-detail-group .supporting-details {padding-inline:20px;}
+}
+
+/* Shared product title hierarchy across all three products. */
+#datastation .product-heading,#lockdown .product-heading,#calibration .product-heading {font-size:clamp(2rem,3.35vw,3rem);font-weight:700;line-height:1.4;letter-spacing:-.025em;overflow-wrap:anywhere;}
+.product-subtitle,.section-heading .product-subtitle {font-size:clamp(1.375rem,2.2vw,1.7rem);font-weight:600;line-height:1.55;letter-spacing:-.025em;}
+.section-heading .product-subtitle {color:#2866ad;margin-top:15px;}
+@media(max-width:600px) {
+  #datastation .product-heading,#lockdown .product-heading,#calibration .product-heading {font-size:1.875rem;}
+  .product-subtitle,.section-heading .product-subtitle {font-size:1.375rem;}
+}
+@media(max-width:360px) {
+  #datastation .product-heading,#lockdown .product-heading,#calibration .product-heading {font-size:1.65rem;}
+}
+
+/* Keep the hero CTAs beside each other and aligned with the copy. Long
+   translations wrap inside equally tall buttons rather than stacking them. */
+.home-hero .hero-copy {min-width:0;}
+.home-hero .hero-actions {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  width:max-content;
+  max-width:100%;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:12px;
+}
+.home-hero .hero-actions .button {
+  flex:0 1 auto;
+  min-width:0;
+  min-height:50px;
+  padding:12px clamp(10px,1.5vw,20px);
+  gap:8px;
+}
+.home-hero .hero-actions .button span {min-width:0;overflow-wrap:anywhere;}
+.home-hero .hero-actions .button svg {flex-shrink:0;}
+@media(max-width:300px) {
+  .home-hero .hero-actions {flex-direction:column;width:100%;}
+}

@@ -194,21 +194,29 @@ test('one document renders all ten sections without overflow or browser errors',
 });
 
 test('anchors support keyboard, history, direct addresses, and reload below the header', async ({ page }) => {
+  // Hero/product CTAs are optional. Exercise persistent header navigation
+  // without focusing an off-screen overview link and changing history scroll.
+  const activateHeaderAnchor = async (id: string) => {
+    const opener = page.locator('.site-header .menu-trigger');
+    if (await opener.isVisible()) {
+      await opener.focus();
+      await page.keyboard.press('Enter');
+    }
+    await page.locator(`.site-header a[href="#${id}"]:visible`).first().focus();
+    await page.keyboard.press('Enter');
+  };
   await visitAnchor(page, 'home');
-  await page.locator('a[href="#datastation"]:visible').first().focus();
-  await page.keyboard.press('Enter');
+  await activateHeaderAnchor('datastation');
   await expect(page).toHaveURL(/#datastation$/);
   await expectAnchorVisible(page, 'datastation');
   await expect(page.locator('#datastation')).toBeFocused();
   // Repeating the same hash does not emit hashchange; native navigation must
   // still return to the target after keyboard focus has moved to a link.
-  await page.locator('a[href="#datastation"]:visible').first().focus();
-  await page.keyboard.press('Enter');
+  await activateHeaderAnchor('datastation');
   await expect(page).toHaveURL(/#datastation$/);
   await expectAnchorVisible(page, 'datastation');
   await expect(page.locator('#datastation')).toBeFocused();
-  await page.locator('a[href="#contact"]:visible').first().focus();
-  await page.keyboard.press('Enter');
+  await activateHeaderAnchor('contact');
   await expect(page).toHaveURL(/#contact$/);
   await expectAnchorVisible(page, 'contact');
   await expect(page.locator('#contact')).toBeFocused();
@@ -426,6 +434,7 @@ test('three site languages translate every section and preserve the reading posi
   // Preserve a paragraph in the middle of the detailed product explanation,
   // where translated sections above it can have substantially different heights.
   await visitAnchor(page, 'datastation');
+  await page.locator('#datastation .ds-detail-group > summary').click();
   const readingParagraph = page.locator('#datastation .ds-report-details > p').first();
   await readingParagraph.evaluate(element => {
     const readingLine = (document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 94) + 36;

@@ -1,0 +1,65 @@
+{
+  "status": "Owner-approved for production; original assets retained",
+  "files": [
+    {
+      "path": "downloads/OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
+      "bytes": 3610806,
+      "sha256": "15c2b2e6e5afabdd9d7b7ded8ef4892049161fd4ba6929fa79e8267239b64ccd",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
+      "bytes": 7136090,
+      "sha256": "a106ac751afb2a1af50a81828c4e2b56fbb8fcae455e35bdc9ca9444f8ff8b9f",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/Oryx_DataStation_Brochure_WordingReview_20261010.pdf",
+      "bytes": 5699290,
+      "sha256": "566c6dd435858ce935edd6fa744dc975f478abc5de80a8e578dee87698208bd7",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/Oryx_LockDown_Brochure_WordingReview_20261010.pdf",
+      "bytes": 6216950,
+      "sha256": "941bbcd0496b6a857bf42849abda29c8c8742afbced587204cf40a3be19c2f60",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxLockDown_Brochure_EN_WordingReview_20261010.pdf",
+      "bytes": 804580,
+      "sha256": "2e6223069a8573cc79deb5bf43f690a8fd964437861cd49d2a6a4ba6ae00ef51",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
+      "bytes": 5695812,
+      "sha256": "f79b6c59601240eb02a95bb88466e3f5d31b51c8e2b618aed1b546093f91de22",
+      "mime": "application/pdf"
+    },
+    {
+      "path": "downloads/OryxCalibration_고객소개브로셔_20261010_WordingReview-cover.webp",
+      "bytes": 59166,
+      "sha256": "cd6b31a1bc66ccce1c5165663dcb1000b114d0daf059621c66ce0d5f6102e955",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/OryxCalibration_Introduction_EN_20261010_WordingReview-cover.webp",
+      "bytes": 65684,
+      "sha256": "572ee6cb2e72496186c91ce8a0d8b8992e946e322c6726f983fa4a93ae068236",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/OryxDataStation_Brochure_EN_WordingReview-cover.webp",
+      "bytes": 71270,
+      "sha256": "95e97babb478d59a7a884ae9a51d54ee57a9b644f7b9fceb2b9d59bfbeb88c2b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "downloads/Oryx_DataStation_Brochure_WordingReview-cover.webp",
+      "bytes": 64942,
+      "sha256": "4b343b8bc7ff30a2c15f6e3de3d7489f04d5ffbaef58cadaceadb0bf1a2fe29d",
+      "mime": "image/webp"
+    }
+  ]
+}

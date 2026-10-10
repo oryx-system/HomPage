@@ -6,7 +6,11 @@ import "./brochures.css";
 
 export default function BrochuresPage({ embedded = false }: { embedded?: boolean }) {
   const { language: uiLanguage, t } = useLanguage();
-  const [pdfLanguage, setPdfLanguage] = useState<BrochureLanguage>("ko");
+  const [selectedPdfLanguage, setSelectedPdfLanguage] = useState<BrochureLanguage | null>(null);
+  const pdfLanguage = selectedPdfLanguage ?? (uiLanguage === "ko" ? "ko" : "en");
+  const choosePdfLanguage = (next: BrochureLanguage) => {
+    setSelectedPdfLanguage(next);
+  };
   useEffect(() => {
     // Warm the small static covers for both PDF languages; fetch no PDFs.
     for (const { cover } of brochures) {
@@ -33,10 +37,11 @@ export default function BrochuresPage({ embedded = false }: { embedded?: boolean
             <div>
               <p className="section-kicker">{t("READ · PREVIEW · DOWNLOAD")}</p>
               <h2 id="brochure-heading">{t("필요한 언어로 확인하세요.")}</h2>
+              {uiLanguage === "ru" && <p className="pdf-language-note">{t("러시아어 PDF는 제공되지 않습니다. 한국어 또는 영어 원본을 확인해 주세요.")}</p>}
             </div>
             <div className="brochure-language" role="group" aria-label={t("브로셔 언어 선택")}>
-              <button type="button" lang="ko" aria-pressed={pdfLanguage === "ko"} onClick={() => setPdfLanguage("ko")}>{t("한국어")}</button>
-              <button type="button" lang="en" aria-pressed={pdfLanguage === "en"} onClick={() => setPdfLanguage("en")}>{t("영어")}</button>
+              <button type="button" lang="ko" aria-pressed={pdfLanguage === "ko"} onClick={() => choosePdfLanguage("ko")}>{t("한국어")}</button>
+              <button type="button" lang="en" aria-pressed={pdfLanguage === "en"} onClick={() => choosePdfLanguage("en")}>{t("영어")}</button>
             </div>
           </div>
           <div className="brochure-grid">
@@ -63,7 +68,6 @@ export default function BrochuresPage({ embedded = false }: { embedded?: boolean
           <div className="brochure-guidance">
             <p>{t("미리보기는 원본 PDF를 새 탭에서 엽니다. 기기의 PDF 뷰어 설정에 따라 파일이 다운로드될 수 있습니다.")}</p>
             <p>{t("제품별 한국어·영어 원본 PDF를 제공합니다.")} {t("언어별 구성과 페이지 수는 다를 수 있으며, 적용 기능과 제공 버전은 도입 상담에서 확인해 주세요.")}</p>
-            {uiLanguage === "ru" && <p>{t("러시아어 PDF는 제공되지 않습니다. 한국어 또는 영어 원본을 확인해 주세요.")}</p>}
           </div>
         </div>
       </section>

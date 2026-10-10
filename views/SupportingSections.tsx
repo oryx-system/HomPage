@@ -23,25 +23,21 @@ export function ImplementationSection() {
     {
       title: "현장과 요구사항 확인",
       description: "대상 업무, 기록 종류, 설비와 기존 시스템을 함께 살펴봅니다.",
-      details: "준비할 정보: 업무 흐름, 설비 목록, 현재 기록 방식",
     },
     {
       title: "적용 범위와 구성 검토",
       description:
         "필요한 기능과 연결 조건을 확인하고 구현 가능 범위 및 제외 범위를 정리합니다.",
-      details: "확인할 정보: 기능·버전, 연동 조건, 역할과 권한",
     },
     {
       title: "도입 계획 협의",
       description:
-        "구성, 일정, 검증 요구와 지원 범위를 협의합니다.",
-      details: "협의할 정보: 산출물, 일정, 계약 조건",
+        "구성·일정·산출물·계약 조건과 검증 요구·지원 범위를 협의합니다.",
     },
     {
       title: "검증과 운영 준비",
       description:
-        "합의한 범위에 따라 적용 결과를 확인하고 현장의 절차와 운영 준비를 점검합니다.",
-      details: "점검할 정보: 검증 계획, 사용자 교육, 운영 책임",
+        "합의한 범위에 따라 적용 결과를 확인하고 현장 절차·사용자 교육·운영 책임을 점검합니다.",
     },
   ];
 
@@ -59,7 +55,6 @@ export function ImplementationSection() {
               <span className="card-number">0{index + 1}</span>
               <h3>{t(step.title)}</h3>
               <p>{t(step.description)}</p>
-              <p className="form-note">{t(step.details)}</p>
             </li>
           ))}
         </ol>
@@ -89,7 +84,7 @@ export function ValidationSection() {
         <div className="section-heading reveal">
           <p className="section-kicker">{t("SYSTEM · PROCESS · VALIDATION")}</p>
           <h2 id="validation-heading">{t("규제 검토는 기능과 운영을 함께.")}</h2>
-          <p>{t("21 CFR Part 11과 ALCOA 원칙에 관한 요구는 실제 지원 기능, 사용 목적과 조직의 운영 절차를 함께 살펴야 합니다. 제품 도입만으로 인증이나 규제 준수가 보장되지는 않습니다.")}</p>
+          <p>{t("21 CFR Part 11과 ALCOA 원칙의 관련 요구사항을 고려해 설계합니다. 실제 적합성은 지원 기능, 설정, 사용 목적과 고객의 절차·교육·검증을 함께 평가해야 합니다. 제품 자체의 외부 인증이나 규정 충족을 의미하지 않습니다.")}</p>
         </div>
         <div className="grid-3">
           <article className="card reveal">
@@ -108,6 +103,8 @@ export function ValidationSection() {
             <p>{t("필요한 검증 범위, 변경 관리, 사용자 교육과 운영 책임을 정리하세요. 접근 권한과 백업·복구 요구도 검토합니다.")}</p>
           </article>
         </div>
+        <details className="product-details validation-detail-group">
+          <summary>{t("규제 기준과 적용 범위 자세히 보기")}</summary>
         <div className="grid-2 supporting-details">
           <article className="card reveal">
             <h3>{t("요구사항의 기준과 적용 범위")}</h3>
@@ -124,6 +121,7 @@ export function ValidationSection() {
             </div>
           </div>
         </div>
+        </details>
       </div>
     </section>
   );
@@ -145,6 +143,7 @@ export function AboutSection() {
           <div className="company-summary reveal">
             <p>{t("Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다.")}</p>
             <p>{t("전자기록·데이터 무결성·보안을 중심으로, 제약회사의 업무와 운영 환경에 맞는 소프트웨어를 설계·개발합니다.")}</p>
+            <p className="form-note">{t("로고의 “Compliance”는 관련 요구를 고려한 설계·지원을 나타내며, 제품의 외부 인증이나 규정 충족·보안 성능의 보장을 뜻하지 않습니다.")}</p>
           </div>
         </div>
         <div className="about-capabilities">

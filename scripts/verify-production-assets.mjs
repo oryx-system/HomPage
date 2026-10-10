@@ -3,9 +3,11 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-// A successful Vite build must not publish missing approved production assets.
+// A successful Vite build must not publish missing original and review assets.
 const root = fileURLToPath(new URL('../', import.meta.url));
 const manifest = JSON.parse(await readFile(path.join(root, 'review/production-required-assets.json'), 'utf8'));
+const reviewManifest = JSON.parse(await readFile(path.join(root, 'review/wording-review-assets.json'), 'utf8'));
+manifest.files.push(...reviewManifest.files);
 const failures = [];
 for (const asset of manifest.files) {
   let bytes;
@@ -21,4 +23,4 @@ for (const asset of manifest.files) {
 if (failures.length) {
   console.error('Approved production assets are not ready:\n' + failures.join('\n'));
   process.exitCode = 1;
-} else console.log(`Verified ${manifest.files.length} approved production assets.`);
+} else console.log(`Verified ${manifest.files.length} original and review assets.`);

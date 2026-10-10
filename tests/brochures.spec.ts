@@ -5,7 +5,7 @@ import { join } from 'node:path';
 
 // Independent expected bytes from reviewed source documents, rather than
 // values imported from the application's brochure data.
-const officialDocuments = [
+const originalDocuments = [
   { product: 'Oryx DataStation', language: 'ko', filename: 'Oryx_DataStation_Brochure.pdf', bytes: 5714476, sha256: '0dfa3a3911826c580a3c2e21e800af32f6f369b8a45e8c06790d459034ce74cd' },
   { product: 'Oryx LockDown', language: 'ko', filename: 'Oryx_LockDown_Brochure.pdf', bytes: 6200816, sha256: '662f9882d5d79259ab2ccb7f3381263e79d12c7313c016072b2efd4acc527055' },
   { product: 'Oryx DataStation', language: 'en', filename: 'OryxDataStation_Brochure_EN.pdf', bytes: 5802066, sha256: '23310048c56fd6285b51f9cfc962284e6baccfe04b9cdced4ea8dc3976ab2a11' },
@@ -14,6 +14,51 @@ const officialDocuments = [
   // bytes and cards are present. No Russian PDF is invented.
   { product: 'Oryx Calibration', language: 'ko', filename: 'OryxCalibration_고객소개브로셔_20261010.pdf', bytes: 3580768, sha256: '8f20191487dc4a75162615dd676011a7b80563893ed5168a71f2c9f99a6f6690' },
   { product: 'Oryx Calibration', language: 'en', filename: 'OryxCalibration_Introduction_EN_20261010.pdf', bytes: 7120817, sha256: '16d5865761ad2a626ae96fd4d923e49861a09351caf42931c8483dd6bcbd23fa' },
+] as const;
+
+const officialDocuments = [
+  {
+    "product": "Oryx DataStation",
+    "language": "ko",
+    "filename": "Oryx_DataStation_Brochure_WordingReview_20261010.pdf",
+    "bytes": 5699290,
+    "sha256": "566c6dd435858ce935edd6fa744dc975f478abc5de80a8e578dee87698208bd7"
+  },
+  {
+    "product": "Oryx DataStation",
+    "language": "en",
+    "filename": "OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
+    "bytes": 5695812,
+    "sha256": "f79b6c59601240eb02a95bb88466e3f5d31b51c8e2b618aed1b546093f91de22"
+  },
+  {
+    "product": "Oryx LockDown",
+    "language": "ko",
+    "filename": "Oryx_LockDown_Brochure_WordingReview_20261010.pdf",
+    "bytes": 6216950,
+    "sha256": "941bbcd0496b6a857bf42849abda29c8c8742afbced587204cf40a3be19c2f60"
+  },
+  {
+    "product": "Oryx LockDown",
+    "language": "en",
+    "filename": "OryxLockDown_Brochure_EN_WordingReview_20261010.pdf",
+    "bytes": 804580,
+    "sha256": "2e6223069a8573cc79deb5bf43f690a8fd964437861cd49d2a6a4ba6ae00ef51"
+  },
+  {
+    "product": "Oryx Calibration",
+    "language": "ko",
+    "filename": "OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
+    "bytes": 3610806,
+    "sha256": "15c2b2e6e5afabdd9d7b7ded8ef4892049161fd4ba6929fa79e8267239b64ccd"
+  },
+  {
+    "product": "Oryx Calibration",
+    "language": "en",
+    "filename": "OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
+    "bytes": 7136090,
+    "sha256": "a106ac751afb2a1af50a81828c4e2b56fbb8fcae455e35bdc9ca9444f8ff8b9f"
+  }
 ] as const;
 
 const sha256 = (contents: Buffer) => createHash('sha256').update(contents).digest('hex');
@@ -58,7 +103,7 @@ test('brochure covers load as images without requesting PDFs before a click', as
   expect(pdfRequests).toEqual([]);
 });
 
-test('six reviewed PDFs retain filenames and verified bytes over HTTP and browser downloads', async ({ page }) => {
+test('six revised review PDFs retain filenames and verified bytes over HTTP and browser downloads', async ({ page }) => {
   test.setTimeout(90_000);
   await page.goto('/#brochures');
   for (const language of ['ko', 'en'] as const) {
@@ -98,7 +143,7 @@ test('six reviewed PDFs retain filenames and verified bytes over HTTP and browse
   }
 });
 
-test('PDF previews open the same original files in new tabs', async ({ page }) => {
+test('PDF previews open the same reviewed files in new tabs', async ({ page }) => {
   test.setTimeout(90_000);
   await page.goto('/#brochures');
   for (const language of ['ko', 'en'] as const) {
@@ -137,14 +182,14 @@ test('brochure anchors and keyboard languages preserve state and scroll across h
   await page.goBack();
   await expect(page).toHaveURL(/#brochures$/);
   await expect(english).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('a[download="OryxDataStation_Brochure_EN.pdf"]')).toBeVisible();
+  await expect(page.locator('a[download="OryxDataStation_Brochure_EN_WordingReview_20261010.pdf"]')).toBeVisible();
   await page.goBack();
   await expect(page).toHaveURL(/#calibration$/);
   await page.goForward();
   await expect(page).toHaveURL(/#brochures$/);
   await expect(english).toHaveAttribute('aria-pressed', 'true');
   await selectBrochureLanguage(page, 'ko');
-  await expect(page.locator('a[download="Oryx_DataStation_Brochure.pdf"]')).toBeVisible();
+  await expect(page.locator('a[download="Oryx_DataStation_Brochure_WordingReview_20261010.pdf"]')).toBeVisible();
   await page.reload({ waitUntil: 'networkidle' });
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('.brochure-language button[lang="ko"]')).toHaveAttribute('aria-pressed', 'true');
@@ -166,5 +211,17 @@ test('brochure anchors and keyboard languages preserve state and scroll across h
     await page.locator('.desktop-nav a[href="#brochures"]').focus();
     await page.keyboard.press('Enter');
     await expect(page).toHaveURL(/#brochures$/);
+  }
+});
+
+
+test('six original brochure files remain byte-identical', async ({ request }) => {
+  for (const document of originalDocuments) {
+    const original = await readFile(join(process.cwd(), 'public', 'downloads', document.filename));
+    expect(original.length).toBe(document.bytes);
+    expect(sha256(original)).toBe(document.sha256);
+    const response = await request.get(`/downloads/${document.filename}`);
+    expect(response.status()).toBe(200);
+    expect(sha256(await response.body())).toBe(document.sha256);
   }
 });
