@@ -29,7 +29,7 @@ export const brochures: Brochure[] = [
     product: "Oryx DataStation", language: "en", languageLabel: "English",
     fileName: "OryxDataStation_Brochure_EN.pdf", href: "/downloads/OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
     cover: "/downloads/OryxDataStation_Brochure_EN_WordingReview-cover.webp", coverWidth: 745, coverHeight: 1053,
-    description: dataStationDescription, bytes: 5695812, pages: 13,
+    description: dataStationDescription, bytes: 5725538, pages: 13,
   },
   {
     product: "Oryx LockDown", language: "ko", languageLabel: "한국어",

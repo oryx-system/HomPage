@@ -30,8 +30,8 @@ const officialDocuments = [
     "language": "en",
     "filename": "OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
     "downloadName": "OryxDataStation_Brochure_EN.pdf",
-    "bytes": 5695812,
-    "sha256": "f79b6c59601240eb02a95bb88466e3f5d31b51c8e2b618aed1b546093f91de22"
+    "bytes": 5725538,
+    "sha256": "2c41f2fafa4d58e89289c065c51178778d87f4600bb7ada26e75bde410714954"
   },
   {
     "product": "Oryx LockDown",
