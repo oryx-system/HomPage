@@ -39,5 +39,7 @@ test('privacy notice describes website inquiries without publishing internal pol
     await page.addStyleTag({ content: '#privacy p { font-size:200% !important }' });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
     await expect(page.locator('#contact a[href^="mailto:"]').last()).toHaveAttribute('href', 'mailto:schong@oryxsystem.co.kr?subject=Oryx%20DataSafe');
+    await expect(page.locator('#contact .button')).toHaveText({ ko: '메일 보내기', en: 'Send email', ru: 'Отправить письмо' }[language]);
+    await expect(page.locator('#contact .form-note')).toHaveCount(0);
   }
 });

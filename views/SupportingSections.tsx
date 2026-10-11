@@ -186,7 +186,6 @@ export function ContactSection() {
             </dl>
             <p className="contact-person">{t("도입 문의 · 대표 홍승철")}</p>
             <a className="button button-primary" href={`mailto:${email}?subject=Oryx%20DataSafe`}><Mail size={18} aria-hidden="true" />{t("메일 보내기")}</a>
-            <p className="form-note">{t("이메일 링크는 기기의 메일 앱을 엽니다. 메일 앱을 사용할 수 없다면 주소를 복사해 보내주세요.")}</p>
           </div>
         </div>
       </div>

@@ -171,10 +171,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Contact us by email or phone to discuss product features and implementation.",
     "ru": "Обращайтесь по электронной почте или телефону, чтобы обсудить функции продукта и возможность внедрения."
   },
-  "이메일 링크는 기기의 메일 앱을 엽니다. 메일 앱을 사용할 수 없다면 주소를 복사해 보내주세요.": {
-    "en": "The email link opens your device’s mail app. If you cannot use a mail app, copy the address and send your message.",
-    "ru": "Ссылка на электронную почту открывает почтовое приложение на вашем устройстве. Если вы не можете воспользоваться приложением, скопируйте адрес и отправьте письмо."
-  },
   "업무에 맞춘 소프트웨어를 설계합니다.": {
     "en": "We design software around your work.",
     "ru": "Мы проектируем программное обеспечение под ваши рабочие задачи."
