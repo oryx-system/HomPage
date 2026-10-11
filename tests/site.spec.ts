@@ -109,8 +109,13 @@ async function expectDataSafeIdentity(page: Page) {
   await expect(page.locator('#about')).toContainText(/DataSafe|데이터세이프/i);
   // The customer-facing introduction identifies DataSafe as a software company.
   // Related-company links remain in the footer, outside the introduction.
-  await expect(page.locator('#about .company-summary')).toContainText('Oryx DataSafe');
-  await expect(page.locator('#about .company-summary')).toContainText(/소프트웨어 개발|software development|ИТ-компания/i);
+  const language = await page.locator('html').getAttribute('lang') as 'ko' | 'en' | 'ru';
+  const approvedIntroduction = {
+    ko: '오릭스 데이터세이프는 데이터의 안전한 관리와 신뢰성 확보를 고려해, 제약·산업 현장에 필요한 고객 맞춤 소프트웨어를 개발합니다.',
+    en: 'Oryx DataSafe develops custom software for pharmaceutical and industrial sites, with safe data management and reliability in mind.',
+    ru: 'Oryx DataSafe разрабатывает программы под задачи фармацевтических и промышленных предприятий, учитывая безопасное управление данными и их достоверность.',
+  };
+  await expect(page.locator('#about .company-summary p').first()).toHaveText(approvedIntroduction[language]);
   await expect(page.locator('#about .company-summary')).not.toContainText('Oryx System');
   await expect(page.locator('.proof-strip')).not.toContainText(/\b20\b|20\s*년|\b2023\b/);
   await expect(page.locator('.hero-artwork figcaption')).toHaveCount(0);
