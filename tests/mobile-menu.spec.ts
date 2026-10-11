@@ -242,7 +242,7 @@ test('company introduction leads the document and the Korean hero remains readab
   await expect(panel(page).locator('nav a').nth(1)).toHaveAttribute('href', '#about');
   await noOverflow(page);
   const headline = page.locator('#home-heading');
-  expect((await headline.textContent())!.replace(/\s/g, '')).toBe('데이터를지키고,기록의신뢰를이어갑니다.');
+  expect((await headline.textContent())!.replace(/\s/g, '')).toBe('고객맞춤소프트웨어개발');
   if (page.viewportSize()!.width <= 390) {
     const lines = await headline.evaluate(element => {
       const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);

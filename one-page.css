@@ -99,6 +99,9 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .hero-copy h1 > .hero-title-opening,.hero-copy h1 > .hero-title-continuation {color:inherit;}
 .hero-title-mobile-space {display:none;}
 .hero-lead {font-size:1.125rem;color:#c1d0e1;line-height:1.8;max-width:58ch;margin-top:0;}
+.hero-keywords {display:flex;flex-wrap:wrap;gap:10px 22px;list-style:none;padding:0;margin:22px 0 0;color:#a8ceff;font-size:1.0625rem;line-height:1.65;font-weight:650;}
+.hero-keywords li {max-width:100%;overflow-wrap:anywhere;}
+.brochure-entry-note {font-size:1rem;line-height:1.8;color:#b7cce5;max-width:65ch;margin-top:15px;}
 .hero-actions {gap:12px;align-items:center;margin-top:31px;}
 .home-hero .button-secondary,.ds-hero .button-secondary {background:transparent;border-color:#7e94ab;color:white;}
 .home-hero .button-secondary:hover,.home-hero .button-secondary:focus-visible,.ds-hero .button-secondary:hover,.ds-hero .button-secondary:focus-visible {background:#1a3858;border-color:#adc7e6;}
@@ -459,11 +462,11 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 
 /* Shared product title hierarchy across all three products. */
 #datastation .product-heading,#lockdown .product-heading,#calibration .product-heading {font-size:clamp(2rem,3.35vw,3rem);font-weight:700;line-height:1.4;letter-spacing:-.025em;overflow-wrap:anywhere;}
-.product-subtitle,.section-heading .product-subtitle {font-size:clamp(1.375rem,2.2vw,1.7rem);font-weight:600;line-height:1.55;letter-spacing:-.025em;}
-.section-heading .product-subtitle {color:#2866ad;margin-top:15px;}
+.product-subtitle,.section-heading > p.product-subtitle {font-size:clamp(1.375rem,2.2vw,1.7rem);font-weight:600;line-height:1.55;letter-spacing:-.025em;}
+.section-heading > p.product-subtitle {color:#2866ad;margin-top:15px;}
 @media(max-width:600px) {
   #datastation .product-heading,#lockdown .product-heading,#calibration .product-heading {font-size:1.875rem;}
-  .product-subtitle,.section-heading .product-subtitle {font-size:1.375rem;}
+  .product-subtitle,.section-heading > p.product-subtitle {font-size:1.375rem;}
 }
 @media(max-width:360px) {
   #datastation .product-heading,#lockdown .product-heading,#calibration .product-heading {font-size:1.65rem;}
@@ -492,4 +495,13 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .home-hero .hero-actions .button span {min-width:0;overflow-wrap:anywhere;}
 @media(max-width:300px) {
   .home-hero .hero-actions {flex-direction:column;width:100%;}
+}
+
+/* The service headline stays prominent without squeezing long translations. */
+html[lang="ru"] .hero-copy h1.hero-service-title {font-size:clamp(2rem,3.35vw,3rem);letter-spacing:-.035em;}
+.brochure-card-content > p.brochure-purpose {font-size:1.125rem;font-weight:650;color:#c6dcfc;line-height:1.6;}
+@media(max-width:700px) {
+  html .hero-copy h1.hero-service-title {font-size:clamp(1.65rem,7vw,2rem);line-height:1.4;letter-spacing:-.025em;}
+  html[lang="ru"] .hero-copy h1.hero-service-title {font-size:clamp(1.45rem,6.5vw,1.8rem);}
+  .hero-keywords {gap:8px 16px;font-size:1rem;margin-top:18px;}
 }

@@ -142,8 +142,7 @@ export function AboutSection() {
           </div>
           <div className="company-summary reveal">
             <p>{t("Oryx DataSafe는 제약 현장의 업무와 운영 환경을 위한 IT 소프트웨어 개발 회사입니다.")}</p>
-            <p>{t("고객의 업무와 현장 요구를 바탕으로, DataStation·LockDown·Calibration 제품과 맞춤 업무 프로그램을 설계·개발합니다.")}</p>
-            <p>{t("요구사항 검토부터 기능 검증과 적용 지원까지, 사용 환경에 맞는 기능과 개발 범위를 구체화합니다.")}</p>
+            <p>{t("요구사항 검토부터 기능 검증·적용 지원까지, 제품 활용과 개별 업무 프로그램 개발을 함께 검토합니다.")}</p>
             <ul className="company-keywords" aria-label={t("핵심 역량")}>
               {["고객 맞춤 프로그램", "전자기록·데이터 관리", "사용자·접근 관리", "현장 적용·운영 지원"].map(keyword => <li key={keyword}>{t(keyword)}</li>)}
             </ul>
@@ -179,7 +178,7 @@ export function ContactSection() {
             <div className="section-heading">
               <p className="section-kicker">{t("CONTACT")}</p>
               <h2 id="contact-heading">{t("제품 및 도입 문의")}</h2>
-              <p>{t("제품 기능과 도입 검토는 이메일 또는 전화로 문의해 주세요.")}</p>
+              <p>{t("개선하려는 업무와 필요한 기능을 이메일 또는 전화로 알려주세요.")}</p>
             </div>
           </div>
           <div className="contact-primary reveal">

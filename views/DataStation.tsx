@@ -71,9 +71,9 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
           <div className="reveal">
             <p className="eyebrow">{t("EQUIPMENT DATA MANAGEMENT")}</p>
             <ProductTitle id="ds-product-title" className="ds-product-title product-heading">Oryx DataStation</ProductTitle>
-            <p className="ds-headline product-subtitle">{t("설비의 기록을, 검토 가능한 데이터로.")}</p>
-            <p className="ds-hero-lead">{t("장비 CSV를 수집·보호하고 PDF 보고서로 검토·보관합니다. 전자서명과 사무실 검토는 제품 구성에 따라 제공합니다.")}</p>
-            <p className="ds-source-note">{t("DataStation 제품 소개서에 근거한 기능 안내입니다.")}<br />{t("전자서명과 원격 검토 기능은 제품 구성에 따라 다릅니다.")}</p>
+            <p className="ds-headline product-subtitle">{t("장비 기록 수집·조회·PDF 보고서")}</p>
+            <p className="ds-hero-lead">{t("CSV 기록을 모아 조회하고 PDF 보고서로 검토·보관합니다.")}</p>
+            <p className="ds-source-note">{t("전자서명과 원격 검토 기능은 제품 구성에 따라 다릅니다.")}</p>
           </div>
           <DataFlow />
         </div>

@@ -1,0 +1,22 @@
+// Customer-facing wording uses the same scope in all three UI languages.
+export const customerTranslations: Record<string, { en: string; ru: string }> = {
+  '고객 맞춤': { en: 'Custom software', ru: 'Индивидуальная' },
+  '소프트웨어 개발': { en: 'development', ru: 'разработка программ' },
+  '고객의 업무와 현장 요구에 맞는 프로그램을 설계·개발합니다. 기존 제품의 적용부터 개별 업무 프로그램까지 함께 검토합니다.': { en: 'We design and develop software around your workflows and on-site requirements. We review both existing product options and custom business software.', ru: 'Мы проектируем и разрабатываем программы с учетом ваших рабочих процессов и требований на объекте. Рассматриваем как применение существующих продуктов, так и индивидуальные рабочие программы.' },
+  '맞춤 개발': { en: 'Custom development', ru: 'Индивидуальная разработка' },
+  '기록·데이터 관리': { en: 'Records & data management', ru: 'Управление записями и данными' },
+  '사용자·접근 관리': { en: 'User & access management', ru: 'Управление пользователями и доступом' },
+  '데이터를 지키고, 기록의 신뢰를 이어갑니다.': { en: 'Protecting data and preserving trust in records.', ru: 'Защищаем данные и сохраняем доверие к записям.' },
+  '제품 살펴보기': { en: 'Explore products', ru: 'Посмотреть продукты' },
+  '도입 문의': { en: 'Contact us', ru: 'Связаться' },
+  '장비 기록 수집·조회·PDF 보고서': { en: 'Equipment records: collection, lookup & PDF reports', ru: 'Записи оборудования: сбор, просмотр и PDF-отчеты' },
+  'Windows 업무 PC 접근 관리': { en: 'Access management for Windows work PCs', ru: 'Управление доступом к рабочим ПК Windows' },
+  '교정 업무·기록 관리': { en: 'Calibration workflows & record management', ru: 'Управление калибровкой и ее записями' },
+  'CSV 기록을 모아 조회하고 PDF 보고서로 검토·보관합니다.': { en: 'Collect and look up CSV records, then review and retain them in PDF reports.', ru: 'Собирайте и просматривайте CSV-записи, проверяйте и храните их в PDF-отчетах.' },
+  'Windows 로그인 후 전용 화면에서 허용된 업무 앱을 실행하고, 주요 접근 경로를 설정에 따라 제한합니다.': { en: 'Run allowed work applications from a dedicated screen after Windows login, and restrict key access paths according to settings.', ru: 'После входа в Windows запускайте разрешенные рабочие приложения из специального интерфейса и ограничивайте основные пути доступа согласно настройкам.' },
+  '접수·배정, 측정 기록, 검토·승인과 성적서 발행·조회를 연결합니다.': { en: 'Connect intake and assignment, measurement records, review and approval, and certificate issuance and access.', ru: 'Объединяйте прием и распределение заявок, записи измерений, проверку и утверждение, выпуск сертификатов и доступ к ним.' },
+  '요구사항 검토부터 기능 검증·적용 지원까지, 제품 활용과 개별 업무 프로그램 개발을 함께 검토합니다.': { en: 'From requirements review to functional testing and implementation support, we consider both product use and custom business software development.', ru: 'От анализа требований до проверки функций и поддержки внедрения мы рассматриваем как использование продуктов, так и разработку индивидуальных рабочих программ.' },
+  '개선하려는 업무와 필요한 기능을 이메일 또는 전화로 알려주세요.': { en: 'Tell us about the workflow you want to improve and the functions you need by email or phone.', ru: 'Расскажите по электронной почте или телефону, какие рабочие процессы вы хотите улучшить и какие функции нужны.' },
+  '원본 소개서에서 기능과 적용 범위를 확인하세요.': { en: 'Check features and implementation scope in the original brochures.', ru: 'Проверьте функции и условия внедрения в оригинальных брошюрах.' },
+  '아래 제품별 표지나 미리보기 버튼을 누르면 한국어·영어 원본 PDF가 열립니다.': { en: 'Select a product cover or preview button below to open the original Korean or English PDF.', ru: 'Нажмите на обложку продукта или кнопку просмотра ниже, чтобы открыть оригинал PDF на корейском или английском языке.' },
+};

@@ -36,7 +36,8 @@ export default function BrochuresPage({ embedded = false }: { embedded?: boolean
           <div className="brochure-toolbar reveal">
             <div>
               <p className="section-kicker">{t("READ · PREVIEW · DOWNLOAD")}</p>
-              <h2 id="brochure-heading">{t("필요한 언어로 확인하세요.")}</h2>
+              <h2 id="brochure-heading">{t("원본 소개서에서 기능과 적용 범위를 확인하세요.")}</h2>
+              <p className="brochure-entry-note">{t("아래 제품별 표지나 미리보기 버튼을 누르면 한국어·영어 원본 PDF가 열립니다.")}</p>
               {uiLanguage === "ru" && <p className="pdf-language-note">{t("러시아어 PDF는 제공되지 않습니다. 한국어 또는 영어 원본을 확인해 주세요.")}</p>}
             </div>
             <div className="brochure-language" role="group" aria-label={t("브로셔 언어 선택")}>
@@ -54,6 +55,7 @@ export default function BrochuresPage({ embedded = false }: { embedded?: boolean
                 <div className="brochure-card-content">
                   <p className="section-kicker">{languageName(item.language)} · PDF</p>
                   <h3>{item.product}</h3>
+                  <p className="brochure-purpose">{t(item.product === 'Oryx DataStation' ? '장비 기록 수집·조회·PDF 보고서' : item.product === 'Oryx LockDown' ? 'Windows 업무 PC 접근 관리' : '교정 업무·기록 관리')}</p>
                   <p>{t(item.description)}</p>
                   <p className="brochure-file"><FileText size={16} aria-hidden="true" /> {item.pages} {t("페이지")} · {(item.bytes / 1_000_000).toLocaleString(uiLanguage, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} {t("MB")}</p>
                   <div className="brochure-actions">

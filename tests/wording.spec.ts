@@ -13,7 +13,7 @@ test('regulatory scope and custom software introduction remain readable in KO/EN
     await expect(scope).not.toContainText('ALCOA+');
     const introduction = page.locator('#about .company-summary');
     await expect(page.locator('#about .section-kicker')).toHaveText('Company');
-    await expect(introduction.locator('p')).toHaveCount(3);
+    await expect(introduction.locator('p')).toHaveCount(2);
     await expect(introduction.locator('.form-note')).toHaveCount(0);
     await expect(introduction).not.toContainText('Compliance');
     const keywords = introduction.locator('.company-keywords li');
@@ -30,8 +30,8 @@ test('regulatory scope and custom software introduction remain readable in KO/EN
     await expect(featureCards.locator('.ds-feature-top svg')).toHaveCount(6);
     await expect(featureCards.locator('.ds-feature-top span')).toHaveCount(0);
     await expect(page.locator('.ds-workflow')).toContainText('01');
-    await expect(introduction).toContainText({ ko: '맞춤 업무 프로그램', en: 'custom business software', ru: 'индивидуальные рабочие программы' }[language]);
-    for (const product of ['DataStation', 'LockDown', 'Calibration']) await expect(introduction).toContainText(product);
+    await expect(introduction).toContainText({ ko: '개별 업무 프로그램', en: 'custom business software', ru: 'индивидуальных рабочих программ' }[language]);
+    for (const product of ['DataStation', 'LockDown', 'Calibration']) await expect(page.locator('#about')).toContainText(product);
     if (language !== 'ko') {
       expect(await scope.innerText()).not.toMatch(/[가-힣]/);
       expect(await introduction.innerText()).not.toMatch(/[가-힣]/);

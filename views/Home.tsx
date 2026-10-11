@@ -2,19 +2,22 @@ import type { ReactNode } from 'react';
 import { useLanguage } from '../i18n';
 
 export default function Home({ children }: { children?: ReactNode }) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   return <>
     <section id="home" className="home-hero" data-main-section tabIndex={-1} aria-labelledby="home-heading">
       <div className="container hero-layout">
         <div className="hero-copy reveal">
           <p className="eyebrow"><span />{t('IT SOFTWARE & DATA SECURITY')}</p>
-          <h1 id="home-heading">{language === 'ko' ? <><span className="hero-title-opening">데이터를 지키고<span className="hero-title-punctuation">,</span></span><br /><span className="hero-title-continuation"><span className="hero-title-accent">기록의 신뢰를</span><br className="hero-title-desktop-break" /><span className="hero-title-mobile-space"> </span>이어갑니다<span className="hero-title-punctuation">.</span></span></> : <>{t('장비 기록,')}<br /><span>{t('PC 접근,')}</span><br />{t('교정 업무.')}</>}</h1>
-          <p className="hero-lead">{language !== 'ko' ? t('장비 기록·PC 접근·교정 업무를 관리하는 소프트웨어를 개발합니다. 기능과 적용 범위는 현장 요구에 맞춰 확인합니다.') : t('Oryx DataSafe는 IT 소프트웨어를 중심으로 전자기록 보호, 이력 관리, 역할별 전자서명과 교정 업무를 지원합니다. 기록의 수집부터 검토·보관까지, 필요한 기능과 도입 범위를 함께 확인합니다.')}</p>
+          <h1 id="home-heading" className="hero-service-title"><span className="hero-title-opening">{t('고객 맞춤')}</span><br /><span className="hero-title-accent">{t('소프트웨어 개발')}</span></h1>
+          <p className="hero-lead">{t('고객의 업무와 현장 요구에 맞는 프로그램을 설계·개발합니다. 기존 제품의 적용부터 개별 업무 프로그램까지 함께 검토합니다.')}</p>
+          <ul className="hero-keywords" aria-label={t('핵심 역량')}>
+            {['맞춤 개발', '기록·데이터 관리', '사용자·접근 관리'].map(keyword => <li key={keyword}>{t(keyword)}</li>)}
+          </ul>
           <div className="hero-actions">
-            <a className="button button-primary" href="#datastation"><span>{t('DataStation 살펴보기')}</span></a>
-            <a className="button button-secondary" href="#contact"><span>{language === 'ko' ? '도입 문의' : t('도입 상담')}</span></a>
+            <a className="button button-primary" href="#datastation"><span>{t('제품 살펴보기')}</span></a>
+            <a className="button button-secondary" href="#contact"><span>{t('도입 문의')}</span></a>
           </div>
-          <p className="hero-small"><span className="small-line" />{t('소프트웨어로 연결하는 기록, 보호와 추적성을 고려한 설계')}</p>
+          <p className="hero-small"><span className="small-line" />{t('데이터를 지키고, 기록의 신뢰를 이어갑니다.')}</p>
         </div>
         <figure className="hero-artwork reveal">
           <svg className="hero-monitor" viewBox="660 80 880 850" width="880" height="850" role="img" aria-label={t('보안 방패를 표시한 모니터를 표현한 Oryx DataSafe 콘셉트 이미지.')}>

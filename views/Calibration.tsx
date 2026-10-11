@@ -46,8 +46,8 @@ export default function CalibrationSection() {
         <div className="section-heading reveal">
           <p className="section-kicker">{t("ORYX CALIBRATION · 교정 업무 관리")}</p>
           <h2 id="calibration-heading" className="product-heading">Oryx Calibration</h2>
-          <p className="product-subtitle">{t("교정 업무의 시작부터, 성적서 조회까지.")}</p>
-          <p>{t("Oryx Calibration은 교정 업무의 접수·배정부터 현장 측정 기록, 전자서명 검토·승인, 성적서 발행과 고객 조회까지 연결하는 교정 업무 관리 소프트웨어입니다.")}</p>
+          <p className="product-subtitle">{t("교정 업무·기록 관리")}</p>
+          <p>{t("접수·배정, 측정 기록, 검토·승인과 성적서 발행·조회를 연결합니다.")}</p>
         </div>
         <div className="grid-3">
           {features.map(({ icon: Icon, title, paragraphs }) => (
