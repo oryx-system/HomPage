@@ -438,6 +438,25 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .ds-detail-group > summary {max-width:var(--wrap);margin:auto;}
 .ds-animated-details {overflow:hidden;overflow-anchor:none;}
 .ds-disclosure-content {display:flow-root;}
+.ds-detail-group {width:min(var(--wrap),calc(100% - 48px));margin:24px auto;border:1px solid #cbd8e6;border-radius:8px;}
+.ds-disclosure-content {background:#f4f7fb;border-top:1px solid #cbd8e6;}
+.ds-detail-group .section {background:transparent;}
+.ds-detail-group .container {width:calc(100% - 64px);}
+.ds-disclosure-footer {display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 32px;padding:28px 0 32px;border-top:1px solid #cbd8e6;}
+.ds-disclosure-footer p {font-size:1rem;line-height:1.8;color:#4c6076;}
+.ds-disclosure-close {background:white;color:#254565;border-color:#6b829d;max-width:100%;}
+.ds-detail-group .ds-enterprise-section {color:#152b43;border-color:#dbe4ef;}
+.ds-detail-group .ds-enterprise-section p:not(.section-kicker),
+.ds-detail-group .ds-enterprise-section .check-list {color:#4c6076;}
+.ds-detail-group .ds-enterprise-section .section-kicker,
+.ds-detail-group .ds-enterprise-card > svg,
+.ds-detail-group .ds-enterprise-card .check-list svg {color:#2866ad;}
+.ds-detail-group .ds-enterprise-card {background:white;border-color:#d3e1f3;}
+@media(max-width:600px) {
+  .ds-detail-group {width:calc(100% - 32px);}
+  .ds-detail-group .container {width:calc(100% - 40px);}
+  .ds-disclosure-footer {margin-inline:20px;align-items:flex-start;flex-direction:column;gap:14px;padding-block:24px;}
+}
 .detail-content {padding-block:28px;}
 .detail-content h3 {font-size:1.5rem;margin-bottom:20px;line-height:1.5;}
 .ds-detail-group .section {padding-block:52px;}

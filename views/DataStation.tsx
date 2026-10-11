@@ -119,7 +119,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </section>
 
-      <DataStationDetails label={t("보고서·역할·원격 검토 자세히 보기")}>
+      <DataStationDetails label={t("보고서·역할·원격 검토 자세히 보기")} closeLabel={t("상세 내용 접기")} endLabel={t("상세 내용 끝")}>
         <div className="detail-content container">
           <h3>{t("파일·보관 설정의 적용 조건")}</h3>
           <ul className="check-list">

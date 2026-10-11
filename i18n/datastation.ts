@@ -1,4 +1,6 @@
 export const datastationTranslations: Record<string, { en: string; ru: string }> = {
+  "상세 내용 접기": { en: "Collapse details", ru: "Свернуть подробности" },
+  "상세 내용 끝": { en: "End of details", ru: "Конец подробностей" },
   "CSV 수집과 데이터 조회": {
     en: "CSV collection and data viewing",
     ru: "Сбор CSV и просмотр данных",
