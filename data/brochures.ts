@@ -23,13 +23,13 @@ export const brochures: Brochure[] = [
     product: "Oryx DataStation", language: "ko", languageLabel: "한국어",
     fileName: "OryxDataStation_Brochure_KO.pdf", href: "/downloads/Oryx_DataStation_Brochure_WordingReview_20261010.pdf",
     cover: "/downloads/Oryx_DataStation_Brochure_WordingReview-cover.webp", coverWidth: 745, coverHeight: 1053,
-    description: dataStationDescription, bytes: 5699290, pages: 13,
+    description: dataStationDescription, bytes: 5995703, pages: 13,
   },
   {
     product: "Oryx DataStation", language: "en", languageLabel: "English",
     fileName: "OryxDataStation_Brochure_EN.pdf", href: "/downloads/OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
     cover: "/downloads/OryxDataStation_Brochure_EN_WordingReview-cover.webp", coverWidth: 745, coverHeight: 1053,
-    description: dataStationDescription, bytes: 5725538, pages: 13,
+    description: dataStationDescription, bytes: 6021951, pages: 13,
   },
   {
     product: "Oryx LockDown", language: "ko", languageLabel: "한국어",
