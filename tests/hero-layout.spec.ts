@@ -7,9 +7,12 @@ test('hero CTAs share a row, height and text alignment without clipping enlarged
     await page.reload({ waitUntil: 'networkidle' });
     await expect(page.locator('html')).toHaveAttribute('lang', language);
     await expect(page.locator('.hero-actions svg')).toHaveCount(0);
-    await expect(page.locator('.hero-bottom a, .hero-bottom svg')).toHaveCount(0);
-    await expect(page.locator('.hero-bottom > span')).toHaveText(language === 'ru' ? 'ЗАПИСИ. ПОДПИСИ. ЦЕЛОСТНОСТЬ.' : 'RECORDS. SIGNATURES. INTEGRITY.');
-    expect(await page.locator('.hero-bottom').evaluate(el => getComputedStyle(el).borderTopWidth)).toBe('0px');
+    await expect(page.locator('.hero-actions a').nth(1)).toHaveAttribute('href', '#contact');
+    await expect(page.locator('.hero-actions a').nth(1)).toHaveText({ ko: '도입 문의', en: 'Contact us', ru: 'Консультация' }[language]);
+    await expect(page.locator('.hero-bottom')).toHaveCount(0);
+    expect(await page.locator('.home-hero').innerText()).not.toMatch(/RECORDS\. SIGNATURES\. INTEGRITY\.|ЗАПИСИ\. ПОДПИСИ\. ЦЕЛОСТНОСТЬ\./);
+    const stripGap = await page.evaluate(() => document.querySelector('.solution-directory')!.getBoundingClientRect().top - document.querySelector('.hero-layout')!.getBoundingClientRect().bottom);
+    expect(Math.abs(stripGap)).toBeLessThanOrEqual(1);
     await expect(page.locator('.site-header a[href="#implementation"]')).toHaveCount(0);
     await expect(page.locator('#implementation')).toHaveCount(1);
     await expect(page.locator('#implementation .flow-steps > li')).toHaveCount(4);
