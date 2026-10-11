@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useLanguage } from '../i18n';
 
@@ -45,7 +44,7 @@ export default function Home({ children }: { children?: ReactNode }) {
           </svg>
         </figure>
       </div>
-      <div className="container hero-bottom"><span>{t('RECORDS. SIGNATURES. INTEGRITY.')}</span><a href="#implementation">{t('도입 과정 살펴보기')}<ArrowRight size={14} aria-hidden="true" /></a></div>
+      <div className="container hero-bottom"><span>{t('RECORDS. SIGNATURES. INTEGRITY.')}</span></div>
       <nav className="solution-directory" aria-label={t('제품 및 자료 바로가기')}>
         <div className="container directory-inner">
           {[

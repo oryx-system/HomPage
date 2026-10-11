@@ -99,7 +99,7 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .home-hero .button-secondary:hover,.home-hero .button-secondary:focus-visible,.ds-hero .button-secondary:hover,.ds-hero .button-secondary:focus-visible {background:#1a3858;border-color:#adc7e6;}
 .hero-small {color:#a9bed4;font-size:.875rem;line-height:1.8;align-items:flex-start;}
 .hero-small .small-line {margin-top:.85em;flex-shrink:0;}
-.hero-bottom {border-color:#355370;color:#c8d7e6;font-size:.75rem;letter-spacing:.06em;}
+.hero-bottom {border-top:0;color:#c8d7e6;font-size:.75rem;letter-spacing:.06em;}
 .hero-bottom a {color:white;font-size:.875rem;line-height:1.6;}
 .hero-bottom > span {color:#a9bed4;}
 .hero-artwork {width:100%;min-width:0;margin:0;align-self:center;}

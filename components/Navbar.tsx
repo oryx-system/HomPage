@@ -8,7 +8,6 @@ const links = [
   { path: "lockdown", label: "LockDown" },
   { path: "calibration", label: "Calibration" },
   { path: "brochures", label: "브로셔" },
-  { path: "implementation", label: "도입 과정" },
 ];
 export default function Navbar({ currentPath }: { currentPath: string }) {
   const { t } = useLanguage();
