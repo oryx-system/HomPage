@@ -66,6 +66,16 @@ export default function App() {
       if (hash && target && (!initial || !restoringDocument)) {
         target.focus({ preventScroll: true });
         if (initial || legacy) target.scrollIntoView({ block: "start", behavior: initial || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+        // Enlarged translations can make the adjacent flow much taller than
+        // the vertically centered product heading. Keep that heading visible
+        // when the section's native anchor would leave it below the viewport.
+        if (anchor === "datastation" && !historyFrame) {
+          const heading = document.getElementById("ds-product-title");
+          const inset = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+          if (heading && heading.getBoundingClientRect().bottom - target.getBoundingClientRect().top > innerHeight - inset) {
+            window.scrollTo({ top: window.scrollY + heading.getBoundingClientRect().top - inset, behavior: initial || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+          }
+        }
       }
       setCurrentSection(anchor);
     };

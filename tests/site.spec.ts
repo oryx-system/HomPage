@@ -53,9 +53,10 @@ async function expectReadableTypography(page: Page) {
       '.contact-facts dd', '.about-meta',
       '.desktop-nav a', '.site-footer nav a', '.site-footer .text-link', '.footer-bottom p',
     ].flatMap(measure);
-    const introductions = measure('.hero-lead, .ds-hero-lead, .section-heading > p:not(.section-kicker):not(.about-meta)');
+    const introductions = measure('.hero-lead, .ds-hero-lead, .section-heading > p:not(.section-kicker):not(.about-meta):not(.product-subtitle)');
+    const productSubtitles = measure('.product-subtitle');
     const contactLabels = measure('.contact-facts dt');
-    return { essential, introductions, contactLabels };
+    return { essential, introductions, contactLabels, productSubtitles };
   });
   expect(measurements.essential.length).toBeGreaterThan(50);
   for (const item of measurements.essential) {
@@ -69,6 +70,11 @@ async function expectReadableTypography(page: Page) {
   for (const item of measurements.introductions) {
     expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(minimumIntroduction);
     expect(item.lineHeight / item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(1.65);
+  }
+  expect(measurements.productSubtitles).toHaveLength(3);
+  for (const item of measurements.productSubtitles) {
+    expect(item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(22);
+    expect(item.lineHeight / item.fontSize, JSON.stringify(item)).toBeGreaterThanOrEqual(1.5);
   }
 }
 
