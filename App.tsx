@@ -21,17 +21,37 @@ const legacyAnchors: Record<string, string> = {
 export default function App() {
   const { t } = useLanguage();
   const mainRef = useRef<HTMLElement>(null);
+  const pendingRestoration = useRef<ScrollRestoration | null>(null);
   const [currentSection, setCurrentSection] = useState("home");
   useRevealMotion(mainRef);
 
   useLayoutEffect(() => {
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    const restoringDocument = navigation?.type === 'reload' || navigation?.type === 'back_forward';
+    // The browser can attempt restoration before React has rendered a tall document.
+    // Retain this tab's reading position for reloads; history traversal stays native.
+    const positionKey = 'oryx-datasafe-reload-position';
+    let saved: { url?: string; x?: number; y?: number } | null = null;
+    try { saved = JSON.parse(window.sessionStorage.getItem(positionKey) || 'null'); } catch { /* Storage may be unavailable. */ }
+    if (navigation?.type === 'reload' && saved?.url === window.location.href && typeof saved.x === 'number' && typeof saved.y === 'number' && Number.isFinite(saved.x) && Number.isFinite(saved.y) && saved.x >= 0 && saved.y >= 0) {
+      pendingRestoration.current = window.history.scrollRestoration;
+      window.history.scrollRestoration = 'manual';
+      if (Math.abs(window.scrollX - saved.x) > 1 || Math.abs(window.scrollY - saved.y) > 1) {
+        window.scrollTo({ left: saved.x, top: saved.y, behavior: 'instant' });
+      }
+    }
+    const rememberDocumentPosition = () => {
+      try {
+        window.sessionStorage.setItem(positionKey, JSON.stringify({ url: window.location.href, x: window.scrollX, y: window.scrollY }));
+      } catch { /* Native restoration remains available when storage is disabled. */ }
+    };
     const resolveAnchor = (initial = false) => {
       const hash = window.location.hash.slice(1);
       const legacy = hash.startsWith("/");
       const anchor = legacy ? legacyAnchors[hash.replace(/\/+$/, "") || "/"] ?? "home" : sections.includes(hash) ? hash : "home";
-      if (legacy) window.history.replaceState(null, "", `#${anchor}`);
+      if (legacy) window.history.replaceState(window.history.state, "", `#${anchor}`);
       const target = document.getElementById(anchor);
-      if (hash && target) {
+      if (hash && target && (!initial || !restoringDocument)) {
         target.focus({ preventScroll: true });
         if (initial || legacy) target.scrollIntoView({ block: "start", behavior: initial || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
       }
@@ -40,7 +60,41 @@ export default function App() {
     const onHash = () => resolveAnchor();
     resolveAnchor(true);
     window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    window.addEventListener('pagehide', rememberDocumentPosition);
+    window.addEventListener('scroll', rememberDocumentPosition, { passive: true });
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener('pagehide', rememberDocumentPosition);
+      window.removeEventListener('scroll', rememberDocumentPosition);
+      if (pendingRestoration.current !== null) {
+        window.history.scrollRestoration = pendingRestoration.current;
+        pendingRestoration.current = null;
+      }
+    };
+  }, []);
+
+  // Native document restoration must finish without CSS scroll animation.
+  // Smooth movement remains available for navigation after the page has loaded.
+  useEffect(() => {
+    let frame = 0;
+    const enableNavigationMotion = () => {
+      frame = window.requestAnimationFrame(() => {
+        frame = window.requestAnimationFrame(() => {
+          if (pendingRestoration.current !== null) {
+            window.history.scrollRestoration = pendingRestoration.current;
+            pendingRestoration.current = null;
+          }
+          document.documentElement.setAttribute('data-navigation-ready', '');
+        });
+      });
+    };
+    if (document.readyState === 'complete') enableNavigationMotion();
+    else window.addEventListener('load', enableNavigationMotion, { once: true });
+    return () => {
+      window.removeEventListener('load', enableNavigationMotion);
+      window.cancelAnimationFrame(frame);
+      document.documentElement.removeAttribute('data-navigation-ready');
+    };
   }, []);
 
   useEffect(() => {

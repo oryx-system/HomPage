@@ -2,19 +2,25 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 const privacyText = JSON.parse(readFileSync(new URL('../review/shared-privacy-text.json', import.meta.url), 'utf8')) as Record<string, string>;
 
-test('regulatory scope and logo explanation remain readable in KO/EN/RU', async ({ page }) => {
-  for (const language of ['ko','en','ru']) {
-    await page.addInitScript(lang => localStorage.setItem('oryx-language', lang), language);
-    await page.goto('/', { waitUntil: 'networkidle' });
+test('regulatory scope and custom software introduction remain readable in KO/EN/RU', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  for (const language of ['ko','en','ru'] as const) {
+    await page.evaluate(lang => localStorage.setItem('oryx-language', lang), language);
+    await page.reload({ waitUntil: 'networkidle' });
     const scope = page.locator('#validation .section-heading p').last();
     await expect(scope).toContainText('21 CFR Part 11');
     await expect(scope).toContainText('ALCOA');
     await expect(scope).not.toContainText('ALCOA+');
-    const logo = page.locator('#about .company-summary .form-note');
-    await expect(logo).toContainText('Compliance');
+    const introduction = page.locator('#about .company-summary');
+    await expect(page.locator('#about .section-kicker')).toHaveText('Company');
+    await expect(introduction.locator('p')).toHaveCount(3);
+    await expect(introduction.locator('.form-note')).toHaveCount(0);
+    await expect(introduction).not.toContainText('Compliance');
+    await expect(introduction).toContainText({ ko: '맞춤 업무 프로그램', en: 'custom business software', ru: 'индивидуальные рабочие программы' }[language]);
+    for (const product of ['DataStation', 'LockDown', 'Calibration']) await expect(introduction).toContainText(product);
     if (language !== 'ko') {
       expect(await scope.innerText()).not.toMatch(/[가-힣]/);
-      expect(await logo.innerText()).not.toMatch(/[가-힣]/);
+      expect(await introduction.innerText()).not.toMatch(/[가-힣]/);
     }
     await page.addStyleTag({ content: '#validation p,#about p{font-size:200% !important}' });
     await page.locator('#validation summary').click();

@@ -133,17 +133,17 @@ export function AboutSection() {
     <section id="about" className="section supporting-section" data-main-section tabIndex={-1} aria-labelledby="about-heading">
       <div className="container">
         <div className="section-heading reveal">
-          <p className="section-kicker">{t("ABOUT ORYX DATASAFE")}</p>
+          <p className="section-kicker">Company</p>
           <p className="about-meta">{t("회사 소개")}</p>
         </div>
         <div className="about-intro">
           <div className="about-lead reveal">
-            <h2 id="about-heading">{t("업무에 맞춘 소프트웨어를 설계합니다.")}</h2>
+            <h2 id="about-heading">{t("업무에 맞춘 프로그램을 개발합니다.")}</h2>
           </div>
           <div className="company-summary reveal">
-            <p>{t("Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다.")}</p>
-            <p>{t("전자기록·데이터 무결성·보안을 중심으로, 제약회사의 업무와 운영 환경에 맞는 소프트웨어를 설계·개발합니다.")}</p>
-            <p className="form-note">{t("로고의 “Compliance”는 관련 요구를 고려한 설계·지원을 나타내며, 제품의 외부 인증이나 규정 충족·보안 성능의 보장을 뜻하지 않습니다.")}</p>
+            <p>{t("Oryx DataSafe는 제약 현장과 업무 환경을 위한 IT 소프트웨어 개발 회사로, Oryx System과 별도로 운영됩니다.")}</p>
+            <p>{t("고객의 요구와 사용 흐름을 분석하고, 필요한 맞춤 업무 프로그램의 설계·개발부터 적용 지원까지 함께합니다.")}</p>
+            <p>{t("전자기록·데이터 관리·무결성을 고려한 기능을 설계하며, DataStation·LockDown·Calibration 제품과 고객별 업무 프로그램을 제공합니다.")}</p>
           </div>
         </div>
         <div className="about-capabilities">

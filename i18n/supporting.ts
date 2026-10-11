@@ -71,10 +71,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Confidential material, passwords and personal information are not needed for an initial inquiry.",
     "ru": "Для первоначального обращения не нужны конфиденциальные материалы, пароли или персональные данные."
   },
-  "ABOUT ORYX DATASAFE": {
-    "en": "ABOUT ORYX DATASAFE",
-    "ru": "О КОМПАНИИ ORYX DATASAFE"
-  },
   "소재지": {
     "en": "Location",
     "ru": "Местонахождение"
@@ -171,10 +167,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Contact us by email or phone to discuss product features and implementation.",
     "ru": "Обращайтесь по электронной почте или телефону, чтобы обсудить функции продукта и возможность внедрения."
   },
-  "업무에 맞춘 소프트웨어를 설계합니다.": {
-    "en": "We design software around your work.",
-    "ru": "Мы проектируем программное обеспечение под ваши рабочие задачи."
-  },
   "메일 보내기": {
     "en": "Send email",
     "ru": "Отправить письмо"
@@ -199,8 +191,6 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "en": "Information to discuss: deliverables, schedule, contract terms",
     "ru": "Темы для обсуждения: результаты работ, сроки, условия договора"
   },
-  "Oryx DataSafe는 Oryx System과 별도로 운영되는 IT 기업입니다.": {"en": "Oryx DataSafe is an IT company operating separately from Oryx System.", "ru": "Oryx DataSafe — ИТ-компания, работающая отдельно от Oryx System."},
-  "전자기록·데이터 무결성·보안을 중심으로, 제약회사의 업무와 운영 환경에 맞는 소프트웨어를 설계·개발합니다.": {"en": "We design and develop software for pharmaceutical workflows and operating environments, focusing on electronic records, data integrity and security.", "ru": "Мы разрабатываем ПО для рабочих процессов и условий эксплуатации фармацевтических компаний, уделяя внимание электронным записям, целостности и защите данных."},
   "장비 기록 관리": {"en": "Equipment records", "ru": "Записи оборудования"},
   "장비 기록을 수집·보호하고 검토합니다.": {"en": "Collect, protect and review equipment records.", "ru": "Сбор, защита и проверка записей оборудования."},
   "PC 접근 통제": {"en": "PC access control", "ru": "Контроль доступа к ПК"},
@@ -217,7 +207,10 @@ export const supportingTranslations: Record<string, { en: string; ru: string }> 
     "ru": "КОНФИДЕНЦИАЛЬНОСТЬ"
   },
   "21 CFR Part 11과 ALCOA 원칙의 관련 요구사항을 고려해 설계합니다. 실제 적합성은 지원 기능, 설정, 사용 목적과 고객의 절차·교육·검증을 함께 평가해야 합니다. 제품 자체의 외부 인증이나 규정 충족을 의미하지 않습니다.": {"en": "Designed considering relevant requirements of 21 CFR Part 11 and ALCOA principles. Suitability must be assessed with supported features, settings, intended use, and customer procedures, training and validation. This does not mean external product certification or fulfillment of regulatory requirements.", "ru": "При проектировании учитываются соответствующие требования 21 CFR Part 11 и принципы ALCOA. Пригодность оценивается с учетом поддерживаемых функций, настроек, назначения, процедур заказчика, обучения и валидации. Это не означает внешнюю сертификацию продукта или выполнение нормативных требований."},
-  "로고의 “Compliance”는 관련 요구를 고려한 설계·지원을 나타내며, 제품의 외부 인증이나 규정 충족·보안 성능의 보장을 뜻하지 않습니다.": {"en": "“Compliance” in the logo describes design and support that consider relevant requirements. It does not mean external product certification, fulfillment of regulatory requirements or guaranteed security performance.", "ru": "Слово «Compliance» в логотипе обозначает проектирование и поддержку с учетом соответствующих требований. Оно не означает внешнюю сертификацию продукта, выполнение нормативных требований или гарантию эффективности защиты."},
   "관련 요구사항을 고려한 설계입니다. 실제 적합성은 지원 기능·설정·사용 목적과 고객의 절차·교육·검증을 함께 평가해야 합니다. 제품의 외부 인증이나 규정 충족을 뜻하지 않습니다.": {"en": "Designed considering relevant requirements. Assess suitability with supported features, settings, intended use and customer procedures, training and validation. This does not mean external product certification or fulfillment of regulatory requirements.", "ru": "При проектировании учитываются соответствующие требования. Пригодность оценивается с учетом поддерживаемых функций, настроек, назначения, процедур заказчика, обучения и валидации. Это не означает внешнюю сертификацию продукта или выполнение нормативных требований."},
   "이 사이트에는 문의 입력 폼이 없으며, 사이트에서 문의 내용을 직접 수집·전송·저장하지 않습니다. 이메일 문의는 사용자가 자신의 메일 앱 또는 서비스를 통해 직접 보내며, 해당 서비스의 개인정보 및 이용 정책이 적용됩니다.": {"en": "This website has no inquiry form and does not directly collect, transmit or store inquiry content. Users send email inquiries through their own email app or service, subject to that service’s privacy policy and terms of use.", "ru": "На этом сайте нет формы для обращений, и сайт напрямую не собирает, не передаёт и не хранит содержание обращений. Пользователи отправляют обращения самостоятельно через своё почтовое приложение или сервис; применяются политика конфиденциальности и условия использования этого сервиса."},
+  "업무에 맞춘 프로그램을 개발합니다.": {"en": "We develop software tailored to your workflows.", "ru": "Мы разрабатываем программы под ваши рабочие задачи."},
+  "Oryx DataSafe는 제약 현장과 업무 환경을 위한 IT 소프트웨어 개발 회사로, Oryx System과 별도로 운영됩니다.": {"en": "Oryx DataSafe is an IT software development company serving pharmaceutical operations and work environments. It operates separately from Oryx System.", "ru": "Oryx DataSafe разрабатывает ИТ-программы для фармацевтических предприятий и их рабочих процессов и работает отдельно от Oryx System."},
+  "고객의 요구와 사용 흐름을 분석하고, 필요한 맞춤 업무 프로그램의 설계·개발부터 적용 지원까지 함께합니다.": {"en": "We analyze customer requirements and user workflows, then design and develop custom business software and support its implementation.", "ru": "Мы анализируем требования заказчика и пользовательские процессы, проектируем и разрабатываем индивидуальные рабочие программы и поддерживаем их внедрение."},
+  "전자기록·데이터 관리·무결성을 고려한 기능을 설계하며, DataStation·LockDown·Calibration 제품과 고객별 업무 프로그램을 제공합니다.": {"en": "We design functions with electronic records, data management and integrity in mind, offering DataStation, LockDown, Calibration and customer-specific applications.", "ru": "Мы проектируем функции с учетом электронных записей, управления данными и их целостности и предлагаем DataStation, LockDown, Calibration и рабочие программы под задачи заказчика."},
 };

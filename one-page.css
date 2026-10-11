@@ -1,5 +1,6 @@
 /* Shared design values from Oryx System f46ea25; product content and artwork stay local. */
-html {scroll-behavior:smooth;scroll-padding-top:0;overflow-anchor:none;}
+html {scroll-behavior:auto;scroll-padding-top:0;overflow-anchor:none;}
+@media(prefers-reduced-motion:no-preference) {html[data-navigation-ready] {scroll-behavior:smooth;}}
 [data-main-section],#datastation,#brochures {scroll-margin-top:calc(var(--header-height,93px) + 12px);outline:none;}
 html:not([lang="ko"]) body,html:not([lang="ko"]) :is(p,li,dd,h1,h2,h3,h4) {word-break:normal;}
 
