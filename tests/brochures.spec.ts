@@ -21,6 +21,7 @@ const officialDocuments = [
     "product": "Oryx DataStation",
     "language": "ko",
     "filename": "Oryx_DataStation_Brochure_WordingReview_20261010.pdf",
+    "downloadName": "OryxDataStation_Brochure_KO.pdf",
     "bytes": 5699290,
     "sha256": "566c6dd435858ce935edd6fa744dc975f478abc5de80a8e578dee87698208bd7"
   },
@@ -28,6 +29,7 @@ const officialDocuments = [
     "product": "Oryx DataStation",
     "language": "en",
     "filename": "OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
+    "downloadName": "OryxDataStation_Brochure_EN.pdf",
     "bytes": 5695812,
     "sha256": "f79b6c59601240eb02a95bb88466e3f5d31b51c8e2b618aed1b546093f91de22"
   },
@@ -35,6 +37,7 @@ const officialDocuments = [
     "product": "Oryx LockDown",
     "language": "ko",
     "filename": "Oryx_LockDown_Brochure_WordingReview_20261010.pdf",
+    "downloadName": "OryxLockDown_Brochure_KO.pdf",
     "bytes": 6216950,
     "sha256": "941bbcd0496b6a857bf42849abda29c8c8742afbced587204cf40a3be19c2f60"
   },
@@ -42,6 +45,7 @@ const officialDocuments = [
     "product": "Oryx LockDown",
     "language": "en",
     "filename": "OryxLockDown_Brochure_EN_WordingReview_20261010.pdf",
+    "downloadName": "OryxLockDown_Brochure_EN.pdf",
     "bytes": 804580,
     "sha256": "2e6223069a8573cc79deb5bf43f690a8fd964437861cd49d2a6a4ba6ae00ef51"
   },
@@ -49,6 +53,7 @@ const officialDocuments = [
     "product": "Oryx Calibration",
     "language": "ko",
     "filename": "OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
+    "downloadName": "OryxCalibration_Brochure_KO.pdf",
     "bytes": 3610806,
     "sha256": "15c2b2e6e5afabdd9d7b7ded8ef4892049161fd4ba6929fa79e8267239b64ccd"
   },
@@ -56,6 +61,7 @@ const officialDocuments = [
     "product": "Oryx Calibration",
     "language": "en",
     "filename": "OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
+    "downloadName": "OryxCalibration_Brochure_EN.pdf",
     "bytes": 7136090,
     "sha256": "a106ac751afb2a1af50a81828c4e2b56fbb8fcae455e35bdc9ca9444f8ff8b9f"
   }
@@ -75,7 +81,7 @@ async function selectBrochureLanguage(page: Page, language: 'ko' | 'en') {
   await expect(group.locator(`button[lang="${language === 'ko' ? 'en' : 'ko'}"]`)).toHaveAttribute('aria-pressed', 'false');
   const expectedDocuments = officialDocuments.filter(document => document.language === language);
   for (const document of expectedDocuments) {
-    await expect(page.locator(`a[download="${document.filename}"]`)).toHaveCount(1);
+    await expect(page.locator(`a[download="${document.downloadName}"]`)).toHaveCount(1);
   }
 }
 
@@ -86,6 +92,7 @@ test('brochure covers load as images without requesting PDFs before a click', as
   await expect(page.locator('main iframe, main embed, main object')).toHaveCount(0);
   for (const language of ['ko', 'en'] as const) {
     await selectBrochureLanguage(page, language);
+    expect(await page.locator('#brochures').innerText()).not.toMatch(/WordingReview|20261010/);
     const covers = page.locator('.brochure-card .brochure-cover img');
     expect(await covers.count()).toBe(3);
     for (const cover of await covers.all()) {
@@ -103,13 +110,13 @@ test('brochure covers load as images without requesting PDFs before a click', as
   expect(pdfRequests).toEqual([]);
 });
 
-test('six revised review PDFs retain filenames and verified bytes over HTTP and browser downloads', async ({ page }) => {
+test('six published PDFs use clean download names and retain verified bytes over HTTP and browser downloads', async ({ page }) => {
   test.setTimeout(90_000);
   await page.goto('/#brochures');
   for (const language of ['ko', 'en'] as const) {
     await selectBrochureLanguage(page, language);
     for (const document of officialDocuments.filter(item => item.language === language)) {
-      const downloadLink = page.locator(`a[download="${document.filename}"]`);
+      const downloadLink = page.locator(`a[download="${document.downloadName}"]`);
       const card = page.locator('.brochure-card').filter({ has: downloadLink });
       const expectedPath = `/downloads/${document.filename}`;
       const previews = card.locator(`a[href="${expectedPath}"][target="_blank"]`);
@@ -131,7 +138,7 @@ test('six revised review PDFs retain filenames and verified bytes over HTTP and 
       expect(servedBytes.length, document.filename).toBe(document.bytes);
       expect(sha256(servedBytes), document.filename).toBe(document.sha256);
       const [download] = await Promise.all([page.waitForEvent('download'), downloadLink.click()]);
-      expect(download.suggestedFilename()).toBe(document.filename);
+      expect(download.suggestedFilename()).toBe(document.downloadName);
       expect(await download.failure()).toBeNull();
       const path = await download.path();
       expect(path).toBeTruthy();
@@ -149,7 +156,7 @@ test('PDF previews open the same reviewed files in new tabs', async ({ page }) =
   for (const language of ['ko', 'en'] as const) {
     await selectBrochureLanguage(page, language);
     for (const document of officialDocuments.filter(item => item.language === language)) {
-      const downloadLink = page.locator(`a[download="${document.filename}"]`);
+      const downloadLink = page.locator(`a[download="${document.downloadName}"]`);
       const card = page.locator('.brochure-card').filter({ has: downloadLink });
       const preview = card.locator('.brochure-actions a[target="_blank"]');
       const sourceURL = page.url();
@@ -182,14 +189,14 @@ test('brochure anchors and keyboard languages preserve state and scroll across h
   await page.goBack();
   await expect(page).toHaveURL(/#brochures$/);
   await expect(english).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('a[download="OryxDataStation_Brochure_EN_WordingReview_20261010.pdf"]')).toBeVisible();
+  await expect(page.locator('a[download="OryxDataStation_Brochure_EN.pdf"]')).toBeVisible();
   await page.goBack();
   await expect(page).toHaveURL(/#calibration$/);
   await page.goForward();
   await expect(page).toHaveURL(/#brochures$/);
   await expect(english).toHaveAttribute('aria-pressed', 'true');
   await selectBrochureLanguage(page, 'ko');
-  await expect(page.locator('a[download="Oryx_DataStation_Brochure_WordingReview_20261010.pdf"]')).toBeVisible();
+  await expect(page.locator('a[download="OryxDataStation_Brochure_KO.pdf"]')).toBeVisible();
   await page.reload({ waitUntil: 'networkidle' });
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('.brochure-language button[lang="ko"]')).toHaveAttribute('aria-pressed', 'true');
