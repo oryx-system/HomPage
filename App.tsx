@@ -40,9 +40,21 @@ export default function App() {
         window.scrollTo({ left: saved.x, top: saved.y, behavior: 'instant' });
       }
     }
+    let historyFrame = 0;
+    let restoringHistory = false;
+    let resumeHistoryMotion = false;
+    let nativeHistoryRestoration: ScrollRestoration | null = null;
+    let historyPosition: { left: number; top: number; behavior: 'instant' } | null = null;
+    let activeEntry: string | null = null;
+    let activeUrl = window.location.href;
+    const entryPositionKey = 'oryx-datasafe-history-position:';
     const rememberDocumentPosition = () => {
+      if (restoringHistory || historyFrame) return;
       try {
-        window.sessionStorage.setItem(positionKey, JSON.stringify({ url: window.location.href, x: window.scrollX, y: window.scrollY }));
+        const position = JSON.stringify({ url: window.location.href, x: window.scrollX, y: window.scrollY });
+        window.sessionStorage.setItem(positionKey, position);
+        const entry = window.history.state?.oryxDataSafeEntry;
+        if (typeof entry === 'string') window.sessionStorage.setItem(entryPositionKey + entry, position);
       } catch { /* Native restoration remains available when storage is disabled. */ }
     };
     const resolveAnchor = (initial = false) => {
@@ -57,13 +69,101 @@ export default function App() {
       }
       setCurrentSection(anchor);
     };
-    const onHash = () => resolveAnchor();
+    const markHistoryEntry = () => {
+      const state = window.history.state;
+      activeUrl = window.location.href;
+      activeEntry = null;
+      if (state !== null && (typeof state !== 'object' || Array.isArray(state))) return;
+      const entry = typeof state?.oryxDataSafeEntry === 'string'
+        ? state.oryxDataSafeEntry : `${Date.now().toString(36)}:${Math.random().toString(36).slice(2)}`;
+      try {
+        if (entry !== state?.oryxDataSafeEntry) window.history.replaceState({ ...state, oryxDataSafeEntry: entry }, '');
+        activeEntry = entry;
+      } catch { /* Native history navigation remains available. */ }
+    };
+    const restoreNativeHistoryMode = () => {
+      if (nativeHistoryRestoration !== null) {
+        window.history.scrollRestoration = nativeHistoryRestoration;
+        nativeHistoryRestoration = null;
+      }
+    };
+    const stabilizeHistoryPosition = () => {
+      // Preserve the entry's reading position, including positions away from
+      // its fragment heading. Cancel motion remaining from the departed entry.
+      const position = historyPosition ?? { left: window.scrollX, top: window.scrollY, behavior: 'instant' as const };
+      window.cancelAnimationFrame(historyFrame);
+      historyFrame = window.requestAnimationFrame(() => {
+        window.scrollTo(position);
+        historyFrame = window.requestAnimationFrame(() => {
+          window.scrollTo(position);
+          restoreNativeHistoryMode();
+          if (resumeHistoryMotion) document.documentElement.setAttribute('data-navigation-ready', '');
+          resumeHistoryMotion = false;
+          historyPosition = null;
+          historyFrame = 0;
+          rememberDocumentPosition();
+        });
+      });
+    };
+    const onHistory = (event: PopStateEvent) => {
+      const entry = event.state?.oryxDataSafeEntry;
+      // New native fragment entries have no key; keep user anchor motion.
+      if (typeof entry !== 'string') {
+        window.cancelAnimationFrame(historyFrame);
+        historyFrame = 0;
+        restoringHistory = false;
+        historyPosition = null;
+        restoreNativeHistoryMode();
+        if (resumeHistoryMotion) document.documentElement.setAttribute('data-navigation-ready', '');
+        resumeHistoryMotion = false;
+        return;
+      }
+      try {
+        // popstate precedes native restoration, so this is the outgoing view.
+        if (activeEntry && activeEntry !== entry) {
+          window.sessionStorage.setItem(entryPositionKey + activeEntry,
+            JSON.stringify({ url: activeUrl, x: window.scrollX, y: window.scrollY }));
+        }
+        const position = JSON.parse(window.sessionStorage.getItem(entryPositionKey + entry) || 'null');
+        historyPosition = position?.url === window.location.href && Number.isFinite(position.x) && Number.isFinite(position.y)
+          ? { left: position.x, top: position.y, behavior: 'instant' } : null;
+      } catch { historyPosition = null; }
+      restoringHistory = true;
+      resumeHistoryMotion ||= document.documentElement.hasAttribute('data-navigation-ready');
+      document.documentElement.removeAttribute('data-navigation-ready');
+      if (historyPosition) {
+        nativeHistoryRestoration ??= window.history.scrollRestoration;
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(historyPosition ?? { left: window.scrollX, top: window.scrollY, behavior: 'instant' });
+      window.cancelAnimationFrame(historyFrame);
+      historyFrame = window.requestAnimationFrame(() => {
+        if (!restoringHistory) return;
+        restoringHistory = false;
+        stabilizeHistoryPosition();
+      });
+    };
+    const onHash = () => {
+      if (restoringHistory) {
+        restoringHistory = false;
+        stabilizeHistoryPosition();
+      }
+      resolveAnchor();
+      markHistoryEntry();
+      rememberDocumentPosition();
+    };
     resolveAnchor(true);
+    markHistoryEntry();
+    rememberDocumentPosition();
+    window.addEventListener('popstate', onHistory);
     window.addEventListener("hashchange", onHash);
     window.addEventListener('pagehide', rememberDocumentPosition);
     window.addEventListener('scroll', rememberDocumentPosition, { passive: true });
     return () => {
       window.removeEventListener("hashchange", onHash);
+      window.removeEventListener('popstate', onHistory);
+      window.cancelAnimationFrame(historyFrame);
+      restoreNativeHistoryMode();
       window.removeEventListener('pagehide', rememberDocumentPosition);
       window.removeEventListener('scroll', rememberDocumentPosition);
       if (pendingRestoration.current !== null) {

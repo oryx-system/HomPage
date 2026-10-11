@@ -105,9 +105,9 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
             <p>{t("수집한 파일을 찾고, 변경 여부를 확인하고, 필요한 기록을 보관하는 기능을 제공합니다.")}</p>
           </div>
           <div className="ds-feature-grid">
-            {features.map(({ icon: Icon, title, description }, index) => (
+            {features.map(({ icon: Icon, title, description }) => (
               <article className="ds-feature-card reveal" key={title}>
-                <div className="ds-feature-top"><Icon size={25} strokeWidth={1.65} aria-hidden="true" /><span>0{index + 1}</span></div>
+                <div className="ds-feature-top"><Icon size={25} strokeWidth={1.65} aria-hidden="true" /></div>
                 <ItemTitle className="ds-card-title">{t(title)}</ItemTitle>
                 <p>{t(description)}</p>
 
@@ -119,7 +119,19 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
       </section>
 
       <details className="product-details ds-detail-group">
-        <summary>{t("보고서·역할·원격 검토 자세히 보기")}</summary>
+        <summary onClick={event => {
+          const summary = event.currentTarget;
+          const details = summary.parentElement;
+          if (!(details instanceof HTMLDetailsElement) || !details.open) return;
+          const before = summary.getBoundingClientRect();
+          const header = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
+          const visibleTop = Math.max(header + 12, Math.min(before.top, window.innerHeight - before.height - 16));
+          event.preventDefault();
+          details.open = false;
+          summary.focus({ preventScroll: true });
+          // Close in the same interaction and retain the toggle's visual context.
+          window.scrollTo({ top: Math.max(0, window.scrollY + summary.getBoundingClientRect().top - visibleTop), behavior: 'instant' });
+        }}>{t("보고서·역할·원격 검토 자세히 보기")}</summary>
         <div className="detail-content container">
           <h3>{t("파일·보관 설정의 적용 조건")}</h3>
           <ul className="check-list">

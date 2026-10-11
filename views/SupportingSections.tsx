@@ -141,9 +141,12 @@ export function AboutSection() {
             <h2 id="about-heading">{t("업무에 맞춘 프로그램을 개발합니다.")}</h2>
           </div>
           <div className="company-summary reveal">
-            <p>{t("Oryx DataSafe는 제약 현장과 업무 환경을 위한 IT 소프트웨어 개발 회사로, Oryx System과 별도로 운영됩니다.")}</p>
-            <p>{t("고객의 요구와 사용 흐름을 분석하고, 필요한 맞춤 업무 프로그램의 설계·개발부터 적용 지원까지 함께합니다.")}</p>
-            <p>{t("전자기록·데이터 관리·무결성을 고려한 기능을 설계하며, DataStation·LockDown·Calibration 제품과 고객별 업무 프로그램을 제공합니다.")}</p>
+            <p>{t("Oryx DataSafe는 제약 현장의 업무와 운영 환경을 위한 IT 소프트웨어 개발 회사입니다.")}</p>
+            <p>{t("고객의 업무와 현장 요구를 바탕으로, DataStation·LockDown·Calibration 제품과 맞춤 업무 프로그램을 설계·개발합니다.")}</p>
+            <p>{t("요구사항 검토부터 기능 검증과 적용 지원까지, 사용 환경에 맞는 기능과 개발 범위를 구체화합니다.")}</p>
+            <ul className="company-keywords" aria-label={t("핵심 역량")}>
+              {["고객 맞춤 프로그램", "전자기록·데이터 관리", "사용자·접근 관리", "현장 적용·운영 지원"].map(keyword => <li key={keyword}>{t(keyword)}</li>)}
+            </ul>
           </div>
         </div>
         <div className="about-capabilities">

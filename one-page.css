@@ -78,6 +78,8 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .company-summary {max-width:76ch;}
 .company-summary > p {font-size:1.0625rem;line-height:1.95;color:#4c6076;letter-spacing:-.02em;}
 .company-summary > p + p {margin-top:21px;}
+.company-keywords {display:flex;flex-wrap:wrap;gap:10px 24px;margin:24px 0 0;padding:16px 0 0;border-top:1px solid var(--line);list-style:none;font-size:.875rem;font-weight:750;line-height:1.8;color:#254565;}
+.company-keywords > li {min-width:0;max-width:100%;overflow-wrap:break-word;}
 #about .section-heading {display:flex;align-items:center;justify-content:space-between;gap:20px;}
 #about .section-heading > .section-kicker {font-size:.75rem;font-weight:750;letter-spacing:.17em;color:var(--blue);}
 #about .section-heading > .about-meta {margin:0;font-size:.875rem;line-height:1.8;color:var(--muted);}

@@ -101,9 +101,11 @@ async function expectDataSafeIdentity(page: Page) {
   });
   expect(identityText).not.toMatch(/Oryx\s*System|오릭스\s*시스템|Орикс\s*Систем/i);
   await expect(page.locator('#about')).toContainText(/DataSafe|데이터세이프/i);
-  // About may name Oryx System to explain the corrected distinction.
-  // Verify that distinction rather than rejecting the company name itself.
-  await expect(page.locator('#about')).toContainText(/별도로\s*운영|operat(?:es|ing)\s+separately\s+from|отдельно\s+от/i);
+  // The customer-facing introduction identifies DataSafe as a software company.
+  // Related-company links remain in the footer, outside the introduction.
+  await expect(page.locator('#about .company-summary')).toContainText('Oryx DataSafe');
+  await expect(page.locator('#about .company-summary')).toContainText(/소프트웨어 개발|software development|ИТ-компания/i);
+  await expect(page.locator('#about .company-summary')).not.toContainText('Oryx System');
   await expect(page.locator('.proof-strip')).not.toContainText(/\b20\b|20\s*년|\b2023\b/);
   await expect(page.locator('.hero-artwork figcaption')).toHaveCount(0);
   await expect(page.locator('.hero-monitor')).toHaveAccessibleName(/.+/);

@@ -29,9 +29,17 @@ test('reload preserves top and reading position without a startup scroll while u
     }
   }
   await page.goto('/#calibration', { waitUntil: 'networkidle' });
-  await expect.poll(async () => page.locator('#calibration').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeGreaterThanOrEqual(0);
+  await expect.poll(async () => page.locator('#calibration').evaluate(element => {
+    const top = element.getBoundingClientRect().top;
+    const header = document.querySelector('.site-header')!.getBoundingClientRect().height;
+    return top >= header - 1 && top <= header + 16;
+  })).toBe(true);
+  const readingPosition = await page.evaluate(() => window.scrollY);
   const opener = page.locator('.menu-trigger');
-  if (await opener.isVisible()) await opener.click();
+  if (await opener.isVisible()) {
+    await opener.focus();
+    await page.keyboard.press('Enter');
+  }
   const link = page.locator('.site-header a[href="#datastation"]:visible').first();
   await link.focus();
   await page.keyboard.press('Enter');
@@ -49,6 +57,22 @@ test('reload preserves top and reading position without a startup scroll while u
     const header = document.querySelector('.site-header')!.getBoundingClientRect().height;
     return top >= header - 1 && top <= header + 16;
   })).toBe(true);
+  await page.waitForTimeout(200);
+  expect(await page.evaluate(() => window.scrollY)).toBeCloseTo(readingPosition, 0);
+  // Going back while a user anchor is still moving must cancel the old motion.
+  if (await opener.isVisible()) {
+    await opener.focus();
+    await page.keyboard.press('Enter');
+  }
+  await link.focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#datastation$/);
+  await page.waitForTimeout(100);
+  expect(await page.locator('#datastation').evaluate(element => element.getBoundingClientRect().top)).toBeLessThan(0);
+  await page.goBack();
+  await expect(page).toHaveURL(/#calibration$/);
+  await page.waitForTimeout(200);
+  expect(await page.evaluate(() => window.scrollY)).toBeCloseTo(readingPosition, 0);
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('smooth');
   expect(await page.evaluate(() => history.scrollRestoration)).toBe('auto');
 });

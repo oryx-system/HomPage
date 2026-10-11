@@ -16,13 +16,27 @@ test('regulatory scope and custom software introduction remain readable in KO/EN
     await expect(introduction.locator('p')).toHaveCount(3);
     await expect(introduction.locator('.form-note')).toHaveCount(0);
     await expect(introduction).not.toContainText('Compliance');
+    const keywords = introduction.locator('.company-keywords li');
+    await expect(keywords).toHaveCount(4);
+    const expectedKeywords = {
+      ko: ['고객 맞춤 프로그램', '전자기록·데이터 관리', '사용자·접근 관리', '현장 적용·운영 지원'],
+      en: ['Custom business software', 'Electronic records & data management', 'User & access management', 'On-site implementation & operating support'],
+      ru: ['Индивидуальные рабочие программы', 'Электронные записи и управление данными', 'Управление пользователями и доступом', 'Внедрение на объекте и поддержка эксплуатации'],
+    };
+    await expect(keywords).toHaveText(expectedKeywords[language]);
+    await expect(introduction).not.toContainText(/20\s*년|\b20\s*years|\b20\s*лет|IEC|인증|certified|сертифицирован/i);
+    const featureCards = page.locator('.ds-feature-grid .ds-feature-card');
+    await expect(featureCards).toHaveCount(6);
+    await expect(featureCards.locator('.ds-feature-top svg')).toHaveCount(6);
+    await expect(featureCards.locator('.ds-feature-top span')).toHaveCount(0);
+    await expect(page.locator('.ds-workflow')).toContainText('01');
     await expect(introduction).toContainText({ ko: '맞춤 업무 프로그램', en: 'custom business software', ru: 'индивидуальные рабочие программы' }[language]);
     for (const product of ['DataStation', 'LockDown', 'Calibration']) await expect(introduction).toContainText(product);
     if (language !== 'ko') {
       expect(await scope.innerText()).not.toMatch(/[가-힣]/);
       expect(await introduction.innerText()).not.toMatch(/[가-힣]/);
     }
-    await page.addStyleTag({ content: '#validation p,#about p{font-size:200% !important}' });
+    await page.addStyleTag({ content: '#validation p,#about p,#about .company-keywords{font-size:200% !important}' });
     await page.locator('#validation summary').click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1)).toBe(false);
     await expect(page.locator('#validation a[target="_blank"]')).toHaveAttribute('href', 'https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11');
