@@ -60,6 +60,12 @@
       "bytes": 64942,
       "sha256": "4b343b8bc7ff30a2c15f6e3de3d7489f04d5ffbaef58cadaceadb0bf1a2fe29d",
       "mime": "image/webp"
+    },
+    {
+      "path": "oryx-datasafe-transparent.png",
+      "bytes": 218425,
+      "sha256": "beebe538993cd6428b782e7293e6037bb81e22eb494375074220fec860277142",
+      "mime": "image/png"
     }
   ]
 }
