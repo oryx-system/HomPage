@@ -31,24 +31,24 @@ test('DataStation details retain the toggle context on collapse across languages
     await page.waitForTimeout(300);
     expect(await summary.evaluate(element => element.getBoundingClientRect().top)).toBeLessThan(0);
     await expect(summary).toBeFocused();
+    const beforeCloseTop = await summary.evaluate(element => element.getBoundingClientRect().top);
     await page.evaluate(() => {
       const recorder = window as unknown as Window & { collapsePositions: number[] };
       recorder.collapsePositions = [];
       const start = performance.now();
       const sample = () => {
         const detail = document.querySelector<HTMLDetailsElement>('.ds-detail-group')!;
-        if (!detail.open) recorder.collapsePositions.push(detail.querySelector('summary')!.getBoundingClientRect().top);
-        if (performance.now() - start < 250) requestAnimationFrame(sample);
+        recorder.collapsePositions.push(detail.querySelector('summary')!.getBoundingClientRect().top);
+        if (performance.now() - start < 450) requestAnimationFrame(sample);
       };
       requestAnimationFrame(sample);
     });
     await page.keyboard.press('Enter');
     await expect(details).not.toHaveAttribute('open');
-    await page.waitForTimeout(300);
-    const header = await page.locator('.site-header').evaluate(element => element.getBoundingClientRect().height);
+    await page.waitForTimeout(500);
     const samples = await page.evaluate(() => (window as unknown as Window & { collapsePositions: number[] }).collapsePositions);
     expect(samples.length).toBeGreaterThan(0);
-    expect(samples.every(top => top >= header + 10 && top <= header + 14), JSON.stringify(samples)).toBe(true);
+    expect(samples.every(top => Math.abs(top - beforeCloseTop) <= 1), JSON.stringify(samples)).toBe(true);
     await expect(page).toHaveURL(/#datastation$/);
     const readingPosition = await page.evaluate(() => window.scrollY);
     const opener = page.locator('.site-header .menu-trigger');

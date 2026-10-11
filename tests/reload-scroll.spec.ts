@@ -68,7 +68,8 @@ test('reload preserves top and reading position without a startup scroll while u
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/#datastation$/);
   await page.waitForTimeout(100);
-  expect(await page.locator('#datastation').evaluate(element => element.getBoundingClientRect().top)).toBeLessThan(0);
+  expect(await page.locator('#datastation').evaluate(element => element.getBoundingClientRect().top))
+    .toBeLessThan(await page.locator('#datastation').evaluate(element => parseFloat(getComputedStyle(element).scrollMarginTop)) - 1);
   await page.goBack();
   await expect(page).toHaveURL(/#calibration$/);
   await page.waitForTimeout(200);

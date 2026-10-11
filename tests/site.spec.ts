@@ -437,6 +437,10 @@ test('three site languages translate every section and preserve the reading posi
   // where translated sections above it can have substantially different heights.
   await visitAnchor(page, 'datastation');
   await page.locator('#datastation .ds-detail-group > summary').click();
+  await expect.poll(() => page.evaluate(() => ({
+    height: (document.querySelector('.ds-detail-group') as HTMLElement).style.height,
+    motion: document.documentElement.style.getPropertyValue('scroll-behavior'),
+  }))).toEqual({ height: '', motion: '' });
   const readingParagraph = page.locator('#datastation .ds-report-details > p').first();
   await readingParagraph.evaluate(element => {
     const readingLine = (document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 94) + 36;

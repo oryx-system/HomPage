@@ -14,6 +14,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useLanguage } from "../i18n";
+import DataStationDetails from "../components/DataStationDetails";
 import "./datastation.css";
 
 const features = [
@@ -118,20 +119,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </section>
 
-      <details className="product-details ds-detail-group">
-        <summary onClick={event => {
-          const summary = event.currentTarget;
-          const details = summary.parentElement;
-          if (!(details instanceof HTMLDetailsElement) || !details.open) return;
-          const before = summary.getBoundingClientRect();
-          const header = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
-          const visibleTop = Math.max(header + 12, Math.min(before.top, window.innerHeight - before.height - 16));
-          event.preventDefault();
-          details.open = false;
-          summary.focus({ preventScroll: true });
-          // Close in the same interaction and retain the toggle's visual context.
-          window.scrollTo({ top: Math.max(0, window.scrollY + summary.getBoundingClientRect().top - visibleTop), behavior: 'instant' });
-        }}>{t("보고서·역할·원격 검토 자세히 보기")}</summary>
+      <DataStationDetails label={t("보고서·역할·원격 검토 자세히 보기")}>
         <div className="detail-content container">
           <h3>{t("파일·보관 설정의 적용 조건")}</h3>
           <ul className="check-list">
@@ -208,7 +196,7 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
         </div>
       </section>
 
-      </details>
+      </DataStationDetails>
 
       <section className="section" aria-labelledby="ds-editions-title">
         <div className="container">

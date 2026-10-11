@@ -1,5 +1,7 @@
 /* Shared design values from Oryx System f46ea25; product content and artwork stay local. */
 html {scroll-behavior:auto;scroll-padding-top:0;overflow-anchor:none;}
+/* Chromium's viewport anchor can still come from body when only html opts out. */
+body {overflow-anchor:none;}
 @media(prefers-reduced-motion:no-preference) {html[data-navigation-ready] {scroll-behavior:smooth;}}
 [data-main-section],#datastation,#brochures {scroll-margin-top:calc(var(--header-height,93px) + 12px);outline:none;}
 html:not([lang="ko"]) body,html:not([lang="ko"]) :is(p,li,dd,h1,h2,h3,h4) {word-break:normal;}
@@ -431,6 +433,8 @@ html:not([lang="ko"]) :is(.section-heading h2,.brochure-toolbar h2,.ds-section-t
 .product-details > summary:focus-visible {outline:3px solid #488aff;outline-offset:-3px;}
 .product-details > summary:hover {background:#f4f7fb;}
 .ds-detail-group > summary {max-width:var(--wrap);margin:auto;}
+.ds-animated-details {overflow:hidden;overflow-anchor:none;}
+.ds-disclosure-content {display:flow-root;}
 .detail-content {padding-block:28px;}
 .detail-content h3 {font-size:1.5rem;margin-bottom:20px;line-height:1.5;}
 .ds-detail-group .section {padding-block:52px;}
