@@ -115,7 +115,6 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
               </article>
             ))}
           </div>
-          <p className="ds-source-note">{t("장비 연결과 이력 가져오기의 적용 범위는 대상 장비와 현장 구성에 따라 확인합니다. 모든 장비·통신 방식의 지원을 의미하지 않습니다.")}</p>
         </div>
       </section>
 
@@ -165,9 +164,9 @@ export default function DataStationPage({ embedded = false }: { embedded?: boole
             <p>{t("Professional·Enterprise는 담당자 역할과 순서에 따른 전자서명을 제공합니다.")}</p>
           </div>
           <ol className="ds-workflow">
-            <li className="reveal"><span>{t("01 / OPERATOR")}</span><ItemTitle className="ds-card-title">{t("작업자")}</ItemTitle><p>{t("작업 기록을 확인하고 첫 번째 전자서명을 남깁니다.")}</p><ArrowRight className="ds-workflow-arrow" size={25} aria-hidden="true" /></li>
-            <li className="reveal"><span>{t("02 / REVIEWER")}</span><ItemTitle className="ds-card-title">{t("확인자")}</ItemTitle><p>{t("작업자의 서명 후 기록을 검토하고 확인 서명을 남깁니다.")}</p><ArrowRight className="ds-workflow-arrow" size={25} aria-hidden="true" /></li>
-            <li className="reveal"><span>{t("03 / APPROVER")}</span><ItemTitle className="ds-card-title">{t("승인자")}</ItemTitle><p>{t("확인 서명 후 최종 검토하고 승인 서명을 남깁니다.")}</p></li>
+            <li className="reveal"><span>{t("01 / 작업자")}</span><ItemTitle className="ds-card-title">{t("작업자")}</ItemTitle><p>{t("작업 기록을 확인하고 첫 번째 전자서명을 남깁니다.")}</p><ArrowRight className="ds-workflow-arrow" size={25} aria-hidden="true" /></li>
+            <li className="reveal"><span>{t("02 / 확인자")}</span><ItemTitle className="ds-card-title">{t("확인자")}</ItemTitle><p>{t("작업자의 서명 후 기록을 검토하고 확인 서명을 남깁니다.")}</p><ArrowRight className="ds-workflow-arrow" size={25} aria-hidden="true" /></li>
+            <li className="reveal"><span>{t("03 / 승인자")}</span><ItemTitle className="ds-card-title">{t("승인자")}</ItemTitle><p>{t("확인 서명 후 최종 검토하고 승인 서명을 남깁니다.")}</p></li>
           </ol>
           <div className="ds-role-notes">
             <p><strong>{t("감사자")}</strong>{t("기록과 감사 이력을 조회·내보냅니다. 감사자 권한만으로는 서명하지 않으며, 승인에는 승인자 역할이 필요합니다.")}</p>

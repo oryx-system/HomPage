@@ -217,10 +217,6 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     en: "Find collected files, check for changes and retain the records you need.",
     ru: "Находите собранные файлы, проверяйте наличие изменений и сохраняйте необходимые записи.",
   },
-  "장비 연결과 이력 가져오기의 적용 범위는 대상 장비와 현장 구성에 따라 확인합니다. 모든 장비·통신 방식의 지원을 의미하지 않습니다.": {
-    en: "Equipment connection and history import capabilities must be confirmed for the specific equipment and site configuration. Support for all equipment or communication methods is not implied.",
-    ru: "Возможности подключения оборудования и импорта истории необходимо уточнять для конкретного оборудования и конфигурации объекта. Поддержка всех устройств и способов связи не подразумевается.",
-  },
   "REPORT & REVIEW": {
     en: "REPORT & REVIEW",
     ru: "ОТЧЁТЫ И ПРОВЕРКА",
@@ -297,7 +293,7 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     en: "Professional and Enterprise provide electronic signatures according to assigned roles and the required sequence.",
     ru: "Professional и Enterprise поддерживают электронные подписи в соответствии с назначенными ролями и установленной последовательностью.",
   },
-  "01 / OPERATOR": {
+  "01 / 작업자": {
     en: "01 / OPERATOR",
     ru: "01 / ОПЕРАТОР",
   },
@@ -309,19 +305,19 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     en: "Checks the operation record and applies the first electronic signature.",
     ru: "Проверяет запись о выполненной операции и ставит первую электронную подпись.",
   },
-  "02 / REVIEWER": {
-    en: "02 / REVIEWER",
+  "02 / 확인자": {
+    en: "02 / VERIFIER",
     ru: "02 / ПРОВЕРЯЮЩИЙ",
   },
   "확인자": {
-    en: "Reviewer",
+    en: "Verifier",
     ru: "Проверяющий",
   },
   "작업자의 서명 후 기록을 검토하고 확인 서명을 남깁니다.": {
     en: "Reviews the record after the Operator's signature and applies the review signature.",
     ru: "Проверяет запись после подписи Оператора и ставит подпись о проверке.",
   },
-  "03 / APPROVER": {
+  "03 / 승인자": {
     en: "03 / APPROVER",
     ru: "03 / УТВЕРЖДАЮЩИЙ",
   },
@@ -378,7 +374,7 @@ export const datastationTranslations: Record<string, { en: string; ru: string }>
     ru: "Отдельное хранилище PDF и истории подписей",
   },
   "작업·확인·승인 순서별 전자서명": {
-    en: "Sequential Operator, Reviewer and Approver signatures",
+    en: "Sequential Operator, Verifier and Approver signatures",
     ru: "Последовательные подписи Оператора, Проверяющего и Утверждающего",
   },
   "CHOOSE YOUR CONFIGURATION": {

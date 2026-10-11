@@ -29,7 +29,7 @@ export const brochures: Brochure[] = [
     product: "Oryx DataStation", language: "en", languageLabel: "English",
     fileName: "OryxDataStation_Brochure_EN.pdf", href: "/downloads/OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
     cover: "/downloads/OryxDataStation_Brochure_EN_WordingReview-cover.webp", coverWidth: 745, coverHeight: 1053,
-    description: dataStationDescription, bytes: 6021951, pages: 13,
+    description: dataStationDescription, bytes: 6021954, pages: 13,
   },
   {
     product: "Oryx LockDown", language: "ko", languageLabel: "한국어",
@@ -47,12 +47,12 @@ export const brochures: Brochure[] = [
     product: "Oryx Calibration", language: "ko", languageLabel: "한국어",
     fileName: "OryxCalibration_Brochure_KO.pdf", href: "/downloads/OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
     cover: "/downloads/OryxCalibration_고객소개브로셔_20261010_WordingReview-cover.webp", coverWidth: 745, coverHeight: 1053,
-    description: calibrationDescription, bytes: 3610806, pages: 7,
+    description: calibrationDescription, bytes: 3607539, pages: 7,
   },
   {
     product: "Oryx Calibration", language: "en", languageLabel: "English",
     fileName: "OryxCalibration_Brochure_EN.pdf", href: "/downloads/OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
     cover: "/downloads/OryxCalibration_Introduction_EN_20261010_WordingReview-cover.webp", coverWidth: 745, coverHeight: 1053,
-    description: calibrationDescription, bytes: 7136090, pages: 7,
+    description: calibrationDescription, bytes: 3578550, pages: 7,
   },
 ];

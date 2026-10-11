@@ -30,8 +30,8 @@ const officialDocuments = [
     "language": "en",
     "filename": "OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
     "downloadName": "OryxDataStation_Brochure_EN.pdf",
-    "bytes": 6021951,
-    "sha256": "8d9caf4fa9a8f24c3a91499b522949dbf5c7819b814f8df1ba06555737cd1170"
+    "bytes": 6021954,
+    "sha256": "b6fcb6cf9ec2ede21ee1624d073962a62f6272b3375508f195292a4c604895ec"
   },
   {
     "product": "Oryx LockDown",
@@ -54,16 +54,16 @@ const officialDocuments = [
     "language": "ko",
     "filename": "OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
     "downloadName": "OryxCalibration_Brochure_KO.pdf",
-    "bytes": 3610806,
-    "sha256": "15c2b2e6e5afabdd9d7b7ded8ef4892049161fd4ba6929fa79e8267239b64ccd"
+    "bytes": 3607539,
+    "sha256": "ea26733709b87024056cb670b17f0a0ea22d3d339ba3028b168f11145e222783"
   },
   {
     "product": "Oryx Calibration",
     "language": "en",
     "filename": "OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
     "downloadName": "OryxCalibration_Brochure_EN.pdf",
-    "bytes": 7136090,
-    "sha256": "a106ac751afb2a1af50a81828c4e2b56fbb8fcae455e35bdc9ca9444f8ff8b9f"
+    "bytes": 3578550,
+    "sha256": "7e86560a8394cd8459af37a3f2a39804fdf1c535997cc7a8d4a4e2ce02813f78"
   }
 ] as const;
 

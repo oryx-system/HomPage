@@ -14,6 +14,23 @@ test('regulatory scope and custom software introduction remain readable in KO/EN
     const introduction = page.locator('#about .company-summary');
     await expect(page.locator('#about .section-kicker')).toHaveText('Company');
     await expect(introduction.locator('p')).toHaveCount(2);
+    await expect(page.locator('#about-heading')).toHaveText({
+      ko: '데이터 신뢰와 고객 맞춤 소프트웨어',
+      en: 'Data trust and custom software',
+      ru: 'Доверие к данным и программы под ваши задачи',
+    }[language]);
+    await expect(page.locator('.ds-workflow .ds-card-title')).toHaveText({
+      ko: ['작업자', '확인자', '승인자'],
+      en: ['Operator', 'Verifier', 'Approver'],
+      ru: ['Оператор', 'Проверяющий', 'Утверждающий'],
+    }[language]);
+    await expect(page.locator('[aria-labelledby="ds-features-title"] .ds-source-note')).toHaveCount(0);
+    const ocrCard = page.locator('#calibration .card').last();
+    await expect(ocrCard.locator('p')).toHaveText({
+      ko: '현장에서 촬영한 교정 수치를 자동으로 인식해 앱에 기록합니다.',
+      en: 'Automatically recognize calibration readings photographed on site and record them in the app.',
+      ru: 'Приложение автоматически распознаёт калибровочные показания на фотографиях, сделанных на объекте, и записывает их.',
+    }[language]);
     await expect(introduction.locator('.form-note')).toHaveCount(0);
     await expect(introduction).not.toContainText('Compliance');
     const keywords = introduction.locator('.company-keywords li');

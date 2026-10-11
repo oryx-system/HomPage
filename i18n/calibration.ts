@@ -51,17 +51,13 @@ export const calibrationTranslations: Record<string, { en: string; ru: string }>
     en: "Issue certificates and manage customer publication separately. Access to copies marked COPY depends on permissions.",
     ru: "Выпускайте сертификаты и отдельно управляйте их публикацией для клиентов. Просмотр копий с отметкой COPY зависит от прав доступа.",
   },
-  "온라인 OCR과 오프라인 기록": {
-    en: "Online OCR and offline records",
-    ru: "Онлайн-распознавание OCR и офлайн-записи",
+  "촬영한 교정 수치 인식": {
+    en: "Recognize calibration readings from photos",
+    ru: "Распознавание калибровочных показаний на фотографиях",
   },
-  "온라인에서는 사진을 촬영·업로드하고 서버 OCR 결과를 사용자가 확인합니다.": {
-    en: "When online, capture and upload a photo, then review the server OCR results before using them.",
-    ru: "При подключении к сети сделайте и загрузите фотографию, затем проверьте результат серверного OCR перед его использованием.",
-  },
-  "오프라인에서는 사진과 수기 입력값을 보관한 뒤 연결 시 업로드합니다. 오프라인 즉시 자동 OCR은 지원 기능으로 안내하지 않습니다.": {
-    en: "When offline, save photos and manually entered values, then upload them after reconnecting. Immediate automatic OCR is not offered offline.",
-    ru: "Без подключения сохраняйте фотографии и значения, введённые вручную, и загружайте их после восстановления связи. Мгновенное автоматическое OCR без сети не предусмотрено.",
+  "현장에서 촬영한 교정 수치를 자동으로 인식해 앱에 기록합니다.": {
+    en: "Automatically recognize calibration readings photographed on site and record them in the app.",
+    ru: "Приложение автоматически распознаёт калибровочные показания на фотографиях, сделанных на объекте, и записывает их.",
   },
   "입력 양식, 연결 조건과 권한 구성은 사용하는 버전과 현장 환경에 맞춰 확인합니다.": {
     en: "Confirm input forms, connection requirements and permission settings for the version and operating environment in use.",
