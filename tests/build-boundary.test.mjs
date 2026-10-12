@@ -62,7 +62,7 @@ test('metadata references real local image assets and truthful organization data
   assert.match(organization.name, /DataSafe|데이터세이프/i);
   assert.doesNotMatch(`${organization.name} ${organization.alternateName ?? ''}`, /Oryx\s*System|오릭스\s*시스템/i);
   assert.equal(organization.email, 'schong@oryxsystem.co.kr');
-  assert.equal(new URL(organization.url).origin, 'https://oryxdatasafe.com');
+  assert.equal(new URL(organization.url).origin, 'https://oryxdatasafe.co.kr');
   assert.equal(organization.telephone, '+82-10-6545-0415');
   assert.ok(!organization.offers, 'Unconfirmed prices must not be published as an offer');
   assert.ok(!organization.taxID, 'An unconfirmed business number must not be invented');

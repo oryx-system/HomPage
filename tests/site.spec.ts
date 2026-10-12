@@ -83,7 +83,7 @@ async function expectDataSafeIdentity(page: Page) {
   expect(organization['@type']).toBe('Organization');
   expect(organization.name).toMatch(/DataSafe|데이터세이프/i);
   expect(`${organization.name} ${organization.alternateName ?? ''}`).not.toMatch(/Oryx\s*System|오릭스\s*시스템/i);
-  expect(new URL(organization.url).origin).toBe('https://oryxdatasafe.com');
+  expect(new URL(organization.url).origin).toBe('https://oryxdatasafe.co.kr');
   await expect(page.locator('meta[name="author"]')).toHaveAttribute('content', /DataSafe|데이터세이프/i);
   for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
     const description = await page.locator(selector).getAttribute('content');
@@ -334,7 +334,7 @@ test('stable one-page metadata and referenced icon or social images are availabl
   const title = await page.title();
   const description = await page.locator('meta[name="description"]').getAttribute('content');
   expect(description).toBeTruthy();
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://oryxdatasafe.com/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://oryxdatasafe.co.kr/');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
   await expectDataSafeIdentity(page);
   const assets = await page.locator('link[rel~="icon"], link[rel="apple-touch-icon"], meta[property="og:image"], meta[name="twitter:image"]').evaluateAll(elements => elements.map(element => element.getAttribute('href') || element.getAttribute('content')));

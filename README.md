@@ -48,6 +48,6 @@ System의 글꼴 스택, 제목·본문 계층, 섹션 폭과 여백, 밝고 어
 
 회사 소개는 별도 IT 회사의 역할과 제약회사 맞춤 소프트웨어 개발 역량 및 기존 제품의 역할에 집중합니다. 개인정보 안내 뒤에 문의 영역을 배치하고 대표·소재지·실제 이메일·전화를 한곳에 모읍니다. Footer에는 관련 회사 사이트·내부 메뉴·저작권을 제공하며 대표·주소·연락처를 중복 표시하지 않습니다.
 
-기존 `.github/workflows/deploy.yml`이 main push로 빌드한 `dist`를 GitHub Pages에 게시하며 `public/CNAME`은 `oryxdatasafe.com`입니다. 운영 반영은 사용자에게 승인된 범위이며 기존 호스팅과 보안 설정을 사용합니다. OryxSystem_Web는 변경하지 않습니다. 이전 비공개 Sites v3 배포, 로컬 `7e466ce` 소스와 기존 작업 경로는 별도로 보존했습니다.
+운영 홈페이지는 Cloudflare Pages에서 `https://oryxdatasafe.co.kr/`로 제공합니다. 빌드 명령은 `npm run build`, 출력 디렉터리는 `dist`입니다. 기존 GitHub Pages 배포 작업은 중단 상태로 유지하며 `public/CNAME`은 구 도메인 연결 보존을 위해 변경하지 않습니다. 이전 비공개 Sites v3 배포, 로컬 `7e466ce` 소스와 기존 작업 경로는 별도로 보존했습니다.
 
-운영 도메인 검증은 배포 후 `Verify live GitHub Pages deployment` 작업에서 수행합니다. 실제 도메인의 HTML·메타데이터·모든 배포 자산의 바이트와 해시를 비교한 뒤 320/360/390/768/1024/1440px Chromium 검사를 실행합니다. 결과와 화면 캡처는 해당 작업의 아티팩트에 보존합니다. 이전 릴리스의 로컬 검증 기록은 `review/production-final-qa`에 있으며 후속 작업의 검증 기록은 별도로 보존합니다.
+운영 도메인 검증은 main 변경 또는 수동 실행 시 `Verify live Cloudflare Pages deployment` 작업에서 수행합니다. Cloudflare Pages 배포가 완료되어 예상 바이트와 일치할 때까지 확인합니다. 실제 도메인의 HTML·메타데이터·모든 배포 자산의 바이트와 해시를 비교한 뒤 320/360/390/768/1024/1440px Chromium 검사를 실행합니다. 결과와 화면 캡처는 해당 작업의 아티팩트에 보존합니다. 이전 릴리스의 로컬 검증 기록은 `review/production-final-qa`에 있으며 후속 작업의 검증 기록은 별도로 보존합니다.

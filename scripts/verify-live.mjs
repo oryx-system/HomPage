@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = path.join(root, 'dist');
-const productionOrigin = 'https://oryxdatasafe.com';
+const productionOrigin = 'https://oryxdatasafe.co.kr';
 const override = process.env.VERIFY_BASE_URL;
 const base = new URL(override || productionOrigin);
 if (!['http:', 'https:'].includes(base.protocol) || base.username || base.password) {
@@ -100,8 +100,9 @@ async function request(relative, attempt) {
 try {
   const cname = (await readFile(path.join(root, 'public/CNAME'), 'utf8')).trim();
   const builtCname = (await readFile(path.join(dist, 'CNAME'), 'utf8')).trim();
-  if (cname !== new URL(productionOrigin).hostname || builtCname !== cname) {
-    throw new Error('Source and built CNAME must both match the existing production domain.');
+  // CNAME preserves the retired GitHub Pages domain claim; Cloudflare uses its own domain settings.
+  if (builtCname !== cname) {
+    throw new Error('The preserved GitHub Pages CNAME must not change during the Cloudflare build.');
   }
   const indexBytes = await readFile(path.join(dist, 'index.html'));
   const indexHtml = indexBytes.toString('utf8');
