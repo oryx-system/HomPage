@@ -355,7 +355,14 @@ test('stable one-page metadata and referenced icon or social images are availabl
 
 test('contact has direct mail and telephone links without a form or false success', async ({ page }) => {
   const submissions: string[] = [];
-  page.on('request', request => { if (request.method() !== 'GET') submissions.push(request.url()); });
+  page.on('request', request => {
+    const url = new URL(request.url());
+    // Cloudflare Web Analytics sends page-performance beacons to this exact same-origin endpoint.
+    const performanceBeacon = request.method() === 'POST'
+      && url.origin === new URL(page.url()).origin
+      && url.pathname === '/cdn-cgi/rum';
+    if (request.method() !== 'GET' && !performanceBeacon) submissions.push(request.url());
+  });
   const session = await page.context().newCDPSession(page);
   await session.send('Page.enable');
   let requestedMail = '';
