@@ -3,39 +3,45 @@
   "files": [
     {
       "path": "downloads/OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
-      "bytes": 3607539,
-      "sha256": "ea26733709b87024056cb670b17f0a0ea22d3d339ba3028b168f11145e222783",
-      "mime": "application/pdf"
+      "bytes": 3609975,
+      "sha256": "c89bd464ca674cb309322a2758cd2409c0ec9adf91bc7e23525e7a346f12e93e",
+      "mime": "application/pdf",
+      "domain_review": "oryxdatasafe.co.kr; latest approved wording and layout retained"
     },
     {
       "path": "downloads/OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
-      "bytes": 3578550,
-      "sha256": "7e86560a8394cd8459af37a3f2a39804fdf1c535997cc7a8d4a4e2ce02813f78",
-      "mime": "application/pdf"
+      "bytes": 3565406,
+      "sha256": "7cf8cd8437525f2b217aa135fa821129450ef25d7e69dbb2990b292d8129dd77",
+      "mime": "application/pdf",
+      "domain_review": "oryxdatasafe.co.kr; latest approved wording and layout retained"
     },
     {
       "path": "downloads/Oryx_DataStation_Brochure_WordingReview_20261010.pdf",
-      "bytes": 5995703,
-      "sha256": "8be1e11b74c20decc3a6b62846cfce487402682c92f5ad66a1fa13abcca24ca3",
-      "mime": "application/pdf"
+      "bytes": 5796168,
+      "sha256": "2c329721820cf5277a115525f0558810f218e8c0650407efec3e0a5f6eaf17b5",
+      "mime": "application/pdf",
+      "domain_review": "oryxdatasafe.co.kr; latest approved wording and layout retained"
     },
     {
       "path": "downloads/Oryx_LockDown_Brochure_WordingReview_20261010.pdf",
-      "bytes": 6216950,
-      "sha256": "941bbcd0496b6a857bf42849abda29c8c8742afbced587204cf40a3be19c2f60",
-      "mime": "application/pdf"
+      "bytes": 6242160,
+      "sha256": "0f7be262c540deeaf24e31a11f5028b4338c7ac045ba63ac300efaa3a76cb80d",
+      "mime": "application/pdf",
+      "domain_review": "oryxdatasafe.co.kr; latest approved wording and layout retained"
     },
     {
       "path": "downloads/OryxLockDown_Brochure_EN_WordingReview_20261010.pdf",
-      "bytes": 804580,
-      "sha256": "2e6223069a8573cc79deb5bf43f690a8fd964437861cd49d2a6a4ba6ae00ef51",
-      "mime": "application/pdf"
+      "bytes": 810611,
+      "sha256": "9c21c52cf63a4b4c869b37872df7862e3ca54bdf7cbfe5d206cd9e0d0eaea854",
+      "mime": "application/pdf",
+      "domain_review": "oryxdatasafe.co.kr; latest approved wording and layout retained"
     },
     {
       "path": "downloads/OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
-      "bytes": 6021954,
-      "sha256": "b6fcb6cf9ec2ede21ee1624d073962a62f6272b3375508f195292a4c604895ec",
-      "mime": "application/pdf"
+      "bytes": 5822289,
+      "sha256": "2b12bf1faefecfd19ebd43634725ad0084a9f36f4b933b36bd38611e1856aff2",
+      "mime": "application/pdf",
+      "domain_review": "oryxdatasafe.co.kr; latest approved wording and layout retained"
     },
     {
       "path": "downloads/OryxCalibration_고객소개브로셔_20261010_WordingReview-cover.webp",

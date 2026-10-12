@@ -3,17 +3,17 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-// Independent expected bytes from reviewed source documents, rather than
+// Independent expected bytes from domain-reviewed documents, rather than
 // values imported from the application's brochure data.
-const originalDocuments = [
-  { product: 'Oryx DataStation', language: 'ko', filename: 'Oryx_DataStation_Brochure.pdf', bytes: 5714476, sha256: '0dfa3a3911826c580a3c2e21e800af32f6f369b8a45e8c06790d459034ce74cd' },
-  { product: 'Oryx LockDown', language: 'ko', filename: 'Oryx_LockDown_Brochure.pdf', bytes: 6200816, sha256: '662f9882d5d79259ab2ccb7f3381263e79d12c7313c016072b2efd4acc527055' },
-  { product: 'Oryx DataStation', language: 'en', filename: 'OryxDataStation_Brochure_EN.pdf', bytes: 5802066, sha256: '23310048c56fd6285b51f9cfc962284e6baccfe04b9cdced4ea8dc3976ab2a11' },
-  { product: 'Oryx LockDown', language: 'en', filename: 'OryxLockDown_Brochure_EN.pdf', bytes: 791484, sha256: '27e8275256f8af35f73dcfaa64157144eba5156164baf98432c607ce6e64b20a' },
-  // Reviewed final 7-page originals; checks stay blocked until the approved
-  // bytes and cards are present. No Russian PDF is invented.
-  { product: 'Oryx Calibration', language: 'ko', filename: 'OryxCalibration_고객소개브로셔_20261010.pdf', bytes: 3580768, sha256: '8f20191487dc4a75162615dd676011a7b80563893ed5168a71f2c9f99a6f6690' },
-  { product: 'Oryx Calibration', language: 'en', filename: 'OryxCalibration_Introduction_EN_20261010.pdf', bytes: 7120817, sha256: '16d5865761ad2a626ae96fd4d923e49861a09351caf42931c8483dd6bcbd23fa' },
+const legacyDocuments = [
+  { product: 'Oryx DataStation', language: 'ko', filename: 'Oryx_DataStation_Brochure.pdf', bytes: 5796168, sha256: '2c329721820cf5277a115525f0558810f218e8c0650407efec3e0a5f6eaf17b5' },
+  { product: 'Oryx LockDown', language: 'ko', filename: 'Oryx_LockDown_Brochure.pdf', bytes: 6242160, sha256: '0f7be262c540deeaf24e31a11f5028b4338c7ac045ba63ac300efaa3a76cb80d' },
+  { product: 'Oryx DataStation', language: 'en', filename: 'OryxDataStation_Brochure_EN.pdf', bytes: 5822289, sha256: '2b12bf1faefecfd19ebd43634725ad0084a9f36f4b933b36bd38611e1856aff2' },
+  { product: 'Oryx LockDown', language: 'en', filename: 'OryxLockDown_Brochure_EN.pdf', bytes: 810611, sha256: '9c21c52cf63a4b4c869b37872df7862e3ca54bdf7cbfe5d206cd9e0d0eaea854' },
+  // Legacy paths now serve the same latest approved domain-reviewed PDFs.
+  // No Russian PDF is invented.
+  { product: 'Oryx Calibration', language: 'ko', filename: 'OryxCalibration_고객소개브로셔_20261010.pdf', bytes: 3609975, sha256: 'c89bd464ca674cb309322a2758cd2409c0ec9adf91bc7e23525e7a346f12e93e' },
+  { product: 'Oryx Calibration', language: 'en', filename: 'OryxCalibration_Introduction_EN_20261010.pdf', bytes: 3565406, sha256: '7cf8cd8437525f2b217aa135fa821129450ef25d7e69dbb2990b292d8129dd77' },
 ] as const;
 
 const officialDocuments = [
@@ -22,48 +22,48 @@ const officialDocuments = [
     "language": "ko",
     "filename": "Oryx_DataStation_Brochure_WordingReview_20261010.pdf",
     "downloadName": "OryxDataStation_Brochure_KO.pdf",
-    "bytes": 5995703,
-    "sha256": "8be1e11b74c20decc3a6b62846cfce487402682c92f5ad66a1fa13abcca24ca3"
+    "bytes": 5796168,
+    "sha256": "2c329721820cf5277a115525f0558810f218e8c0650407efec3e0a5f6eaf17b5"
   },
   {
     "product": "Oryx DataStation",
     "language": "en",
     "filename": "OryxDataStation_Brochure_EN_WordingReview_20261010.pdf",
     "downloadName": "OryxDataStation_Brochure_EN.pdf",
-    "bytes": 6021954,
-    "sha256": "b6fcb6cf9ec2ede21ee1624d073962a62f6272b3375508f195292a4c604895ec"
+    "bytes": 5822289,
+    "sha256": "2b12bf1faefecfd19ebd43634725ad0084a9f36f4b933b36bd38611e1856aff2"
   },
   {
     "product": "Oryx LockDown",
     "language": "ko",
     "filename": "Oryx_LockDown_Brochure_WordingReview_20261010.pdf",
     "downloadName": "OryxLockDown_Brochure_KO.pdf",
-    "bytes": 6216950,
-    "sha256": "941bbcd0496b6a857bf42849abda29c8c8742afbced587204cf40a3be19c2f60"
+    "bytes": 6242160,
+    "sha256": "0f7be262c540deeaf24e31a11f5028b4338c7ac045ba63ac300efaa3a76cb80d"
   },
   {
     "product": "Oryx LockDown",
     "language": "en",
     "filename": "OryxLockDown_Brochure_EN_WordingReview_20261010.pdf",
     "downloadName": "OryxLockDown_Brochure_EN.pdf",
-    "bytes": 804580,
-    "sha256": "2e6223069a8573cc79deb5bf43f690a8fd964437861cd49d2a6a4ba6ae00ef51"
+    "bytes": 810611,
+    "sha256": "9c21c52cf63a4b4c869b37872df7862e3ca54bdf7cbfe5d206cd9e0d0eaea854"
   },
   {
     "product": "Oryx Calibration",
     "language": "ko",
     "filename": "OryxCalibration_고객소개브로셔_20261010_WordingReview_20261010.pdf",
     "downloadName": "OryxCalibration_Brochure_KO.pdf",
-    "bytes": 3607539,
-    "sha256": "ea26733709b87024056cb670b17f0a0ea22d3d339ba3028b168f11145e222783"
+    "bytes": 3609975,
+    "sha256": "c89bd464ca674cb309322a2758cd2409c0ec9adf91bc7e23525e7a346f12e93e"
   },
   {
     "product": "Oryx Calibration",
     "language": "en",
     "filename": "OryxCalibration_Introduction_EN_20261010_WordingReview_20261010.pdf",
     "downloadName": "OryxCalibration_Brochure_EN.pdf",
-    "bytes": 3578550,
-    "sha256": "7e86560a8394cd8459af37a3f2a39804fdf1c535997cc7a8d4a4e2ce02813f78"
+    "bytes": 3565406,
+    "sha256": "7cf8cd8437525f2b217aa135fa821129450ef25d7e69dbb2990b292d8129dd77"
   }
 ] as const;
 
@@ -222,8 +222,8 @@ test('brochure anchors and keyboard languages preserve state and scroll across h
 });
 
 
-test('six original brochure files remain byte-identical', async ({ request }) => {
-  for (const document of originalDocuments) {
+test('legacy brochure paths serve verified latest domain-reviewed files', async ({ request }) => {
+  for (const document of legacyDocuments) {
     const original = await readFile(join(process.cwd(), 'public', 'downloads', document.filename));
     expect(original.length).toBe(document.bytes);
     expect(sha256(original)).toBe(document.sha256);
